@@ -1,0 +1,1118 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>🏥 VersiaRenal - QA Testing Evidence</title>
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@b00a2d0486596e73dd7326beacf352c639623a0e/commons/img/logo.png">
+<link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@b00a2d0486596e73dd7326beacf352c639623a0e/commons/img/logo.png">
+<link href="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@d6562a79075e061305ccfdb82f01e5e195e2d307/spark/css/spark-style.css" rel="stylesheet" />
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@7cc78ce/spark/js/jsontree.js"></script>
+<style type="text/css">
+/* === IMPORTAR FUENTE PROFESIONAL === */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+/* === VARIABLES CSS === */
+:root {
+--primary-blue: #1976D2;
+--secondary-blue: #0D47A1;
+--accent-blue: #42A5F5;
+--success-green: #4CAF50;
+--warning-orange: #FF9800;
+--error-red: #F44336;
+--dark-bg: #121212;
+--card-bg: #1E1E1E;
+--text-primary: #FFFFFF;
+--text-secondary: #B0BEC5;
+--border-color: #37474F;
+}
+/* === TU SOLUCIÓN QUE FUNCIONA (SIN TOCAR) === */
+/* Ocultar solo el SPAN del hook, NO todo el step */
+div.step[title="AFTER_STEP"] span {
+display: none !important;
+visibility: hidden !important;
+height: 0 !important;
+overflow: hidden !important;
+}
+/* MANTENER las imágenes del hook */
+div.step[title="AFTER_STEP"] .row.mb-3 {
+display: block !important;
+margin: 15px 0 !important;
+padding: 15px !important;
+}
+/* === BODY Y ESTRUCTURA GENERAL === */
+body {
+font-family: 'Inter', 'Segoe UI', Arial, sans-serif !important;
+background: linear-gradient(135deg, #0D47A1 0%, #1976D2 50%, #42A5F5 100%) !important;
+color: var(--text-primary) !important;
+margin: 0 !important;
+padding: 0 !important;
+}
+/* === HEADER PRINCIPAL (SOLO HACER FIJO) === */
+.header.navbar {
+background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue)) !important;
+box-shadow: 0 4px 20px rgba(0,0,0,0.3) !important;
+border-bottom: 3px solid var(--accent-blue) !important;
+position: fixed !important; /* SOLO ESTO - header fijo */
+top: 0 !important;
+left: 0 !important;
+right: 0 !important;
+z-index: 1000 !important;
+}
+/* === NAVEGACIÓN (SIN CAMBIOS EXTRA) === */
+.side-nav {
+background: var(--card-bg) !important;
+border-right: 2px solid var(--border-color) !important;
+}
+.side-nav-menu .nav-item a {
+color: var(--text-secondary) !important;
+transition: all 0.3s ease !important;
+}
+.side-nav-menu .nav-item a:hover {
+background: var(--primary-blue) !important;
+color: white !important;
+}
+/* === CONTENEDOR PRINCIPAL (SOLO AGREGAR PADDING-TOP) === */
+.main-content {
+background: var(--dark-bg) !important;
+min-height: 100vh !important;
+padding: 20px !important;
+padding-top: 85px !important; /* SOLO ESTO - para el header */
+}
+/* === DASHBOARD CARDS === */
+.card {
+background: linear-gradient(145deg, var(--card-bg), #2A2A2A) !important;
+border: 1px solid var(--border-color) !important;
+border-radius: 12px !important;
+box-shadow: 0 8px 25px rgba(0,0,0,0.2) !important;
+transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+.card:hover {
+transform: translateY(-2px) !important;
+box-shadow: 0 12px 35px rgba(0,0,0,0.3) !important;
+}
+.card-header {
+background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue)) !important;
+color: white !important;
+border-radius: 12px 12px 0 0 !important;
+padding: 15px 20px !important;
+font-weight: 600 !important;
+}
+.card-header h6 {
+color: white !important;
+margin: 0 !important;
+font-size: 16px !important;
+}
+.card-body {
+background: var(--card-bg) !important;
+color: var(--text-primary) !important;
+padding: 20px !important;
+}
+/* === ESTADÍSTICAS === */
+.card-body h3 {
+color: var(--accent-blue) !important;
+font-weight: 700 !important;
+font-size: 32px !important;
+margin: 10px 0 !important;
+text-shadow: 0 2px 4px rgba(0,0,0,0.3) !important;
+}
+.card-body p {
+color: var(--text-secondary) !important;
+font-weight: 500 !important;
+margin: 0 !important;
+}
+.text-pass {
+color: var(--success-green) !important;
+font-weight: 700 !important;
+}
+.text-fail {
+color: var(--error-red) !important;
+font-weight: 700 !important;
+}
+/* === LISTA DE TESTS === */
+.test-list {
+background: var(--card-bg) !important;
+border-radius: 12px !important;
+border: 1px solid var(--border-color) !important;
+}
+.test-list-tools {
+background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue)) !important;
+padding: 15px 20px !important;
+border-radius: 12px 12px 0 0 !important;
+}
+.test-list-tools .tools a {
+color: white !important;
+font-weight: 600 !important;
+}
+.test-item {
+background: var(--card-bg) !important;
+border-bottom: 1px solid var(--border-color) !important;
+transition: all 0.3s ease !important;
+}
+.test-item:hover {
+background: linear-gradient(135deg, #2A2A2A, #333333) !important;
+}
+.test-item.active {
+background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue)) !important;
+border-left: 4px solid var(--accent-blue) !important;
+}
+.test-detail .name {
+color: var(--text-primary) !important;
+font-weight: 600 !important;
+font-size: 16px !important;
+margin-bottom: 8px !important;
+}
+.test-detail .text-sm {
+color: var(--text-secondary) !important;
+font-size: 13px !important;
+}
+/* === BADGES PROFESIONALES === */
+.badge {
+border-radius: 20px !important;
+padding: 6px 12px !important;
+font-weight: 600 !important;
+font-size: 11px !important;
+text-transform: uppercase !important;
+letter-spacing: 0.5px !important;
+}
+.badge-success {
+background: linear-gradient(135deg, var(--success-green), #388E3C) !important;
+color: white !important;
+box-shadow: 0 3px 10px rgba(76, 175, 80, 0.3) !important;
+}
+.badge-danger {
+background: linear-gradient(135deg, var(--error-red), #D32F2F) !important;
+color: white !important;
+box-shadow: 0 3px 10px rgba(244, 67, 54, 0.3) !important;
+}
+.badge-primary {
+background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue)) !important;
+color: white !important;
+box-shadow: 0 3px 10px rgba(25, 118, 210, 0.3) !important;
+}
+.pass-bg {
+background: linear-gradient(135deg, var(--success-green), #2E7D32) !important;
+color: white !important;
+}
+/* === CONTENIDO DEL TEST (SIN CAMBIOS EXTRA) === */
+.test-content {
+background: var(--card-bg) !important;
+border-radius: 12px !important;
+border: 1px solid var(--border-color) !important;
+}
+.test-content-detail {
+padding: 20px !important;
+}
+.detail-head {
+background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue)) !important;
+padding: 20px !important;
+border-radius: 12px !important;
+margin-bottom: 20px !important;
+box-shadow: 0 4px 15px rgba(25, 118, 210, 0.3) !important;
+}
+.test-status {
+color: white !important;
+font-weight: 700 !important;
+font-size: 24px !important;
+margin-bottom: 10px !important;
+}
+.test-status::before {
+content: "SCENARIO: " !important;
+margin-right: 10px !important;
+font-weight: 600 !important;
+}
+/* === ACCORDION Y SCENARIOS === */
+.accordion .card {
+background: linear-gradient(145deg, var(--card-bg), #2A2A2A) !important;
+border: 1px solid var(--border-color) !important;
+margin-bottom: 15px !important;
+}
+.accordion .card-header {
+background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue)) !important;
+padding: 18px 25px !important;
+}
+.card-title .node {
+color: white !important;
+font-weight: 600 !important;
+font-size: 18px !important;
+}
+.card-title .node::before {
+content: "TEST: " !important;
+margin-right: 8px !important;
+font-weight: 600 !important;
+}
+/* === STEPS MEJORADOS === */
+.step {
+background: linear-gradient(145deg, #263238, #37474F) !important;
+border-left: 4px solid var(--accent-blue) !important;
+padding: 15px 20px !important;
+margin: 8px 0 !important;
+border-radius: 0 8px 8px 0 !important;
+transition: all 0.3s ease !important;
+box-shadow: 0 2px 8px rgba(0,0,0,0.2) !important;
+}
+.step:hover {
+background: linear-gradient(145deg, #37474F, #455A64) !important;
+transform: translateX(5px) !important;
+box-shadow: 0 4px 15px rgba(0,0,0,0.3) !important;
+}
+.step.pass-bg {
+border-left-color: var(--success-green) !important;
+}
+.step span {
+color: var(--text-primary) !important;
+font-weight: 500 !important;
+font-size: 15px !important;
+line-height: 1.5 !important;
+}
+/* === ICONOS PARA DIFERENTES TIPOS DE STEPS (SIN EMOJI) === */
+.step span:first-child::before {
+margin-right: 8px !important;
+font-size: 16px !important;
+font-weight: bold !important;
+color: var(--accent-blue) !important;
+}
+.step[title*="LoginPageSteps"] span::before {
+content: "LOGIN " !important;
+}
+.step[title*="BaxterHomeSteps"] span::before {
+content: "HOME " !important;
+}
+.step[title*="iOpenTheBaxterWebsite"] span::before {
+content: "WEB " !important;
+}
+.step[title*="iTryToLoginWith"] span::before {
+content: "AUTH " !important;
+}
+.step[title*="iVerifyLoginWasSuccessful"] span::before {
+content: "CHECK " !important;
+}
+.step[title*="iSelectTheGroup"] span::before {
+content: "GROUP " !important;
+}
+.step[title*="iSelectThePatient"] span::before {
+content: "PATIENT " !important;
+}
+.step[title*="iOpenPDPrescription"] span::before {
+content: "MODULE " !important;
+}
+/* === SCREENSHOTS MEJORADOS (VISIBLES) === */
+.row.mb-3 {
+display: block !important;
+margin: 15px 0 !important;
+padding: 15px !important;
+background: linear-gradient(145deg, #1A1A1A, #2E2E2E) !important;
+border-radius: 12px !important;
+border: 2px solid var(--accent-blue) !important;
+box-shadow: 0 6px 20px rgba(0,0,0,0.3) !important;
+}
+.row.mb-3::before {
+content: "Evidence Captured" !important;
+display: block !important;
+color: var(--accent-blue) !important;
+font-weight: 700 !important;
+font-size: 14px !important;
+margin-bottom: 10px !important;
+text-align: center !important;
+}
+.row.mb-3 img {
+display: block !important; /* Forzar que se muestren */
+border-radius: 8px !important;
+border: 3px solid var(--accent-blue) !important;
+box-shadow: 0 4px 15px rgba(0,0,0,0.4) !important;
+transition: transform 0.3s ease !important;
+max-width: 100% !important;
+height: auto !important;
+margin: 0 auto !important;
+}
+.row.mb-3 img:hover {
+transform: scale(1.05) !important;
+box-shadow: 0 8px 25px rgba(66, 165, 245, 0.4) !important;
+}
+/* Asegurar que las imágenes dentro de hooks se vean */
+div.step[title="AFTER_STEP"] img {
+display: block !important;
+visibility: visible !important;
+}
+div.step[title="AFTER_STEP"] .row.mb-3 {
+display: block !important;
+visibility: visible !important;
+}
+/* === TABLAS === */
+.table {
+background: var(--card-bg) !important;
+color: var(--text-primary) !important;
+border-radius: 8px !important;
+overflow: hidden !important;
+box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
+}
+.table th {
+background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue)) !important;
+color: white !important;
+font-weight: 600 !important;
+padding: 15px 12px !important;
+border: none !important;
+}
+.table td {
+background: var(--card-bg) !important;
+color: var(--text-primary) !important;
+padding: 12px !important;
+border-bottom: 1px solid var(--border-color) !important;
+}
+.table tr:hover td {
+background: linear-gradient(135deg, #2A2A2A, #333333) !important;
+}
+/* === SCROLLBARS PERSONALIZADOS === */
+.scrollable::-webkit-scrollbar {
+width: 8px !important;
+height: 8px !important;
+}
+.scrollable::-webkit-scrollbar-track {
+background: var(--card-bg) !important;
+border-radius: 4px !important;
+}
+.scrollable::-webkit-scrollbar-thumb {
+background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue)) !important;
+border-radius: 4px !important;
+}
+.scrollable::-webkit-scrollbar-thumb:hover {
+background: linear-gradient(135deg, var(--accent-blue), var(--primary-blue)) !important;
+}
+/* === ANIMACIONES === */
+@keyframes slideInUp {
+from {
+opacity: 0;
+transform: translateY(20px);
+}
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
+.step, .card, .test-item {
+animation: slideInUp 0.6s ease-out !important;
+}
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+.card-body h3 {
+font-size: 24px !important;
+}
+.step {
+padding: 12px 15px !important;
+}
+.test-status {
+font-size: 20px !important;
+}
+}
+/* === ELEMENTOS ESPECÍFICOS === */
+.status-avatar {
+color: var(--accent-blue) !important;
+font-size: 18px !important;
+}
+.chart-container canvas {
+border-radius: 8px !important;
+}
+/* === FOOTER IMPLÍCITO === */
+.main-content::after {
+content: "Documento Confidencial - VersiaRenal QA Team" !important;
+display: block !important;
+text-align: center !important;
+padding: 20px !important;
+margin-top: 40px !important;
+background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue)) !important;
+color: white !important;
+border-radius: 12px !important;
+font-size: 14px !important;
+font-weight: 500 !important;
+}
+</style></head><body class="spa bdd-report dark">
+  <div class="app">
+    <div class="layout">
+<div class="header navbar">
+<div class="vheader">
+<div class="nav-logo">
+<a href="#">
+<div class="logo" style="background-image: url('https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@b00a2d0486596e73dd7326beacf352c639623a0e/commons/img/logo.png')"></div>
+</a>
+</div>
+<ul class="nav-left">
+<li class="search-box">
+<a class="search-toggle" href="#">
+<i class="search-icon fa fa-search"></i>
+<i class="search-icon-close fa fa-close"></i>
+</a>
+</li>
+<li class="search-input"><input id="search-tests" class="form-control" type="text" placeholder="Search..."></li>
+</ul>
+<ul class="nav-right">
+<li class="m-r-10">
+<a href="#"><span class="badge badge-primary">VersiaRenal | Quality Report Result</span></a>
+</li>
+<li class="m-r-10">
+<a href="#"><span class="badge badge-primary">29/06/2025 23:18:50</span></a>
+</li>
+</ul>
+</div>
+</div><div class="side-nav">
+<div class="side-nav-inner">
+<ul class="side-nav-menu">
+<li class="nav-item dropdown" onclick="toggleView('dashboard-view')">
+<a id="nav-dashboard" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-bar-chart"></i></span>
+</a>
+</li>
+<li class="nav-item dropdown" onclick="toggleView('test-view')">
+<a id="nav-test" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-list"></i></span>
+</a>
+</li>
+<li class="nav-item dropdown" onclick="toggleView('category-view')">
+<a id="nav-category" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-tag"></i></span>
+</a>
+</li>
+</ul>
+</div>
+</div>      <div class="vcontainer">
+        <div class="main-content">
+<div class="container-fluid p-4 view dashboard-view">
+<div class="row">
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0">Started</p>
+<h3>29/06/2025 23:18:50</h3>
+</div></div>
+</div>
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0">Ended</p>
+<h3>29/06/2025 23:19:16</h3>
+</div></div>
+</div>
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0 text-pass">Features Passed</p>
+<h3>1</h3>
+</div></div>
+</div>
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0 text-fail">Features Failed</p>
+<h3>0</h3>
+</div></div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-4">
+<div class="card">
+<div class="card-header">
+<h6 class="card-title">Features</h6>
+</div>
+<div class="card-body">
+<div class="">
+<canvas id='parent-analysis' width='115' height='90'></canvas>
+</div>
+</div>
+<div class="card-footer">
+<div><small data-tooltip='100%'>
+<b>1</b> features passed
+</small>
+</div>
+<div>
+<small data-tooltip='0%'><b>0</b> features failed,
+<b>0</b> skipped, <b data-tooltip='0%'>0</b> others
+</small>
+</div>
+</div>
+</div>
+</div>
+<div class="col-md-4">
+<div class="card">
+<div class="card-header">
+<h6 class="card-title">Scenarios</h6>
+</div>
+<div class="card-body">
+<div class="">
+<canvas id='child-analysis' width='115' height='90'></canvas>
+</div>
+</div>
+<div class="card-footer">
+<div><small data-tooltip='100%'><b>1</b> scenarios passed</small></div>
+<div>
+<small data-tooltip='0%'><b>0</b> scenarios failed,
+<b>0</b> skipped, <b data-tooltip='%'>0</b> others
+</small>
+</div>
+</div>
+</div>
+</div>
+<div class="col-md-4">
+<div class="card">
+<div class="card-header">
+<h6 class="card-title">Steps</h6>
+</div>
+<div class="card-body">
+<div class="">
+<canvas id='grandchild-analysis' width='115' height='90'></canvas>
+</div>
+</div>
+<div class="card-footer">
+<div><small data-tooltip='100%'><b>12</b> steps passed</small></div>
+<div>
+<small data-tooltip='0%'><b>0</b> steps failed,
+<b>0</b> skipped, <b data-tooltip='%'>0</b> others
+</small>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><div class="col-md-12">
+<div class="card"><div class="card-header"><p>Timeline</p></div>
+<div class="card-body pt-0"><div>
+<canvas id="timeline" height="120"></canvas>
+</div></div>
+</div>
+</div></div>
+<script>
+var timeline = {
+"Create an Initial PD Prescription for a Patient":19.8
+};
+</script>
+<div class="row">
+<div class="col-lg-6 col-md-12 category-container">
+<div class="card">
+<div class="card-header"><p>Tags</p></div>
+<div class="card-body pb-0 pt-0"><table class="table table-sm table-bordered">
+<thead><tr class="bg-gray"><th>Name</th><th>Passed</th><th>Failed</th><th>Skipped</th><th>Others</th><th>Passed %</th></tr></thead><tbody>
+<tr>
+<td>@Environment_dev</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>@3.2</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>@test</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>@versia_renal</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>@PDPrescription</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>@smoke</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div class="col-lg-6 col-md-12 sysenv-container">
+<div class="card">
+<div class="card-header"><p>System/Environment</p></div>
+<div class="card-body pb-0 pt-0"><table class="table table-sm table-bordered">
+<thead><tr class="bg-gray"><th>Name</th><th>Value</th></tr></thead>
+<tbody>
+<tr>
+<td>Module</td>
+<td>PD Prescription</td>
+</tr>
+<tr>
+<td>Environment</td>
+<td>Development</td>
+</tr>
+<tr>
+<td>user</td>
+<td>bismarck.colombo</td>
+</tr>
+<tr>
+<td>AppName</td>
+<td>VersiaRenal</td>
+</tr>
+<tr>
+<td>Version</td>
+<td>3.2</td>
+</tr>
+<tr>
+<td>Project</td>
+<td>Vantive </td>
+</tr>
+<tr>
+<td>Browser</td>
+<td>Chrome</td>
+</tr>
+<tr>
+<td>OS</td>
+<td>Windows</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+</div>
+<script>
+var statusGroup = {
+parentCount: 5,
+passParent: 1,
+failParent: 0,
+warningParent: 0,
+skipParent: 0,
+childCount: 5,
+passChild: 1,
+failChild: 0,
+warningChild: 0,
+skipChild: 0,
+infoChild: 0,
+grandChildCount: 5,
+passGrandChild: 12,
+failGrandChild: 0,
+warningGrandChild: 0,
+skipGrandChild: 0,
+infoGrandChild: 0,
+eventsCount: 5,
+};
+</script><div class="test-wrapper row view test-view">
+  <div class="test-list">
+    <div class="test-list-tools">
+<ul class="tools pull-left">
+<li><a href="#"><span class="font-size-14">Tests</span></a></li>
+</ul>
+<ul class="tools text-right">
+<li class="dropdown">
+<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-exclamation-circle"></i></a>
+<ul id="status-toggle" class="dropdown-menu dropdown-md p-v-0">
+<a class="dropdown-item" status="pass" href="#"><span>Pass</span><span class="status success"></span></a>
+<div class="dropdown-divider"></div>
+<a status="clear" class="dropdown-item" href="#"><span>Clear</span><span class="pull-right"><i class="fa fa-close"></i></span></a>
+</ul>
+</li>
+<li class="dropdown">
+<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-tag"></i></a>
+<ul id="tag-toggle" class="dropdown-menu dropdown-md p-v-0">
+<a class="dropdown-item" href="#">@Environment_dev</a><a class="dropdown-item" href="#">@3.2</a><a class="dropdown-item" href="#">@test</a><a class="dropdown-item" href="#">@versia_renal</a><a class="dropdown-item" href="#">@PDPrescription</a><a class="dropdown-item" href="#">@smoke</a>
+</ul>
+</li>
+</ul>
+</div>    <div class="test-list-wrapper scrollable">
+      <ul class="test-list-item">
+        <li class="test-item"  status="pass" test-id="1"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">Create an Initial PD Prescription for a Patient</p>
+            <p class="text-sm">
+              <span>23:18:56</span> / <span>00:00:19:800</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">Create an Initial PD Prescription for a Patient</h5>
+<span class='badge badge-success'>06.29.2025 23:18:56</span>
+<span class='badge badge-danger'>06.29.2025 23:19:16</span>
+<span class='badge badge-default'>00:00:19:800</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
+<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
+<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+</div>
+<div class="m-t-10 m-l-5"></div>
+</div>
+</div>
+<div class="accordion mt-4">
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="2"><span class="badge log pass-bg mr-2">Pass</span>Delete Exchange</div>
+          <div class="status-avatar float-right mr-4">
+            <i class="fa fa-paperclip"></i>
+          </div>
+      </div>
+    </div>
+        <div class="collapse">
+          <div class="card-body">
+              <div class="step pass-bg" title="auto.framework.selenium.cucumber.steps.LoginPageSteps.iOpenTheBaxterWebsite()">
+                <span>Given I open the Baxter website</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>auto.framework.selenium.cucumber.hooks.ReportEnhancementHook.takeScreenshotAfterEachStep(io.cucumber.java.Scenario)</span>
+      <div>
+          <div class="row mb-3"><div class="col-md-3">
+<img data-featherlight='../screenshots/embedded1.png' src="../screenshots/embedded1.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="auto.framework.selenium.cucumber.steps.LoginPageSteps.iTryToLoginWithCredentials(java.lang.String)">
+                <span>And I try to login with "login_baxter" credentials</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>auto.framework.selenium.cucumber.hooks.ReportEnhancementHook.takeScreenshotAfterEachStep(io.cucumber.java.Scenario)</span>
+      <div>
+          <div class="row mb-3"><div class="col-md-3">
+<img data-featherlight='../screenshots/embedded2.png' src="../screenshots/embedded2.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="auto.framework.selenium.cucumber.steps.BaxterHomeSteps.iVerifyLoginWasSuccessful()">
+                <span>And I login successful</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>auto.framework.selenium.cucumber.hooks.ReportEnhancementHook.takeScreenshotAfterEachStep(io.cucumber.java.Scenario)</span>
+      <div>
+          <div class="row mb-3"><div class="col-md-3">
+<img data-featherlight='../screenshots/embedded3.png' src="../screenshots/embedded3.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="auto.framework.selenium.cucumber.steps.BaxterHomeSteps.iSelectTheGroupPatient(java.lang.String)">
+                <span>And I Select the Group of patients "Paziente PD"</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>auto.framework.selenium.cucumber.hooks.ReportEnhancementHook.takeScreenshotAfterEachStep(io.cucumber.java.Scenario)</span>
+      <div>
+          <div class="row mb-3"><div class="col-md-3">
+<img data-featherlight='../screenshots/embedded4.png' src="../screenshots/embedded4.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="auto.framework.selenium.cucumber.steps.BaxterHomeSteps.iSelectThePatient(java.lang.String)">
+                <span>When I select the patient "Test 11, Sharesource - SHS11911"</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>auto.framework.selenium.cucumber.hooks.ReportEnhancementHook.takeScreenshotAfterEachStep(io.cucumber.java.Scenario)</span>
+      <div>
+          <div class="row mb-3"><div class="col-md-3">
+<img data-featherlight='../screenshots/embedded5.png' src="../screenshots/embedded5.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="auto.framework.selenium.cucumber.steps.BaxterHomeSteps.iOpenPDPrescriptionModule()">
+                <span>And I open PD Prescription module</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>auto.framework.selenium.cucumber.hooks.ReportEnhancementHook.takeScreenshotAfterEachStep(io.cucumber.java.Scenario)</span>
+      <div>
+          <div class="row mb-3"><div class="col-md-3">
+<img data-featherlight='../screenshots/embedded6.png' src="../screenshots/embedded6.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+          </div>
+        </div>
+  </div>
+</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+<div class="test-content scrollable">
+<div class="test-content-tools">
+<ul><li><a class="back-to-test" href="#"><i class="fa fa-arrow-left"></i></a></li></ul>
+</div>
+<div class="test-content-detail"><div class="detail-body"></div></div>
+</div></div>
+<div class="test-wrapper row view category-view attributes-view">
+<div class="test-list">
+<div class="test-list-tools">
+<ul class="tools pull-left"><li><a href=""><span class="font-size-14">Category</span></a></li></ul>
+<ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">6</span></a></li></ul>
+</div>
+<div class="test-list-wrapper scrollable">
+<ul class="test-list-item">
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>1</span>
+</span>
+<p class="name">@Environment_dev</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@Environment_dev</h4>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>23:18:56 p. m.</td>
+<td>
+<a href="#" class="linked" test-id='1' id='2'>Delete Exchange</a>
+<div class="">
+<span class="badge badge-default">Create an Initial PD Prescription for a Patient.Delete Exchange</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>1</span>
+</span>
+<p class="name">@3.2</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@3.2</h4>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>23:18:56 p. m.</td>
+<td>
+<a href="#" class="linked" test-id='1' id='2'>Delete Exchange</a>
+<div class="">
+<span class="badge badge-default">Create an Initial PD Prescription for a Patient.Delete Exchange</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>1</span>
+</span>
+<p class="name">@test</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@test</h4>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>23:18:56 p. m.</td>
+<td>
+<a href="#" class="linked" test-id='1' id='2'>Delete Exchange</a>
+<div class="">
+<span class="badge badge-default">Create an Initial PD Prescription for a Patient.Delete Exchange</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>1</span>
+</span>
+<p class="name">@versia_renal</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@versia_renal</h4>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>23:18:56 p. m.</td>
+<td>
+<a href="#" class="linked" test-id='1' id='2'>Delete Exchange</a>
+<div class="">
+<span class="badge badge-default">Create an Initial PD Prescription for a Patient.Delete Exchange</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>1</span>
+</span>
+<p class="name">@PDPrescription</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@PDPrescription</h4>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>23:18:56 p. m.</td>
+<td>
+<a href="#" class="linked" test-id='1' id='2'>Delete Exchange</a>
+<div class="">
+<span class="badge badge-default">Create an Initial PD Prescription for a Patient.Delete Exchange</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>1</span>
+</span>
+<p class="name">@smoke</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@smoke</h4>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>23:18:56 p. m.</td>
+<td>
+<a href="#" class="linked" test-id='1' id='2'>Delete Exchange</a>
+<div class="">
+<span class="badge badge-default">Create an Initial PD Prescription for a Patient.Delete Exchange</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="test-content scrollable">
+<div class="test-content-detail">
+<div class="detail-body"></div>
+</div>
+</div>
+</div>        </div>
+      </div>
+    </div>
+  </div>
+<script src="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@d6562a79075e061305ccfdb82f01e5e195e2d307/spark/js/spark-script.js"></script>
+<script type="text/javascript"></script></body>
+</html>

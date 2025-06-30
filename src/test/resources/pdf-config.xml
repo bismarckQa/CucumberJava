@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extentreports>
+    <configuration>
+        <theme>standard</theme>
+        <encoding>UTF-8</encoding>
+        <protocol>https</protocol>
+
+        <documentTitle>VersiaRenal - Test Report</documentTitle>
+        <reportName>VersiaRenal | QA Evidence</reportName>
+        <timeStampFormat>dd 'de' MMMM 'de' yyyy HH:mm:ss</timeStampFormat>
+
+        <css><![CDATA[
+            body {
+                font-family: Arial, sans-serif;
+                color: #111;
+            }
+
+            .pass {
+                color: green;
+                font-weight: bold;
+            }
+
+            .fail {
+                color: red;
+                font-weight: bold;
+            }
+
+            .skip {
+                color: orange;
+                font-weight: bold;
+            }
+
+            .step {
+                background-color: #f0f0f0;
+                border-left: 5px solid #0078D4;
+                padding: 10px;
+                margin: 8px 0;
+            }
+
+            .step img {
+                border: 2px solid #0078D4;
+                border-radius: 6px;
+                display: block;
+                margin: 10px auto;
+                max-width: 100%;
+                height: auto;
+            }
+
+            .card-header, .test-status {
+                background-color: #0078D4;
+                color: white;
+                padding: 10px;
+                font-weight: bold;
+                border-radius: 6px;
+            }
+
+            .test-detail .name {
+                font-size: 16px;
+                font-weight: bold;
+                color: #0078D4;
+            }
+
+            .brand-logo {
+                background-color: #0078D4;
+                color: white;
+                padding: 10px;
+                text-align: center;
+                font-size: 18px;
+                border-radius: 8px;
+            }
+
+        ]]></css>
+    </configuration>
+</extentreports>

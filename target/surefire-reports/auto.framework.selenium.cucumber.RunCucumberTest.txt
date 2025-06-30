@@ -1,0 +1,5 @@
+-------------------------------------------------------------------------------
+Test set: auto.framework.selenium.cucumber.RunCucumberTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 37.843 s - in auto.framework.selenium.cucumber.RunCucumberTest
+Create an Initial PD Prescription for a Patient.Create an Initial PD Prescription for a Patient - Delete Exchange  Time elapsed: 27.242 s

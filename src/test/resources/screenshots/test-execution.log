@@ -1,0 +1,627 @@
+2025-06-29T00:46:13.787+02:00  INFO 10804 --- [main] a.f.s.c.CucumberSpringContextConfig      : Starting CucumberSpringContextConfig using Java 17.0.15 with PID 10804 (started by bisma in C:\Users\bisma\Documents\Baxter SQA Framework)
+2025-06-29T00:46:13.799+02:00  INFO 10804 --- [main] a.f.s.c.CucumberSpringContextConfig      : No active profile set, falling back to 1 default profile: "default"
+2025-06-29T00:46:14.893+02:00  INFO 10804 --- [main] a.f.s.c.CucumberSpringContextConfig      : Started CucumberSpringContextConfig in 1.467 seconds (process running for 14.315)
+2025-06-29T00:46:18.657+02:00  WARN 10804 --- [main] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 137
+2025-06-29T00:46:18.658+02:00  WARN 10804 --- [main] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 137.0.7151.122. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.13.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+2025-06-29T00:46:29.902+02:00  WARN 10804 --- [AsyncHttpClient-1-4] o.a.netty.handler.WebSocketHandler       : onError
+
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:394) ~[na:na]
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:426) ~[na:na]
+	at io.netty.buffer.PooledByteBuf.setBytes(PooledByteBuf.java:259) ~[netty-buffer-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1132) ~[netty-buffer-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:357) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:151) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:788) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+2025-06-29T00:46:29.913+02:00  WARN 10804 --- [AsyncHttpClient-1-4] o.openqa.selenium.remote.http.WebSocket  : Connection reset
+
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:394) ~[na:na]
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:426) ~[na:na]
+	at io.netty.buffer.PooledByteBuf.setBytes(PooledByteBuf.java:259) ~[netty-buffer-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1132) ~[netty-buffer-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:357) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:151) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:788) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+2025-06-29T00:46:30.168+02:00  INFO 10804 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : 📄 INICIANDO GENERACIÓN DE REPORTE PDF...
+2025-06-29T00:46:30.169+02:00  WARN 10804 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : ⚠️ No se encontró el PDF generado en: target/reports/VersiaRenal-ExtentReport.pdf
+2025-06-29T00:46:30.170+02:00  INFO 10804 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : 💡 Verifica que extent.reporter.pdf.start=true en extent.properties
+2025-06-29T00:46:30.170+02:00  INFO 10804 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : 💡 El PDF se genera automáticamente por ExtentReports
+2025-06-29T00:46:30.170+02:00  INFO 10804 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : 🎯 PROCESO DE PDF COMPLETADO
+2025-06-29T00:46:31.214+02:00  INFO 10804 --- [main] tech.grasshopper.pdf.PDFCucumberReport   : PDF report configuration YAML file not found. Using default settings.
+2025-06-29T17:39:23.018+02:00  INFO 23128 --- [main] a.f.s.c.CucumberSpringContextConfig      : Starting CucumberSpringContextConfig using Java 17.0.15 with PID 23128 (started by bisma in C:\Users\bisma\Documents\Baxter SQA Framework)
+2025-06-29T17:39:23.019+02:00  INFO 23128 --- [main] a.f.s.c.CucumberSpringContextConfig      : No active profile set, falling back to 1 default profile: "default"
+2025-06-29T17:39:23.923+02:00  INFO 23128 --- [main] a.f.s.c.CucumberSpringContextConfig      : Started CucumberSpringContextConfig in 1.164 seconds (process running for 3.626)
+2025-06-29T17:39:27.628+02:00  WARN 23128 --- [main] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 137
+2025-06-29T17:39:27.629+02:00  WARN 23128 --- [main] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 137.0.7151.122. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.13.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+2025-06-29T17:41:02.000+02:00  INFO 22760 --- [main] a.f.s.c.CucumberSpringContextConfig      : Starting CucumberSpringContextConfig using Java 17.0.15 with PID 22760 (started by bisma in C:\Users\bisma\Documents\Baxter SQA Framework)
+2025-06-29T17:41:02.004+02:00  INFO 22760 --- [main] a.f.s.c.CucumberSpringContextConfig      : No active profile set, falling back to 1 default profile: "default"
+2025-06-29T17:41:04.095+02:00  INFO 22760 --- [main] a.f.s.c.CucumberSpringContextConfig      : Started CucumberSpringContextConfig in 2.525 seconds (process running for 6.696)
+2025-06-29T17:41:09.373+02:00  WARN 22760 --- [main] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 137
+2025-06-29T17:41:09.376+02:00  WARN 22760 --- [main] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 137.0.7151.122. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.13.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+2025-06-29T17:41:46.020+02:00  WARN 22760 --- [AsyncHttpClient-1-4] o.a.netty.handler.WebSocketHandler       : onError
+
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:394) ~[na:na]
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:426) ~[na:na]
+	at io.netty.buffer.PooledByteBuf.setBytes(PooledByteBuf.java:259) ~[netty-buffer-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1132) ~[netty-buffer-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:357) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:151) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:788) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+2025-06-29T17:41:46.030+02:00  WARN 22760 --- [AsyncHttpClient-1-4] o.openqa.selenium.remote.http.WebSocket  : Connection reset
+
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:394) ~[na:na]
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:426) ~[na:na]
+	at io.netty.buffer.PooledByteBuf.setBytes(PooledByteBuf.java:259) ~[netty-buffer-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1132) ~[netty-buffer-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:357) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:151) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:788) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+2025-06-29T17:41:46.354+02:00  INFO 22760 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : 📄 INICIANDO GENERACIÓN DE REPORTE PDF...
+2025-06-29T17:41:46.355+02:00  WARN 22760 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : ⚠️ No se encontró el PDF generado en: target/reports/VersiaRenal-ExtentReport.pdf
+2025-06-29T17:41:46.356+02:00  INFO 22760 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : 💡 Verifica que extent.reporter.pdf.start=true en extent.properties
+2025-06-29T17:41:46.357+02:00  INFO 22760 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : 💡 El PDF se genera automáticamente por ExtentReports
+2025-06-29T17:41:46.357+02:00  INFO 22760 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : 🎯 PROCESO DE PDF COMPLETADO
+2025-06-29T17:41:47.799+02:00  INFO 22760 --- [main] tech.grasshopper.pdf.PDFCucumberReport   : PDF report configuration YAML file not found. Using default settings.
+2025-06-29T17:51:34.098+02:00  INFO 5884 --- [main] a.f.s.c.CucumberSpringContextConfig      : Starting CucumberSpringContextConfig using Java 17.0.15 with PID 5884 (started by bisma in C:\Users\bisma\Documents\Baxter SQA Framework)
+2025-06-29T17:51:34.102+02:00  INFO 5884 --- [main] a.f.s.c.CucumberSpringContextConfig      : No active profile set, falling back to 1 default profile: "default"
+2025-06-29T17:51:36.034+02:00  INFO 5884 --- [main] a.f.s.c.CucumberSpringContextConfig      : Started CucumberSpringContextConfig in 2.558 seconds (process running for 7.054)
+2025-06-29T17:51:41.216+02:00  WARN 5884 --- [main] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 137
+2025-06-29T17:51:41.219+02:00  WARN 5884 --- [main] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 137.0.7151.122. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.13.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+2025-06-29T17:51:57.319+02:00  WARN 5884 --- [AsyncHttpClient-1-4] o.a.netty.handler.WebSocketHandler       : onError
+
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:394) ~[na:na]
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:426) ~[na:na]
+	at io.netty.buffer.PooledByteBuf.setBytes(PooledByteBuf.java:259) ~[netty-buffer-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1132) ~[netty-buffer-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:357) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:151) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:788) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+2025-06-29T17:51:57.332+02:00  WARN 5884 --- [AsyncHttpClient-1-4] o.openqa.selenium.remote.http.WebSocket  : Connection reset
+
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:394) ~[na:na]
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:426) ~[na:na]
+	at io.netty.buffer.PooledByteBuf.setBytes(PooledByteBuf.java:259) ~[netty-buffer-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1132) ~[netty-buffer-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:357) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:151) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:788) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+2025-06-29T17:51:57.661+02:00  INFO 5884 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : ? INICIANDO GENERACI�N DE REPORTE PDF...
+2025-06-29T17:51:57.664+02:00  WARN 5884 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : ?? No se encontr� el PDF generado en: target/reports/VersiaRenal-ExtentReport.pdf
+2025-06-29T17:51:57.665+02:00  INFO 5884 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : ? Verifica que extent.reporter.pdf.start=true en extent.properties
+2025-06-29T17:51:57.667+02:00  INFO 5884 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : ? El PDF se genera autom�ticamente por ExtentReports
+2025-06-29T17:51:57.668+02:00  INFO 5884 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : ? PROCESO DE PDF COMPLETADO
+2025-06-29T17:51:59.094+02:00  INFO 5884 --- [main] tech.grasshopper.pdf.PDFCucumberReport   : PDF report configuration YAML file not found. Using default settings.
+2025-06-29T18:09:53.300+02:00  INFO 20700 --- [main] a.f.s.c.CucumberSpringContextConfig      : Starting CucumberSpringContextConfig using Java 17.0.15 with PID 20700 (started by bisma in C:\Users\bisma\Documents\Baxter SQA Framework)
+2025-06-29T18:09:53.303+02:00  INFO 20700 --- [main] a.f.s.c.CucumberSpringContextConfig      : No active profile set, falling back to 1 default profile: "default"
+2025-06-29T18:09:55.220+02:00  INFO 20700 --- [main] a.f.s.c.CucumberSpringContextConfig      : Started CucumberSpringContextConfig in 2.506 seconds (process running for 7.062)
+2025-06-29T18:10:00.475+02:00  WARN 20700 --- [main] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 137
+2025-06-29T18:10:00.478+02:00  WARN 20700 --- [main] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 137.0.7151.122. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.13.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+2025-06-29T18:10:16.089+02:00  WARN 20700 --- [AsyncHttpClient-1-4] o.a.netty.handler.WebSocketHandler       : onError
+
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:394) ~[na:na]
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:426) ~[na:na]
+	at io.netty.buffer.PooledByteBuf.setBytes(PooledByteBuf.java:259) ~[netty-buffer-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1132) ~[netty-buffer-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:357) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:151) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:788) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+2025-06-29T18:10:16.099+02:00  WARN 20700 --- [AsyncHttpClient-1-4] o.openqa.selenium.remote.http.WebSocket  : Connection reset
+
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:394) ~[na:na]
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:426) ~[na:na]
+	at io.netty.buffer.PooledByteBuf.setBytes(PooledByteBuf.java:259) ~[netty-buffer-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1132) ~[netty-buffer-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:357) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:151) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:788) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+2025-06-29T18:10:16.407+02:00  INFO 20700 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : 📄 INICIANDO GENERACIÓN DE REPORTE PDF...
+2025-06-29T18:10:16.408+02:00  WARN 20700 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : ⚠️ No se encontró el PDF generado en: target/reports/VersiaRenal-ExtentReport.pdf
+2025-06-29T18:10:16.409+02:00  INFO 20700 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : 💡 Verifica que extent.reporter.pdf.start=true en extent.properties
+2025-06-29T18:10:16.409+02:00  INFO 20700 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : 💡 El PDF se genera automáticamente por ExtentReports
+2025-06-29T18:10:16.409+02:00  INFO 20700 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : 🎯 PROCESO DE PDF COMPLETADO
+2025-06-29T18:10:17.732+02:00  INFO 20700 --- [main] tech.grasshopper.pdf.PDFCucumberReport   : PDF report configuration YAML file not found. Using default settings.
+2025-06-29T18:50:36.925+02:00  INFO 23328 --- [main] a.f.s.c.CucumberSpringContextConfig      : Starting CucumberSpringContextConfig using Java 17.0.15 with PID 23328 (started by bisma in C:\Users\bisma\Documents\Baxter SQA Framework)
+2025-06-29T18:50:36.927+02:00  INFO 23328 --- [main] a.f.s.c.CucumberSpringContextConfig      : No active profile set, falling back to 1 default profile: "default"
+2025-06-29T18:50:38.999+02:00  INFO 23328 --- [main] a.f.s.c.CucumberSpringContextConfig      : Started CucumberSpringContextConfig in 2.71 seconds (process running for 8.309)
+2025-06-29T18:50:45.393+02:00  WARN 23328 --- [main] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 137
+2025-06-29T18:50:45.396+02:00  WARN 23328 --- [main] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 137.0.7151.122. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.13.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+2025-06-29T18:51:00.179+02:00  WARN 23328 --- [AsyncHttpClient-1-4] o.a.netty.handler.WebSocketHandler       : onError
+
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:394) ~[na:na]
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:426) ~[na:na]
+	at io.netty.buffer.PooledByteBuf.setBytes(PooledByteBuf.java:259) ~[netty-buffer-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1132) ~[netty-buffer-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:357) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:151) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:788) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+2025-06-29T18:51:00.194+02:00  WARN 23328 --- [AsyncHttpClient-1-4] o.openqa.selenium.remote.http.WebSocket  : Connection reset
+
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:394) ~[na:na]
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:426) ~[na:na]
+	at io.netty.buffer.PooledByteBuf.setBytes(PooledByteBuf.java:259) ~[netty-buffer-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1132) ~[netty-buffer-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:357) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:151) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:788) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+2025-06-29T18:51:00.554+02:00  INFO 23328 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : 📄 INICIANDO GENERACIÓN DE REPORTE PDF...
+2025-06-29T18:51:00.557+02:00  WARN 23328 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : ⚠️ No se encontró el PDF generado en: target/reports/VersiaRenal-ExtentReport.pdf
+2025-06-29T18:51:00.558+02:00  INFO 23328 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : 💡 Verifica que extent.reporter.pdf.start=true en extent.properties
+2025-06-29T18:51:00.559+02:00  INFO 23328 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : 💡 El PDF se genera automáticamente por ExtentReports
+2025-06-29T18:51:00.559+02:00  INFO 23328 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : 🎯 PROCESO DE PDF COMPLETADO
+2025-06-29T18:51:02.108+02:00  INFO 23328 --- [main] tech.grasshopper.pdf.PDFCucumberReport   : PDF report configuration YAML file not found. Using default settings.
+2025-06-29T18:57:07.779+02:00  INFO 22524 --- [main] a.f.s.c.CucumberSpringContextConfig      : Starting CucumberSpringContextConfig using Java 17.0.15 with PID 22524 (started by bisma in C:\Users\bisma\Documents\Baxter SQA Framework)
+2025-06-29T18:57:07.781+02:00  INFO 22524 --- [main] a.f.s.c.CucumberSpringContextConfig      : No active profile set, falling back to 1 default profile: "default"
+2025-06-29T18:57:09.822+02:00  INFO 22524 --- [main] a.f.s.c.CucumberSpringContextConfig      : Started CucumberSpringContextConfig in 2.532 seconds (process running for 6.987)
+2025-06-29T18:57:14.980+02:00  WARN 22524 --- [main] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 137
+2025-06-29T18:57:14.983+02:00  WARN 22524 --- [main] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 137.0.7151.122. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.13.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+2025-06-29T18:57:30.710+02:00  WARN 22524 --- [AsyncHttpClient-1-4] o.a.netty.handler.WebSocketHandler       : onError
+
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:394) ~[na:na]
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:426) ~[na:na]
+	at io.netty.buffer.PooledByteBuf.setBytes(PooledByteBuf.java:259) ~[netty-buffer-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1132) ~[netty-buffer-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:357) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:151) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:788) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+2025-06-29T18:57:30.725+02:00  WARN 22524 --- [AsyncHttpClient-1-4] o.openqa.selenium.remote.http.WebSocket  : Connection reset
+
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:394) ~[na:na]
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:426) ~[na:na]
+	at io.netty.buffer.PooledByteBuf.setBytes(PooledByteBuf.java:259) ~[netty-buffer-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1132) ~[netty-buffer-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:357) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:151) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:788) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+2025-06-29T18:57:31.073+02:00  INFO 22524 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : 📄 INICIANDO GENERACIÓN DE REPORTE PDF...
+2025-06-29T18:57:31.075+02:00  WARN 22524 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : ⚠️ No se encontró el PDF generado en: target/reports/VersiaRenal-ExtentReport.pdf
+2025-06-29T18:57:31.075+02:00  INFO 22524 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : 💡 Verifica que extent.reporter.pdf.start=true en extent.properties
+2025-06-29T18:57:31.075+02:00  INFO 22524 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : 💡 El PDF se genera automáticamente por ExtentReports
+2025-06-29T18:57:31.076+02:00  INFO 22524 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : 🎯 PROCESO DE PDF COMPLETADO
+2025-06-29T18:57:32.637+02:00  INFO 22524 --- [main] tech.grasshopper.pdf.PDFCucumberReport   : PDF report configuration YAML file not found. Using default settings.
+2025-06-29T19:10:35.000+02:00  INFO 6264 --- [main] a.f.s.c.CucumberSpringContextConfig      : Starting CucumberSpringContextConfig using Java 17.0.15 with PID 6264 (started by bisma in C:\Users\bisma\Documents\Baxter SQA Framework)
+2025-06-29T19:10:35.003+02:00  INFO 6264 --- [main] a.f.s.c.CucumberSpringContextConfig      : No active profile set, falling back to 1 default profile: "default"
+2025-06-29T19:10:36.602+02:00  INFO 6264 --- [main] a.f.s.c.CucumberSpringContextConfig      : Started CucumberSpringContextConfig in 2.076 seconds (process running for 6.546)
+2025-06-29T19:10:41.305+02:00  WARN 6264 --- [main] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 137
+2025-06-29T19:10:41.307+02:00  WARN 6264 --- [main] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 137.0.7151.122. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.13.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+2025-06-29T19:10:55.519+02:00  WARN 6264 --- [AsyncHttpClient-1-4] o.a.netty.handler.WebSocketHandler       : onError
+
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:394) ~[na:na]
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:426) ~[na:na]
+	at io.netty.buffer.PooledByteBuf.setBytes(PooledByteBuf.java:259) ~[netty-buffer-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1132) ~[netty-buffer-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:357) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:151) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:788) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+2025-06-29T19:10:55.530+02:00  WARN 6264 --- [AsyncHttpClient-1-4] o.openqa.selenium.remote.http.WebSocket  : Connection reset
+
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:394) ~[na:na]
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:426) ~[na:na]
+	at io.netty.buffer.PooledByteBuf.setBytes(PooledByteBuf.java:259) ~[netty-buffer-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1132) ~[netty-buffer-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:357) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:151) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:788) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+2025-06-29T19:10:55.857+02:00  INFO 6264 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : 📄 INICIANDO GENERACIÓN DE REPORTE PDF...
+2025-06-29T19:10:55.859+02:00  WARN 6264 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : ⚠️ No se encontró el PDF generado en: target/reports/VersiaRenal-ExtentReport.pdf
+2025-06-29T19:10:55.859+02:00  INFO 6264 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : 💡 Verifica que extent.reporter.pdf.start=true en extent.properties
+2025-06-29T19:10:55.859+02:00  INFO 6264 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : 💡 El PDF se genera automáticamente por ExtentReports
+2025-06-29T19:10:55.859+02:00  INFO 6264 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : 🎯 PROCESO DE PDF COMPLETADO
+2025-06-29T19:10:57.159+02:00  INFO 6264 --- [main] tech.grasshopper.pdf.PDFCucumberReport   : PDF report configuration YAML file not found. Using default settings.
+2025-06-29T19:13:36.401+02:00  INFO 24336 --- [main] a.f.s.c.CucumberSpringContextConfig      : Starting CucumberSpringContextConfig using Java 17.0.15 with PID 24336 (started by bisma in C:\Users\bisma\Documents\Baxter SQA Framework)
+2025-06-29T19:13:36.403+02:00  INFO 24336 --- [main] a.f.s.c.CucumberSpringContextConfig      : No active profile set, falling back to 1 default profile: "default"
+2025-06-29T19:13:37.990+02:00  INFO 24336 --- [main] a.f.s.c.CucumberSpringContextConfig      : Started CucumberSpringContextConfig in 2.071 seconds (process running for 5.894)
+2025-06-29T19:13:42.288+02:00  WARN 24336 --- [main] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 137
+2025-06-29T19:13:42.290+02:00  WARN 24336 --- [main] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 137.0.7151.122. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.13.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+2025-06-29T19:13:55.848+02:00  WARN 24336 --- [AsyncHttpClient-1-4] o.a.netty.handler.WebSocketHandler       : onError
+
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:394) ~[na:na]
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:426) ~[na:na]
+	at io.netty.buffer.PooledByteBuf.setBytes(PooledByteBuf.java:259) ~[netty-buffer-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1132) ~[netty-buffer-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:357) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:151) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:788) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+2025-06-29T19:13:55.857+02:00  WARN 24336 --- [AsyncHttpClient-1-4] o.openqa.selenium.remote.http.WebSocket  : Connection reset
+
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:394) ~[na:na]
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:426) ~[na:na]
+	at io.netty.buffer.PooledByteBuf.setBytes(PooledByteBuf.java:259) ~[netty-buffer-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1132) ~[netty-buffer-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:357) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:151) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:788) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+2025-06-29T19:13:56.193+02:00  INFO 24336 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : ? INICIANDO GENERACI�N DE REPORTE PDF...
+2025-06-29T19:13:56.194+02:00  WARN 24336 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : ?? No se encontr� el PDF generado en: target/reports/VersiaRenal-ExtentReport.pdf
+2025-06-29T19:13:56.195+02:00  INFO 24336 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : ? Verifica que extent.reporter.pdf.start=true en extent.properties
+2025-06-29T19:13:56.196+02:00  INFO 24336 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : ? El PDF se genera autom�ticamente por ExtentReports
+2025-06-29T19:13:56.197+02:00  INFO 24336 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : ? PROCESO DE PDF COMPLETADO
+2025-06-29T19:13:57.451+02:00  INFO 24336 --- [main] tech.grasshopper.pdf.PDFCucumberReport   : PDF report configuration YAML file not found. Using default settings.
+2025-06-29T19:25:20.630+02:00  INFO 23740 --- [main] a.f.s.c.CucumberSpringContextConfig      : Starting CucumberSpringContextConfig using Java 17.0.15 with PID 23740 (started by bisma in C:\Users\bisma\Documents\Baxter SQA Framework)
+2025-06-29T19:25:20.634+02:00  INFO 23740 --- [main] a.f.s.c.CucumberSpringContextConfig      : No active profile set, falling back to 1 default profile: "default"
+2025-06-29T19:25:22.500+02:00  INFO 23740 --- [main] a.f.s.c.CucumberSpringContextConfig      : Started CucumberSpringContextConfig in 2.451 seconds (process running for 7.294)
+2025-06-29T19:25:27.567+02:00  WARN 23740 --- [main] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 137
+2025-06-29T19:25:27.569+02:00  WARN 23740 --- [main] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 137.0.7151.122. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.13.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+2025-06-29T19:25:43.602+02:00  WARN 23740 --- [AsyncHttpClient-1-4] o.a.netty.handler.WebSocketHandler       : onError
+
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:394) ~[na:na]
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:426) ~[na:na]
+	at io.netty.buffer.PooledByteBuf.setBytes(PooledByteBuf.java:259) ~[netty-buffer-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1132) ~[netty-buffer-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:357) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:151) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:788) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+2025-06-29T19:25:43.617+02:00  WARN 23740 --- [AsyncHttpClient-1-4] o.openqa.selenium.remote.http.WebSocket  : Connection reset
+
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:394) ~[na:na]
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:426) ~[na:na]
+	at io.netty.buffer.PooledByteBuf.setBytes(PooledByteBuf.java:259) ~[netty-buffer-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1132) ~[netty-buffer-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:357) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:151) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:788) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+2025-06-29T19:25:43.974+02:00  INFO 23740 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : 📄 INICIANDO GENERACIÓN DE REPORTE PDF...
+2025-06-29T19:25:43.975+02:00  WARN 23740 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : ⚠️ No se encontró el PDF generado en: target/reports/VersiaRenal-ExtentReport.pdf
+2025-06-29T19:25:43.976+02:00  INFO 23740 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : 💡 Verifica que extent.reporter.pdf.start=true en extent.properties
+2025-06-29T19:25:43.977+02:00  INFO 23740 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : 💡 El PDF se genera automáticamente por ExtentReports
+2025-06-29T19:25:43.977+02:00  INFO 23740 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : 🎯 PROCESO DE PDF COMPLETADO
+2025-06-29T19:25:45.519+02:00  INFO 23740 --- [main] tech.grasshopper.pdf.PDFCucumberReport   : PDF report configuration YAML file not found. Using default settings.
+2025-06-29T19:33:22.093+02:00  INFO 14672 --- [main] a.f.s.c.CucumberSpringContextConfig      : Starting CucumberSpringContextConfig using Java 17.0.15 with PID 14672 (started by bisma in C:\Users\bisma\Documents\Baxter SQA Framework)
+2025-06-29T19:33:22.096+02:00  INFO 14672 --- [main] a.f.s.c.CucumberSpringContextConfig      : No active profile set, falling back to 1 default profile: "default"
+2025-06-29T19:33:24.335+02:00  INFO 14672 --- [main] a.f.s.c.CucumberSpringContextConfig      : Started CucumberSpringContextConfig in 2.797 seconds (process running for 8.003)
+2025-06-29T19:33:29.620+02:00  WARN 14672 --- [main] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 137
+2025-06-29T19:33:29.622+02:00  WARN 14672 --- [main] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 137.0.7151.122. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.13.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+2025-06-29T19:33:44.751+02:00  WARN 14672 --- [AsyncHttpClient-1-4] o.a.netty.handler.WebSocketHandler       : onError
+
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:394) ~[na:na]
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:426) ~[na:na]
+	at io.netty.buffer.PooledByteBuf.setBytes(PooledByteBuf.java:259) ~[netty-buffer-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1132) ~[netty-buffer-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:357) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:151) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:788) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+2025-06-29T19:33:44.762+02:00  WARN 14672 --- [AsyncHttpClient-1-4] o.openqa.selenium.remote.http.WebSocket  : Connection reset
+
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:394) ~[na:na]
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:426) ~[na:na]
+	at io.netty.buffer.PooledByteBuf.setBytes(PooledByteBuf.java:259) ~[netty-buffer-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1132) ~[netty-buffer-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:357) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:151) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:788) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+2025-06-29T19:33:45.092+02:00  INFO 14672 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : 📄 INICIANDO GENERACIÓN DE REPORTE PDF...
+2025-06-29T19:33:45.092+02:00  WARN 14672 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : ⚠️ No se encontró el PDF generado en: target/reports/VersiaRenal-ExtentReport.pdf
+2025-06-29T19:33:45.093+02:00  INFO 14672 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : 💡 Verifica que extent.reporter.pdf.start=true en extent.properties
+2025-06-29T19:33:45.094+02:00  INFO 14672 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : 💡 El PDF se genera automáticamente por ExtentReports
+2025-06-29T19:33:45.094+02:00  INFO 14672 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : 🎯 PROCESO DE PDF COMPLETADO
+2025-06-29T19:33:46.596+02:00  INFO 14672 --- [main] tech.grasshopper.pdf.PDFCucumberReport   : PDF report configuration YAML file not found. Using default settings.
+2025-06-29T20:16:30.004+02:00  INFO 24004 --- [main] a.f.s.c.CucumberSpringContextConfig      : Starting CucumberSpringContextConfig using Java 17.0.15 with PID 24004 (started by bisma in C:\Users\bisma\Documents\Baxter SQA Framework)
+2025-06-29T20:16:30.007+02:00  INFO 24004 --- [main] a.f.s.c.CucumberSpringContextConfig      : No active profile set, falling back to 1 default profile: "default"
+2025-06-29T20:16:31.820+02:00  INFO 24004 --- [main] a.f.s.c.CucumberSpringContextConfig      : Started CucumberSpringContextConfig in 2.302 seconds (process running for 7.22)
+2025-06-29T20:16:37.480+02:00  WARN 24004 --- [main] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 137
+2025-06-29T20:16:37.482+02:00  WARN 24004 --- [main] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 137.0.7151.122. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.13.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+2025-06-29T20:16:53.243+02:00  INFO 24004 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : 📄 INICIANDO GENERACIÓN DE REPORTE PDF...
+2025-06-29T20:16:53.244+02:00  WARN 24004 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : ⚠️ No se encontró el PDF generado en: target/reports/VersiaRenal-ExtentReport.pdf
+2025-06-29T20:16:53.245+02:00  INFO 24004 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : 💡 Verifica que extent.reporter.pdf.start=true en extent.properties
+2025-06-29T20:16:53.246+02:00  INFO 24004 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : 💡 El PDF se genera automáticamente por ExtentReports
+2025-06-29T20:16:53.246+02:00  INFO 24004 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : 🎯 PROCESO DE PDF COMPLETADO
+2025-06-29T20:16:54.941+02:00  INFO 24004 --- [main] tech.grasshopper.pdf.PDFCucumberReport   : PDF report configuration YAML file not found. Using default settings.
+2025-06-29T20:22:39.404+02:00  INFO 20572 --- [main] a.f.s.c.CucumberSpringContextConfig      : Starting CucumberSpringContextConfig using Java 17.0.15 with PID 20572 (started by bisma in C:\Users\bisma\Documents\Baxter SQA Framework)
+2025-06-29T20:22:39.408+02:00  INFO 20572 --- [main] a.f.s.c.CucumberSpringContextConfig      : No active profile set, falling back to 1 default profile: "default"
+2025-06-29T20:22:41.472+02:00  INFO 20572 --- [main] a.f.s.c.CucumberSpringContextConfig      : Started CucumberSpringContextConfig in 2.683 seconds (process running for 7.194)
+2025-06-29T20:22:46.675+02:00  WARN 20572 --- [main] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 137
+2025-06-29T20:22:46.678+02:00  WARN 20572 --- [main] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 137.0.7151.122. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.13.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+2025-06-29T20:23:01.654+02:00  WARN 20572 --- [AsyncHttpClient-1-4] o.a.netty.handler.WebSocketHandler       : onError
+
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:394) ~[na:na]
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:426) ~[na:na]
+	at io.netty.buffer.PooledByteBuf.setBytes(PooledByteBuf.java:259) ~[netty-buffer-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1132) ~[netty-buffer-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:357) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:151) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:788) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+2025-06-29T20:23:01.667+02:00  WARN 20572 --- [AsyncHttpClient-1-4] o.openqa.selenium.remote.http.WebSocket  : Connection reset
+
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:394) ~[na:na]
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:426) ~[na:na]
+	at io.netty.buffer.PooledByteBuf.setBytes(PooledByteBuf.java:259) ~[netty-buffer-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1132) ~[netty-buffer-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:357) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:151) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:788) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+2025-06-29T20:23:02.125+02:00  INFO 20572 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : ? INICIANDO GENERACI�N DE REPORTE PDF...
+2025-06-29T20:23:02.127+02:00  WARN 20572 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : ?? No se encontr� el PDF generado en: target/reports/VersiaRenal-ExtentReport.pdf
+2025-06-29T20:23:02.128+02:00  INFO 20572 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : ? Verifica que extent.reporter.pdf.start=true en extent.properties
+2025-06-29T20:23:02.129+02:00  INFO 20572 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : ? El PDF se genera autom�ticamente por ExtentReports
+2025-06-29T20:23:02.130+02:00  INFO 20572 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : ? PROCESO DE PDF COMPLETADO
+2025-06-29T20:23:04.029+02:00  INFO 20572 --- [main] tech.grasshopper.pdf.PDFCucumberReport   : PDF report configuration YAML file not found. Using default settings.
+2025-06-29T22:22:24.302+02:00  INFO 14300 --- [main] a.f.s.c.CucumberSpringContextConfig      : Starting CucumberSpringContextConfig using Java 17.0.15 with PID 14300 (started by bisma in C:\Users\bisma\Documents\Baxter SQA Framework)
+2025-06-29T22:22:24.306+02:00  INFO 14300 --- [main] a.f.s.c.CucumberSpringContextConfig      : No active profile set, falling back to 1 default profile: "default"
+2025-06-29T22:22:26.405+02:00  INFO 14300 --- [main] a.f.s.c.CucumberSpringContextConfig      : Started CucumberSpringContextConfig in 2.762 seconds (process running for 7.598)
+2025-06-29T22:22:33.007+02:00  WARN 14300 --- [main] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 137
+2025-06-29T22:22:33.009+02:00  WARN 14300 --- [main] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 137.0.7151.122. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.13.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+2025-06-29T22:22:49.684+02:00  WARN 14300 --- [AsyncHttpClient-1-4] o.a.netty.handler.WebSocketHandler       : onError
+
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:394) ~[na:na]
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:426) ~[na:na]
+	at io.netty.buffer.PooledByteBuf.setBytes(PooledByteBuf.java:259) ~[netty-buffer-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1132) ~[netty-buffer-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:357) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:151) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:788) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+2025-06-29T22:22:49.696+02:00  WARN 14300 --- [AsyncHttpClient-1-4] o.openqa.selenium.remote.http.WebSocket  : Connection reset
+
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:394) ~[na:na]
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:426) ~[na:na]
+	at io.netty.buffer.PooledByteBuf.setBytes(PooledByteBuf.java:259) ~[netty-buffer-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1132) ~[netty-buffer-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:357) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:151) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:788) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+2025-06-29T22:22:50.101+02:00  INFO 14300 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : ? INICIANDO GENERACI�N DE REPORTE PDF...
+2025-06-29T22:22:50.102+02:00  WARN 14300 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : ?? No se encontr� el PDF generado en: target/reports/VersiaRenal-ExtentReport.pdf
+2025-06-29T22:22:50.103+02:00  INFO 14300 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : ? Verifica que extent.reporter.pdf.start=true en extent.properties
+2025-06-29T22:22:50.104+02:00  INFO 14300 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : ? El PDF se genera autom�ticamente por ExtentReports
+2025-06-29T22:22:50.104+02:00  INFO 14300 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : ? PROCESO DE PDF COMPLETADO
+2025-06-29T22:22:51.761+02:00  INFO 14300 --- [main] tech.grasshopper.pdf.PDFCucumberReport   : PDF report configuration YAML file not found. Using default settings.
+2025-06-29T23:18:53.242+02:00  INFO 23060 --- [main] a.f.s.c.CucumberSpringContextConfig      : Starting CucumberSpringContextConfig using Java 17.0.15 with PID 23060 (started by bisma in C:\Users\bisma\Documents\Baxter SQA Framework)
+2025-06-29T23:18:53.244+02:00  INFO 23060 --- [main] a.f.s.c.CucumberSpringContextConfig      : No active profile set, falling back to 1 default profile: "default"
+2025-06-29T23:18:55.102+02:00  INFO 23060 --- [main] a.f.s.c.CucumberSpringContextConfig      : Started CucumberSpringContextConfig in 2.427 seconds (process running for 7.971)
+2025-06-29T23:19:01.086+02:00  WARN 23060 --- [main] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 137
+2025-06-29T23:19:01.089+02:00  WARN 23060 --- [main] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 137.0.7151.122. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.13.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+2025-06-29T23:19:15.995+02:00  WARN 23060 --- [AsyncHttpClient-1-4] o.a.netty.handler.WebSocketHandler       : onError
+
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:394) ~[na:na]
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:426) ~[na:na]
+	at io.netty.buffer.PooledByteBuf.setBytes(PooledByteBuf.java:259) ~[netty-buffer-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1132) ~[netty-buffer-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:357) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:151) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:788) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+2025-06-29T23:19:16.007+02:00  WARN 23060 --- [AsyncHttpClient-1-4] o.openqa.selenium.remote.http.WebSocket  : Connection reset
+
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:394) ~[na:na]
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:426) ~[na:na]
+	at io.netty.buffer.PooledByteBuf.setBytes(PooledByteBuf.java:259) ~[netty-buffer-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1132) ~[netty-buffer-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:357) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:151) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:788) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+2025-06-29T23:19:16.370+02:00  INFO 23060 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : 📄 INICIANDO GENERACIÓN DE REPORTE PDF...
+2025-06-29T23:19:16.372+02:00  WARN 23060 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : ⚠️ No se encontró el PDF generado en: target/reports/VersiaRenal-ExtentReport.pdf
+2025-06-29T23:19:16.372+02:00  INFO 23060 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : 💡 Verifica que extent.reporter.pdf.start=true en extent.properties
+2025-06-29T23:19:16.374+02:00  INFO 23060 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : 💡 El PDF se genera automáticamente por ExtentReports
+2025-06-29T23:19:16.374+02:00  INFO 23060 --- [main] a.f.s.cucumber.hooks.PDFReportHook       : 🎯 PROCESO DE PDF COMPLETADO
+2025-06-29T23:19:17.806+02:00  INFO 23060 --- [main] tech.grasshopper.pdf.PDFCucumberReport   : PDF report configuration YAML file not found. Using default settings.
