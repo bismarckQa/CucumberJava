@@ -58,14 +58,14 @@ public class ReportEnhancementHook {
                 // Captura
                 byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
 
-                // ⚠️ Adjuntar sin nombre -> Evita mostrar texto técnico en PDF
                 scenario.attach(screenshot, "image/png", "");
 
                 // Guardar localmente con nombre limpio
                 String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss"));
                 String fileName = scenario.getName().replaceAll("[^a-zA-Z0-9]", "_") + "_Step_" + timestamp + ".png";
-                Files.createDirectories(Paths.get("target/screenshots/"));
-                Files.write(Paths.get("target/screenshots/" + fileName), screenshot);
+                Files.createDirectories(Paths.get("target/reports/images/"));
+                Files.write(Paths.get("target/reports/images/" + fileName), screenshot);
+
 
                 System.out.println("📸 Captura tomada en paso: " + fileName);
 

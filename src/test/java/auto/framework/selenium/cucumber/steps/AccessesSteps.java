@@ -3,7 +3,9 @@ package auto.framework.selenium.cucumber.steps;
 
 import auto.framework.selenium.annotations.LazyAutowired;
 import auto.framework.selenium.pages.baxter_page.AccessesPage;
+import auto.framework.selenium.pages.baxter_page.HDTherapyConfigPage;
 import auto.framework.selenium.pages.baxter_page.WaitingListPage;
+import io.cucumber.java.PendingException;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -35,7 +37,6 @@ public class AccessesSteps {
 
     @When("I save the Access Data Implantation")
     public void iSaveTheAccessDataImplantation() throws InterruptedException {
-        AccessesPage.clickThreeButtons();
         AccessesPage.clickSaveButton();
 
     }
@@ -92,12 +93,11 @@ public class AccessesSteps {
 
     @And("I click in edit all")
     public void iClickInEditAll() throws InterruptedException {
-        AccessesPage.clickThreeButtons();
         AccessesPage.clickEditAll();
     }
 
     @And("I can edit all parameters and change for example the Comment {string}")
-    public void iCanEditAllParametersAndChangeForExampleTheComment(String Comment) {
+    public void iCanEditAllParametersAndChangeForExampleTheComment(String Comment)throws InterruptedException {
         AccessesPage.writeComment(Comment);
     }
 
@@ -107,7 +107,7 @@ public class AccessesSteps {
     }
 
     @And("I check the state of access is active with colour green")
-    public void iCheckTheStateOfAccessIsActiveWithColourGreen() {
+    public void iCheckTheStateOfAccessIsActiveWithColourGreen()throws InterruptedException {
         AccessesPage.newAccessIsActiveColourGreen();
     }
 
@@ -296,7 +296,6 @@ public class AccessesSteps {
 
     @And("I click three dots and select cancel")
     public void iClickThreeDotsAndSelectCancel() throws InterruptedException {
-        AccessesPage.clickThreeButtons();
         AccessesPage.clickCancel();
     }
 
@@ -397,7 +396,7 @@ public class AccessesSteps {
         AccessesPage.isDisplayedTrueCheckBox();
     }
 
-    @Then("I check the Post-Treatment wasn´t edited correctly")
+    @Then("I check the Post-Treatment wasn\u00b4t edited correctly")
     public void iCheckThePostTreatmentWasTEditedCorrectly() {
         AccessesPage.isDisplayedTrueCheckBox();
     }
@@ -434,5 +433,333 @@ public class AccessesSteps {
         AccessesPage.clickOnUpArrow();
 
 
+    }
+
+    @And("I click button implantation section")
+    public void iClickButtonImplantationSection()throws InterruptedException {
+        AccessesPage.clickButtonImplantationSection();
+    }
+
+
+    @Then("I click button three points Access")
+    public void iClickButtonThreePointsAccess()throws InterruptedException {
+        AccessesPage.clickButtonThreePointsAccess();
+    }
+
+    @And("I click button new access")
+    public void iClickButtonNewAccess()throws InterruptedException {
+        AccessesPage.clickButtonNewAccess();
+    }
+
+    @And("I select access type {string}")
+    public void iSelectAccessType(String AccessType)throws InterruptedException {
+        AccessesPage.selectAccessType(AccessType);
+    }
+
+    @When("I select location {string}")
+    public void iSelectLocation(String Location)throws InterruptedException {
+        AccessesPage.selectAccessLocation(Location);
+    }
+
+    @And("I select Date of first use {string}")
+    public void iSelectDateOfFirstUse(String Date)throws InterruptedException {
+        AccessesPage.writeDatePostTreatment(Date);
+    }
+
+    @And("I insert data into text area comments {string}")
+    public void iInsertDataIntoTextAreaComments(String Comment)throws InterruptedException {
+        AccessesPage.writeComment(Comment);
+    }
+
+    @And("I select implantation date {string}")
+    public void iSelectImplantationDate(String ImplantationDate)throws InterruptedException {
+        AccessesPage.writeImplantationDate(ImplantationDate);
+    }
+
+    @Then("I select date of removal {string}")
+    public void iSelectDateOfRemoval(String DateRemoval)throws InterruptedException {
+        AccessesPage.writeDateOfRemoval(DateRemoval);
+    }
+
+    @And("I select removal center {string}")
+    public void iSelectRemovalCenter(String RemovalCenter)throws InterruptedException {
+        AccessesPage.selectRemovalCenter(RemovalCenter);
+    }
+
+    @And("I click zone right location")
+    public void iClickZoneRightLocation()throws InterruptedException {
+        AccessesPage.clickZoneRightLocation();
+    }
+
+    @Then("I check the Comment changed {string}")
+    public void iCheckTheCommentChanged(String comment)throws InterruptedException {
+        AccessesPage.checkTheCommentChanged(comment);
+    }
+
+    @And("I verify section change of extension is displayed")
+    public void iVerifySectionChangeOfExtensionIsDisplayed()throws InterruptedException {
+        AccessesPage.titleChangeOfExtension();
+    }
+
+    @And("I verify Historic Photographs of Accesses")
+    public void iVerifyHistoricPhotographsOfAccesses()throws InterruptedException {
+        AccessesPage.verifyHistoricPhotographsOfAccessesDisplayed();
+    }
+
+    @Then("I click button three points change of extension")
+    public void iClickButtonThreePointsChangeOfExtension()throws InterruptedException {
+        AccessesPage.clickButtonThreePointsChangeOfExtension();
+    }
+
+    @And("I click button new extender change")
+    public void iClickButtonNewExtenderChange()throws InterruptedException {
+        AccessesPage.clickButtonNewExtenderChange();
+    }
+
+    @And("I insert data into date change of extension {string}")
+    public void iInsertDataIntoDateChangeOfExtension(String date)throws InterruptedException {
+        AccessesPage.insertDataIntoDateChangeOfExtension(date);
+    }
+
+    @When("I select option type of configuration for change extension")
+    public void selectOptionTypeOfConfigurationForChangeExtension()throws InterruptedException {
+        AccessesPage.selectOptionTypeOfConfigurationForChangeExtension();
+    }
+
+    @And("I click button save")
+    public void iClickButtonSave()throws InterruptedException {
+        AccessesPage.clickSaveButton();
+    }
+
+    @And("I click button cancel")
+    public void iClickButtonCancel()throws InterruptedException {
+        AccessesPage.clickCancelButton();
+
+    }
+
+    @And("I click button OK modal error")
+    public void iClickButtonOKModalError()throws InterruptedException {
+        AccessesPage.clickButtonOkModalError();
+    }
+
+    @And("I click button delete")
+    public void iClickButtonDelete()throws InterruptedException {
+        AccessesPage.clickDelete();
+    }
+
+    @Then("I click button OK  modal error in module")
+    public void iClickButtonOKModalErrorInModule()throws InterruptedException{
+        AccessesPage.clickButtonOkInModalErrorInModule();
+    }
+
+
+    @And("I click button image evaluation")
+    public void iClickButtonImageEvaluation()throws InterruptedException {
+        AccessesPage.clickImageEvaluationHistory();
+    }
+
+    @And("I click button delete image")
+    public void iClickButtonDeleteImage()throws InterruptedException {
+        AccessesPage.clickButtonDeleteImage();
+    }
+
+    @Then("I select option action in modal {string}")
+    public void iSelectOptionActionInModal(String action)throws InterruptedException {
+        AccessesPage.selectOptionActionInModalByText(action);
+
+    }
+
+    @Then("I click button three points Access Data")
+    public void iClickButtonThreePointsAccessData()throws InterruptedException {
+        AccessesPage.clickThreeButtonsAccessData();
+    }
+
+    @And("I select option new additional test")
+    public void iSelectOptionNewAdditionalTest()throws  InterruptedException {
+        AccessesPage.clickButtonNewAdditionalTest();
+    }
+
+    @And("I select associate additional study")
+    public void iSelectAssociateAdditionalStudy()throws InterruptedException {
+        AccessesPage.selectAssociateAdditionalStudy();
+
+    }
+
+    @Then("I click button {string} associate additional study")
+    public void iClickButtonAssociateAdditionalStudy(String action)throws InterruptedException {
+        AccessesPage.selectOptionActionInAssociateAdditionalStudy(action);
+    }
+
+    @And("I select option Edit")
+    public void iSelectOptionEdit()throws InterruptedException {
+        AccessesPage.clickButtonEdit();
+    }
+
+    @And("I click in edit extension")
+    public void iClickInEditExtension()throws InterruptedException {
+        AccessesPage.clickButtonEdit();
+
+    }
+
+    @Then("I click button three points swab")
+    public void iClickButtonThreePointsSwab()throws InterruptedException {
+        AccessesPage.clickThreeButtonSwab();
+    }
+
+    @And("I click button {string}")
+    public void iClickButton(String action)throws InterruptedException {
+        AccessesPage.selectOptionActionInAssociate(action);
+    }
+
+    @And("I select option location swab")
+    public void iSelectOptionLocationSwab()throws InterruptedException {
+        AccessesPage.selectOptionLocationSwab();
+    }
+
+    @And("I insert data into evaluation area {string}")
+    public void iInsertDataIntoEvaluationArea(String evaluation)throws InterruptedException {
+        AccessesPage.inputDataEvaluation(evaluation);
+    }
+
+    @And("I click button three points follow up")
+    public void iClickButtonThreePointsFollowUp()throws InterruptedException {
+        AccessesPage.clickButtonThreePointsFollowUp();
+    }
+
+    @Then("I select evaluation in follow up")
+    public void iSelectEvaluationInFollowUp()throws InterruptedException {
+        AccessesPage.selectEvaluationInFollowUp();
+    }
+
+    @And("I insert data into input date: {string}")
+    public void iInsertDataIntoInputDate(String date)throws InterruptedException {
+        AccessesPage.insertDataIntoInputDate(date);
+    }
+
+    @And("I click button image photo")
+    public void iClickButtonImagePhoto()throws InterruptedException {
+       AccessesPage.clickButtonImagePhoto();
+    }
+
+    @Then("I select Image to upload")
+    public void iSelectImageToUpload()throws InterruptedException {
+        AccessesPage.selectImageToUpload();
+
+    }
+
+    @And("I click button {string} upload photo")
+    public void iClickButtonUploadPhoto(String action)throws InterruptedException {
+        AccessesPage.selectOptionAction(action);
+    }
+
+    @Then("I insert data into date add photograph {string}")
+    public void iInsertDataIntoDateAddPhotograph(String date)throws InterruptedException {
+        AccessesPage.insertDataIntoDateAddPhotograph(date);
+    }
+
+    @And("I click button three points complications")
+    public void iClickButtonThreePointsComplications()throws InterruptedException {
+        AccessesPage.clickButtonThreePointsComplications();
+    }
+    @And("I click button three points interventions")
+    public void iClickButtonThreePointsInterventions()throws InterruptedException {
+        AccessesPage.clickButtonThreePointsInterventions();
+    }
+
+    @Then("I select Type of problem complication")
+    public void iSelectTypeOfProblemComplication()throws InterruptedException {
+        AccessesPage.selectTypeOfProblemComplication();
+    }
+
+    @And("I insert data into identification date {string}")
+    public void iInsertDataIntoIdentificationDate(String date)throws InterruptedException {
+        AccessesPage.inputDataIdentificationDate(date);
+    }
+
+    @Then("I select option in modal assign symptoms")
+    public void iSelectOptionInModalAssignSymptoms()throws InterruptedException {
+        AccessesPage.selectOptionInModalAssignSymptoms();
+    }
+
+    @And("I insert data into resolution date {string}")
+    public void iInsertDataIntoResolutionDate(String date)throws InterruptedException {
+        AccessesPage.inputDataResolutionDate(date);
+    }
+
+    @And("I delete type of problem selected")
+    public void iDeleteTypeOfProblemSelected()throws InterruptedException {
+        AccessesPage.deleteTypeOfProblemSelected();
+    }
+
+    @And("I click button {string} in action modal")
+    public void iClickButtonInActionModal(String action)throws InterruptedException {
+        AccessesPage.clickButtonInActionModal(action);
+    }
+
+    @And("I select type of intervention")
+    public void iSelectTypeOfIntervention()throws InterruptedException {
+        AccessesPage.selectTypeOfIntervention();
+    }
+
+    @Then("I select result of interventions")
+    public void iSelectResultOfInterventions()throws InterruptedException {
+        AccessesPage.selectResultOfInterventions();
+    }
+
+    @And("I click button three points interventions actions")
+    public void iClickButtonThreePointsInterventionsActions()throws InterruptedException {
+       AccessesPage.clickButtonThreePointsInterventionsActions();
+    }
+
+    @When("I insert data into date interventions {string}")
+    public void iInsertDataIntoDateInterventions(String date)throws InterruptedException {
+        AccessesPage.insertDataIntoDateInterventions(date);
+    }
+
+    @And("I delete type of intervention selected")
+    public void iDeleteTypeOfInterventionSelected()throws InterruptedException {
+        AccessesPage.deleteTypeOfInterventionSelected();
+    }
+
+    @And("I click button three points medications")
+    public void iClickButtonThreePointsMedications()throws InterruptedException {
+        AccessesPage.clickButtonThreePointsMedications();
+    }
+
+    @Then("I select medication to assign in complication")
+    public void iSelectMedicationToAssignInComplication()throws InterruptedException {
+        AccessesPage.selectMedicationToAssignInComplication();
+    }
+
+    @And("I click button three points hospitalizations")
+    public void iClickButtonThreePointsHospitalizations()throws InterruptedException {
+        AccessesPage.clickButtonThreePointsHospitalizations();
+    }
+
+    @And("I click button Link hospitalizations")
+    public void iClickButtonLinkHospitalizations()throws InterruptedException {
+        AccessesPage.clickButtonLinkHospitalizations();
+
+    }
+
+    @When("I select option hospitalizations in complications")
+    public void iSelectOptionHospitalizationsInComplications()throws InterruptedException {
+        AccessesPage.selectOptionHospitalizationsInComplications();
+    }
+
+    @And("I click button delete hospitalization")
+    public void iClickButtonDeleteHospitalization()throws InterruptedException {
+        AccessesPage.clickButtonDeleteHospitalization();
+
+    }
+
+    @And("I clear input data location swab")
+    public void iClearInputDataLocationSwab()throws InterruptedException {
+        AccessesPage.clearInputDataLocationSwab();
+    }
+
+    @And("I click button three points evaluation")
+    public void iClickButtonThreePointsEvaluation()throws InterruptedException {
+        AccessesPage.clickButtonThreePointsEvaluation();
     }
 }
