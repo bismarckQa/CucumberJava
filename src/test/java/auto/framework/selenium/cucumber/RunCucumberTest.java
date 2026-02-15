@@ -17,7 +17,7 @@ import static io.cucumber.junit.platform.engine.Constants.GLUE_PROPERTY_NAME;
 // ========== REPORTES PROFESIONALES (RUTAS CORREGIDAS) ==========
 @ConfigurationParameter(key = Constants.PLUGIN_PROPERTY_NAME, value =
         "pretty," +
-                "html:target/reports/cucumber-html-report," +
+                "html:target/reports/cucumber-html-report.html," +
                 "junit:target/reports/cucumber-report.xml," +
                 "timeline:target/reports/timeline-report," +
                 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"

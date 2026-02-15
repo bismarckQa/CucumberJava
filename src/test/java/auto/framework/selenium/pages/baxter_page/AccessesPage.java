@@ -2,11 +2,12 @@ package auto.framework.selenium.pages.baxter_page;
 
 import auto.framework.selenium.annotations.LazyComponent;
 import auto.framework.selenium.pages.BasePage;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 @LazyComponent
@@ -18,6 +19,8 @@ public class AccessesPage extends BasePage<AccessesPage>{
 
     @FindBy(how = How.XPATH, using = "//*[contains(text(),'Save')]")
     private WebElement saveButton;
+    @FindBy(how = How.XPATH, using = "//*[contains(text(),'Save')]")
+    private WebElement CancelButton;
     @FindBy(how = How.XPATH, using = "//*[contains(text(),'New additional test')]")
     private WebElement newAdditionalTestButton;
     @FindBy(how = How.XPATH, using = "//*[contains(text(),'See further tests')]")
@@ -28,10 +31,10 @@ public class AccessesPage extends BasePage<AccessesPage>{
     @FindBy(how = How.ID, using = "Localizacion1")
     private WebElement accessLocation1;
 
-    @FindBy(how = How.XPATH, using = "//*[@id=\"mCSB_2_container\"]/div/div[2]/div[2]/div/span/button")
+    @FindBy(how = How.XPATH, using = "(//button[@aria-label='expand combobox'])[1]")
     private WebElement accessTypeButtonDropdown;
 
-    @FindBy(how = How.XPATH, using = "//*[@id=\"mCSB_2_container\"]/div/div[3]/div[2]/div/span/button")
+    @FindBy(how = How.XPATH, using = "(//button[@aria-label='expand combobox'])[2]")
     private WebElement accessLocationButtonDropdown;
 
     @FindBy(how = How.XPATH, using = "//*[@id=\"genericModalWin\"]/div[1]/div/div/div/span/button")
@@ -46,11 +49,14 @@ public class AccessesPage extends BasePage<AccessesPage>{
     @FindBy(how = How.XPATH, using = "//*[@id=\"AccesoVascularView\"]/ng-form/div[2]/div/ng-form/ng-form/div/div/div[1]/div[1]/menu-individual/ul")
     private WebElement accessDataButtonDropdown;
 
-    @FindBy(how = How.XPATH, using = "/html/body")
+    @FindBy(how = How.XPATH, using = "//body[@contenteditable='true']")
     private WebElement inputComments;
 
     @FindBy(how = How.XPATH, using = "(//i[@class='icon-three-points'])[1]")
     private WebElement threePointButtonOfAccesses;
+
+    @FindBy(how = How.XPATH, using = "(//i[@class='icon-three-points'])[3]")
+    private WebElement threePointButtonOfAccessData;
 
     @FindBy(how = How.XPATH, using = "//*[contains(text(),'Patient condition - Anemia')]")
     private WebElement testCheckConditionAnemia;
@@ -67,19 +73,23 @@ public class AccessesPage extends BasePage<AccessesPage>{
     @FindBy(how = How.XPATH, using = "(//button[@class='btn btn-primary ng-scope'])[1]")
     private WebElement acceptInformationDeleteAccess;
 
-    @FindBy(how = How.XPATH, using = "//*[@id=\"mCSB_2_container\"]/div/div[7]/div[2]/div/span/input")
+    @FindBy(how = How.XPATH, using = "(//input[@placeholder='MM/dd/yyyy'])[2]")
     private WebElement inputImplantationDate;
-    @FindBy(how = How.XPATH, using = "//*[@id=\"mCSB_2_container\"]/div/div[11]/div[2]/div/span/input")
+
+    @FindBy(how = How.XPATH, using = "(//input[@data-role='datepicker'])[3]")
     private WebElement inputDateOfRemoval;
 
     @FindBy(how = How.XPATH, using = "//a[contains(.,'Top')]")
     private WebElement upArrowOnPage;
 
-    @FindBy(how = How.XPATH, using = "//*[@id=\"mCSB_2_container\"]/div/div[12]/div[2]/div/span/button")
+    @FindBy(how = How.XPATH, using = "(//button[@aria-label='expand combobox'])[6]")
     private WebElement accessRemovalCenterDropDown;
 
     @FindBy(how = How.XPATH, using = "//*[contains(text(),'Edit all')]")
     private WebElement editAllButton;
+
+    @FindBy(how = How.XPATH, using = "//*[contains(text(),'Edit')]")
+    private WebElement buttonEdit;
 
     @FindBy(how = How.XPATH, using = "//*[contains(text(),'QATestAccessEdit')]")
     private WebElement commentQATestAccessEdit;
@@ -87,7 +97,7 @@ public class AccessesPage extends BasePage<AccessesPage>{
     @FindBy(how = How.XPATH, using = "//div[contains(@class,'accLocation ng-scope ng-isolate-scope zoomTarget inactivos')]")
     private WebElement target1InactiveRedColour;
 
-    @FindBy(how = How.XPATH, using = "//div[contains(@class,'accLocation ng-scope ng-isolate-scope zoomTarget')]")
+    @FindBy(how = How.XPATH, using = "//div[contains(@class,'accLocation ng-scope ng-isolate-scope zoomTarget')][1]")
     private WebElement target1activeGreenColour;
 
     @FindBy(how = How.XPATH, using = "//h2[contains(text(),'Location')]")
@@ -142,7 +152,8 @@ public class AccessesPage extends BasePage<AccessesPage>{
     @FindBy(how = How.XPATH, using = "(//i[@class='icon-three-points'])[4]")
     private WebElement threeButtonSecond;
 
-
+    @FindBy(how = How.XPATH, using = "(//i[@class='icon-three-points'])[2]")
+    private WebElement threeButtonSwab;
 
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'New pre-assessment')]")
     private WebElement newPreAssessmentButton;
@@ -153,14 +164,13 @@ public class AccessesPage extends BasePage<AccessesPage>{
     @FindBy(how = How.XPATH, using = "/html/body/div[2]/div/div[3]/div/div/div/div[2]/ng-form/div[3]/div/ng-form/assessment-tabs-access/div/div/div[2]/treatment-assessment-access[1]/div/div/div[1]/div/div[2]/span/input")
     private WebElement inputDatePreTreatment;
 
-    @FindBy(how = How.XPATH, using = "/html/body/div[2]/div/div[3]/div/div/div/div[2]/ng-form/div[3]/div/ng-form/assessment-tabs-access/div/div/div[2]/treatment-assessment-access[2]/div/div/div[1]/div/div[2]/span/input")
+    @FindBy(how = How.XPATH, using = "(//input[@class='k-input-inner'])[3]")
     private WebElement inputDatePostTreatment;
 
     @FindBy(how = How.XPATH, using = "/html/body/div[2]/div/div[3]/div/div/div/div[2]/ng-form/div[3]/div/ng-form/assessment-tabs-access/div/div/div[2]/treatment-assessment-access[1]/div/div/div[2]/div/div/div/div[1]/formulario-custom/div/ng-form/div[6]/div/div[1]/div[1]/div[1]/input")
     private WebElement inputTextFieldPreTreatment;
     @FindBy(how = How.XPATH, using = "/html[1]/body[1]/div[2]/div[1]/div[3]/div[1]/div[1]/div[1]/div[2]/ng-form[1]/div[3]/div[1]/ng-form[1]/assessment-tabs-access[1]/div[1]/div[1]/div[2]/treatment-assessment-access[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/formulario-custom[1]/div[1]/ng-form[1]/div[5]/div[1]/div[1]/div[2]/div[1]/input[1]")
     private WebElement inputTextFieldPostTreatment;
-
 
     @FindBy(how = How.XPATH, using = "//*[contains(@name,'data[textArea]')]")
     private WebElement inputTextAreaPostTreatment;
@@ -170,7 +180,6 @@ public class AccessesPage extends BasePage<AccessesPage>{
 
     @FindBy(how = How.XPATH, using = "//input[contains(@name,'data[checkbox]')]")
     private WebElement inputCheckBoxPostTreatment;
-
 
     @FindBy(how = How.XPATH, using = "(//input[@value='0'])[1]")
     private WebElement inputCheckboxPreTreatment;
@@ -236,7 +245,7 @@ public class AccessesPage extends BasePage<AccessesPage>{
     @FindBy(how = How.XPATH, using = "//a[@href='javascript:void(0);'][contains(.,'New access')]")
     private WebElement buttonNewAccess;
 
-    @FindBy(how = How.XPATH, using = "//li[@tabindex='-1'][contains(.,'Catéter percutáneo yugular')]")
+    @FindBy(how = How.XPATH, using = "//li[@tabindex='-1'][contains(.,'Cat\u00e9ter percut\u00e1neo yugular')]")
     private WebElement optionTypeJugularCatheter;
 
     @FindBy(how = How.XPATH, using = "(//li[@aria-selected='false'])[57]")
@@ -251,7 +260,152 @@ public class AccessesPage extends BasePage<AccessesPage>{
     @FindBy(how = How.XPATH, using = "(//label[@class='toggle'])[1]")
     private WebElement approvedForUse;
 
+    @FindBy(how = How.XPATH, using = "//label[@for='step-circle-2']")
+    private WebElement buttonImplantationSection;
 
+    @FindBy(how = How.XPATH, using = "(//div[@ng-repeat='(zona, accesosEnZona) in $ctrl.cuerpo.zonas.Der track by zona']/following-sibling::div)[3]")
+    private WebElement zonaDer;
+
+    @FindBy(how = How.XPATH, using = "//h2[text()='Change of extension']")
+    private WebElement titleChangeOfExtension;
+
+    @FindBy(how = How.XPATH, using = "//h2[text()='Historic photographs of accesses']")
+    private WebElement titleHistoricPhotographsOfAccesses;
+
+    @FindBy(how = How.XPATH, using = "//span[text()='New extender change']")
+    private WebElement buttonNewExtenderChange;
+
+    @FindBy(how = How.XPATH, using = "(//input[@aria-disabled='false'])[1]")
+    private WebElement inputDateChangeOfExtension;
+
+
+    @FindBy(how = How.XPATH, using = "(//button[@aria-label='expand combobox'])[1]")
+    private WebElement dropDownTypeOfConfiguration;
+
+    @FindBy(how = How.XPATH, using = "//button[@translate-once='Modal_Button_OK']")
+    private WebElement buttonOkModalError;
+
+    @FindBy(how = How.XPATH, using = "//div[contains(@class,'image view')]")
+    private WebElement imageEvaluationHistory;
+
+    @FindBy(how = How.XPATH, using = "//i[@title='Eliminar']")
+    private WebElement iconDeleteImage;
+
+    @FindBy(how = How.XPATH, using = "//*[contains(text(), 'New additional test')]")
+    private WebElement optionNewAdditionalTest ;
+
+    @FindBy(how = How.XPATH, using = "//span[@role='button']/following-sibling::button[1]")
+    private WebElement dropDownAssociateAdditionalStudy ;
+
+    @FindBy(how = How.XPATH, using = "//*[contains(text(), 'Associate additional study')]")
+    private WebElement subtitleAssociateAdditionalStudy ;
+
+    @FindBy(how = How.XPATH, using = "(//button[contains(@class,'k-input-button k-button')])[2]")
+    private WebElement dropDownLocationSwab ;
+
+    @FindBy(how = How.XPATH, using = "(//input[@class='k-input-inner'])[1]")
+    private WebElement inputSwabDate ;
+
+    @FindBy(how = How.XPATH, using = "//body[@contenteditable='true']")
+    private WebElement inputSwabEvaluation ;
+
+    @FindBy(how = How.XPATH, using = "//h2[text()='Follow-up']//ancestor::div[contains(@class, 'x_panel')]//i[contains(@class, 'icon-three-points')]")
+    private WebElement buttonThreePointsFollowUp ;
+
+    @FindBy(how = How.XPATH, using = "(//span[@role='button']/following-sibling::button)[1]")
+    private WebElement dropDownEvaluationFollowUp ;
+
+    @FindBy(how = How.XPATH, using = "(//input[@aria-disabled='false'])[1]")
+    private WebElement inputDateFollowUp ;
+
+    @FindBy(how = How.XPATH, using = "//a[@section-write='Accesos']")
+    private WebElement buttonImagePhotoEvaluation ;
+
+    @FindBy(how = How.XPATH, using = "//input[@type='file' and @id='file-5']")
+    private WebElement inputSelectFileImagePhotoEvaluation ;
+
+    @FindBy(how = How.XPATH, using = "(//div[@class='modal-footer']//button)[2]")
+    private WebElement buttonAddImagePhotoEvaluation ;
+
+    @FindBy(how = How.XPATH, using = "//label[normalize-space(text())='Date']/following::input")
+    private WebElement inputDateImagePhotoEvaluation ;
+
+    @FindBy(how = How.XPATH, using = "//h2[normalize-space()='Complications']/following::i[contains(@class, 'icon-three-points')][1]")
+    private WebElement buttonThreePointsComplications ;
+
+    @FindBy(how = How.XPATH, using = "//div[h2[contains(text(), 'Interventions')]]//i[contains(@class, 'icon-three-points')][1]")
+    private WebElement buttonThreePointsInterventions ;
+
+    @FindBy(how = How.XPATH, using = "//div[h2[contains(text(), 'Medications')]]//i[contains(@class, 'icon-three-points')][1]")
+    private WebElement buttonThreePointsMedications ;
+
+    @FindBy(how = How.XPATH, using = "//div[h2[contains(text(), 'Hospitalizations')]]//i[contains(@class, 'icon-three-points')][1]")
+    private WebElement buttonThreePointsHospitalizations ;
+    @FindBy(how = How.XPATH, using = "//div[h2[contains(text(), 'Evaluation')]]//i[contains(@class, 'icon-three-points')][1]")
+    private WebElement buttonThreeEvaluation ;
+
+    @FindBy(how = How.XPATH, using = "//table[contains(@class,'table table-striped')]/tbody[1]/tr[1]/td[5]/div[1]/menu-individual[1]/ul[1]/li[1]/a[1]")
+    private WebElement buttonThreePointsInterventionsActions ;
+
+    @FindBy(how = How.XPATH, using = "(//button[@aria-label='expand combobox'])[1]")
+    private WebElement dropDownTypeProblem ;
+
+    @FindBy(how = How.XPATH, using = "(//input[@aria-busy='false'])[1]")
+    private WebElement inputTypeProblem ;
+
+    @FindBy(how = How.XPATH, using = "(//input[@aria-disabled='false'])[3]")
+    private WebElement inputIdentificationDateComplications ;
+
+    @FindBy(how = How.XPATH, using = "(//input[@aria-disabled='false'])[6]")
+    private WebElement inputResolutionDateComplications ;
+
+    @FindBy(how = How.XPATH, using = "//button[@aria-label='expand combobox']")
+    private WebElement dropDownAssignSymptomComplications ;
+    @FindBy(how = How.XPATH, using = "//input[@aria-busy='false']")
+    private WebElement inputAssignSymptomComplications ;
+    @FindBy(how = How.XPATH, using = "(//span[@class='k-icon k-i-x'])[1]")
+    private WebElement buttonXDeleteComplications ;
+
+    @FindBy(how = How.XPATH, using = "//h2[@translate-once='Accesos_Label_Intervenciones']")
+    private WebElement titleInterventions ;
+
+    @FindBy(how = How.XPATH, using = "//table[contains(@class,'table table-striped')]/tbody[1]/tr[1]/td[2]/div[1]/span[1]/button[1]")
+    private WebElement dropDownTypeOfInterventions ;
+    @FindBy(how = How.XPATH, using = "//table[contains(@class,'table table-striped')]/tbody[1]/tr[1]/td[3]/div[1]/span[1]/button[1]")
+    private WebElement dropDownResultOfInterventions ;
+
+    @FindBy(how = How.XPATH, using = "(//input[@aria-busy='false'])[1]")
+    private WebElement inputTypeOfInterventions ;
+
+    @FindBy(how = How.XPATH, using = "(//input[@aria-busy='false'])[2]")
+    private WebElement inputResultInterventions ;
+
+    @FindBy(how = How.XPATH, using = "(//input[@aria-disabled='false'])[3]")
+    private WebElement inputDateInterventions ;
+
+    @FindBy(how = How.XPATH, using = "(//span[@role='button']//span)[1]")
+    private WebElement deleteTypeInterventions ;
+
+    @FindBy(how = How.XPATH, using = "//button[@aria-label='expand combobox']")
+    private WebElement dropDownAssignMedication ;
+
+    @FindBy(how = How.XPATH, using = "//input[@aria-busy='false']")
+    private WebElement inputAssignMedication ;
+
+    @FindBy(how = How.XPATH, using = "(//a[@translate-once='Accesos_Label_Vincular'])[3]")
+    private WebElement buttonLinkHospitalizations ;
+
+    @FindBy(how = How.XPATH, using = "//button[@aria-label='expand combobox']")
+    private WebElement dropDownHospitalizations ;
+
+    @FindBy(how = How.XPATH, using = "//input[@aria-busy='false']")
+    private WebElement inputOptionHospitalizations ;
+
+    @FindBy(how = How.XPATH, using = "(//a[@translate-once='Title_Eliminar'])[2]")
+    private WebElement buttonDeleteHospitalizations ;
+
+    @FindBy(how = How.XPATH, using = "(//span[@role='button'])[1]")
+    private WebElement buttonDeleteOptionLocationSwab ;
 
     public void clickPostTreatmentTab() throws InterruptedException {
         driver.switchTo().parentFrame();
@@ -267,27 +421,18 @@ public class AccessesPage extends BasePage<AccessesPage>{
         pause(1000);
         driver.switchTo().parentFrame();
     }
-
-
     public void clickYesButtonConfirmWindow() throws InterruptedException {
-
         click(yesButtonConfirmWindows);
         pause(2000);
-
     }
     public void clickNoButtonConfirmWindow() throws InterruptedException {
-
         click(noButtonConfirmWindows);
         pause(2000);
-
     }
-
     public void isDisplayedTheActionWindow(){
         waitElements(actionTittle);
         actionTittle.isDisplayed();
     }
-
-
     public void clickDelete() throws InterruptedException {
         driver.switchTo().frame("frmContenido");
         click(deleteButton);
@@ -303,7 +448,6 @@ public class AccessesPage extends BasePage<AccessesPage>{
         pause(2000);
 
     }
-
     public void clickPage2OfPreAssessment() throws InterruptedException {
         driver.switchTo().parentFrame();
         driver.switchTo().frame(0);
@@ -375,8 +519,6 @@ public class AccessesPage extends BasePage<AccessesPage>{
         postTreatmentTabTittle.isDisplayed();
         driver.switchTo().parentFrame();
     }
-
-
     public void clickOkAlertWindow(){
         click(okAlertWindows);
     }
@@ -395,8 +537,6 @@ public class AccessesPage extends BasePage<AccessesPage>{
         pause(500);
         driver.switchTo().parentFrame();
     }
-
-
     public void clickCheckboxPreTreatment() throws InterruptedException {
         driver.switchTo().parentFrame();
         driver.switchTo().frame(0);
@@ -412,9 +552,6 @@ public class AccessesPage extends BasePage<AccessesPage>{
         driver.switchTo().parentFrame();
     }
 
-
-
-
     public void writeTextFieldPreTreatment(String TextField){
         driver.switchTo().parentFrame();
         driver.switchTo().frame(0);
@@ -423,7 +560,6 @@ public class AccessesPage extends BasePage<AccessesPage>{
         inputTextFieldPreTreatment.sendKeys(Keys.HOME);
         write(inputTextFieldPreTreatment,TextField);
         driver.switchTo().parentFrame();
-
     }
     public void writeTextFieldPostTreatment(String TextField){
         driver.switchTo().parentFrame();
@@ -527,6 +663,24 @@ public class AccessesPage extends BasePage<AccessesPage>{
         click(threeButtonSecond);
         driver.switchTo().parentFrame();
     }
+    public void clickThreeButtonSwab() throws InterruptedException {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame(0);
+        scrollToElementMove(threeButtonSwab);
+        pause(200);
+        click(threeButtonSwab);
+        pause(300);
+        driver.switchTo().parentFrame();
+    }
+
+    public void clickButtonThreePointsChangeOfExtension() throws InterruptedException {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame(0);
+        pause(1000);
+        click(threeButtonSecond);
+        pause(200);
+        driver.switchTo().parentFrame();
+    }
 
 
     public void isDisplayedTheFollowUpTittle(){
@@ -562,16 +716,19 @@ public class AccessesPage extends BasePage<AccessesPage>{
         driver.switchTo().frame("frmContenido");
         click(evaluationMainMenuButton);
         driver.switchTo().parentFrame();
-        pause(5000);
+        pause(3000);
     }
 
 
-    public void writeComment(String comment){
+    public void writeComment(String comment)throws InterruptedException{
         driver.switchTo().frame("frmContenido");
         driver.switchTo().frame(0);
+        pause(300);
+        scrollToElementMove(inputComments);
         inputComments.sendKeys(Keys.CONTROL + "a");
         inputComments.sendKeys(Keys.DELETE);
         write(inputComments,comment);
+        driver.switchTo().parentFrame();
         driver.switchTo().parentFrame();
     }
     public void approvedForUse()throws InterruptedException{
@@ -590,17 +747,33 @@ public class AccessesPage extends BasePage<AccessesPage>{
         driver.switchTo().parentFrame();
     }
 
+    public void clickThreeButtonsAccessData() throws InterruptedException {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame(0);
+        click(threePointButtonOfAccessData);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
     public void clickSaveButton() throws InterruptedException {
         driver.switchTo().frame("frmContenido");
         click(saveButton);
         driver.switchTo().parentFrame();
         pause(5000);
     }
+
+    public void clickCancelButton() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        click(cancelButton);
+        driver.switchTo().parentFrame();
+        pause(5000);
+    }
     public void clickEditAll() throws InterruptedException {
         driver.switchTo().frame("frmContenido");
+        pause(300);
         click(editAllButton);
         driver.switchTo().parentFrame();
-        pause(2000);
+        pause(200);
     }
     public void newCommentEditIsVisible(){
         driver.switchTo().parentFrame();
@@ -608,10 +781,13 @@ public class AccessesPage extends BasePage<AccessesPage>{
         isDisplayed(commentQATestAccessEdit);
         driver.switchTo().parentFrame();
     }
-    public void newAccessIsActiveColourGreen(){
+    public void newAccessIsActiveColourGreen()throws InterruptedException{
         driver.switchTo().parentFrame();
         driver.switchTo().frame("frmContenido");
+        pause(200);
         isDisplayed(target1activeGreenColour);
+        click(target1activeGreenColour);
+        pause(200);
         driver.switchTo().parentFrame();
     }
     public void newAccessIsInActiveColourRed() throws InterruptedException {
@@ -649,13 +825,12 @@ public class AccessesPage extends BasePage<AccessesPage>{
         inputDateOfFirstUse.sendKeys(Keys.ENTER);
         write(inputDateOfFirstUse,FirstUse);
         driver.switchTo().parentFrame();
-
-
     }
-
-    public void writeImplantationDate(String ImplantationDate){
+    public void writeImplantationDate(String ImplantationDate)throws InterruptedException{
         driver.switchTo().parentFrame();
+        pause(200);
         driver.switchTo().frame("frmContenido");
+        scrollToElementMove(inputImplantationDate);
         inputImplantationDate.sendKeys(Keys.CONTROL + "a");
         inputImplantationDate.sendKeys(Keys.DELETE);
         inputImplantationDate.sendKeys(Keys.ENTER);
@@ -673,8 +848,6 @@ public class AccessesPage extends BasePage<AccessesPage>{
         inputDateOfRemoval.sendKeys(Keys.ENTER);
         write(inputDateOfRemoval,DateRemoval);
         pause(500);
-        inputDateOfRemoval.sendKeys(Keys.ENTER);
-        pause(500);
         driver.switchTo().parentFrame();
     }
 
@@ -691,9 +864,10 @@ public class AccessesPage extends BasePage<AccessesPage>{
         driver.switchTo().frame(0);
         pause(1000);
         click(accessRemovalCenterDropDown);
-        pause(1500);
-        By loc = By.xpath("/html/body/div/div/div/div/ul/li/span[contains(text(),'"+RemovalCenter+"')]");
-        click(loc);
+        pause(1000);
+        //By loc = By.xpath("*[contains(text(),'"+RemovalCenter+"')]");
+        //click(loc);
+        clickBelowElementByOffset(inputDateOfRemoval,140);
         driver.switchTo().parentFrame();
     }
 
@@ -734,7 +908,6 @@ public class AccessesPage extends BasePage<AccessesPage>{
         click(attachedTestAnemiaButton);
         driver.switchTo().parentFrame();
     }
-
 
     public void addAdditionalTestAnemia(){
         driver.switchTo().frame("frmContenido");
@@ -806,7 +979,462 @@ public class AccessesPage extends BasePage<AccessesPage>{
         driver.switchTo().parentFrame();
     }
 
+    public void clickButtonImplantationSection()throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        pause(200);
+        click(buttonImplantationSection);
+        pause(200);
+        driver.switchTo().parentFrame();
+    }
+    public void clickButtonThreePointsAccess()throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        pause(300);
+        click(threePointButtonOfAccesses);
+        pause(300);
+        driver.switchTo().parentFrame();
+    }
+    public void clickButtonNewAccess()throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        pause(200);
+        click(buttonNewAccess);
+        pause(200);
+        driver.switchTo().parentFrame();
+    }
+    public void clickZoneRightLocation()throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        pause(500);
+        click(zonaDer);
+        pause(200);
+        driver.switchTo().parentFrame();
+    }
+    public void checkTheCommentChanged(String comment)throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        pause(500);
+        WebElement comments = driver.findElement(By.xpath("//*[contains(text(),'"+ comment +"')]"));
+        isDisplayed(comments);
+        pause(200);
+        driver.switchTo().parentFrame();
+    }
 
+    public void titleChangeOfExtension()throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        pause(500);
+        scrollToElementMove(titleChangeOfExtension);
+        pause(200);
+        isDisplayed(titleChangeOfExtension);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void verifyHistoricPhotographsOfAccessesDisplayed()throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        pause(500);
+        scrollToElementMove(titleHistoricPhotographsOfAccesses);
+        pause(200);
+        isDisplayed(titleHistoricPhotographsOfAccesses);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void  clickButtonNewExtenderChange()throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        pause(500);
+        click(buttonNewExtenderChange);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void insertDataIntoDateChangeOfExtension(String date)throws InterruptedException{
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        pause(200);
+        inputDateChangeOfExtension.sendKeys(Keys.CONTROL + "a");
+        inputDateChangeOfExtension.sendKeys(Keys.DELETE);
+        inputDateChangeOfExtension.sendKeys(Keys.ENTER);
+        write(inputDateChangeOfExtension,date);
+        driver.switchTo().parentFrame();
+    }
+    public void selectOptionTypeOfConfigurationForChangeExtension()throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        pause(500);
+        waitElements(dropDownTypeOfConfiguration);
+        click(dropDownTypeOfConfiguration);
+        pause(200);
+        clickBelowElementByOffset(inputDateChangeOfExtension,100);
+        pause(500);
+        driver.switchTo().parentFrame();
+
+    }
+    public void clickButtonOkModalError()throws InterruptedException{
+        driver.switchTo().parentFrame();
+        pause(200);
+        buttonOkModalError.isDisplayed();
+        pause(200);
+        click(buttonOkModalError);
+        pause(200);
+    }
+    public void clickButtonOkInModalErrorInModule()throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        pause(200);
+        waitElements(buttonOkModalError);
+        click(buttonOkModalError);
+        pause(300);
+        driver.switchTo().parentFrame();
+    }
+    public void clickImageEvaluationHistory()throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        pause(200);
+        scrollToElementMove(imageEvaluationHistory);
+        waitElements(imageEvaluationHistory);
+        click(imageEvaluationHistory);
+        pause(300);
+        driver.switchTo().parentFrame();
+    }
+    public void clickButtonDeleteImage()throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        pause(200);
+        isDisplayed(iconDeleteImage);
+        click(iconDeleteImage);
+        pause(300);
+        driver.switchTo().parentFrame();
+    }
+    public void selectOptionActionInModalByText(String action)throws InterruptedException{
+        pause(300);
+        driver.switchTo().parentFrame();
+        WebElement button = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'"+action+"')]")));
+        button.click();
+        pause(3000);
+    }
+
+    public void clickButtonNewAdditionalTest()throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        pause(200);
+        isDisplayed(optionNewAdditionalTest);
+        click(optionNewAdditionalTest);
+        pause(300);
+        driver.switchTo().parentFrame();
+    }
+
+    public void selectAssociateAdditionalStudy() throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        pause(200);
+        isDisplayed(dropDownAssociateAdditionalStudy);
+        click(dropDownAssociateAdditionalStudy);
+        pause(300);
+        clickBelowElementByOffset(subtitleAssociateAdditionalStudy,80);
+        pause(300);
+        driver.switchTo().parentFrame();
+    }
+    public void selectOptionActionInAssociateAdditionalStudy(String action)throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        pause(300);
+        WebElement button = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'"+action+"')]")));
+        button.click();
+        pause(300);
+        driver.switchTo().parentFrame();
+    }
+
+    public void clickButtonEdit()throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        pause(300);
+        click(buttonEdit);
+        pause(300);
+        driver.switchTo().parentFrame();
+    }
+
+    public void selectOptionActionInAssociate(String action)throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        pause(400);
+        WebElement button = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[contains(text(),'"+action+"')]")));
+        pause(200);
+        button.click();
+        pause(300);
+        driver.switchTo().parentFrame();
+    }
+
+    public void selectOptionLocationSwab()throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        pause(300);
+        click(dropDownLocationSwab);
+        pause(300);
+        clickBelowElementByOffset(inputSwabDate,80);
+        pause(300);
+        driver.switchTo().parentFrame();
+    }
+
+    public void inputDataEvaluation(String evaluation)throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        WebElement iframe = driver.findElement(By.xpath("//iframe[@class='k-content k-iframe']"));
+        driver.switchTo().frame(iframe);
+
+        pause(200);
+        inputSwabEvaluation.sendKeys(Keys.CONTROL + "a");
+        inputSwabEvaluation.sendKeys(Keys.DELETE);
+        inputSwabEvaluation.sendKeys(Keys.ENTER);
+        write(inputSwabEvaluation,evaluation);
+
+        driver.switchTo().parentFrame();
+        driver.switchTo().parentFrame();
+    }
+
+    public void clickButtonThreePointsFollowUp()throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        pause(500);
+        waitElements(buttonThreePointsFollowUp);
+        isDisplayed(buttonThreePointsFollowUp);
+        click(buttonThreePointsFollowUp);
+        driver.switchTo().parentFrame();
+    }
+    public void selectEvaluationInFollowUp()throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        pause(1000);
+        isDisplayed(dropDownEvaluationFollowUp);
+        click(dropDownEvaluationFollowUp);
+        pause(500);
+        WebElement option = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//input[@aria-disabled='false'])[2]")));
+        clickBelowElementByOffset(option,40);
+        driver.switchTo().parentFrame();
+    }
+
+    public void insertDataIntoInputDate(String date)throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        pause(200);
+        inputDateFollowUp.sendKeys(Keys.CONTROL + "a");
+        inputDateFollowUp.sendKeys(Keys.DELETE);
+        inputDateFollowUp.sendKeys(Keys.ENTER);
+        write(inputDateFollowUp,date);
+        driver.switchTo().parentFrame();
+    }
+    public void clickButtonImagePhoto()throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        pause(200);
+        click(buttonImagePhotoEvaluation);
+        pause(300);
+        driver.switchTo().parentFrame();
+    }
+    public void selectImageToUpload()throws InterruptedException{
+        pause(400);
+        driver.switchTo().parentFrame();
+        String rutaFile= "C:\\Users\\colombb\\Pictures\\capture1.png";
+        //((JavascriptExecutor)driver).executeScript("arguments[0].style.visibility = 'visible'; ",inputSelectFileImagePhotoEvaluation);
+        //waitElements(inputSelectFileImagePhotoEvaluation);
+        inputSelectFileImagePhotoEvaluation.sendKeys(rutaFile);
+        pause(2000);
+        buttonAddImagePhotoEvaluation.click();
+        buttonAddImagePhotoEvaluation.click();
+        pause(400);
+    }
+
+
+    public void selectOptionAction(String action)throws InterruptedException{
+        driver.switchTo().parentFrame();
+        pause(500);
+        WebElement button = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'"+action+"')]")));
+        String buttonText = button.getText().trim();
+        if (buttonText.equalsIgnoreCase("Add")){
+            button.click();
+            pause(300);
+            button.click();
+        }else{
+            pause(300);
+            button.click();
+        }
+
+        pause(300);
+
+    }
+    public void insertDataIntoDateAddPhotograph(String date)throws InterruptedException{
+        driver.switchTo().parentFrame();
+        pause(200);
+        inputDateImagePhotoEvaluation.sendKeys(Keys.CONTROL + "a");
+        inputDateImagePhotoEvaluation.sendKeys(Keys.DELETE);
+        inputDateImagePhotoEvaluation.sendKeys(Keys.ENTER);
+        write(inputDateImagePhotoEvaluation,date);
+        pause(1000);
+
+    }
+    public void clickButtonThreePointsComplications()throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        pause(300);
+        waitElements(buttonThreePointsComplications);
+        click(buttonThreePointsComplications);
+        pause(300);
+        driver.switchTo().parentFrame();
+    }
+
+    public void clickButtonThreePointsInterventions()throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        pause(300);
+        scrollToElementMove(buttonThreePointsInterventions);
+        pause(200);
+        waitElements(buttonThreePointsInterventions);
+        click(buttonThreePointsInterventions);
+        pause(300);
+        driver.switchTo().parentFrame();
+    }
+    public void clickButtonThreePointsMedications()throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        pause(300);
+        scrollToElementMove(buttonThreePointsMedications);
+        pause(200);
+        waitElements(buttonThreePointsMedications);
+        click(buttonThreePointsMedications);
+        pause(300);
+        driver.switchTo().parentFrame();
+    }
+    public void clickButtonThreePointsHospitalizations()throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        pause(300);
+        scrollToElementMove(buttonThreePointsHospitalizations);
+        pause(200);
+        waitElements(buttonThreePointsHospitalizations);
+        click(buttonThreePointsHospitalizations);
+        pause(300);
+        driver.switchTo().parentFrame();
+    }
+
+    public void clickButtonThreePointsInterventionsActions()throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        pause(300);
+        waitElements(buttonThreePointsInterventionsActions);
+        scrollToElementMove(buttonThreePointsInterventionsActions);
+        click(buttonThreePointsInterventionsActions);
+        pause(300);
+        driver.switchTo().parentFrame();
+    }
+    public void selectTypeOfProblemComplication()throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        pause(200);
+        click(dropDownTypeProblem);
+        pause(300);
+        clickBelowElementByOffset(inputTypeProblem,25);
+        driver.switchTo().parentFrame();
+    }
+    public void inputDataIdentificationDate(String date){
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame(0);
+        inputIdentificationDateComplications.sendKeys(Keys.CONTROL + "a");
+        inputIdentificationDateComplications.sendKeys(Keys.DELETE);
+        inputIdentificationDateComplications.sendKeys(Keys.HOME);
+        write(inputIdentificationDateComplications,date);
+        driver.switchTo().parentFrame();
+    }
+
+    public void inputDataResolutionDate(String date){
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame(0);
+        inputResolutionDateComplications.sendKeys(Keys.CONTROL + "a");
+        inputResolutionDateComplications.sendKeys(Keys.DELETE);
+        inputResolutionDateComplications.sendKeys(Keys.HOME);
+        write(inputResolutionDateComplications,date);
+        driver.switchTo().parentFrame();
+    }
+    public void selectOptionInModalAssignSymptoms()throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        pause(200);
+        click(dropDownAssignSymptomComplications);
+        pause(300);
+        clickBelowElementByOffset(inputAssignSymptomComplications,25);
+        driver.switchTo().parentFrame();
+    }
+    public void deleteTypeOfProblemSelected()throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        pause(200);
+        waitElements(buttonXDeleteComplications);
+        click(buttonXDeleteComplications);
+        driver.switchTo().parentFrame();
+    }
+
+    public void clickButtonInActionModal(String action)throws InterruptedException{
+        driver.switchTo().parentFrame();
+        pause(300);
+        WebElement button = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'"+action+"')]")));
+        button.click();
+        pause(3000);
+
+    }
+    public void selectTypeOfIntervention() throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        pause(200);
+        waitElements(dropDownTypeOfInterventions);
+        click(dropDownTypeOfInterventions);
+        pause(300);
+        clickBelowElementByOffset(inputTypeOfInterventions,40);
+        driver.switchTo().parentFrame();
+    }
+
+    public void selectResultOfInterventions() throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        pause(200);
+        waitElements(dropDownResultOfInterventions);
+        click(dropDownResultOfInterventions);
+        pause(300);
+        clickBelowElementByOffset(inputResultInterventions,40);
+        driver.switchTo().parentFrame();
+    }
+    public void insertDataIntoDateInterventions(String date)throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        inputDateInterventions.sendKeys(Keys.CONTROL + "a");
+        inputDateInterventions.sendKeys(Keys.DELETE);
+        inputDateInterventions.sendKeys(Keys.HOME);
+        write(inputDateInterventions,date);
+        driver.switchTo().parentFrame();
+    }
+    public void deleteTypeOfInterventionSelected()throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        pause(200);
+        click(deleteTypeInterventions);
+        driver.switchTo().parentFrame();
+    }
+    public  void selectMedicationToAssignInComplication()throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        pause(200);
+        waitElements(dropDownAssignMedication);
+        click(dropDownAssignMedication);
+        pause(300);
+        clickBelowElementByOffset(inputAssignMedication,40);
+        driver.switchTo().parentFrame();
+    }
+    public void clickButtonLinkHospitalizations()throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        pause(200);
+        click(buttonLinkHospitalizations);
+        driver.switchTo().parentFrame();
+    }
+    public void selectOptionHospitalizationsInComplications()throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        pause(200);
+        click(dropDownHospitalizations);
+        pause(300);
+        clickBelowElementByOffset(inputOptionHospitalizations,40);
+        driver.switchTo().parentFrame();
+    }
+    public void clickButtonDeleteHospitalization()throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        pause(200);
+        click(buttonDeleteHospitalizations);
+        driver.switchTo().parentFrame();
+
+    }
+
+    public void clearInputDataLocationSwab()throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        pause(200);
+        click(buttonDeleteOptionLocationSwab);
+        driver.switchTo().parentFrame();
+
+    }
+
+    public void clickButtonThreePointsEvaluation()throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        pause(200);
+        scrollToElementMove(buttonThreeEvaluation);
+        pause(200);
+        click(buttonThreeEvaluation);
+        pause(200);
+        driver.switchTo().parentFrame();
+
+    }
 
     @Override
     public boolean isAt() {
@@ -815,36 +1443,5 @@ public class AccessesPage extends BasePage<AccessesPage>{
 
 
     //*********Page Methods*********
-
-    public void createANewJugularCatheterTypeAccess() throws InterruptedException{
-
-        driver.switchTo().frame("frmContenido");
-        pause(1000);
-        threePointButtonOfAccesses.click();
-        buttonCancelStartModule.click();
-        pause(200);
-        threePointButtonOfAccesses.click();
-        click(buttonNewAccess);
-        pause(500);
-        driver.switchTo().parentFrame();
-
-        driver.switchTo().frame("frmContenido");
-        click(accessTypeButtonDropdown);
-
-        pause(200);
-        click(optionTypeJugularCatheter);
-        accessLocationButtonDropdown.click();
-        pause(300);
-        click(optionLocationJugular);
-        pause(200);
-        threePointButtonOfAccesses.click();
-        saveButton.click();
-
-        driver.switchTo().parentFrame();
-    }
-
-
-
-
 
 }
