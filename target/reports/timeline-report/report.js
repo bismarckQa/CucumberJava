@@ -1,4 +1,4 @@
 $(document).ready(function() {
-CucumberHTML.timelineItems.pushArray([{"id":"8d78b3a9-cb33-47c9-a0cc-a78f87af0a40","feature":"Create an Initial PD Prescription for a Patient","scenario":"Delete Exchange","start":1751231936417,"group":1,"content":"","tags":"@environment_dev,@versia_renal,@3.2,@pdprescription,@test,@smoke,","end":1751231956346,"className":"passed"}]);
+CucumberHTML.timelineItems.pushArray([{"id":"439805af-55eb-4975-a2c9-24a4d612e5d4","feature":"Modify lab tests","scenario":"Cancelling edited lab test result","start":1771581547612,"group":1,"content":"","tags":"@environment_dev,@versia_renal,@3.2,@labtest,@test,@smoke,@test_case_3612,","end":1771581603064,"className":"failed"}]);
 CucumberHTML.timelineGroups.pushArray([{"id":1,"content":"Thread[main,5,main]"}]);
 });
