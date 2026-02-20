@@ -125,9 +125,13 @@ public abstract class BasePage <P>{
         Actions actions = new Actions(driver);
         actions.moveToElement(element).perform();
     }
-
-
-
+    protected P clickInTableByTextInIframe(String value)throws InterruptedException{
+        pause(200);
+        String xp = String.format("//table//td[normalize-space(.)='%s']", value);
+        WebElement cell = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xp)));
+        cell.click();
+        return (P) this;
+    }
 
     public void dragAndDrop(WebElement from, WebElement to) throws InterruptedException {
         Actions actions = new Actions(driver);
@@ -315,5 +319,144 @@ public abstract class BasePage <P>{
         document.elementFromPoint(x, y).dispatchEvent(clickEvent);
     """;
         js.executeScript(script, referenceElement, offsetY);
+    }
+
+    private String xpathLiteral(String s) {
+        if (s.contains("'") && s.contains("\"")) {
+            StringBuilder sb = new StringBuilder("concat(");
+            char[] chars = s.toCharArray();
+            for (int i = 0; i < chars.length; i++) {
+                String part = String.valueOf(chars[i]);
+                if (part.equals("'")) {
+                    sb.append("\"'\"");
+                } else if (part.equals("\"")) {
+                    sb.append("'\"'");
+                } else {
+                    sb.append("'").append(part).append("'");
+                }
+                if (i < chars.length - 1) {
+                    sb.append(", ");
+                }
+            }
+            sb.append(")");
+            return sb.toString();
+        }
+        if (s.contains("'")) {
+            return "\"" + s + "\"";
+        }
+        return "'" + s + "'";
+    }
+
+    private String lowerExpr(String expr) {
+        return "translate(" + expr + ", 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz')";
+    }
+
+    private String[] buildClickOptionXPaths(String t, String tLower, String tLit, String tLowerLit) {
+        String exactText = "normalize-space(.)=%s and not(contains(@class,'ng-hide'))";
+        String partialText = "contains(normalize-space(.),%s) and not(contains(@class,'ng-hide'))";
+        String exactTextCI = lowerExpr("normalize-space(.)") + "=%s and not(contains(@class,'ng-hide'))";
+        String partialTextCI = "contains(" + lowerExpr("normalize-space(.)") + ",%s) and not(contains(@class,'ng-hide'))";
+        String exactAttr = "normalize-space(@%s)=%s and not(contains(@class,'ng-hide'))";
+        String partialAttr = "contains(normalize-space(@%s),%s) and not(contains(@class,'ng-hide'))";
+        String exactAttrCI = lowerExpr("normalize-space(@%s)") + "=%s and not(contains(@class,'ng-hide'))";
+        String partialAttrCI = "contains(" + lowerExpr("normalize-space(@%s)") + ",%s) and not(contains(@class,'ng-hide'))";
+
+        String[] tags = {
+            "button",
+            "a",
+            "div",
+            "span",
+            "li",
+            "*[@role='button']",
+            "input[@type='button' or @type='submit']"
+        };
+
+        String[] attrNames = {"aria-label", "title", "value"};
+
+        int size = (tags.length * 4) + (tags.length * attrNames.length * 4);
+        String[] candidates = new String[size];
+        int i = 0;
+        for (String tag : tags) {
+            candidates[i++] = String.format("//%s[%s]", tag, String.format(exactText, tLit));
+        }
+        for (String tag : tags) {
+            candidates[i++] = String.format("//%s[%s]", tag, String.format(exactTextCI, tLowerLit));
+        }
+        for (String tag : tags) {
+            candidates[i++] = String.format("//%s[%s]", tag, String.format(partialText, tLit));
+        }
+        for (String tag : tags) {
+            candidates[i++] = String.format("//%s[%s]", tag, String.format(partialTextCI, tLowerLit));
+        }
+        for (String tag : tags) {
+            for (String attr : attrNames) {
+                candidates[i++] = String.format("//%s[%s]", tag, String.format(exactAttr, attr, tLit));
+                candidates[i++] = String.format("//%s[%s]", tag, String.format(exactAttrCI, attr, tLowerLit));
+                candidates[i++] = String.format("//%s[%s]", tag, String.format(partialAttr, attr, tLit));
+                candidates[i++] = String.format("//%s[%s]", tag, String.format(partialAttrCI, attr, tLowerLit));
+            }
+        }
+        return candidates;
+    }
+
+    protected P clickOptionInContainer(By containerBy, String action) {
+        String t = action == null ? "" : action.trim();
+        if (t.isEmpty()) {
+            throw new IllegalArgumentException("Action text cannot be empty");
+        }
+        String tLower = t.toLowerCase();
+        String tLit = xpathLiteral(t);
+        String tLowerLit = xpathLiteral(tLower);
+
+        WebElement container = wait.until(ExpectedConditions.visibilityOfElementLocated(containerBy));
+        String[] candidates = buildClickOptionXPaths(t, tLower, tLit, tLowerLit);
+
+        for (String xp : candidates) {
+            String rel = ".//" + xp.substring(2); // convert //tag[...] to .//tag[...]
+            List<WebElement> els = container.findElements(By.xpath(rel));
+            for (WebElement el : els) {
+                if (!el.isDisplayed() || !el.isEnabled()) {
+                    continue;
+                }
+                javascriptExecutor.executeScript("arguments[0].scrollIntoView({block:'center'});", el);
+                try {
+                    el.click();
+                } catch (ElementClickInterceptedException e) {
+                    javascriptExecutor.executeScript("arguments[0].click();", el);
+                }
+                return (P) this;
+            }
+        }
+
+        throw new NoSuchElementException("No clickable element found with text in container: " + action);
+    }
+
+    protected P clickOption(String action) {
+        String t = action == null ? "" : action.trim();
+        if (t.isEmpty()) {
+            throw new IllegalArgumentException("Action text cannot be empty");
+        }
+        String tLower = t.toLowerCase();
+        String tLit = xpathLiteral(t);
+        String tLowerLit = xpathLiteral(tLower);
+
+        String[] candidates = buildClickOptionXPaths(t, tLower, tLit, tLowerLit);
+
+        for (String xp : candidates) {
+            try {
+                WebElement el = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xp)));
+                javascriptExecutor.executeScript("arguments[0].scrollIntoView({block:'center'});", el);
+                try {
+                    el.click();
+                } catch (ElementClickInterceptedException e) {
+                    javascriptExecutor.executeScript("arguments[0].click();", el);
+                }
+                return (P) this;
+            } catch (TimeoutException e) {
+                // try next candidate
+            }
+        }
+
+        throw new NoSuchElementException("No clickable element found with text: " + action);
     }
 }

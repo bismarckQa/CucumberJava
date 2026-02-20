@@ -16,10 +16,10 @@ Feature: Modify lab tests
     And   I open Lab Tests module
     And   I check the module Lab Tests appear correctly
     And   I click button lab test section
-    When  I select a specific lab test listed: "10.00"
-    And   I click button "Modify" option
-    And   I insert data into unput value result selected: "15"
-    And   I click button "Cancel" option
+    When  I select a specific lab test listed: "Volumen Orina - (ml/día)"
+    And   I insert data into input date request "2/19/2026"
+    And   I select profile option in lab test
+    Then  I insert data into input date sample "2/19/2026"
+    And   I insert data into input result test "15"
     And   I click button "Cancel" option
     And   I click button arrow up
-
