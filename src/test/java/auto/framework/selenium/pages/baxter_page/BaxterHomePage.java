@@ -34,7 +34,7 @@ public class BaxterHomePage extends BasePage<BaxterHomePage> {
 
     @FindBy(how = How.XPATH, using = "/html/body/form/div[8]/div/div[1]/div[1]/nav/div[3]/ul/li/a/span[2]")
     private WebElement UserMenu;
-    @FindBy(how = How.XPATH, using = "/html/body/form/div[8]/div/div[1]/div[3]/div/div/div/ul/li[8]/a")
+    @FindBy(how = How.XPATH, using = "/html[1]/body[1]/form[1]/div[8]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/ul[1]/li[3]/a[1]")
     private WebElement LabTestsModule;
 
     @FindBy(how = How.ID, using = "inicioInformes")
@@ -365,10 +365,6 @@ public class BaxterHomePage extends BasePage<BaxterHomePage> {
 
 
     public void clickLabTests() {
-
-        do{
-            click(rightArrow);
-        }while(!isDisplayed(LabTestsModule));
 
         click(this.LabTestsModule);
 

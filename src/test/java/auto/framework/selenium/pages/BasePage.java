@@ -125,9 +125,13 @@ public abstract class BasePage <P>{
         Actions actions = new Actions(driver);
         actions.moveToElement(element).perform();
     }
-
-
-
+    protected P clickInTableByTextInIframe(String value)throws InterruptedException{
+        pause(200);
+        String xp = String.format("//table//td[normalize-space(.)='%s']", value);
+        WebElement cell = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xp)));
+        cell.click();
+        return (P) this;
+    }
 
     public void dragAndDrop(WebElement from, WebElement to) throws InterruptedException {
         Actions actions = new Actions(driver);
@@ -316,4 +320,35 @@ public abstract class BasePage <P>{
     """;
         js.executeScript(script, referenceElement, offsetY);
     }
+    protected P clickOption(String action) {
+        String t = action.trim();
+
+        // 1) Exacto (mejor)
+        String xpExact =
+                String.format("//*[self::button or self::a or self::span or self::i or self::div or @role='button' or @ng-click]" +
+                        "[normalize-space(.)='%s' or .//text()[normalize-space(.)='%s']]", t, t);
+
+        // 2) Fallback contains (si el texto viene con iconos/espacios extra)
+        String xpContains =
+                String.format("//*[self::button or self::a or self::span or self::i or self::div or @role='button' or @ng-click]" +
+                        "[contains(normalize-space(.), '%s')]", t);
+
+        for (String xp : new String[]{xpExact, xpContains}) {
+            List<WebElement> els = driver.findElements(By.xpath(xp));
+            for (WebElement el : els) {
+                if (!el.isDisplayed() || !el.isEnabled()) continue;
+
+                try {
+                    wait.until(ExpectedConditions.elementToBeClickable(el)).click();
+                } catch (ElementClickInterceptedException e) {
+                    javascriptExecutor.executeScript("arguments[0].click();", el);
+                }
+                return (P) this;
+            }
+        }
+
+        throw new NoSuchElementException("No clickable element found with text: " + action);
+    }
+
+
 }
