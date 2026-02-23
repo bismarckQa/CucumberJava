@@ -413,5 +413,8 @@ public class BaxterHomePage extends BasePage<BaxterHomePage> {
 
     }
 
+    public void clickPrintPreview(String action) throws InterruptedException {
+        clickPrintPreviewButton(action);
+    }
 
 }

@@ -195,4 +195,9 @@ public class BaxterHomeSteps {
         BaxterHomePage.verifyThatTheUserConfigurationOpenedCorrectly();
 
     }
+
+    @And("I click {string} button in print preview")
+    public void iClickButtonInPrintPreview(String action) throws InterruptedException {
+        BaxterHomePage.clickPrintPreview(action);
+    }
 }
