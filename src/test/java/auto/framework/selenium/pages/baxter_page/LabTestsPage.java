@@ -85,10 +85,11 @@ public class LabTestsPage extends BasePage<LabTestsPage>{
         driver.switchTo().frame("iframeV2");
         pause(500);
         By modal = By.id("kendo-window-analiticas");
-        List<WebElement> modals = driver.findElements(modal);
-        if (!modals.isEmpty() && modals.get(0).isDisplayed()) {
+        try {
+            new WebDriverWait(driver, Duration.ofMillis(500))
+                .until(ExpectedConditions.visibilityOfElementLocated(modal));
             clickOptionInContainer(modal, action);
-        } else {
+        } catch (org.openqa.selenium.TimeoutException e) {
             clickOption(action);
         }
         pause(500);
