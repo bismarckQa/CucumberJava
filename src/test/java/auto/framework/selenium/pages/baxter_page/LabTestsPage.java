@@ -85,11 +85,10 @@ public class LabTestsPage extends BasePage<LabTestsPage>{
         driver.switchTo().frame("iframeV2");
         pause(500);
         By modal = By.id("kendo-window-analiticas");
-        try {
-            new WebDriverWait(driver, Duration.ofSeconds(2))
-                .until(ExpectedConditions.visibilityOfElementLocated(modal));
+        List<WebElement> modals = driver.findElements(modal);
+        if (!modals.isEmpty() && modals.get(0).isDisplayed()) {
             clickOptionInContainer(modal, action);
-        } catch (org.openqa.selenium.TimeoutException e) {
+        } else {
             clickOption(action);
         }
         pause(500);
@@ -204,7 +203,15 @@ public class LabTestsPage extends BasePage<LabTestsPage>{
         driver.switchTo().parentFrame();
 
     }
-
+public void clickButtonPreferTestSomeButtonForClick(String action)throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        driver.switchTo().frame("iframeV2");
+        pause(300);
+        clickOption(action);
+        pause(300);
+        driver.switchTo().parentFrame();
+        driver.switchTo().parentFrame();
+}
 
 
     @Override
