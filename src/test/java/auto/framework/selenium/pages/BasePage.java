@@ -462,4 +462,32 @@ public abstract class BasePage <P>{
 
         throw new NoSuchElementException("No clickable element found with text: " + action);
     }
+
+    protected void clickPrintPreviewButton(String action) throws InterruptedException {
+        pause(1000);
+        String currentHandle = driver.getWindowHandle();
+        for (String handle : driver.getWindowHandles()) {
+            if (!handle.equals(currentHandle)) {
+                driver.switchTo().window(handle);
+                break;
+            }
+        }
+        pause(500);
+        String script =
+            "function clickInShadow(root, text) {" +
+            "  for (const el of root.querySelectorAll('*')) {" +
+            "    if ((el.tagName === 'CR-BUTTON' || el.tagName === 'BUTTON') &&" +
+            "        el.textContent.trim().toLowerCase().includes(text.toLowerCase())) {" +
+            "      el.click(); return true;" +
+            "    }" +
+            "    if (el.shadowRoot && clickInShadow(el.shadowRoot, text)) return true;" +
+            "  }" +
+            "  return false;" +
+            "}" +
+            "return clickInShadow(document, arguments[0]);";
+        Boolean clicked = (Boolean) javascriptExecutor.executeScript(script, action);
+        if (clicked == null || !clicked) {
+            throw new NoSuchElementException("Print preview button not found: " + action);
+        }
+    }
 }
