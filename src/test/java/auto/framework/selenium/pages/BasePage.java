@@ -443,17 +443,20 @@ public abstract class BasePage <P>{
         String[] candidates = buildClickOptionXPaths(t, tLower, tLit, tLowerLit);
 
         for (String xp : candidates) {
-            try {
-                WebElement el = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xp)));
-                javascriptExecutor.executeScript("arguments[0].scrollIntoView({block:'center'});", el);
+            List<WebElement> els = driver.findElements(By.xpath(xp));
+            for (WebElement el : els) {
                 try {
-                    el.click();
-                } catch (ElementClickInterceptedException e) {
-                    javascriptExecutor.executeScript("arguments[0].click();", el);
+                    if (!el.isDisplayed() || !el.isEnabled()) continue;
+                    javascriptExecutor.executeScript("arguments[0].scrollIntoView({block:'center'});", el);
+                    try {
+                        el.click();
+                    } catch (ElementClickInterceptedException e) {
+                        javascriptExecutor.executeScript("arguments[0].click();", el);
+                    }
+                    return (P) this;
+                } catch (StaleElementReferenceException e) {
+                    continue;
                 }
-                return (P) this;
-            } catch (TimeoutException e) {
-                // try next candidate
             }
         }
 
