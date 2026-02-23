@@ -465,10 +465,12 @@ public abstract class BasePage <P>{
 
     protected void clickPrintPreviewButton(String action) throws InterruptedException {
         pause(1000);
-        String currentHandle = driver.getWindowHandle();
+        String mainHandle = driver.getWindowHandle();
+        String printHandle = mainHandle;
         for (String handle : driver.getWindowHandles()) {
-            if (!handle.equals(currentHandle)) {
-                driver.switchTo().window(handle);
+            if (!handle.equals(mainHandle)) {
+                printHandle = handle;
+                driver.switchTo().window(printHandle);
                 break;
             }
         }
@@ -489,5 +491,7 @@ public abstract class BasePage <P>{
         if (clicked == null || !clicked) {
             throw new NoSuchElementException("Print preview button not found: " + action);
         }
+        pause(500);
+        driver.switchTo().window(mainHandle);
     }
 }
