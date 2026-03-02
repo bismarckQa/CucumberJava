@@ -200,4 +200,14 @@ public class BaxterHomeSteps {
     public void iClickButtonInPrintPreview(String action) throws InterruptedException {
         BaxterHomePage.clickPrintPreview(action);
     }
+
+    @When("I accept the browser alert")
+    public void iAcceptBrowserAlert() {
+        BaxterHomePage.acceptBrowserAlert();
+    }
+
+    @When("I dismiss the browser alert")
+    public void iDismissBrowserAlert() {
+        BaxterHomePage.dismissBrowserAlert();
+    }
 }
