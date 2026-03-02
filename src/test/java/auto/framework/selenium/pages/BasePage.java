@@ -467,17 +467,17 @@ public abstract class BasePage <P>{
      * Waits for a native browser alert/confirm dialog and clicks the positive button (OK / Aceptar).
      */
     public void acceptBrowserAlert() {
-        wait.until(ExpectedConditions.alertIsPresent()).accept();
+        new WebDriverWait(driver, Duration.ofSeconds(3)).until(ExpectedConditions.alertIsPresent()).accept();
     }
 
     /**
      * Waits for a native browser alert/confirm dialog and clicks the negative button (Cancel / Denegar).
      */
     public void dismissBrowserAlert() {
-        wait.until(ExpectedConditions.alertIsPresent()).dismiss();
+        new WebDriverWait(driver, Duration.ofSeconds(3)).until(ExpectedConditions.alertIsPresent()).dismiss();
     }
 
-    protected void clickPrintPreviewButton(String action) throws InterruptedException {
+protected void clickPrintPreviewButton(String action) throws InterruptedException {
         pause(1000);
         String mainHandle = driver.getWindowHandle();
         String printHandle = mainHandle;
