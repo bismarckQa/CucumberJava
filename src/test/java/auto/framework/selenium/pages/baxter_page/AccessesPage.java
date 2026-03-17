@@ -1347,6 +1347,7 @@ public class AccessesPage extends BasePage<AccessesPage>{
 
     public void clickButtonInActionModal(String action)throws InterruptedException{
         driver.switchTo().parentFrame();
+
         pause(300);
         WebElement button = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'"+action+"')]")));
         button.click();

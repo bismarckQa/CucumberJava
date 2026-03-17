@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.springframework.beans.factory.annotation.Value;
 import java.util.Map;
 
@@ -145,8 +146,10 @@ public class BaxterHomePage extends BasePage<BaxterHomePage> {
 
 
     public void selectPatient(String patient){
-            By loc = By.xpath("//*[contains(text(),'"+patient+"')]");
-            click(loc);
+        By loc = By.xpath("//*[contains(text(),'"+patient+"')]");
+        WebElement element = wait.until(org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated(loc));
+        javascriptExecutor.executeScript("arguments[0].scrollIntoView(true);", element);
+        element.click();
     }
 
     public void selectGroupPatient(String patient){
@@ -203,7 +206,7 @@ public class BaxterHomePage extends BasePage<BaxterHomePage> {
 
     public void clickMedication() {
         do{
-           click(rightArrow);
+            click(rightArrow);
         }while (!isDisplayed(MedicationModule));
 
         click(this.MedicationModule);
@@ -365,9 +368,7 @@ public class BaxterHomePage extends BasePage<BaxterHomePage> {
 
 
     public void clickLabTests() {
-
         click(this.LabTestsModule);
-
     }
 
 
@@ -415,5 +416,8 @@ public class BaxterHomePage extends BasePage<BaxterHomePage> {
 
     }
 
+    public void clickPrintPreview(String action) throws InterruptedException {
+        clickPrintPreviewButton(action);
+    }
 
 }

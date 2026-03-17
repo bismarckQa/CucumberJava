@@ -47,9 +47,9 @@ public abstract class BasePage <P>{
 
     private <T> WebElement waitElement(T elementAttr) {
         if (elementAttr
-            .getClass()
-            .getName()
-            .contains("By")) {
+                .getClass()
+                .getName()
+                .contains("By")) {
             return this.wait.until(ExpectedConditions.presenceOfElementLocated((By) elementAttr));
         } else {
             return this.wait.until(ExpectedConditions.elementToBeClickable((WebElement) elementAttr));
@@ -58,9 +58,9 @@ public abstract class BasePage <P>{
 
     protected  <T> List<WebElement> waitElements(T elementAttr) {
         if (elementAttr
-            .getClass()
-            .getName()
-            .contains("By")) {
+                .getClass()
+                .getName()
+                .contains("By")) {
             return this.wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy((By) elementAttr));
         } else {
             return this.wait.until(ExpectedConditions.visibilityOfAllElements((WebElement) elementAttr));
@@ -284,8 +284,8 @@ public abstract class BasePage <P>{
         List<WebElement> popup = driver.findElements(by);
         if (!popup.isEmpty()) {
             popup
-                .get(0)
-                .click();
+                    .get(0)
+                    .click();
             Thread.sleep(200);
         }
         return (P)this;
@@ -320,26 +320,107 @@ public abstract class BasePage <P>{
     """;
         js.executeScript(script, referenceElement, offsetY);
     }
-    protected P clickOption(String action) {
-        String t = action.trim();
 
-        // 1) Exacto (mejor)
-        String xpExact =
-                String.format("//*[self::button or self::a or self::span or self::i or self::div or @role='button' or @ng-click]" +
-                        "[normalize-space(.)='%s' or .//text()[normalize-space(.)='%s']]", t, t);
+    private String xpathLiteral(String s) {
+        if (s.contains("'") && s.contains("\"")) {
+            StringBuilder sb = new StringBuilder("concat(");
+            char[] chars = s.toCharArray();
+            for (int i = 0; i < chars.length; i++) {
+                String part = String.valueOf(chars[i]);
+                if (part.equals("'")) {
+                    sb.append("\"'\"");
+                } else if (part.equals("\"")) {
+                    sb.append("'\"'");
+                } else {
+                    sb.append("'").append(part).append("'");
+                }
+                if (i < chars.length - 1) {
+                    sb.append(", ");
+                }
+            }
+            sb.append(")");
+            return sb.toString();
+        }
+        if (s.contains("'")) {
+            return "\"" + s + "\"";
+        }
+        return "'" + s + "'";
+    }
 
-        // 2) Fallback contains (si el texto viene con iconos/espacios extra)
-        String xpContains =
-                String.format("//*[self::button or self::a or self::span or self::i or self::div or @role='button' or @ng-click]" +
-                        "[contains(normalize-space(.), '%s')]", t);
+    private String lowerExpr(String expr) {
+        return "translate(" + expr + ", 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz')";
+    }
 
-        for (String xp : new String[]{xpExact, xpContains}) {
-            List<WebElement> els = driver.findElements(By.xpath(xp));
+    private String[] buildClickOptionXPaths(String t, String tLower, String tLit, String tLowerLit) {
+        String exactText = "normalize-space(.)=%s and not(contains(@class,'ng-hide'))";
+        String partialText = "contains(normalize-space(.),%s) and not(contains(@class,'ng-hide'))";
+        String exactTextCI = lowerExpr("normalize-space(.)") + "=%s and not(contains(@class,'ng-hide'))";
+        String partialTextCI = "contains(" + lowerExpr("normalize-space(.)") + ",%s) and not(contains(@class,'ng-hide'))";
+        String exactAttr = "normalize-space(@%s)=%s and not(contains(@class,'ng-hide'))";
+        String partialAttr = "contains(normalize-space(@%s),%s) and not(contains(@class,'ng-hide'))";
+        String exactAttrCI = lowerExpr("normalize-space(@%s)") + "=%s and not(contains(@class,'ng-hide'))";
+        String partialAttrCI = "contains(" + lowerExpr("normalize-space(@%s)") + ",%s) and not(contains(@class,'ng-hide'))";
+
+        String[] tags = {
+                "button",
+                "a",
+                "div",
+                "span",
+                "li",
+                "*[@role='button']",
+                "input[@type='button' or @type='submit']"
+        };
+
+        String[] attrNames = {"aria-label", "title", "value"};
+
+        int size = (tags.length * 4) + (tags.length * attrNames.length * 4);
+        String[] candidates = new String[size];
+        int i = 0;
+        for (String tag : tags) {
+            candidates[i++] = String.format("//%s[%s]", tag, String.format(exactText, tLit));
+        }
+        for (String tag : tags) {
+            candidates[i++] = String.format("//%s[%s]", tag, String.format(exactTextCI, tLowerLit));
+        }
+        for (String tag : tags) {
+            candidates[i++] = String.format("//%s[%s]", tag, String.format(partialText, tLit));
+        }
+        for (String tag : tags) {
+            candidates[i++] = String.format("//%s[%s]", tag, String.format(partialTextCI, tLowerLit));
+        }
+        for (String tag : tags) {
+            for (String attr : attrNames) {
+                candidates[i++] = String.format("//%s[%s]", tag, String.format(exactAttr, attr, tLit));
+                candidates[i++] = String.format("//%s[%s]", tag, String.format(exactAttrCI, attr, tLowerLit));
+                candidates[i++] = String.format("//%s[%s]", tag, String.format(partialAttr, attr, tLit));
+                candidates[i++] = String.format("//%s[%s]", tag, String.format(partialAttrCI, attr, tLowerLit));
+            }
+        }
+        return candidates;
+    }
+
+    protected P clickOptionInContainer(By containerBy, String action) {
+        String t = action == null ? "" : action.trim();
+        if (t.isEmpty()) {
+            throw new IllegalArgumentException("Action text cannot be empty");
+        }
+        String tLower = t.toLowerCase();
+        String tLit = xpathLiteral(t);
+        String tLowerLit = xpathLiteral(tLower);
+
+        WebElement container = wait.until(ExpectedConditions.visibilityOfElementLocated(containerBy));
+        String[] candidates = buildClickOptionXPaths(t, tLower, tLit, tLowerLit);
+
+        for (String xp : candidates) {
+            String rel = ".//" + xp.substring(2); // convert //tag[...] to .//tag[...]
+            List<WebElement> els = container.findElements(By.xpath(rel));
             for (WebElement el : els) {
-                if (!el.isDisplayed() || !el.isEnabled()) continue;
-
+                if (!el.isDisplayed() || !el.isEnabled()) {
+                    continue;
+                }
+                javascriptExecutor.executeScript("arguments[0].scrollIntoView({block:'center'});", el);
                 try {
-                    wait.until(ExpectedConditions.elementToBeClickable(el)).click();
+                    el.click();
                 } catch (ElementClickInterceptedException e) {
                     javascriptExecutor.executeScript("arguments[0].click();", el);
                 }
@@ -347,8 +428,84 @@ public abstract class BasePage <P>{
             }
         }
 
+        throw new NoSuchElementException("No clickable element found with text in container: " + action);
+    }
+
+    protected P clickOption(String action) {
+        String t = action == null ? "" : action.trim();
+        if (t.isEmpty()) {
+            throw new IllegalArgumentException("Action text cannot be empty");
+        }
+        String tLower = t.toLowerCase();
+        String tLit = xpathLiteral(t);
+        String tLowerLit = xpathLiteral(tLower);
+
+        String[] candidates = buildClickOptionXPaths(t, tLower, tLit, tLowerLit);
+
+        for (String xp : candidates) {
+            List<WebElement> els = driver.findElements(By.xpath(xp));
+            for (WebElement el : els) {
+                try {
+                    if (!el.isDisplayed() || !el.isEnabled()) continue;
+                    javascriptExecutor.executeScript("arguments[0].scrollIntoView({block:'center'});", el);
+                    try {
+                        el.click();
+                    } catch (ElementClickInterceptedException e) {
+                        javascriptExecutor.executeScript("arguments[0].click();", el);
+                    }
+                    return (P) this;
+                } catch (StaleElementReferenceException e) {
+                    continue;
+                }
+            }
+        }
+
         throw new NoSuchElementException("No clickable element found with text: " + action);
     }
 
+    /**
+     * Waits for a native browser alert/confirm dialog and clicks the positive button (OK / Aceptar).
+     */
+    public void acceptBrowserAlert() {
+        new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.alertIsPresent()).accept();
+    }
 
+    /**
+     * Waits for a native browser alert/confirm dialog and clicks the negative button (Cancel / Denegar).
+     */
+    public void dismissBrowserAlert() {
+        new WebDriverWait(driver, Duration.ofSeconds(3)).until(ExpectedConditions.alertIsPresent()).dismiss();
+    }
+
+    protected void clickPrintPreviewButton(String action) throws InterruptedException {
+        pause(1000);
+        String mainHandle = driver.getWindowHandle();
+        String printHandle = mainHandle;
+        for (String handle : driver.getWindowHandles()) {
+            if (!handle.equals(mainHandle)) {
+                printHandle = handle;
+                driver.switchTo().window(printHandle);
+                break;
+            }
+        }
+        pause(500);
+        String script =
+                "function clickInShadow(root, text) {" +
+                        "  for (const el of root.querySelectorAll('*')) {" +
+                        "    if ((el.tagName === 'CR-BUTTON' || el.tagName === 'BUTTON') &&" +
+                        "        el.textContent.trim().toLowerCase().includes(text.toLowerCase())) {" +
+                        "      el.click(); return true;" +
+                        "    }" +
+                        "    if (el.shadowRoot && clickInShadow(el.shadowRoot, text)) return true;" +
+                        "  }" +
+                        "  return false;" +
+                        "}" +
+                        "return clickInShadow(document, arguments[0]);";
+        Boolean clicked = (Boolean) javascriptExecutor.executeScript(script, action);
+        if (clicked == null || !clicked) {
+            throw new NoSuchElementException("Print preview button not found: " + action);
+        }
+        pause(500);
+        driver.switchTo().window(mainHandle);
+    }
 }
