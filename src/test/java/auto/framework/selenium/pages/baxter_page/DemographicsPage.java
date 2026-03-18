@@ -160,6 +160,27 @@ public class DemographicsPage extends BasePage<DemographicsPage> {
     private WebElement dropDownCenterAssignmentDemographics;
 
 
+    // ===================== ASSIGN CENTRE - grid inline edit =====================
+
+    @FindBy(how = How.XPATH, using = "//tr[contains(@class,'k-grid-edit-row')]//span[@aria-label='select']")
+    private WebElement dropDownCentreInRow;
+
+    @FindBy(how = How.XPATH, using = "//tr[contains(@class,'k-grid-edit-row')]//span[contains(@class,'k-input-value-text')]")
+    private WebElement inputCentreInRow;
+
+    @FindBy(how = How.XPATH, using = "(//tr[contains(@class,'k-grid-edit-row')]//input[@data-role='datepicker'])[1]")
+    private WebElement inputStartDateCentreRow;
+
+    @FindBy(how = How.XPATH, using = "//tr[contains(@class,'k-grid-edit-row')]//td[3]//input[@data-role='datepicker']")
+    private WebElement inputEndDateCentreRow;
+
+    @FindBy(how = How.XPATH, using = "//tr[contains(@class,'k-grid-edit-row')]//button[contains(@class,'k-grid-update')]")
+    private WebElement btnSaveCentreRow;
+
+    @FindBy(how = How.XPATH, using = "//tr[contains(@class,'k-grid-edit-row')]//button[contains(@class,'k-grid-cancel-changes')]")
+    private WebElement btnCancelCentreRow;
+
+
 
 
     @Override
@@ -436,5 +457,63 @@ public class DemographicsPage extends BasePage<DemographicsPage> {
         titleDemographics.isDisplayed();
         driver.switchTo().parentFrame();
 
+    }
+
+    public void clickNewButtonByIndex(int index) throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        pause(500);
+        WebElement btn = driver.findElement(By.xpath("(//button[contains(@class,'k-grid-add')])[" + index + "]"));
+        javascriptExecutor.executeScript("arguments[0].scrollIntoView({block: 'center'});", btn);
+        pause(500);
+        javascriptExecutor.executeScript("arguments[0].click();", btn);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+
+    // ===================== ASSIGN CENTRE methods =====================
+
+    public void selectCentreInNewRow() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(dropDownCentreInRow);
+        click(dropDownCentreInRow);
+        pause(500);
+        clickBelowElementByOffset(inputCentreInRow, 40);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void enterStartDateCentreRow(String date) throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(inputStartDateCentreRow);
+        inputStartDateCentreRow.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+        inputStartDateCentreRow.sendKeys(date);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void enterEndDateCentreRow(String date) throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(inputEndDateCentreRow);
+        inputEndDateCentreRow.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+        inputEndDateCentreRow.sendKeys(date);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void saveCentreRow() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(btnSaveCentreRow);
+        click(btnSaveCentreRow);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void cancelCentreRow() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(btnCancelCentreRow);
+        click(btnCancelCentreRow);
+        pause(500);
+        driver.switchTo().parentFrame();
     }
 }

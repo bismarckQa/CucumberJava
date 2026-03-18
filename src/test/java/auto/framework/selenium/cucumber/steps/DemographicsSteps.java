@@ -164,4 +164,36 @@ public class DemographicsSteps {
     public void iTryToAddANewCenterToThePatient()throws InterruptedException {
        demographicsPage.tryToAddANewCenterToThePatient();
     }
+
+    @And("I click the New button at position {int}")
+    public void iClickTheNewButtonAtPosition(int index) throws InterruptedException {
+        demographicsPage.clickNewButtonByIndex(index);
+    }
+
+    // ===================== ASSIGN CENTRE steps =====================
+
+    @And("I select a centre in the new row")
+    public void iSelectACentreInTheNewRow() throws InterruptedException {
+        demographicsPage.selectCentreInNewRow();
+    }
+
+    @And("I enter the start date of the centre row {string}")
+    public void iEnterTheStartDateOfTheCentreRow(String date) throws InterruptedException {
+        demographicsPage.enterStartDateCentreRow(date);
+    }
+
+    @And("I enter the end date of the centre row {string}")
+    public void iEnterTheEndDateOfTheCentreRow(String date) throws InterruptedException {
+        demographicsPage.enterEndDateCentreRow(date);
+    }
+
+    @And("I save the centre row")
+    public void iSaveTheCentreRow() throws InterruptedException {
+        demographicsPage.saveCentreRow();
+    }
+
+    @And("I cancel the centre row")
+    public void iCancelTheCentreRow() throws InterruptedException {
+        demographicsPage.cancelCentreRow();
+    }
 }
