@@ -174,11 +174,32 @@ public class DemographicsPage extends BasePage<DemographicsPage> {
     @FindBy(how = How.XPATH, using = "//tr[contains(@class,'k-grid-edit-row')]//td[3]//input[@data-role='datepicker']")
     private WebElement inputEndDateCentreRow;
 
-    @FindBy(how = How.XPATH, using = "//tr[contains(@class,'k-grid-edit-row')]//button[contains(@class,'k-grid-update')]")
+    @FindBy(how = How.XPATH, using = "(//td[contains(@class,'k-command-cell')]//button)[1]")
     private WebElement btnSaveCentreRow;
 
-    @FindBy(how = How.XPATH, using = "//tr[contains(@class,'k-grid-edit-row')]//button[contains(@class,'k-grid-cancel-changes')]")
+    @FindBy(how = How.XPATH, using = "(//td[contains(@class,'k-command-cell')]//button)[2]")
     private WebElement btnCancelCentreRow;
+
+
+    // ===================== IDENTIFICATION - grid inline edit =====================
+
+    @FindBy(how = How.XPATH, using = "//td[@data-container-for='tipoIdentificacionId']//span[@aria-label='select']")
+    private WebElement dropDownIdentificationType;
+
+    @FindBy(how = How.XPATH, using = "//td[@data-container-for='tipoIdentificacionId']//span[contains(@class,'k-input-inner')]")
+    private WebElement inputIdentificationType;
+
+    @FindBy(how = How.XPATH, using = "//td[@data-container-for='valor']//input")
+    private WebElement inputIdentificationValue;
+
+    @FindBy(how = How.XPATH, using = "//td[@data-container-for='observaciones']//input")
+    private WebElement inputIdentificationObservations;
+
+    @FindBy(how = How.XPATH, using = "(//td[contains(@class,'k-command-cell')]//button)[1]")
+    private WebElement btnSaveIdentificationRow;
+
+    @FindBy(how = How.XPATH, using = "(//td[contains(@class,'k-command-cell')]//button)[2]")
+    private WebElement btnCancelIdentificationRow;
 
 
 
@@ -460,6 +481,7 @@ public class DemographicsPage extends BasePage<DemographicsPage> {
     }
 
     public void clickNewButtonByIndex(int index) throws InterruptedException {
+        driver.switchTo().defaultContent();
         driver.switchTo().frame("frmContenido");
         pause(500);
         WebElement btn = driver.findElement(By.xpath("(//button[contains(@class,'k-grid-add')])[" + index + "]"));
@@ -467,7 +489,7 @@ public class DemographicsPage extends BasePage<DemographicsPage> {
         pause(500);
         javascriptExecutor.executeScript("arguments[0].click();", btn);
         pause(500);
-        driver.switchTo().parentFrame();
+        driver.switchTo().defaultContent();
     }
 
 
@@ -513,6 +535,51 @@ public class DemographicsPage extends BasePage<DemographicsPage> {
         driver.switchTo().frame("frmContenido");
         scrollToElementMove(btnCancelCentreRow);
         click(btnCancelCentreRow);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+
+    // ===================== IDENTIFICATION methods =====================
+
+    public void selectIdentificationType() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(dropDownIdentificationType);
+        click(dropDownIdentificationType);
+        pause(500);
+        clickBelowElementByOffset(inputIdentificationType, 40);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void enterIdentificationValue(String value) throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(inputIdentificationValue);
+        write(inputIdentificationValue, value);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void enterIdentificationObservations(String observations) throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(inputIdentificationObservations);
+        write(inputIdentificationObservations, observations);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void saveIdentificationRow() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(btnSaveIdentificationRow);
+        click(btnSaveIdentificationRow);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void cancelIdentificationRow() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(btnCancelIdentificationRow);
+        click(btnCancelIdentificationRow);
         pause(500);
         driver.switchTo().parentFrame();
     }

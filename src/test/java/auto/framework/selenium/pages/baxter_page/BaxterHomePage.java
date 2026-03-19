@@ -146,10 +146,10 @@ public class BaxterHomePage extends BasePage<BaxterHomePage> {
 
 
     public void selectPatient(String patient){
-        By loc = By.xpath("//*[contains(text(),'"+patient+"')]");
-        WebElement element = wait.until(org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated(loc));
-        javascriptExecutor.executeScript("arguments[0].scrollIntoView(true);", element);
-        element.click();
+            By loc = By.xpath("//*[contains(text(),'"+patient+"')]");
+            WebElement element = wait.until(org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated(loc));
+            javascriptExecutor.executeScript("arguments[0].scrollIntoView(true);", element);
+            element.click();
     }
 
     public void selectGroupPatient(String patient){
@@ -206,7 +206,7 @@ public class BaxterHomePage extends BasePage<BaxterHomePage> {
 
     public void clickMedication() {
         do{
-            click(rightArrow);
+           click(rightArrow);
         }while (!isDisplayed(MedicationModule));
 
         click(this.MedicationModule);
