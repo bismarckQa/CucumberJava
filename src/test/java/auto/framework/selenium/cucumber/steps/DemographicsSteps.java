@@ -2,6 +2,7 @@ package auto.framework.selenium.cucumber.steps;
 
 import auto.framework.selenium.annotations.LazyAutowired;
 import auto.framework.selenium.pages.baxter_page.DemographicsPage;
+import io.cucumber.java.PendingException;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -144,4 +145,82 @@ public class DemographicsSteps {
         demographicsPage.selectReasonForStart();
     }
 
+    @And("I select the referred by clinical status")
+    public void iSelectTheReferredByClinicalStatus()throws InterruptedException {
+        demographicsPage.selectTheReferredByClinicalStatus();
+    }
+
+    @And("I click on the selected patient")
+    public void iClickOnTheSelectedPatient()throws InterruptedException {
+        demographicsPage.clickOnTheSelectedPatient();
+    }
+
+    @And("I verify that the demographic module opened correctly")
+    public void iVerifyThatTheDemographicModuleOpenedCorrectly()throws InterruptedException {
+        demographicsPage.verifyThatTheDemographicModuleOpenedCorrectly();
+    }
+
+    @And("I try to add a new center to the patient")
+    public void iTryToAddANewCenterToThePatient()throws InterruptedException {
+       demographicsPage.tryToAddANewCenterToThePatient();
+    }
+
+    @And("I click the New button at position {int}")
+    public void iClickTheNewButtonAtPosition(int index) throws InterruptedException {
+        demographicsPage.clickNewButtonByIndex(index);
+    }
+
+    // ===================== ASSIGN CENTRE steps =====================
+
+    @And("I select a centre in the new row")
+    public void iSelectACentreInTheNewRow() throws InterruptedException {
+        demographicsPage.selectCentreInNewRow();
+    }
+
+    @And("I enter the start date of the centre row {string}")
+    public void iEnterTheStartDateOfTheCentreRow(String date) throws InterruptedException {
+        demographicsPage.enterStartDateCentreRow(date);
+    }
+
+    @And("I enter the end date of the centre row {string}")
+    public void iEnterTheEndDateOfTheCentreRow(String date) throws InterruptedException {
+        demographicsPage.enterEndDateCentreRow(date);
+    }
+
+    @And("I save the centre row")
+    public void iSaveTheCentreRow() throws InterruptedException {
+        demographicsPage.saveCentreRow();
+    }
+
+    @And("I cancel the centre row")
+    public void iCancelTheCentreRow() throws InterruptedException {
+        demographicsPage.cancelCentreRow();
+    }
+
+    // ===================== IDENTIFICATION steps =====================
+
+    @And("I select the identification type")
+    public void iSelectTheIdentificationType() throws InterruptedException {
+        demographicsPage.selectIdentificationType();
+    }
+
+    @And("I enter the identification value {string}")
+    public void iEnterTheIdentificationValue(String value) throws InterruptedException {
+        demographicsPage.enterIdentificationValue(value);
+    }
+
+    @And("I enter the identification observations {string}")
+    public void iEnterTheIdentificationObservations(String observations) throws InterruptedException {
+        demographicsPage.enterIdentificationObservations(observations);
+    }
+
+    @And("I save the identification row")
+    public void iSaveTheIdentificationRow() throws InterruptedException {
+        demographicsPage.saveIdentificationRow();
+    }
+
+    @And("I cancel the identification row")
+    public void iCancelTheIdentificationRow() throws InterruptedException {
+        demographicsPage.cancelIdentificationRow();
+    }
 }

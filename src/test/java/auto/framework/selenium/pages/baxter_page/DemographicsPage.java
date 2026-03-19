@@ -69,13 +69,16 @@ public class DemographicsPage extends BasePage<DemographicsPage> {
     @FindBy(how = How.XPATH, using = "//span[.//*[@k-ng-model='$ctrl.paciente.procedenciaId']]//input[contains(@class,'k-input-inner')]")
     private WebElement inputReferredBy;
 
+    @FindBy(how = How.XPATH, using = "//div[12]//span[1]//input[1]")
+    private WebElement inputReferredByNewPatients;
+
 
     // ===================== ASSIGNMENTS =====================
 
     @FindBy(how = How.XPATH, using = "//selector-centros//span[@role='button'][@aria-label='select']")
     private WebElement dropDownPrimaryCenter;
 
-    @FindBy(how = How.XPATH, using = "//selector-centros//span[contains(@class,'k-input-inner')]")
+    @FindBy(how = How.XPATH, using = "(//span[@class='k-input-value-text ng-scope'])[1]")
     private WebElement inputPrimaryCenter;
 
     @FindBy(how = How.XPATH, using = "//input[@data-role='datepicker'][@k-ng-model='$ctrl.centroPacienteTrabajo.fechaInicio']")
@@ -102,10 +105,10 @@ public class DemographicsPage extends BasePage<DemographicsPage> {
     @FindBy(how = How.XPATH, using = "//span[.//*[@kendo-combobox='$ctrl.tipoModalidad.kCtrl']]//input[contains(@class,'k-input-inner')]")
     private WebElement inputMethod;
 
-    @FindBy(how = How.XPATH, using = "//span[.//*[@kendo-combobox='$ctrl.subModalidad.kCtrl']]//button[@aria-label='expand combobox']")
+    @FindBy(how = How.XPATH, using = "(//button[@aria-label='expand combobox'])[10]")
     private WebElement dropDownSubmethod;
 
-    @FindBy(how = How.XPATH, using = "//span[.//*[@kendo-combobox='$ctrl.subModalidad.kCtrl']]//input[contains(@class,'k-input-inner')]")
+    @FindBy(how = How.XPATH, using = "(//input[@role='combobox'])[13]")
     private WebElement inputSubmethod;
 
     @FindBy(how = How.XPATH, using = "//span[.//*[@kendo-combobox='$ctrl.ubicacion.kCtrl']]//button[@aria-label='expand combobox']")
@@ -140,6 +143,65 @@ public class DemographicsPage extends BasePage<DemographicsPage> {
 
     @FindBy(how = How.XPATH, using = "//span[.//*[@kendo-combobox='$ctrl.motivoInicio.kCtrl']]//input[contains(@class,'k-input-inner')]")
     private WebElement inputReasonForStart;
+
+    @FindBy(how = How.XPATH, using = "(//button[@aria-label='expand combobox'])[14]")
+    private WebElement dropDownReferredByClinicalStatus;
+
+    @FindBy(how = How.XPATH, using = "(//input[@role='combobox'])[18]")
+    private WebElement inputReferredByClinicalStatus;
+
+    @FindBy(how = How.XPATH, using = "//a[normalize-space()='Foianini, Pasquale']")
+    private WebElement buttonPatientSelectedOnPrincipalMenu;
+
+    @FindBy(how = How.XPATH, using = "//h2[normalize-space()='Demographics']")
+    private WebElement titleDemographics;
+
+    @FindBy(how = How.XPATH, using = "(//div[@ng-click=\"$ctrl.clickChevron('Demograficos_Label_Asignacion_Centro')\"])[1]")
+    private WebElement dropDownCenterAssignmentDemographics;
+
+
+    // ===================== ASSIGN CENTRE - grid inline edit =====================
+
+    @FindBy(how = How.XPATH, using = "//tr[contains(@class,'k-grid-edit-row')]//span[@aria-label='select']")
+    private WebElement dropDownCentreInRow;
+
+    @FindBy(how = How.XPATH, using = "//tr[contains(@class,'k-grid-edit-row')]//span[contains(@class,'k-input-value-text')]")
+    private WebElement inputCentreInRow;
+
+    @FindBy(how = How.XPATH, using = "(//tr[contains(@class,'k-grid-edit-row')]//input[@data-role='datepicker'])[1]")
+    private WebElement inputStartDateCentreRow;
+
+    @FindBy(how = How.XPATH, using = "//tr[contains(@class,'k-grid-edit-row')]//td[3]//input[@data-role='datepicker']")
+    private WebElement inputEndDateCentreRow;
+
+    @FindBy(how = How.XPATH, using = "(//td[contains(@class,'k-command-cell')]//button)[1]")
+    private WebElement btnSaveCentreRow;
+
+    @FindBy(how = How.XPATH, using = "(//td[contains(@class,'k-command-cell')]//button)[2]")
+    private WebElement btnCancelCentreRow;
+
+
+    // ===================== IDENTIFICATION - grid inline edit =====================
+
+    @FindBy(how = How.XPATH, using = "//td[@data-container-for='tipoIdentificacionId']//span[@aria-label='select']")
+    private WebElement dropDownIdentificationType;
+
+    @FindBy(how = How.XPATH, using = "//td[@data-container-for='tipoIdentificacionId']//span[contains(@class,'k-input-inner')]")
+    private WebElement inputIdentificationType;
+
+    @FindBy(how = How.XPATH, using = "//td[@data-container-for='valor']//input")
+    private WebElement inputIdentificationValue;
+
+    @FindBy(how = How.XPATH, using = "//td[@data-container-for='observaciones']//input")
+    private WebElement inputIdentificationObservations;
+
+    @FindBy(how = How.XPATH, using = "(//td[contains(@class,'k-command-cell')]//button)[1]")
+    private WebElement btnSaveIdentificationRow;
+
+    @FindBy(how = How.XPATH, using = "(//td[contains(@class,'k-command-cell')]//button)[2]")
+    private WebElement btnCancelIdentificationRow;
+
+
 
 
     @Override
@@ -194,8 +256,8 @@ public class DemographicsPage extends BasePage<DemographicsPage> {
         switchToContentFrame();
         pause(500);
         click(By.xpath(
-            "//ul[contains(@class,'dropdown-menu') and contains(@class,'three-points')]" +
-            "//a[not(contains(@class,'ng-hide'))]//span[normalize-space(.)='" + option + "']"
+                "//ul[contains(@class,'dropdown-menu') and contains(@class,'three-points')]" +
+                        "//a[not(contains(@class,'ng-hide'))]//span[normalize-space(.)='" + option + "']"
         ));
         pause(500);
         switchBack();
@@ -284,7 +346,8 @@ public class DemographicsPage extends BasePage<DemographicsPage> {
         scrollToElementMove(dropDownReferredBy);
         click(dropDownReferredBy);
         pause(500);
-        click(By.xpath("(//li[@tabindex='-1'])[1]"));
+        clickBelowElementByOffset(inputReferredByNewPatients,40);
+        //click(By.xpath("(//li[@tabindex='-1'])[1]"));
         pause(500);
         switchBack();
     }
@@ -297,7 +360,8 @@ public class DemographicsPage extends BasePage<DemographicsPage> {
         scrollToElementMove(dropDownPrimaryCenter);
         click(dropDownPrimaryCenter);
         pause(500);
-        click(By.xpath("//ul[@role='listbox']//li[1]"));
+        //click(By.xpath("//ul[@role='listbox']//li[1]"));
+        clickBelowElementByOffset(inputPrimaryCenter,100);
         pause(500);
         switchBack();
     }
@@ -334,7 +398,11 @@ public class DemographicsPage extends BasePage<DemographicsPage> {
 
     public void selectSubmethod() throws InterruptedException {
         switchToContentFrame();
-        selectKendoOption(dropDownSubmethod, inputSubmethod);
+        pause(300);
+        click(dropDownSubmethod);
+        pause(500);
+        clickBelowElementByOffset(inputSubmethod,80);
+        pause(300);
         switchBack();
     }
 
@@ -377,4 +445,142 @@ public class DemographicsPage extends BasePage<DemographicsPage> {
         switchBack();
     }
 
+    public void selectTheReferredByClinicalStatus()throws InterruptedException {
+        switchToContentFrame();
+        pause(300);
+        click(dropDownReferredByClinicalStatus);
+        pause(300);
+        clickBelowElementByOffset(inputReferredByClinicalStatus,100);
+        switchBack();
+
+    }
+
+    public void clickOnTheSelectedPatient()throws InterruptedException {
+        pause(300);
+        click(buttonPatientSelectedOnPrincipalMenu);
+        pause(500);
+    }
+
+    public void verifyThatTheDemographicModuleOpenedCorrectly()throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        pause(300);
+        waitElements(titleDemographics);
+        pause(500);
+        titleDemographics.isDisplayed();
+        driver.switchTo().parentFrame();
+    }
+
+    public void tryToAddANewCenterToThePatient()throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        pause(300);
+        waitElements(titleDemographics);
+        pause(500);
+        titleDemographics.isDisplayed();
+        driver.switchTo().parentFrame();
+
+    }
+
+    public void clickNewButtonByIndex(int index) throws InterruptedException {
+        driver.switchTo().defaultContent();
+        driver.switchTo().frame("frmContenido");
+        pause(500);
+        WebElement btn = driver.findElement(By.xpath("(//button[contains(@class,'k-grid-add')])[" + index + "]"));
+        javascriptExecutor.executeScript("arguments[0].scrollIntoView({block: 'center'});", btn);
+        pause(500);
+        javascriptExecutor.executeScript("arguments[0].click();", btn);
+        pause(500);
+        driver.switchTo().defaultContent();
+    }
+
+
+    // ===================== ASSIGN CENTRE methods =====================
+
+    public void selectCentreInNewRow() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(dropDownCentreInRow);
+        click(dropDownCentreInRow);
+        pause(500);
+        clickBelowElementByOffset(inputCentreInRow, 40);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void enterStartDateCentreRow(String date) throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(inputStartDateCentreRow);
+        inputStartDateCentreRow.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+        inputStartDateCentreRow.sendKeys(date);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void enterEndDateCentreRow(String date) throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(inputEndDateCentreRow);
+        inputEndDateCentreRow.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+        inputEndDateCentreRow.sendKeys(date);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void saveCentreRow() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(btnSaveCentreRow);
+        click(btnSaveCentreRow);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void cancelCentreRow() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(btnCancelCentreRow);
+        click(btnCancelCentreRow);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+
+    // ===================== IDENTIFICATION methods =====================
+
+    public void selectIdentificationType() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(dropDownIdentificationType);
+        click(dropDownIdentificationType);
+        pause(500);
+        clickBelowElementByOffset(inputIdentificationType, 40);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void enterIdentificationValue(String value) throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(inputIdentificationValue);
+        write(inputIdentificationValue, value);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void enterIdentificationObservations(String observations) throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(inputIdentificationObservations);
+        write(inputIdentificationObservations, observations);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void saveIdentificationRow() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(btnSaveIdentificationRow);
+        click(btnSaveIdentificationRow);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void cancelIdentificationRow() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(btnCancelIdentificationRow);
+        click(btnCancelIdentificationRow);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
 }
