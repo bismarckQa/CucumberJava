@@ -8,7 +8,7 @@
 @Demographics
 Feature: Add Additional Identification
 
-  @test @regression @test_Case_2964
+  @test @regression @test_Case_2966
   Scenario: Cancelling an added identification
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -22,19 +22,9 @@ Feature: Add Additional Identification
     And   I enter the identification observations "Test observation"
     And   I cancel the identification row
 
-  @test @regression @test_Case_2965
-  Scenario: Add identification with empty required fields
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    When  I select the patient "Foianini, Pasquale - 00250"
-    And   I click on the selected patient
-    And   I verify that the demographic module opened correctly
-    And   I click the New button at position 1
-    And   I save the identification row
 
-  @test @regression @test_Case_2966
-  Scenario: Successful added identification
+  @test @regression @test_Case_2967
+  Scenario: Required fields are empty
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
     And   I login successful
@@ -43,6 +33,23 @@ Feature: Add Additional Identification
     And   I verify that the demographic module opened correctly
     And   I click the New button at position 1
     And   I select the identification type
-    And   I enter the identification value "12345678"
-    And   I enter the identification observations "Test observation"
+    And   I enter the identification value ""
+    And   I enter the identification observations ""
     And   I save the identification row
+    And   I cancel the identification row
+
+
+  @test @regression @test_Case_2968
+  Scenario: Successful Edited Identification
+    Given I open the Baxter website
+    And   I try to login with "login_baxter" credentials
+    And   I login successful
+    When  I select the patient "Foianini, Pasquale - 00250"
+    And   I click on the selected patient
+    And   I verify that the demographic module opened correctly
+    When  I click the New button at position 1
+    And   I select the identification type
+    And   I enter the identification value "123456"
+    Then  I enter the identification observations "Qa test "
+    And   I save the identification row
+

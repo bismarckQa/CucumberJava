@@ -263,7 +263,7 @@ border-radius: 8px !important;
 <a href="#"><span class="badge badge-primary">VersiaRenal | Quality Report Result</span></a>
 </li>
 <li class="m-r-10">
-<a href="#"><span class="badge badge-primary">20/03/2026 15:58:47</span></a>
+<a href="#"><span class="badge badge-primary">24/03/2026 18:02:35</span></a>
 </li>
 </ul>
 </div>
@@ -285,6 +285,11 @@ border-radius: 8px !important;
 <span class="ico"><i class="fa fa-tag"></i></span>
 </a>
 </li>
+<li class="nav-item dropdown" onclick="toggleView('exception-view')">
+<a id="nav-exception" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-bug"></i></span>
+</a>
+</li>
 </ul>
 </div>
 </div>      <div class="vcontainer">
@@ -294,13 +299,13 @@ border-radius: 8px !important;
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Started</p>
-<h3>20/03/2026 15:58:47</h3>
+<h3>24/03/2026 18:02:35</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Ended</p>
-<h3>20/03/2026 15:59:45</h3>
+<h3>24/03/2026 18:03:12</h3>
 </div></div>
 </div>
 <div class="col-md-3">
@@ -371,10 +376,10 @@ border-radius: 8px !important;
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='78%'><b>15</b> steps passed</small></div>
+<div><small data-tooltip='75%'><b>15</b> steps passed</small></div>
 <div>
 <small data-tooltip='5%'><b>1</b> steps failed,
-<b>3</b> skipped, <b data-tooltip='%'>0</b> others
+<b>4</b> skipped, <b data-tooltip='%'>0</b> others
 </small>
 </div>
 </div>
@@ -390,7 +395,7 @@ border-radius: 8px !important;
 </div></div>
 <script>
 var timeline = {
-"Add Additional Identification":54.989
+"Modify additional identification":34.859
 };
 </script>
 <div class="row">
@@ -408,31 +413,7 @@ var timeline = {
 <td>0%</td>
 </tr>
 <tr>
-<td>@Demographics</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0%</td>
-</tr>
-<tr>
-<td>@test</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0%</td>
-</tr>
-<tr>
-<td>@3.2</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0%</td>
-</tr>
-<tr>
-<td>@test_Case_2964</td>
+<td>@test_Case_2970</td>
 <td>0</td>
 <td>1</td>
 <td>0</td>
@@ -448,7 +429,31 @@ var timeline = {
 <td>0%</td>
 </tr>
 <tr>
+<td>@Demographics</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0%</td>
+</tr>
+<tr>
+<td>@3.2</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0%</td>
+</tr>
+<tr>
 <td>@versia_renal</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0%</td>
+</tr>
+<tr>
+<td>@test</td>
 <td>0</td>
 <td>1</td>
 <td>0</td>
@@ -520,7 +525,7 @@ grandChildCount: 5,
 passGrandChild: 15,
 failGrandChild: 1,
 warningGrandChild: 0,
-skipGrandChild: 3,
+skipGrandChild: 4,
 infoGrandChild: 0,
 eventsCount: 5,
 };
@@ -542,7 +547,7 @@ eventsCount: 5,
 <li class="dropdown">
 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-tag"></i></a>
 <ul id="tag-toggle" class="dropdown-menu dropdown-md p-v-0">
-<a class="dropdown-item" href="#">@Environment_dev</a><a class="dropdown-item" href="#">@Demographics</a><a class="dropdown-item" href="#">@test</a><a class="dropdown-item" href="#">@3.2</a><a class="dropdown-item" href="#">@test_Case_2964</a><a class="dropdown-item" href="#">@regression</a><a class="dropdown-item" href="#">@versia_renal</a>
+<a class="dropdown-item" href="#">@Environment_dev</a><a class="dropdown-item" href="#">@test_Case_2970</a><a class="dropdown-item" href="#">@regression</a><a class="dropdown-item" href="#">@Demographics</a><a class="dropdown-item" href="#">@3.2</a><a class="dropdown-item" href="#">@versia_renal</a><a class="dropdown-item" href="#">@test</a>
 </ul>
 </li>
 </ul>
@@ -553,9 +558,9 @@ eventsCount: 5,
           tag=""
           device="">
           <div class="test-detail">
-            <p class="name">Add Additional Identification</p>
+            <p class="name">Modify additional identification</p>
             <p class="text-sm">
-              <span>15:58:50</span> / <span>00:00:54:989</span>
+              <span>18:02:37</span> / <span>00:00:34:859</span>
               <span class="badge fail-bg log float-right">Fail</span>
             </p>
           </div>
@@ -563,10 +568,10 @@ eventsCount: 5,
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-fail">Add Additional Identification</h5>
-<span class='badge badge-success'>03.20.2026 15:58:50</span>
-<span class='badge badge-danger'>03.20.2026 15:59:45</span>
-<span class='badge badge-default'>00:00:54:989</span>
+<h5 class="test-status text-fail">Modify additional identification</h5>
+<span class='badge badge-success'>03.24.2026 18:02:37</span>
+<span class='badge badge-danger'>03.24.2026 18:03:12</span>
+<span class='badge badge-default'>00:00:34:859</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
 <span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
 <span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
@@ -578,7 +583,7 @@ eventsCount: 5,
   <div class="card">
     <div class="card-header" role="tab">
       <div class="card-title">
-        <div class="node" id="2"><span class="badge log fail-bg mr-2">Fail</span>Cancelling an added identification</div>
+        <div class="node" id="2"><span class="badge log fail-bg mr-2">Fail</span>Cancelling an Edited Identification</div>
           <div class="status-avatar float-right mr-4">
             <i class="fa fa-paperclip"></i>
           </div>
@@ -682,9 +687,54 @@ eventsCount: 5,
       <div>
       </div>
               </div>
-              <div class="step pass-bg" title="auto.framework.selenium.cucumber.steps.DemographicsSteps.iClickTheNewButtonAtPosition(int)">
-                <span>And I click the New button at position 1</span>
+              <div class="step fail-bg" title="auto.framework.selenium.cucumber.steps.DemographicsSteps.iClickButtonEditIdentifications()">
+                <span>And I click button edit identifications</span>
       <div>
+        <textarea disabled class="code-block">org.openqa.selenium.InvalidSelectorException: invalid selector: Unable to locate an element with the xpath expression //tbody/tr[@role='row']/td[4]/button[1]] because of the following error:
+SyntaxError: Failed to execute 'evaluate' on 'Document': The string '//tbody/tr[@role='row']/td[4]/button[1]]' is not a valid XPath expression.
+  (Session info: chrome=146.0.7680.81)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalid-selector-exception
+Build info: version: '4.13.0', revision: 'ba948ece5b*'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.18'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [9d9f16a9a974fa8cac40b33a52f74c2f, findElement {using=xpath, value=//tbody/tr[@role='row']/td[4]/button[1]]}]
+Capabilities {acceptInsecureCerts: true, browserName: chrome, browserVersion: 146.0.7680.81, chrome: {chromedriverVersion: 146.0.7680.165 (4b989da09e1..., userDataDir: C:\Users\colombb\AppData\Lo...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:55348}, goog:processID: 24052, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:55348/devtoo..., se:cdpVersion: 146.0.7680.81, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 9d9f16a9a974fa8cac40b33a52f74c2f
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:196)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:171)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:359)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:353)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+	at jdk.proxy1/jdk.proxy1.$Proxy119.isDisplayed(Unknown Source)
+	at org.openqa.selenium.support.ui.ExpectedConditions$9.apply(ExpectedConditions.java:264)
+	at org.openqa.selenium.support.ui.ExpectedConditions$9.apply(ExpectedConditions.java:260)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:205)
+	at auto.framework.selenium.pages.BasePage.waitElements(BasePage.java:66)
+	at auto.framework.selenium.pages.baxter_page.DemographicsPage.clickButtonEditIdentifications(DemographicsPage.java:592)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:343)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:699)
+	at auto.framework.selenium.pages.baxter_page.DemographicsPage$$SpringCGLIB$$0.clickButtonEditIdentifications(<generated>)
+	at auto.framework.selenium.cucumber.steps.DemographicsSteps.iClickButtonEditIdentifications(DemographicsSteps.java:229)
+	at ✽.I click button edit identifications(file:///C:/Users/colombb/Documents/Framework--updated/CucumberJava/src/test/java/auto/framework/selenium/cucumber/features/TestSuites/prueba.feature:19)
+</textarea>
+      
       </div>
               </div>
               <div class="step pass-bg" title="AFTER_STEP">
@@ -698,14 +748,9 @@ eventsCount: 5,
       <div>
       </div>
               </div>
-              <div class="step fail-bg" >
-                <span>And I select the identification type</span>
-      <div>Step undefined
-      </div>
-              </div>
               <div class="step pass-bg" title="AFTER_STEP">
-                <span>auto.framework.selenium.cucumber.hooks.ReportEnhancementHook.takeScreenshotAfterEachStep(io.cucumber.java.Scenario)</span>
-      <div>
+                <span>auto.framework.selenium.cucumber.CucumberHooks.afterStep(io.cucumber.java.Scenario)</span>
+      <div>Cancelling an Edited Identification
           <div class="row mb-3"><div class="col-md-3">
 <img data-featherlight='images/embedded8.png' src="images/embedded8.png">
     
@@ -714,19 +759,35 @@ eventsCount: 5,
       <div>
       </div>
               </div>
-              <div class="step skip-bg" >
+              <div class="step skip-bg" title="auto.framework.selenium.cucumber.steps.DemographicsSteps.iSelectTheIdentificationType()">
+                <span>And I select the identification type</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="auto.framework.selenium.cucumber.steps.DemographicsSteps.iEnterTheIdentificationValue(java.lang.String)">
                 <span>And I enter the identification value "12345678"</span>
       <div>Step skipped
       </div>
               </div>
-              <div class="step skip-bg" >
+              <div class="step skip-bg" title="auto.framework.selenium.cucumber.steps.DemographicsSteps.iEnterTheIdentificationObservations(java.lang.String)">
                 <span>And I enter the identification observations "Test observation"</span>
       <div>Step skipped
       </div>
               </div>
-              <div class="step skip-bg" >
+              <div class="step skip-bg" title="auto.framework.selenium.cucumber.steps.DemographicsSteps.iCancelTheIdentificationRow()">
                 <span>And I cancel the identification row</span>
       <div>Step skipped
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER">
+                <span>auto.framework.selenium.cucumber.hooks.ReportEnhancementHook.afterScenario(io.cucumber.java.Scenario)</span>
+      <div>FAILURE_SCREENSHOT
+          <div class="row mb-3"><div class="col-md-3">
+<img data-featherlight='images/embedded9.png' src="images/embedded9.png">
+    
+    </div></div>
+</div>
+      <div>
       </div>
               </div>
           </div>
@@ -776,11 +837,11 @@ eventsCount: 5,
 <tbody>
 <tr class="tag-test-status" status="fail">
 <td><span class="badge log fail-bg">Fail</span></td>
-<td>15:58:50 p. m.</td>
+<td>18:02:37 p. m.</td>
 <td>
-<a href="#" class="linked" test-id='1' id='2'>Cancelling an added identification</a>
+<a href="#" class="linked" test-id='1' id='2'>Cancelling an Edited Identification</a>
 <div class="">
-<span class="badge badge-default">Add Additional Identification.Cancelling an added identification</span>
+<span class="badge badge-default">Modify additional identification.Cancelling an Edited Identification</span>
 </div>
 </td>
 </tr>
@@ -793,12 +854,12 @@ eventsCount: 5,
 <span class="meta">
 <span class='badge log badge-danger'>1</span>
 </span>
-<p class="name">@Demographics</p>
+<p class="name">@test_Case_2970</p>
 <p class="duration text-sm">1 tests</p>
 </div>
 <div class="test-contents d-none">
 <div class="info">
-<h4>@Demographics</h4>
+<h4>@test_Case_2970</h4>
 <span status="fail" class='badge log badge-danger'>1 failed</span>
 </div>
 <table class='table table-sm mt-4'>
@@ -812,119 +873,11 @@ eventsCount: 5,
 <tbody>
 <tr class="tag-test-status" status="fail">
 <td><span class="badge log fail-bg">Fail</span></td>
-<td>15:58:50 p. m.</td>
+<td>18:02:37 p. m.</td>
 <td>
-<a href="#" class="linked" test-id='1' id='2'>Cancelling an added identification</a>
+<a href="#" class="linked" test-id='1' id='2'>Cancelling an Edited Identification</a>
 <div class="">
-<span class="badge badge-default">Add Additional Identification.Cancelling an added identification</span>
-</div>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</li>
-<li class="test-item">
-<div class="test-detail">
-<span class="meta">
-<span class='badge log badge-danger'>1</span>
-</span>
-<p class="name">@test</p>
-<p class="duration text-sm">1 tests</p>
-</div>
-<div class="test-contents d-none">
-<div class="info">
-<h4>@test</h4>
-<span status="fail" class='badge log badge-danger'>1 failed</span>
-</div>
-<table class='table table-sm mt-4'>
-<thead>
-<tr>
-<th class="status-col">Status</th>
-<th class="timestamp-col">Timestamp</th>
-<th>TestName</th>
-</tr>
-</thead>
-<tbody>
-<tr class="tag-test-status" status="fail">
-<td><span class="badge log fail-bg">Fail</span></td>
-<td>15:58:50 p. m.</td>
-<td>
-<a href="#" class="linked" test-id='1' id='2'>Cancelling an added identification</a>
-<div class="">
-<span class="badge badge-default">Add Additional Identification.Cancelling an added identification</span>
-</div>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</li>
-<li class="test-item">
-<div class="test-detail">
-<span class="meta">
-<span class='badge log badge-danger'>1</span>
-</span>
-<p class="name">@3.2</p>
-<p class="duration text-sm">1 tests</p>
-</div>
-<div class="test-contents d-none">
-<div class="info">
-<h4>@3.2</h4>
-<span status="fail" class='badge log badge-danger'>1 failed</span>
-</div>
-<table class='table table-sm mt-4'>
-<thead>
-<tr>
-<th class="status-col">Status</th>
-<th class="timestamp-col">Timestamp</th>
-<th>TestName</th>
-</tr>
-</thead>
-<tbody>
-<tr class="tag-test-status" status="fail">
-<td><span class="badge log fail-bg">Fail</span></td>
-<td>15:58:50 p. m.</td>
-<td>
-<a href="#" class="linked" test-id='1' id='2'>Cancelling an added identification</a>
-<div class="">
-<span class="badge badge-default">Add Additional Identification.Cancelling an added identification</span>
-</div>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</li>
-<li class="test-item">
-<div class="test-detail">
-<span class="meta">
-<span class='badge log badge-danger'>1</span>
-</span>
-<p class="name">@test_Case_2964</p>
-<p class="duration text-sm">1 tests</p>
-</div>
-<div class="test-contents d-none">
-<div class="info">
-<h4>@test_Case_2964</h4>
-<span status="fail" class='badge log badge-danger'>1 failed</span>
-</div>
-<table class='table table-sm mt-4'>
-<thead>
-<tr>
-<th class="status-col">Status</th>
-<th class="timestamp-col">Timestamp</th>
-<th>TestName</th>
-</tr>
-</thead>
-<tbody>
-<tr class="tag-test-status" status="fail">
-<td><span class="badge log fail-bg">Fail</span></td>
-<td>15:58:50 p. m.</td>
-<td>
-<a href="#" class="linked" test-id='1' id='2'>Cancelling an added identification</a>
-<div class="">
-<span class="badge badge-default">Add Additional Identification.Cancelling an added identification</span>
+<span class="badge badge-default">Modify additional identification.Cancelling an Edited Identification</span>
 </div>
 </td>
 </tr>
@@ -956,11 +909,83 @@ eventsCount: 5,
 <tbody>
 <tr class="tag-test-status" status="fail">
 <td><span class="badge log fail-bg">Fail</span></td>
-<td>15:58:50 p. m.</td>
+<td>18:02:37 p. m.</td>
 <td>
-<a href="#" class="linked" test-id='1' id='2'>Cancelling an added identification</a>
+<a href="#" class="linked" test-id='1' id='2'>Cancelling an Edited Identification</a>
 <div class="">
-<span class="badge badge-default">Add Additional Identification.Cancelling an added identification</span>
+<span class="badge badge-default">Modify additional identification.Cancelling an Edited Identification</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log badge-danger'>1</span>
+</span>
+<p class="name">@Demographics</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@Demographics</h4>
+<span status="fail" class='badge log badge-danger'>1 failed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>18:02:37 p. m.</td>
+<td>
+<a href="#" class="linked" test-id='1' id='2'>Cancelling an Edited Identification</a>
+<div class="">
+<span class="badge badge-default">Modify additional identification.Cancelling an Edited Identification</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log badge-danger'>1</span>
+</span>
+<p class="name">@3.2</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@3.2</h4>
+<span status="fail" class='badge log badge-danger'>1 failed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>18:02:37 p. m.</td>
+<td>
+<a href="#" class="linked" test-id='1' id='2'>Cancelling an Edited Identification</a>
+<div class="">
+<span class="badge badge-default">Modify additional identification.Cancelling an Edited Identification</span>
 </div>
 </td>
 </tr>
@@ -992,11 +1017,99 @@ eventsCount: 5,
 <tbody>
 <tr class="tag-test-status" status="fail">
 <td><span class="badge log fail-bg">Fail</span></td>
-<td>15:58:50 p. m.</td>
+<td>18:02:37 p. m.</td>
 <td>
-<a href="#" class="linked" test-id='1' id='2'>Cancelling an added identification</a>
+<a href="#" class="linked" test-id='1' id='2'>Cancelling an Edited Identification</a>
 <div class="">
-<span class="badge badge-default">Add Additional Identification.Cancelling an added identification</span>
+<span class="badge badge-default">Modify additional identification.Cancelling an Edited Identification</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log badge-danger'>1</span>
+</span>
+<p class="name">@test</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@test</h4>
+<span status="fail" class='badge log badge-danger'>1 failed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>18:02:37 p. m.</td>
+<td>
+<a href="#" class="linked" test-id='1' id='2'>Cancelling an Edited Identification</a>
+<div class="">
+<span class="badge badge-default">Modify additional identification.Cancelling an Edited Identification</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="test-content scrollable">
+<div class="test-content-detail">
+<div class="detail-body"></div>
+</div>
+</div>
+</div><div class="test-wrapper row view exception-view attributes-view">
+<div class="test-list">
+<div class="test-list-tools">
+<ul class="tools pull-left"><li><a href=""><span class="font-size-14">Exception</span></a></li></ul>
+<ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">1</span></a></li></ul>
+</div>
+<div class="test-list-wrapper scrollable">
+<ul class="test-list-item">
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log badge-danger'>1</span>
+</span>
+<p class="name">org.openqa.selenium.InvalidSelectorException</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>org.openqa.selenium.InvalidSelectorException</h4>
+<span status="fail" class='badge log badge-danger'>1 failed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>18:03:10 p. m.</td>
+<td>
+<a href="#" class="linked" test-id='1' id='22'>And I click button edit identifications</a>
+<div class="">
+<span class="badge badge-default">Modify additional identification.Cancelling an Edited Identification.And I click button edit identifications</span>
 </div>
 </td>
 </tr>

@@ -6,18 +6,19 @@
 @3.2
 #Module
 @Demographics
-Feature: Add Additional Identification
+Feature: Modify additional identification
 
-  @test @regression @test_Case_2964
-  Scenario: Cancelling an added identification
+  @test @regression @test_Case_2970
+  Scenario: Cancelling an Edited Identification
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
     And   I login successful
     When  I select the patient "Foianini, Pasquale - 00250"
     And   I click on the selected patient
     And   I verify that the demographic module opened correctly
-    And   I click the New button at position 1
+    And   I click button edit identifications
     And   I select the identification type
     And   I enter the identification value "12345678"
     And   I enter the identification observations "Test observation"
     And   I cancel the identification row
+

@@ -197,14 +197,35 @@ public class DemographicsSteps {
         demographicsPage.cancelCentreRow();
     }
 
-    @Then("I click option cancel add center")
-    public void iClickOptionCancelAddCenter()throws InterruptedException {
-        demographicsPage.cancelCentreRow();
+    // ===================== IDENTIFICATION steps =====================
+
+    @And("I select the identification type")
+    public void iSelectTheIdentificationType() throws InterruptedException {
+        demographicsPage.selectIdentificationType();
     }
 
+    @And("I enter the identification value {string}")
+    public void iEnterTheIdentificationValue(String value) throws InterruptedException {
+        demographicsPage.enterIdentificationValue(value);
+    }
 
-    @And("I assign an associated staff member to the new selected center")
-    public void iAssignAnAssociatedStaffMemberToTheNewSelectedCenter()throws InterruptedException {
-        demographicsPage.assignAnAssociatedStaffMemberToTheNewSelectedCenter();
+    @And("I enter the identification observations {string}")
+    public void iEnterTheIdentificationObservations(String observations) throws InterruptedException {
+        demographicsPage.enterIdentificationObservations(observations);
+    }
+
+    @And("I save the identification row")
+    public void iSaveTheIdentificationRow() throws InterruptedException {
+        demographicsPage.saveIdentificationRow();
+    }
+
+    @And("I cancel the identification row")
+    public void iCancelTheIdentificationRow() throws InterruptedException {
+        demographicsPage.cancelIdentificationRow();
+    }
+
+    @And("I click button edit identifications")
+    public void iClickButtonEditIdentifications()throws InterruptedException  {
+        demographicsPage.clickButtonEditIdentifications();
     }
 }
