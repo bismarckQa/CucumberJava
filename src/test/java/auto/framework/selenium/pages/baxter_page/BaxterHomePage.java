@@ -19,6 +19,12 @@ public class BaxterHomePage extends BasePage<BaxterHomePage> {
 
     @FindBy(how = How.XPATH, using = "//*[@id=\"PatientsCombo\"]")
     private WebElement patientsCombo;
+
+    @FindBy(how = How.ID, using = "PatientsCombo_Input")
+    private WebElement patientsComboInput;
+
+    @FindBy(how = How.ID, using = "PatientsCombo_Arrow")
+    private WebElement patientsComboArrow;
     @FindBy(how = How.XPATH, using = "//*[@id=\"GroupsCombo_Input\"]")
     private WebElement groupPatientsCombo;
 
@@ -145,11 +151,22 @@ public class BaxterHomePage extends BasePage<BaxterHomePage> {
 
 
 
-    public void selectPatient(String patient){
-            By loc = By.xpath("//*[contains(text(),'"+patient+"')]");
+    public void selectPatient(String patient) throws InterruptedException {
+        By loc = By.xpath("//*[contains(text(),'" + patient + "')]");
+        try {
+            WebElement element = new org.openqa.selenium.support.ui.WebDriverWait(driver, java.time.Duration.ofSeconds(3))
+                    .until(org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated(loc));
+            javascriptExecutor.executeScript("arguments[0].scrollIntoView(true);", element);
+            element.click();
+        } catch (org.openqa.selenium.TimeoutException e) {
+            By moreResults = By.id("PatientsCombo_MoreResultsBoxImage");
+            WebElement more = wait.until(org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated(moreResults));
+            javascriptExecutor.executeScript("arguments[0].click();", more);
+            pause(800);
             WebElement element = wait.until(org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated(loc));
             javascriptExecutor.executeScript("arguments[0].scrollIntoView(true);", element);
             element.click();
+        }
     }
 
     public void selectGroupPatient(String patient){
@@ -206,7 +223,7 @@ public class BaxterHomePage extends BasePage<BaxterHomePage> {
 
     public void clickMedication() {
         do{
-           click(rightArrow);
+            click(rightArrow);
         }while (!isDisplayed(MedicationModule));
 
         click(this.MedicationModule);

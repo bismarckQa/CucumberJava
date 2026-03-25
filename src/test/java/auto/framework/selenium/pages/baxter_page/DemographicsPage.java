@@ -201,7 +201,7 @@ public class DemographicsPage extends BasePage<DemographicsPage> {
     @FindBy(how = How.XPATH, using = "(//td[contains(@class,'k-command-cell')]//button)[2]")
     private WebElement btnCancelIdentificationRow;
 
-    @FindBy(how = How.XPATH, using = "//tbody/tr[@role='row']/td[4]/button[1]]")
+    @FindBy(how = How.XPATH, using = "(//button[@type='button'])[10]")
     private WebElement btnEditIdentificationRow;
 
 
@@ -469,6 +469,7 @@ public class DemographicsPage extends BasePage<DemographicsPage> {
         waitElements(titleDemographics);
         pause(500);
         titleDemographics.isDisplayed();
+        pause(500);
         driver.switchTo().parentFrame();
     }
 
@@ -557,6 +558,9 @@ public class DemographicsPage extends BasePage<DemographicsPage> {
     public void enterIdentificationValue(String value) throws InterruptedException {
         driver.switchTo().frame("frmContenido");
         scrollToElementMove(inputIdentificationValue);
+        inputIdentificationValue.sendKeys(Keys.CONTROL + "a");
+        inputIdentificationValue.sendKeys(Keys.DELETE);
+        inputIdentificationValue.sendKeys(Keys.ENTER);
         write(inputIdentificationValue, value);
         pause(500);
         driver.switchTo().parentFrame();
@@ -565,6 +569,9 @@ public class DemographicsPage extends BasePage<DemographicsPage> {
     public void enterIdentificationObservations(String observations) throws InterruptedException {
         driver.switchTo().frame("frmContenido");
         scrollToElementMove(inputIdentificationObservations);
+        inputIdentificationObservations.sendKeys(Keys.CONTROL + "a");
+        inputIdentificationObservations.sendKeys(Keys.DELETE);
+        inputIdentificationObservations.sendKeys(Keys.ENTER);
         write(inputIdentificationObservations, observations);
         pause(500);
         driver.switchTo().parentFrame();
@@ -587,8 +594,9 @@ public class DemographicsPage extends BasePage<DemographicsPage> {
     }
 
     public void clickButtonEditIdentifications()throws InterruptedException {
+        driver.switchTo().parentFrame();
         driver.switchTo().frame("frmContenido");
-        pause(300);
+        pause(800);
         waitElements(btnEditIdentificationRow);
         scrollToElementMove(btnEditIdentificationRow);
         click(btnEditIdentificationRow);

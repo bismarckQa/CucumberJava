@@ -8,8 +8,8 @@
 @Demographics
 Feature: Modify additional identification
 
-  @test @regression @test_Case_2970
-  Scenario: Cancelling an Edited Identification
+  @test @regression @test_Case_2972
+  Scenario: Successful edited identification
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
     And   I login successful
@@ -17,8 +17,6 @@ Feature: Modify additional identification
     And   I click on the selected patient
     And   I verify that the demographic module opened correctly
     And   I click button edit identifications
-    And   I select the identification type
-    And   I enter the identification value "12345678"
-    And   I enter the identification observations "Test observation"
-    And   I cancel the identification row
-
+    And   I enter the identification value "9999"
+    And   I enter the identification observations "Observation Modified"
+    And   I save the identification row
