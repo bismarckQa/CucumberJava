@@ -204,6 +204,9 @@ public class DemographicsPage extends BasePage<DemographicsPage> {
     @FindBy(how = How.XPATH, using = "(//button[@type='button'])[10]")
     private WebElement btnEditIdentificationRow;
 
+    @FindBy(how = How.XPATH, using = "//tbody/tr[@role='row']/td[4]/button[2]")
+    private WebElement btnDeleteIdentificationRow;
+
 
 
     @Override
@@ -600,6 +603,16 @@ public class DemographicsPage extends BasePage<DemographicsPage> {
         waitElements(btnEditIdentificationRow);
         scrollToElementMove(btnEditIdentificationRow);
         click(btnEditIdentificationRow);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void clickButtonDeleteIdentifications()throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        pause(800);
+        waitElements(btnDeleteIdentificationRow);
+        scrollToElementMove(btnDeleteIdentificationRow);
+        click(btnDeleteIdentificationRow);
         pause(500);
         driver.switchTo().parentFrame();
     }

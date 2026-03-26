@@ -228,4 +228,9 @@ public class DemographicsSteps {
     public void iClickButtonEditIdentifications()throws InterruptedException  {
         demographicsPage.clickButtonEditIdentifications();
     }
+
+    @And("I click button delete identifications")
+    public void iClickButtonDeleteIdentifications()throws InterruptedException {
+        demographicsPage.clickButtonDeleteIdentifications();
+    }
 }
