@@ -234,6 +234,11 @@ public class DemographicsSteps {
         demographicsPage.clickEditSecondaryCentreButton();
     }
 
+    @And("I click button delete secondary centre")
+    public void iClickButtonDeleteSecondaryCentre() throws InterruptedException {
+        demographicsPage.clickDeleteSecondaryCentreButton();
+    }
+
     // ===================== IDENTIFICATION steps =====================
 
     @And("I select the identification type")
