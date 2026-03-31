@@ -197,6 +197,38 @@ public class DemographicsSteps {
         demographicsPage.cancelCentreRow();
     }
 
+    // ===================== SECONDARY CENTRE steps =====================
+
+    @And("I select a secondary centre in the new row")
+    public void iSelectASecondaryCentreInTheNewRow() throws InterruptedException {
+        demographicsPage.selectSecondaryCentreInNewRow();
+    }
+
+    @And("I enter the start date of the secondary centre row {string}")
+    public void iEnterTheStartDateOfTheSecondaryCentreRow(String date) throws InterruptedException {
+        demographicsPage.enterStartDateSecondaryCentreRow(date);
+    }
+
+    @And("I enter the end date of the secondary centre row {string}")
+    public void iEnterTheEndDateOfTheSecondaryCentreRow(String date) throws InterruptedException {
+        demographicsPage.enterEndDateSecondaryCentreRow(date);
+    }
+
+    @And("I select a category in the secondary centre row")
+    public void iSelectACategoryInTheSecondaryCentreRow() throws InterruptedException {
+        demographicsPage.selectCategorySecondaryCentreRow();
+    }
+
+    @And("I save the secondary centre row")
+    public void iSaveTheSecondaryCentreRow() throws InterruptedException {
+        demographicsPage.saveSecondaryCentreRow();
+    }
+
+    @And("I cancel the secondary centre row")
+    public void iCancelTheSecondaryCentreRow() throws InterruptedException {
+        demographicsPage.cancelSecondaryCentreRow();
+    }
+
     // ===================== IDENTIFICATION steps =====================
 
     @And("I select the identification type")
@@ -225,7 +257,7 @@ public class DemographicsSteps {
     }
 
     @And("I click button edit identifications")
-    public void iClickButtonEditIdentifications()throws InterruptedException  {
+    public void iClickButtonEditIdentifications()throws InterruptedException {
         demographicsPage.clickButtonEditIdentifications();
     }
 

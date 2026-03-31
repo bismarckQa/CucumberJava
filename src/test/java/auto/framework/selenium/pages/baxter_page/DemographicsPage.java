@@ -181,6 +181,33 @@ public class DemographicsPage extends BasePage<DemographicsPage> {
     private WebElement btnCancelCentreRow;
 
 
+    // ===================== SECONDARY CENTRE - grid inline edit =====================
+
+    @FindBy(how = How.XPATH, using = "//div[@id='rdAsignacionCentrosSecundarios']//td[@data-container-for='centroId']//span[contains(@class,'k-picker')]")
+    private WebElement dropDownSecondaryCentreInRow;
+
+    @FindBy(how = How.XPATH, using = "//div[@id='rdAsignacionCentrosSecundarios']//td[@data-container-for='centroId']//span[contains(@class,'k-input-inner')]")
+    private WebElement inputSecondaryCentreInRow;
+
+    @FindBy(how = How.XPATH, using = "(//div[@id='rdAsignacionCentrosSecundarios']//tr[contains(@class,'k-grid-edit-row')]//input[@data-role='datepicker'])[1]")
+    private WebElement inputStartDateSecondaryCentreRow;
+
+    @FindBy(how = How.XPATH, using = "//div[@id='rdAsignacionCentrosSecundarios']//td[@data-container-for='fechaFin']//input[@data-role='datepicker']")
+    private WebElement inputEndDateSecondaryCentreRow;
+
+    @FindBy(how = How.XPATH, using = "//div[@id='rdAsignacionCentrosSecundarios']//td[@data-container-for='categoriaId']//span[contains(@class,'k-picker')]")
+    private WebElement dropDownCategorySecondaryCentreRow;
+
+    @FindBy(how = How.XPATH, using = "//div[@id='rdAsignacionCentrosSecundarios']//td[@data-container-for='categoriaId']//span[contains(@class,'k-input-inner')]")
+    private WebElement inputCategorySecondaryCentreRow;
+
+    @FindBy(how = How.XPATH, using = "//div[@id='rdAsignacionCentrosSecundarios']//td[contains(@class,'k-command-cell')]//button[contains(@class,'k-grid-update')]")
+    private WebElement btnSaveSecondaryCentreRow;
+
+    @FindBy(how = How.XPATH, using = "//div[@id='rdAsignacionCentrosSecundarios']//td[contains(@class,'k-command-cell')]//button[contains(@class,'k-grid-cancel')]")
+    private WebElement btnCancelSecondaryCentreRow;
+
+
     // ===================== IDENTIFICATION - grid inline edit =====================
 
     @FindBy(how = How.XPATH, using = "//td[@data-container-for='tipoIdentificacionId']//span[@aria-label='select']")
@@ -206,6 +233,7 @@ public class DemographicsPage extends BasePage<DemographicsPage> {
 
     @FindBy(how = How.XPATH, using = "//tbody/tr[@role='row']/td[4]/button[2]")
     private WebElement btnDeleteIdentificationRow;
+
 
 
 
@@ -546,6 +574,63 @@ public class DemographicsPage extends BasePage<DemographicsPage> {
     }
 
 
+    // ===================== SECONDARY CENTRE methods =====================
+
+    public void selectSecondaryCentreInNewRow() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(dropDownSecondaryCentreInRow);
+        click(dropDownSecondaryCentreInRow);
+        pause(500);
+        clickBelowElementByOffset(inputSecondaryCentreInRow, 60);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void enterStartDateSecondaryCentreRow(String date) throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(inputStartDateSecondaryCentreRow);
+        inputStartDateSecondaryCentreRow.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+        inputStartDateSecondaryCentreRow.sendKeys(date);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void enterEndDateSecondaryCentreRow(String date) throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(inputEndDateSecondaryCentreRow);
+        inputEndDateSecondaryCentreRow.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+        inputEndDateSecondaryCentreRow.sendKeys(date);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void selectCategorySecondaryCentreRow() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(dropDownCategorySecondaryCentreRow);
+        click(dropDownCategorySecondaryCentreRow);
+        pause(500);
+        clickBelowElementByOffset(inputCategorySecondaryCentreRow, 30);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void saveSecondaryCentreRow() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(btnSaveSecondaryCentreRow);
+        click(btnSaveSecondaryCentreRow);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void cancelSecondaryCentreRow() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(btnCancelSecondaryCentreRow);
+        click(btnCancelSecondaryCentreRow);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+
     // ===================== IDENTIFICATION methods =====================
 
     public void selectIdentificationType() throws InterruptedException {
@@ -592,6 +677,14 @@ public class DemographicsPage extends BasePage<DemographicsPage> {
         driver.switchTo().frame("frmContenido");
         scrollToElementMove(btnCancelIdentificationRow);
         click(btnCancelIdentificationRow);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void clickEditIdentificationButton() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(btnEditIdentificationRow);
+        click(btnEditIdentificationRow);
         pause(500);
         driver.switchTo().parentFrame();
     }
