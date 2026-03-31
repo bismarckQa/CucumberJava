@@ -207,6 +207,9 @@ public class DemographicsPage extends BasePage<DemographicsPage> {
     @FindBy(how = How.XPATH, using = "//div[@id='rdAsignacionCentrosSecundarios']//td[contains(@class,'k-command-cell')]//button[contains(@class,'k-grid-cancel')]")
     private WebElement btnCancelSecondaryCentreRow;
 
+    @FindBy(how = How.XPATH, using = "//div[@id='rdAsignacionCentrosSecundarios']//td[contains(@class,'k-command-cell')]//button[contains(@class,'k-grid-edit')]")
+    private WebElement btnEditSecondaryCentreRow;
+
 
     // ===================== IDENTIFICATION - grid inline edit =====================
 
@@ -626,6 +629,16 @@ public class DemographicsPage extends BasePage<DemographicsPage> {
         driver.switchTo().frame("frmContenido");
         scrollToElementMove(btnCancelSecondaryCentreRow);
         click(btnCancelSecondaryCentreRow);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void clickEditSecondaryCentreButton() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        pause(800);
+        waitElements(btnEditSecondaryCentreRow);
+        scrollToElementMove(btnEditSecondaryCentreRow);
+        click(btnEditSecondaryCentreRow);
         pause(500);
         driver.switchTo().parentFrame();
     }
