@@ -214,6 +214,39 @@ public class DemographicsPage extends BasePage<DemographicsPage> {
     private WebElement btnDeleteSecondaryCentreRow;
 
 
+    // ===================== STAFF MEMBER ASSIGNMENT - grid inline edit =====================
+
+    @FindBy(how = How.XPATH, using = "//div[@id='rdAsignacionPersonal']//td[@data-container-for='profesionId']//span[contains(@class,'k-picker')]")
+    private WebElement dropDownProfessionInRow;
+
+    @FindBy(how = How.XPATH, using = "//div[@id='rdAsignacionPersonal']//td[@data-container-for='profesionId']//span[contains(@class,'k-input-inner')]")
+    private WebElement inputProfessionInRow;
+
+    @FindBy(how = How.XPATH, using = "//div[@id='rdAsignacionPersonal']//td[@data-container-for='personalId']//span[contains(@class,'k-picker')]")
+    private WebElement dropDownStaffNameInRow;
+
+    @FindBy(how = How.XPATH, using = "//div[@id='rdAsignacionPersonal']//td[@data-container-for='personalId']//span[contains(@class,'k-input-inner')]")
+    private WebElement inputStaffNameInRow;
+
+    @FindBy(how = How.XPATH, using = "(//div[@id='rdAsignacionPersonal']//tr[contains(@class,'k-grid-edit-row')]//input[@data-role='datepicker'])[1]")
+    private WebElement inputStartDateStaffRow;
+
+    @FindBy(how = How.XPATH, using = "//div[@id='rdAsignacionPersonal']//input[@name='primario']")
+    private WebElement checkboxPrimaryStaff;
+
+    @FindBy(how = How.XPATH, using = "//div[@id='rdAsignacionPersonal']//td[contains(@class,'k-command-cell')]//button[contains(@class,'k-grid-update')]")
+    private WebElement btnSaveStaffRow;
+
+    @FindBy(how = How.XPATH, using = "//div[@id='rdAsignacionPersonal']//td[contains(@class,'k-command-cell')]//button[contains(@class,'k-grid-cancel')]")
+    private WebElement btnCancelStaffRow;
+
+    @FindBy(how = How.XPATH, using = "//div[@id='rdAsignacionPersonal']//td[contains(@class,'k-command-cell')]//button[contains(@class,'k-grid-edit')]")
+    private WebElement btnEditStaffRow;
+
+    @FindBy(how = How.XPATH, using = "//div[@id='rdAsignacionPersonal']//td[contains(@class,'k-command-cell')]//button[contains(@class,'k-grid-borrar')]")
+    private WebElement btnDeleteStaffRow;
+
+
     // ===================== IDENTIFICATION - grid inline edit =====================
 
     @FindBy(how = How.XPATH, using = "//td[@data-container-for='tipoIdentificacionId']//span[@aria-label='select']")
@@ -652,6 +685,82 @@ public class DemographicsPage extends BasePage<DemographicsPage> {
         waitElements(btnDeleteSecondaryCentreRow);
         scrollToElementMove(btnDeleteSecondaryCentreRow);
         click(btnDeleteSecondaryCentreRow);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+
+    // ===================== STAFF MEMBER ASSIGNMENT methods =====================
+
+    public void selectProfessionInNewRow() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(dropDownProfessionInRow);
+        click(dropDownProfessionInRow);
+        pause(500);
+        clickBelowElementByOffset(inputProfessionInRow, 120);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void selectStaffNameInNewRow() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(dropDownStaffNameInRow);
+        click(dropDownStaffNameInRow);
+        pause(500);
+        clickBelowElementByOffset(inputStaffNameInRow, 80);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void enterStartDateStaffRow(String date) throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(inputStartDateStaffRow);
+        inputStartDateStaffRow.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+        inputStartDateStaffRow.sendKeys(date);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void checkPrimaryStaff() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(checkboxPrimaryStaff);
+        click(checkboxPrimaryStaff);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void saveStaffRow() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(btnSaveStaffRow);
+        click(btnSaveStaffRow);
+        pause(1000);
+        driver.switchTo().parentFrame();
+    }
+
+    public void cancelStaffRow() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(btnCancelStaffRow);
+        click(btnCancelStaffRow);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void clickEditStaffButton() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        pause(800);
+        waitElements(btnEditStaffRow);
+        scrollToElementMove(btnEditStaffRow);
+        click(btnEditStaffRow);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void clickDeleteStaffButton() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        pause(800);
+        waitElements(btnDeleteStaffRow);
+        scrollToElementMove(btnDeleteStaffRow);
+        click(btnDeleteStaffRow);
         pause(500);
         driver.switchTo().parentFrame();
     }

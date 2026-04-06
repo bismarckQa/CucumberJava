@@ -239,6 +239,49 @@ public class DemographicsSteps {
         demographicsPage.clickDeleteSecondaryCentreButton();
     }
 
+    // ===================== STAFF MEMBER ASSIGNMENT steps =====================
+
+    @And("I select a profession in the staff row")
+    public void iSelectAProfessionInTheStaffRow() throws InterruptedException {
+        demographicsPage.selectProfessionInNewRow();
+    }
+
+    @And("I select a staff name in the staff row")
+    public void iSelectAStaffNameInTheStaffRow() throws InterruptedException {
+        demographicsPage.selectStaffNameInNewRow();
+    }
+
+    @And("I enter the start date of the staff row {string}")
+    public void iEnterTheStartDateOfTheStaffRow(String date) throws InterruptedException {
+        demographicsPage.enterStartDateStaffRow(date);
+    }
+
+    @And("I check the primary staff checkbox")
+    public void iCheckThePrimaryStaffCheckbox() throws InterruptedException {
+        demographicsPage.checkPrimaryStaff();
+    }
+
+    @And("I save the staff row")
+    public void iSaveTheStaffRow() throws InterruptedException {
+        demographicsPage.saveStaffRow();
+    }
+
+    @And("I cancel the staff row")
+    public void iCancelTheStaffRow() throws InterruptedException {
+        demographicsPage.cancelStaffRow();
+    }
+
+    @And("I click button edit staff")
+    public void iClickButtonEditStaff() throws InterruptedException {
+        demographicsPage.clickEditStaffButton();
+    }
+
+    @And("I click button delete staff")
+    public void iClickButtonDeleteStaff() throws InterruptedException {
+        demographicsPage.clickDeleteStaffButton();
+    }
+
+
     // ===================== IDENTIFICATION steps =====================
 
     @And("I select the identification type")
