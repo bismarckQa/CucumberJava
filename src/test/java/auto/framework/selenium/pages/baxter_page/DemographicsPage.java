@@ -231,6 +231,7 @@ public class DemographicsPage extends BasePage<DemographicsPage> {
     @FindBy(how = How.XPATH, using = "(//div[@id='rdAsignacionPersonal']//tr[contains(@class,'k-grid-edit-row')]//input[@data-role='datepicker'])[1]")
     private WebElement inputStartDateStaffRow;
 
+
     @FindBy(how = How.XPATH, using = "//div[@id='rdAsignacionPersonal']//input[@name='primario']")
     private WebElement checkboxPrimaryStaff;
 
@@ -243,8 +244,62 @@ public class DemographicsPage extends BasePage<DemographicsPage> {
     @FindBy(how = How.XPATH, using = "//div[@id='rdAsignacionPersonal']//td[contains(@class,'k-command-cell')]//button[contains(@class,'k-grid-edit')]")
     private WebElement btnEditStaffRow;
 
-    @FindBy(how = How.XPATH, using = "//div[@id='rdAsignacionPersonal']//td[contains(@class,'k-command-cell')]//button[contains(@class,'k-grid-borrar')]")
+    @FindBy(how = How.XPATH, using = "//div[@id='rdAsignacionPersonal']//tbody//tr[2]//td[contains(@class,'k-command-cell')]//button[contains(@class,'k-grid-borrar')]")
     private WebElement btnDeleteStaffRow;
+
+
+    // ===================== CONTACT ADDRESSES - grid inline edit =====================
+
+    @FindBy(how = How.XPATH, using = "//div[@id='rdDireccionContacto']//td[@data-container-for='tipoDireccionId']//span[contains(@class,'k-picker')]")
+    private WebElement dropDownContactAddressTypeInRow;
+
+    @FindBy(how = How.XPATH, using = "//div[@id='rdDireccionContacto']//td[@data-container-for='tipoDireccionId']//span[contains(@class,'k-input-inner')]")
+    private WebElement inputContactAddressTypeInRow;
+
+    @FindBy(how = How.XPATH, using = "//div[@id='rdDireccionContacto']//td[@data-container-for='direccion']//input")
+    private WebElement inputAddressContactAddressRow;
+
+    @FindBy(how = How.XPATH, using = "//div[@id='rdDireccionContacto']//td[@data-container-for='paisId']//span[contains(@class,'k-picker')]")
+    private WebElement dropDownCountryContactAddressRow;
+
+    @FindBy(how = How.XPATH, using = "//div[@id='rdDireccionContacto']//td[@data-container-for='paisId']//span[contains(@class,'k-input-inner')]")
+    private WebElement inputCountryContactAddressRow;
+
+    @FindBy(how = How.XPATH, using = "//div[@id='rdDireccionContacto']//td[@data-container-for='provinciaId']//span[contains(@class,'k-picker')]")
+    private WebElement dropDownProvinceContactAddressRow;
+
+    @FindBy(how = How.XPATH, using = "//div[@id='rdDireccionContacto']//td[@data-container-for='provinciaId']//span[contains(@class,'k-input-inner')]")
+    private WebElement inputProvinceContactAddressRow;
+
+    @FindBy(how = How.XPATH, using = "//div[@id='rdDireccionContacto']//td[@data-container-for='ciudad']//span[contains(@class,'k-picker')]")
+    private WebElement dropDownCityContactAddressRow;
+
+    @FindBy(how = How.XPATH, using = "//div[@id='rdDireccionContacto']//td[@data-container-for='ciudad']//span[contains(@class,'k-input-inner')]")
+    private WebElement inputCityContactAddressRow;
+
+    @FindBy(how = How.XPATH, using = "//div[@id='rdDireccionContacto']//td[@data-container-for='codPostal']//input")
+    private WebElement inputZipCodeContactAddressRow;
+
+    @FindBy(how = How.XPATH, using = "//div[@id='rdDireccionContacto']//td[@data-container-for='zonaSanitariaId']//span[contains(@class,'k-picker')]")
+    private WebElement dropDownHealthZoneContactAddressRow;
+
+    @FindBy(how = How.XPATH, using = "//div[@id='rdDireccionContacto']//td[@data-container-for='zonaSanitariaId']//span[contains(@class,'k-input-inner')]")
+    private WebElement inputHealthZoneContactAddressRow;
+
+    @FindBy(how = How.XPATH, using = "(//div[@id='rdDireccionContacto']//tr[contains(@class,'k-grid-edit-row')]//input[@data-role='datepicker'])[1]")
+    private WebElement inputStartDateContactAddressRow;
+
+    @FindBy(how = How.XPATH, using = "//div[@id='rdDireccionContacto']//td[@data-container-for='fechaFin']//input[@data-role='datepicker']")
+    private WebElement inputEndDateContactAddressRow;
+
+    @FindBy(how = How.XPATH, using = "//div[@id='rdDireccionContacto']//td[@data-container-for='otros']//input")
+    private WebElement inputOtherContactAddressRow;
+
+    @FindBy(how = How.XPATH, using = "//div[@id='rdDireccionContacto']//td[contains(@class,'k-command-cell')]//button[contains(@class,'k-grid-update')]")
+    private WebElement btnSaveContactAddressRow;
+
+    @FindBy(how = How.XPATH, using = "//div[@id='rdDireccionContacto']//td[contains(@class,'k-command-cell')]//button[contains(@class,'k-grid-cancel')]")
+    private WebElement btnCancelContactAddressRow;
 
 
     // ===================== IDENTIFICATION - grid inline edit =====================
@@ -733,7 +788,7 @@ public class DemographicsPage extends BasePage<DemographicsPage> {
         driver.switchTo().frame("frmContenido");
         scrollToElementMove(btnSaveStaffRow);
         click(btnSaveStaffRow);
-        pause(1000);
+        pause(500);
         driver.switchTo().parentFrame();
     }
 
@@ -761,6 +816,122 @@ public class DemographicsPage extends BasePage<DemographicsPage> {
         waitElements(btnDeleteStaffRow);
         scrollToElementMove(btnDeleteStaffRow);
         click(btnDeleteStaffRow);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+
+    // ===================== CONTACT ADDRESSES methods =====================
+
+    public void selectContactAddressTypeInNewRow() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(dropDownContactAddressTypeInRow);
+        click(dropDownContactAddressTypeInRow);
+        pause(500);
+        clickBelowElementByOffset(inputContactAddressTypeInRow, 40);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void enterAddressContactAddressRow(String address) throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(inputAddressContactAddressRow);
+        inputAddressContactAddressRow.clear();
+        write(inputAddressContactAddressRow, address);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void selectCountryContactAddressRow() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(dropDownCountryContactAddressRow);
+        click(dropDownCountryContactAddressRow);
+        pause(500);
+        clickBelowElementByOffset(inputCountryContactAddressRow, 40);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void selectProvinceContactAddressRow() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(dropDownProvinceContactAddressRow);
+        click(dropDownProvinceContactAddressRow);
+        pause(500);
+        clickBelowElementByOffset(inputProvinceContactAddressRow, 90);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void selectCityContactAddressRow() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(dropDownCityContactAddressRow);
+        click(dropDownCityContactAddressRow);
+        pause(500);
+        clickBelowElementByOffset(inputCityContactAddressRow, 90);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void enterZipCodeContactAddressRow(String zipCode) throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(inputZipCodeContactAddressRow);
+        inputZipCodeContactAddressRow.clear();
+        write(inputZipCodeContactAddressRow, zipCode);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void selectHealthZoneContactAddressRow() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(dropDownHealthZoneContactAddressRow);
+        click(dropDownHealthZoneContactAddressRow);
+        pause(500);
+        clickBelowElementByOffset(inputHealthZoneContactAddressRow, 40);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void enterStartDateContactAddressRow(String date) throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(inputStartDateContactAddressRow);
+        click(inputStartDateContactAddressRow);
+        inputStartDateContactAddressRow.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+        inputStartDateContactAddressRow.sendKeys(date);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void enterEndDateContactAddressRow(String date) throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(inputEndDateContactAddressRow);
+        click(inputEndDateContactAddressRow);
+        inputEndDateContactAddressRow.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+        inputEndDateContactAddressRow.sendKeys(date);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void enterOtherContactAddressRow(String other) throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(inputOtherContactAddressRow);
+        inputOtherContactAddressRow.clear();
+        write(inputOtherContactAddressRow, other);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void saveContactAddressRow() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(btnSaveContactAddressRow);
+        click(btnSaveContactAddressRow);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void cancelContactAddressRow() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(btnCancelContactAddressRow);
+        click(btnCancelContactAddressRow);
         pause(500);
         driver.switchTo().parentFrame();
     }

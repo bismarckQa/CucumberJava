@@ -281,6 +281,78 @@ public class DemographicsSteps {
         demographicsPage.clickDeleteStaffButton();
     }
 
+    @And("I click the finalize button on the staff row")
+    public void iClickTheFinalizeButtonOnTheStaffRow() throws InterruptedException {
+        demographicsPage.clickDeleteStaffButton();
+    }
+
+
+
+
+
+
+    // ===================== CONTACT ADDRESSES steps =====================
+
+    @And("I select a contact address type in the new row")
+    public void iSelectAContactAddressTypeInTheNewRow() throws InterruptedException {
+        demographicsPage.selectContactAddressTypeInNewRow();
+    }
+
+    @And("I enter the address in the contact address row {string}")
+    public void iEnterTheAddressInTheContactAddressRow(String address) throws InterruptedException {
+        demographicsPage.enterAddressContactAddressRow(address);
+    }
+
+    @And("I select a country in the contact address row")
+    public void iSelectACountryInTheContactAddressRow() throws InterruptedException {
+        demographicsPage.selectCountryContactAddressRow();
+    }
+
+    @And("I select a province in the contact address row")
+    public void iSelectAProvinceInTheContactAddressRow() throws InterruptedException {
+        demographicsPage.selectProvinceContactAddressRow();
+    }
+
+    @And("I select a city in the contact address row")
+    public void iSelectACityInTheContactAddressRow() throws InterruptedException {
+        demographicsPage.selectCityContactAddressRow();
+    }
+
+    @And("I enter the ZIP code in the contact address row {string}")
+    public void iEnterTheZipCodeInTheContactAddressRow(String zipCode) throws InterruptedException {
+        demographicsPage.enterZipCodeContactAddressRow(zipCode);
+    }
+
+    @And("I select a health zone in the contact address row")
+    public void iSelectAHealthZoneInTheContactAddressRow() throws InterruptedException {
+        demographicsPage.selectHealthZoneContactAddressRow();
+    }
+
+    @And("I enter the start date of the contact address row {string}")
+    public void iEnterTheStartDateOfTheContactAddressRow(String date) throws InterruptedException {
+        demographicsPage.enterStartDateContactAddressRow(date);
+    }
+
+    @And("I enter the end date of the contact address row {string}")
+    public void iEnterTheEndDateOfTheContactAddressRow(String date) throws InterruptedException {
+        demographicsPage.enterEndDateContactAddressRow(date);
+    }
+
+    @And("I save the contact address row")
+    public void iSaveTheContactAddressRow() throws InterruptedException {
+        demographicsPage.saveContactAddressRow();
+    }
+
+    @And("I enter the other field in the contact address row {string}")
+    public void iEnterTheOtherFieldInTheContactAddressRow(String other) throws InterruptedException {
+        demographicsPage.enterOtherContactAddressRow(other);
+    }
+
+    @And("I cancel the contact address row")
+    public void iCancelTheContactAddressRow() throws InterruptedException {
+        demographicsPage.cancelContactAddressRow();
+    }
+
 
     // ===================== IDENTIFICATION steps =====================
 

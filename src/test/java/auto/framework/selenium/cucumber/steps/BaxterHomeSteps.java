@@ -210,4 +210,9 @@ public class BaxterHomeSteps {
     public void iDismissBrowserAlert() {
         BaxterHomePage.dismissBrowserAlert();
     }
+
+    @Then("I verify the action was performed successfully")
+    public void iVerifyTheActionWasPerformedSuccessfully() {
+        BaxterHomePage.waitForActionComplete();
+    }
 }

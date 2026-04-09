@@ -47,9 +47,9 @@ public abstract class BasePage <P>{
 
     private <T> WebElement waitElement(T elementAttr) {
         if (elementAttr
-            .getClass()
-            .getName()
-            .contains("By")) {
+                .getClass()
+                .getName()
+                .contains("By")) {
             return this.wait.until(ExpectedConditions.presenceOfElementLocated((By) elementAttr));
         } else {
             return this.wait.until(ExpectedConditions.elementToBeClickable((WebElement) elementAttr));
@@ -58,9 +58,9 @@ public abstract class BasePage <P>{
 
     protected  <T> List<WebElement> waitElements(T elementAttr) {
         if (elementAttr
-            .getClass()
-            .getName()
-            .contains("By")) {
+                .getClass()
+                .getName()
+                .contains("By")) {
             return this.wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy((By) elementAttr));
         } else {
             return this.wait.until(ExpectedConditions.visibilityOfAllElements((WebElement) elementAttr));
@@ -284,8 +284,8 @@ public abstract class BasePage <P>{
         List<WebElement> popup = driver.findElements(by);
         if (!popup.isEmpty()) {
             popup
-                .get(0)
-                .click();
+                    .get(0)
+                    .click();
             Thread.sleep(200);
         }
         return (P)this;
@@ -294,6 +294,17 @@ public abstract class BasePage <P>{
     protected <T> P pause(int i) throws InterruptedException {
         Thread.sleep(1000);
         return (P)this;
+    }
+
+    public void waitForActionComplete() {
+        try {
+            Thread.sleep(4000);
+            wait.until(ExpectedConditions.invisibilityOfElementLocated(
+                    By.cssSelector(".k-loading-mask")
+            ));
+        } catch (InterruptedException | TimeoutException e) {
+            Thread.currentThread().interrupt();
+        }
     }
 
     public void scrollByPixels(int pixels){
@@ -362,13 +373,13 @@ public abstract class BasePage <P>{
         String partialAttrCI = "contains(" + lowerExpr("normalize-space(@%s)") + ",%s) and not(contains(@class,'ng-hide'))";
 
         String[] tags = {
-            "button",
-            "a",
-            "div",
-            "span",
-            "li",
-            "*[@role='button']",
-            "input[@type='button' or @type='submit']"
+                "button",
+                "a",
+                "div",
+                "span",
+                "li",
+                "*[@role='button']",
+                "input[@type='button' or @type='submit']"
         };
 
         String[] attrNames = {"aria-label", "title", "value"};
@@ -477,7 +488,7 @@ public abstract class BasePage <P>{
         new WebDriverWait(driver, Duration.ofSeconds(3)).until(ExpectedConditions.alertIsPresent()).dismiss();
     }
 
-protected void clickPrintPreviewButton(String action) throws InterruptedException {
+    protected void clickPrintPreviewButton(String action) throws InterruptedException {
         pause(1000);
         String mainHandle = driver.getWindowHandle();
         String printHandle = mainHandle;
@@ -490,17 +501,17 @@ protected void clickPrintPreviewButton(String action) throws InterruptedExceptio
         }
         pause(500);
         String script =
-            "function clickInShadow(root, text) {" +
-            "  for (const el of root.querySelectorAll('*')) {" +
-            "    if ((el.tagName === 'CR-BUTTON' || el.tagName === 'BUTTON') &&" +
-            "        el.textContent.trim().toLowerCase().includes(text.toLowerCase())) {" +
-            "      el.click(); return true;" +
-            "    }" +
-            "    if (el.shadowRoot && clickInShadow(el.shadowRoot, text)) return true;" +
-            "  }" +
-            "  return false;" +
-            "}" +
-            "return clickInShadow(document, arguments[0]);";
+                "function clickInShadow(root, text) {" +
+                        "  for (const el of root.querySelectorAll('*')) {" +
+                        "    if ((el.tagName === 'CR-BUTTON' || el.tagName === 'BUTTON') &&" +
+                        "        el.textContent.trim().toLowerCase().includes(text.toLowerCase())) {" +
+                        "      el.click(); return true;" +
+                        "    }" +
+                        "    if (el.shadowRoot && clickInShadow(el.shadowRoot, text)) return true;" +
+                        "  }" +
+                        "  return false;" +
+                        "}" +
+                        "return clickInShadow(document, arguments[0]);";
         Boolean clicked = (Boolean) javascriptExecutor.executeScript(script, action);
         if (clicked == null || !clicked) {
             throw new NoSuchElementException("Print preview button not found: " + action);
