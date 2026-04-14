@@ -293,6 +293,11 @@ public class DemographicsSteps {
 
     // ===================== CONTACT ADDRESSES steps =====================
 
+    @And("I click button edit contact address")
+    public void iClickButtonEditContactAddress() throws InterruptedException {
+        demographicsPage.clickEditContactAddressButton();
+    }
+
     @And("I select a contact address type in the new row")
     public void iSelectAContactAddressTypeInTheNewRow() throws InterruptedException {
         demographicsPage.selectContactAddressTypeInNewRow();
@@ -338,6 +343,11 @@ public class DemographicsSteps {
         demographicsPage.enterEndDateContactAddressRow(date);
     }
 
+    @And("I clear the dates of the contact address row")
+    public void iClearTheDatesOfTheContactAddressRow() throws InterruptedException {
+        demographicsPage.clearDatesContactAddressRow();
+    }
+
     @And("I save the contact address row")
     public void iSaveTheContactAddressRow() throws InterruptedException {
         demographicsPage.saveContactAddressRow();
@@ -351,6 +361,11 @@ public class DemographicsSteps {
     @And("I cancel the contact address row")
     public void iCancelTheContactAddressRow() throws InterruptedException {
         demographicsPage.cancelContactAddressRow();
+    }
+
+    @And("I click button delete contact address")
+    public void iClickButtonDeleteContactAddress() throws InterruptedException {
+        demographicsPage.clickDeleteContactAddressButton();
     }
 
 

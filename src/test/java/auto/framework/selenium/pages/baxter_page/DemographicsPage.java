@@ -301,6 +301,12 @@ public class DemographicsPage extends BasePage<DemographicsPage> {
     @FindBy(how = How.XPATH, using = "//div[@id='rdDireccionContacto']//td[contains(@class,'k-command-cell')]//button[contains(@class,'k-grid-cancel')]")
     private WebElement btnCancelContactAddressRow;
 
+    @FindBy(how = How.XPATH, using = "//div[@id='rdDireccionContacto']//td[contains(@class,'k-command-cell')]//button[contains(@class,'k-grid-edit')]")
+    private WebElement btnEditContactAddressRow;
+
+    @FindBy(how = How.XPATH, using = "//div[@id='rdDireccionContacto']//td[contains(@class,'k-command-cell')]//button[contains(@class,'k-grid-borrar')]")
+    private WebElement btnDeleteContactAddressRow;
+
 
     // ===================== IDENTIFICATION - grid inline edit =====================
 
@@ -823,6 +829,16 @@ public class DemographicsPage extends BasePage<DemographicsPage> {
 
     // ===================== CONTACT ADDRESSES methods =====================
 
+    public void clickEditContactAddressButton() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        pause(800);
+        waitElements(btnEditContactAddressRow);
+        scrollToElementMove(btnEditContactAddressRow);
+        click(btnEditContactAddressRow);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
     public void selectContactAddressTypeInNewRow() throws InterruptedException {
         driver.switchTo().frame("frmContenido");
         scrollToElementMove(dropDownContactAddressTypeInRow);
@@ -911,6 +927,21 @@ public class DemographicsPage extends BasePage<DemographicsPage> {
         driver.switchTo().parentFrame();
     }
 
+    public void clearDatesContactAddressRow() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(inputStartDateContactAddressRow);
+        click(inputStartDateContactAddressRow);
+        inputStartDateContactAddressRow.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+        inputStartDateContactAddressRow.sendKeys(Keys.DELETE);
+        pause(300);
+        scrollToElementMove(inputEndDateContactAddressRow);
+        click(inputEndDateContactAddressRow);
+        inputEndDateContactAddressRow.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+        inputEndDateContactAddressRow.sendKeys(Keys.DELETE);
+        pause(300);
+        driver.switchTo().parentFrame();
+    }
+
     public void enterOtherContactAddressRow(String other) throws InterruptedException {
         driver.switchTo().frame("frmContenido");
         scrollToElementMove(inputOtherContactAddressRow);
@@ -932,6 +963,16 @@ public class DemographicsPage extends BasePage<DemographicsPage> {
         driver.switchTo().frame("frmContenido");
         scrollToElementMove(btnCancelContactAddressRow);
         click(btnCancelContactAddressRow);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void clickDeleteContactAddressButton() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        pause(800);
+        waitElements(btnDeleteContactAddressRow);
+        scrollToElementMove(btnDeleteContactAddressRow);
+        click(btnDeleteContactAddressRow);
         pause(500);
         driver.switchTo().parentFrame();
     }
