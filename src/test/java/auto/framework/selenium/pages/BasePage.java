@@ -332,6 +332,26 @@ public abstract class BasePage <P>{
         js.executeScript(script, referenceElement, offsetY);
     }
 
+    public void clickAboveElementByOffset(WebElement referenceElement, int offsetY) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        String script = """
+        var rect = arguments[0].getBoundingClientRect();
+        var x = rect.left + (rect.width / 2);
+        var y = rect.top + (rect.height / 2) - arguments[1];
+
+        var clickEvent = new MouseEvent('click', {
+            view: window,
+            bubbles: true,
+            cancelable: true,
+            clientX: x,
+            clientY: y
+        });
+
+        document.elementFromPoint(x, y).dispatchEvent(clickEvent);
+    """;
+        js.executeScript(script, referenceElement, offsetY);
+    }
+
     private String xpathLiteral(String s) {
         if (s.contains("'") && s.contains("\"")) {
             StringBuilder sb = new StringBuilder("concat(");

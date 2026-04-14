@@ -308,6 +308,30 @@ public class DemographicsPage extends BasePage<DemographicsPage> {
     private WebElement btnDeleteContactAddressRow;
 
 
+    // ===================== TRANSPORT METHOD - grid inline edit =====================
+
+    @FindBy(how = How.XPATH, using = "//div[@id='rdMedioTransporte']//td[@data-container-for='proporcionadoPorId']//span[contains(@class,'k-picker')]")
+    private WebElement dropDownProvidedByTransportRow;
+
+    @FindBy(how = How.XPATH, using = "//div[@id='rdMedioTransporte']//td[@data-container-for='proporcionadoPorId']//span[contains(@class,'k-input-inner')]")
+    private WebElement inputProvidedByTransportRow;
+
+    @FindBy(how = How.XPATH, using = "//div[@id='rdMedioTransporte']//td[@data-container-for='telefono']//input")
+    private WebElement inputTelephoneTransportRow;
+
+    @FindBy(how = How.XPATH, using = "//div[@id='rdMedioTransporte']//td[@data-container-for='contacto']//input")
+    private WebElement inputContactTransportRow;
+
+    @FindBy(how = How.XPATH, using = "//div[@id='rdMedioTransporte']//td[@data-container-for='observaciones']//input")
+    private WebElement inputObservationsTransportRow;
+
+    @FindBy(how = How.XPATH, using = "//div[@id='rdMedioTransporte']//td[contains(@class,'k-command-cell')]//button[contains(@class,'k-grid-update')]")
+    private WebElement btnSaveTransportRow;
+
+    @FindBy(how = How.XPATH, using = "//div[@id='rdMedioTransporte']//td[contains(@class,'k-command-cell')]//button[contains(@class,'k-grid-cancel')]")
+    private WebElement btnCancelTransportRow;
+
+
     // ===================== IDENTIFICATION - grid inline edit =====================
 
     @FindBy(how = How.XPATH, using = "//td[@data-container-for='tipoIdentificacionId']//span[@aria-label='select']")
@@ -973,6 +997,63 @@ public class DemographicsPage extends BasePage<DemographicsPage> {
         waitElements(btnDeleteContactAddressRow);
         scrollToElementMove(btnDeleteContactAddressRow);
         click(btnDeleteContactAddressRow);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+
+    // ===================== TRANSPORT METHOD methods =====================
+
+    public void selectProvidedByTransportRow() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(dropDownProvidedByTransportRow);
+        click(dropDownProvidedByTransportRow);
+        pause(600);
+        waitElements(inputProvidedByTransportRow);
+        clickAboveElementByOffset(inputProvidedByTransportRow, 40);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void enterTelephoneTransportRow(String telephone) throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(inputTelephoneTransportRow);
+        inputTelephoneTransportRow.clear();
+        write(inputTelephoneTransportRow, telephone);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void enterContactTransportRow(String contact) throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(inputContactTransportRow);
+        inputContactTransportRow.clear();
+        write(inputContactTransportRow, contact);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void enterObservationsTransportRow(String observations) throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(inputObservationsTransportRow);
+        inputObservationsTransportRow.clear();
+        write(inputObservationsTransportRow, observations);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void saveTransportRow() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(btnSaveTransportRow);
+        click(btnSaveTransportRow);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void cancelTransportRow() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(btnCancelTransportRow);
+        click(btnCancelTransportRow);
         pause(500);
         driver.switchTo().parentFrame();
     }

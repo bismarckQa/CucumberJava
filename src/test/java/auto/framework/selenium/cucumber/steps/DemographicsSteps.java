@@ -369,6 +369,39 @@ public class DemographicsSteps {
     }
 
 
+    // ===================== TRANSPORT METHOD steps =====================
+
+    @And("I select a provided by in the transport method row")
+    public void iSelectAProvidedByInTheTransportMethodRow() throws InterruptedException {
+        demographicsPage.selectProvidedByTransportRow();
+    }
+
+    @And("I enter the telephone in the transport method row {string}")
+    public void iEnterTheTelephoneInTheTransportMethodRow(String telephone) throws InterruptedException {
+        demographicsPage.enterTelephoneTransportRow(telephone);
+    }
+
+    @And("I enter the contact in the transport method row {string}")
+    public void iEnterTheContactInTheTransportMethodRow(String contact) throws InterruptedException {
+        demographicsPage.enterContactTransportRow(contact);
+    }
+
+    @And("I enter the observations in the transport method row {string}")
+    public void iEnterTheObservationsInTheTransportMethodRow(String observations) throws InterruptedException {
+        demographicsPage.enterObservationsTransportRow(observations);
+    }
+
+    @And("I save the transport method row")
+    public void iSaveTheTransportMethodRow() throws InterruptedException {
+        demographicsPage.saveTransportRow();
+    }
+
+    @And("I cancel the transport method row")
+    public void iCancelTheTransportMethodRow() throws InterruptedException {
+        demographicsPage.cancelTransportRow();
+    }
+
+
     // ===================== IDENTIFICATION steps =====================
 
     @And("I select the identification type")
