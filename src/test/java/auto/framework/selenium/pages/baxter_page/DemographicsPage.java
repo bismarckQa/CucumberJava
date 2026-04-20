@@ -331,6 +331,66 @@ public class DemographicsPage extends BasePage<DemographicsPage> {
     @FindBy(how = How.XPATH, using = "//div[@id='rdMedioTransporte']//td[contains(@class,'k-command-cell')]//button[contains(@class,'k-grid-cancel')]")
     private WebElement btnCancelTransportRow;
 
+    @FindBy(how = How.XPATH, using = "//div[@id='rdMedioTransporte']//td[contains(@class,'k-command-cell')]//button[contains(@class,'k-grid-edit')]")
+    private WebElement btnEditTransportRow;
+
+    @FindBy(how = How.XPATH, using = "//div[@id='rdMedioTransporte']//td[contains(@class,'k-command-cell')]//button[contains(@class,'k-grid-borrar')]")
+    private WebElement btnDeleteTransportRow;
+
+
+    // ===================== EMERGENCY CONTACTS - grid inline edit =====================
+
+    @FindBy(how = How.XPATH, using = "//div[@id='rdEmergencia']//td[@data-container-for='nombre']//input")
+    private WebElement inputNameEmergencyContactRow;
+
+    @FindBy(how = How.XPATH, using = "//div[@id='rdEmergencia']//td[@data-container-for='telefono']//input")
+    private WebElement inputTelephoneEmergencyContactRow;
+
+    @FindBy(how = How.XPATH, using = "//div[@id='rdEmergencia']//td[@data-container-for='relacionId']//span[contains(@class,'k-picker')]")
+    private WebElement dropDownRelationshipEmergencyContactRow;
+
+    @FindBy(how = How.XPATH, using = "//div[@id='rdEmergencia']//td[@data-container-for='relacionId']//span[contains(@class,'k-input-inner')]")
+    private WebElement inputRelationshipEmergencyContactRow;
+
+    @FindBy(how = How.XPATH, using = "//div[@id='rdEmergencia']//input[@name='primario']")
+    private WebElement checkboxPrimaryEmergencyContact;
+
+    @FindBy(how = How.XPATH, using = "//div[@id='rdEmergencia']//td[contains(@class,'k-command-cell')]//button[contains(@class,'k-grid-update')]")
+    private WebElement btnSaveEmergencyContactRow;
+
+    @FindBy(how = How.XPATH, using = "//div[@id='rdEmergencia']//td[contains(@class,'k-command-cell')]//button[contains(@class,'k-grid-cancel')]")
+    private WebElement btnCancelEmergencyContactRow;
+
+    @FindBy(how = How.XPATH, using = "//div[@id='rdEmergencia']//td[contains(@class,'k-command-cell')]//button[contains(@class,'k-grid-edit')]")
+    private WebElement btnEditEmergencyContactRow;
+
+    @FindBy(how = How.XPATH, using = "//div[@id='rdEmergencia']//td[contains(@class,'k-command-cell')]//button[contains(@class,'k-grid-borrar')]")
+    private WebElement btnDeleteEmergencyContactRow;
+
+
+    // ===================== CONTACT METHOD - grid inline edit =====================
+
+    @FindBy(how = How.XPATH, using = "//div[@id='rdMedioContacto']//td[@data-container-for='tipoContactoId']//span[contains(@class,'k-picker')]")
+    private WebElement dropDownContactTypeInRow;
+
+    @FindBy(how = How.XPATH, using = "//div[@id='rdMedioContacto']//td[@data-container-for='tipoContactoId']//span[contains(@class,'k-input-inner')]")
+    private WebElement inputContactTypeInRow;
+
+    @FindBy(how = How.XPATH, using = "//div[@id='rdMedioContacto']//td[@data-container-for='info']//input")
+    private WebElement inputContactMethodValueInRow;
+
+    @FindBy(how = How.XPATH, using = "//div[@id='rdMedioContacto']//td[contains(@class,'k-command-cell')]//button[contains(@class,'k-grid-update')]")
+    private WebElement btnSaveContactMethodRow;
+
+    @FindBy(how = How.XPATH, using = "//div[@id='rdMedioContacto']//td[contains(@class,'k-command-cell')]//button[contains(@class,'k-grid-cancel')]")
+    private WebElement btnCancelContactMethodRow;
+
+    @FindBy(how = How.XPATH, using = "//div[@id='rdMedioContacto']//td[contains(@class,'k-command-cell')]//button[contains(@class,'k-grid-edit')]")
+    private WebElement btnEditContactMethodRow;
+
+    @FindBy(how = How.XPATH, using = "//div[@id='rdMedioContacto']//td[contains(@class,'k-command-cell')]//button[contains(@class,'k-grid-borrar')]")
+    private WebElement btnDeleteContactMethodRow;
+
 
     // ===================== IDENTIFICATION - grid inline edit =====================
 
@@ -1054,6 +1114,153 @@ public class DemographicsPage extends BasePage<DemographicsPage> {
         driver.switchTo().frame("frmContenido");
         scrollToElementMove(btnCancelTransportRow);
         click(btnCancelTransportRow);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void clickEditTransportButton() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        waitElements(btnEditTransportRow);
+        scrollToElementMove(btnEditTransportRow);
+        click(btnEditTransportRow);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void clickDeleteTransportButton() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        waitElements(btnDeleteTransportRow);
+        scrollToElementMove(btnDeleteTransportRow);
+        click(btnDeleteTransportRow);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+
+    // ===================== EMERGENCY CONTACTS methods =====================
+
+    public void enterNameEmergencyContactRow(String name) throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(inputNameEmergencyContactRow);
+        inputNameEmergencyContactRow.clear();
+        write(inputNameEmergencyContactRow, name);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void enterTelephoneEmergencyContactRow(String telephone) throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(inputTelephoneEmergencyContactRow);
+        inputTelephoneEmergencyContactRow.clear();
+        write(inputTelephoneEmergencyContactRow, telephone);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void selectRelationshipEmergencyContactRow() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(dropDownRelationshipEmergencyContactRow);
+        click(dropDownRelationshipEmergencyContactRow);
+        pause(500);
+        clickBelowElementByOffset(inputRelationshipEmergencyContactRow, 80);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void checkPrimaryEmergencyContact() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(checkboxPrimaryEmergencyContact);
+        click(checkboxPrimaryEmergencyContact);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void saveEmergencyContactRow() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(btnSaveEmergencyContactRow);
+        click(btnSaveEmergencyContactRow);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void cancelEmergencyContactRow() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(btnCancelEmergencyContactRow);
+        click(btnCancelEmergencyContactRow);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void clickEditEmergencyContactButton() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        waitElements(btnEditEmergencyContactRow);
+        scrollToElementMove(btnEditEmergencyContactRow);
+        click(btnEditEmergencyContactRow);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void clickDeleteEmergencyContactButton() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        waitElements(btnDeleteEmergencyContactRow);
+        scrollToElementMove(btnDeleteEmergencyContactRow);
+        click(btnDeleteEmergencyContactRow);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+
+    // ===================== CONTACT METHOD methods =====================
+
+    public void selectContactTypeInNewRow() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(dropDownContactTypeInRow);
+        click(dropDownContactTypeInRow);
+        pause(500);
+        clickBelowElementByOffset(inputContactTypeInRow, 80);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void enterContactMethodValue(String value) throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(inputContactMethodValueInRow);
+        inputContactMethodValueInRow.clear();
+        write(inputContactMethodValueInRow, value);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void saveContactMethodRow() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(btnSaveContactMethodRow);
+        click(btnSaveContactMethodRow);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void cancelContactMethodRow() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(btnCancelContactMethodRow);
+        click(btnCancelContactMethodRow);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void clickEditContactMethodButton() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        waitElements(btnEditContactMethodRow);
+        scrollToElementMove(btnEditContactMethodRow);
+        click(btnEditContactMethodRow);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void clickDeleteContactMethodButton() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        waitElements(btnDeleteContactMethodRow);
+        scrollToElementMove(btnDeleteContactMethodRow);
+        click(btnDeleteContactMethodRow);
         pause(500);
         driver.switchTo().parentFrame();
     }

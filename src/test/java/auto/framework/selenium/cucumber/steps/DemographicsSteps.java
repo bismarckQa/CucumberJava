@@ -401,6 +401,92 @@ public class DemographicsSteps {
         demographicsPage.cancelTransportRow();
     }
 
+    @And("I click the edit button of the transport method row")
+    public void iClickTheEditButtonOfTheTransportMethodRow() throws InterruptedException {
+        demographicsPage.clickEditTransportButton();
+    }
+
+    @And("I click the delete button of the transport method row")
+    public void iClickTheDeleteButtonOfTheTransportMethodRow() throws InterruptedException {
+        demographicsPage.clickDeleteTransportButton();
+    }
+
+
+    // ===================== EMERGENCY CONTACTS steps =====================
+
+    @And("I enter the name in the emergency contact row {string}")
+    public void iEnterTheNameInTheEmergencyContactRow(String name) throws InterruptedException {
+        demographicsPage.enterNameEmergencyContactRow(name);
+    }
+
+    @And("I enter the telephone in the emergency contact row {string}")
+    public void iEnterTheTelephoneInTheEmergencyContactRow(String telephone) throws InterruptedException {
+        demographicsPage.enterTelephoneEmergencyContactRow(telephone);
+    }
+
+    @And("I select a relationship in the emergency contact row")
+    public void iSelectARelationshipInTheEmergencyContactRow() throws InterruptedException {
+        demographicsPage.selectRelationshipEmergencyContactRow();
+    }
+
+    @And("I check the primary emergency contact checkbox")
+    public void iCheckThePrimaryEmergencyContactCheckbox() throws InterruptedException {
+        demographicsPage.checkPrimaryEmergencyContact();
+    }
+
+    @And("I save the emergency contact row")
+    public void iSaveTheEmergencyContactRow() throws InterruptedException {
+        demographicsPage.saveEmergencyContactRow();
+    }
+
+    @And("I cancel the emergency contact row")
+    public void iCancelTheEmergencyContactRow() throws InterruptedException {
+        demographicsPage.cancelEmergencyContactRow();
+    }
+
+    @And("I click the edit button of the emergency contact row")
+    public void iClickTheEditButtonOfTheEmergencyContactRow() throws InterruptedException {
+        demographicsPage.clickEditEmergencyContactButton();
+    }
+
+    @And("I click the delete button of the emergency contact row")
+    public void iClickTheDeleteButtonOfTheEmergencyContactRow() throws InterruptedException {
+        demographicsPage.clickDeleteEmergencyContactButton();
+    }
+
+
+    // ===================== CONTACT METHOD steps =====================
+
+    @And("I select a contact type in the contact method row")
+    public void iSelectAContactTypeInTheContactMethodRow() throws InterruptedException {
+        demographicsPage.selectContactTypeInNewRow();
+    }
+
+    @And("I enter the value in the contact method row {string}")
+    public void iEnterTheValueInTheContactMethodRow(String value) throws InterruptedException {
+        demographicsPage.enterContactMethodValue(value);
+    }
+
+    @And("I save the contact method row")
+    public void iSaveTheContactMethodRow() throws InterruptedException {
+        demographicsPage.saveContactMethodRow();
+    }
+
+    @And("I cancel the contact method row")
+    public void iCancelTheContactMethodRow() throws InterruptedException {
+        demographicsPage.cancelContactMethodRow();
+    }
+
+    @And("I click the edit button of the contact method row")
+    public void iClickTheEditButtonOfTheContactMethodRow() throws InterruptedException {
+        demographicsPage.clickEditContactMethodButton();
+    }
+
+    @And("I click the delete button of the contact method row")
+    public void iClickTheDeleteButtonOfTheContactMethodRow() throws InterruptedException {
+        demographicsPage.clickDeleteContactMethodButton();
+    }
+
 
     // ===================== IDENTIFICATION steps =====================
 
