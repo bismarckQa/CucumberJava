@@ -524,4 +524,39 @@ public class DemographicsSteps {
     public void iClickButtonDeleteIdentifications()throws InterruptedException {
         demographicsPage.clickButtonDeleteIdentifications();
     }
+
+
+    // ===================== MODIFY PATIENT DATA steps =====================
+
+    @And("I click the three points menu of demographics")
+    public void iClickThreePointsMenuOfDemographics() throws InterruptedException {
+        demographicsPage.clickThreePointsMenuDemographics();
+    }
+
+    @And("I click {string} option in the three points menu of demographics")
+    public void iClickOptionInThreePointsMenuOfDemographics(String option) throws InterruptedException {
+        demographicsPage.clickOptionInThreePointsMenuDemographics(option);
+    }
+
+    @And("I select the sex at birth")
+    public void iSelectTheSexAtBirth() throws InterruptedException {
+        demographicsPage.selectSexAtBirth();
+    }
+
+    // ===================== VIEW PATIENT DATA steps =====================
+
+    @And("I scroll to the secondary centers section of demographics")
+    public void iScrollToTheSecondaryCentersSectionOfDemographics() throws InterruptedException {
+        demographicsPage.scrollToSecondaryCentersSection();
+    }
+
+    @And("I scroll to the contact addresses section of demographics")
+    public void iScrollToTheContactAddressesSectionOfDemographics() throws InterruptedException {
+        demographicsPage.scrollToContactAddressesSection();
+    }
+
+    @And("I scroll to the transport method section of demographics")
+    public void iScrollToTheTransportMethodSectionOfDemographics() throws InterruptedException {
+        demographicsPage.scrollToTransportMethodSection();
+    }
 }

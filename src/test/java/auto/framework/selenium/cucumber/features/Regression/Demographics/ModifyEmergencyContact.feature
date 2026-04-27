@@ -29,6 +29,7 @@ Feature: Modify Emergency Contact
     And   I click on the selected patient
     And   I verify that the demographic module opened correctly
     When  I click the edit button of the emergency contact row
+    And   I enter the name in the emergency contact row ""
     Then  I save the emergency contact row
     And   I cancel the emergency contact row
 
@@ -43,6 +44,5 @@ Feature: Modify Emergency Contact
     When  I click the edit button of the emergency contact row
     And   I enter the name in the emergency contact row "QA Test Edit"
     And   I enter the telephone in the emergency contact row "665372854"
-    And   I select a relationship in the emergency contact row
     Then  I save the emergency contact row
     And   I verify the action was performed successfully

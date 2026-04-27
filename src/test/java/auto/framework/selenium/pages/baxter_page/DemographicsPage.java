@@ -21,6 +21,18 @@ public class DemographicsPage extends BasePage<DemographicsPage> {
     @FindBy(how = How.XPATH, using = "//div[contains(@class,'x_title')][.//h2[@translate-once='MasterPageAdmin_Label_Nuevo_Paciente']]//i[contains(@class,'icon-three-points')]")
     private WebElement menuThreePointsNewPatient;
 
+    @FindBy(how = How.XPATH, using = "//div[contains(@class,'x_title')][.//h2[normalize-space()='Demographics']]//i[contains(@class,'icon-three-points')]")
+    private WebElement menuThreePointsDemographics;
+
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Edit')]")
+    private WebElement btnEditDemographics;
+
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Save')]")
+    private WebElement btnSaveDemographics;
+
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Cancel')]")
+    private WebElement btnCancelDemographics;
+
 
     // ===================== NEW PATIENT - Basic inputs =====================
 
@@ -71,6 +83,12 @@ public class DemographicsPage extends BasePage<DemographicsPage> {
 
     @FindBy(how = How.XPATH, using = "//div[12]//span[1]//input[1]")
     private WebElement inputReferredByNewPatients;
+
+    @FindBy(how = How.XPATH, using = "//span[.//*[@kendo-combobox='$ctrl.sexoAlNacer.kCtrl']]//button[@aria-label='expand combobox']")
+    private WebElement dropDownSexAtBirth;
+
+    @FindBy(how = How.XPATH, using = "//span[.//*[@kendo-combobox='$ctrl.sexoAlNacer.kCtrl']]//input[contains(@class,'k-input-inner')]")
+    private WebElement inputSexAtBirth;
 
 
     // ===================== ASSIGNMENTS =====================
@@ -150,11 +168,20 @@ public class DemographicsPage extends BasePage<DemographicsPage> {
     @FindBy(how = How.XPATH, using = "(//input[@role='combobox'])[18]")
     private WebElement inputReferredByClinicalStatus;
 
-    @FindBy(how = How.XPATH, using = "//a[normalize-space()='Foianini, Pasquale']")
+    @FindBy(how = How.XPATH, using = "//a[normalize-space()='Foianini Baggio, Pasquale']")
     private WebElement buttonPatientSelectedOnPrincipalMenu;
 
     @FindBy(how = How.XPATH, using = "//h2[normalize-space()='Demographics']")
     private WebElement titleDemographics;
+
+    @FindBy(how = How.XPATH, using = "//div[@id='rdAsignacionCentrosSecundarios']//div[contains(@class,'panel-heading')]")
+    private WebElement secondaryCentersSection;
+
+    @FindBy(how = How.XPATH, using = "//div[@id='rdDireccionContacto']//div[contains(@class,'panel-heading')]")
+    private WebElement contactAddressesSection;
+
+    @FindBy(how = How.XPATH, using = "//div[@id='rdMedioTransporte']//div[contains(@class,'panel-heading')]")
+    private WebElement transportMethodSection;
 
     @FindBy(how = How.XPATH, using = "(//div[@ng-click=\"$ctrl.clickChevron('Demograficos_Label_Asignacion_Centro')\"])[1]")
     private WebElement dropDownCenterAssignmentDemographics;
@@ -462,22 +489,19 @@ public class DemographicsPage extends BasePage<DemographicsPage> {
     }
 
     public void clickThreePointsMenu() throws InterruptedException {
-        switchToContentFrame();
+        driver.switchTo().frame("frmContenido");
         scrollToElementMove(menuThreePointsNewPatient);
         click(menuThreePointsNewPatient);
         pause(500);
-        switchBack();
+        driver.switchTo().parentFrame();
     }
 
     public void clickOptionInThreePointsMenu(String option) throws InterruptedException {
-        switchToContentFrame();
+        driver.switchTo().frame("frmContenido");
         pause(500);
-        click(By.xpath(
-                "//ul[contains(@class,'dropdown-menu') and contains(@class,'three-points')]" +
-                        "//a[not(contains(@class,'ng-hide'))]//span[normalize-space(.)='" + option + "']"
-        ));
+        click(By.xpath("//span[contains(text(),'" + option + "')]"));
         pause(500);
-        switchBack();
+        driver.switchTo().parentFrame();
     }
 
 
@@ -511,12 +535,12 @@ public class DemographicsPage extends BasePage<DemographicsPage> {
     }
 
     public void enterSurname2(String surname2) throws InterruptedException {
-        switchToContentFrame();
+        driver.switchTo().frame("frmContenido");
         scrollToElementMove(inputSurname2);
         inputSurname2.clear();
         write(inputSurname2, surname2);
         pause(500);
-        switchBack();
+        driver.switchTo().parentFrame();
     }
 
     public void enterIdPatient(String id) throws InterruptedException {
@@ -686,6 +710,27 @@ public class DemographicsPage extends BasePage<DemographicsPage> {
         titleDemographics.isDisplayed();
         pause(500);
         driver.switchTo().parentFrame();
+    }
+
+    private void scrollToDemographicsSection(WebElement section) throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        waitElements(section);
+        scrollToElementMove(section);
+        pause(800);
+        section.isDisplayed();
+        driver.switchTo().parentFrame();
+    }
+
+    public void scrollToSecondaryCentersSection() throws InterruptedException {
+        scrollToDemographicsSection(secondaryCentersSection);
+    }
+
+    public void scrollToContactAddressesSection() throws InterruptedException {
+        scrollToDemographicsSection(contactAddressesSection);
+    }
+
+    public void scrollToTransportMethodSection() throws InterruptedException {
+        scrollToDemographicsSection(transportMethodSection);
     }
 
     public void tryToAddANewCenterToThePatient()throws InterruptedException {
@@ -1341,6 +1386,40 @@ public class DemographicsPage extends BasePage<DemographicsPage> {
         waitElements(btnDeleteIdentificationRow);
         scrollToElementMove(btnDeleteIdentificationRow);
         click(btnDeleteIdentificationRow);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+
+    // ===================== MODIFY PATIENT DATA =====================
+
+    public void clickThreePointsMenuDemographics() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        pause(800);
+        click(By.xpath("//div[contains(@class,'x_title')][.//h2[normalize-space()='Demographics']]//i[contains(@class,'icon-three-points')]"));
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void clickOptionInThreePointsMenuDemographics(String option) throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        pause(500);
+        switch (option) {
+            case "Edit"   -> click(btnEditDemographics);
+            case "Save"   -> click(btnSaveDemographics);
+            case "Cancel" -> click(btnCancelDemographics);
+            default -> click(By.xpath("//span[contains(text(),'" + option + "')]"));
+        }
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void selectSexAtBirth() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(dropDownSexAtBirth);
+        click(dropDownSexAtBirth);
+        pause(500);
+        clickBelowElementByOffset(inputSexAtBirth, 20);
         pause(500);
         driver.switchTo().parentFrame();
     }
