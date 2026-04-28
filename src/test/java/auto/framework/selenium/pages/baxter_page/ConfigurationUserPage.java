@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.ui.Select;
 
 @LazyComponent
 public class ConfigurationUserPage extends BasePage<ConfigurationUserPage> {
@@ -181,9 +182,7 @@ public class ConfigurationUserPage extends BasePage<ConfigurationUserPage> {
         driver.switchTo().frame("iframeV2");
         waitElements(selectProfession);
         scrollToElementMove(selectProfession);
-        click(selectProfession);
-        pause(300);
-        clickBelowElementByOffset(selectProfession, 80);
+        new Select(selectProfession).selectByIndex(1);
         pause(300);
         driver.switchTo().parentFrame();
         driver.switchTo().parentFrame();
@@ -194,9 +193,7 @@ public class ConfigurationUserPage extends BasePage<ConfigurationUserPage> {
         driver.switchTo().frame("iframeV2");
         waitElements(selectUserProfile);
         scrollToElementMove(selectUserProfile);
-        click(selectUserProfile);
-        pause(300);
-        clickAboveElementByOffset(selectUserProfile, 50);
+        new Select(selectUserProfile).selectByIndex(1);
         pause(300);
         driver.switchTo().parentFrame();
         driver.switchTo().parentFrame();
@@ -207,9 +204,7 @@ public class ConfigurationUserPage extends BasePage<ConfigurationUserPage> {
         driver.switchTo().frame("iframeV2");
         waitElements(selectTreatment);
         scrollToElementMove(selectTreatment);
-        click(selectTreatment);
-        pause(300);
-        clickAboveElementByOffset(selectTreatment, 60);
+        new Select(selectTreatment).selectByIndex(1);
         pause(300);
         driver.switchTo().parentFrame();
         driver.switchTo().parentFrame();
@@ -220,9 +215,7 @@ public class ConfigurationUserPage extends BasePage<ConfigurationUserPage> {
         driver.switchTo().frame("iframeV2");
         waitElements(selectCenter);
         scrollToElementMove(selectCenter);
-        click(selectCenter);
-        pause(300);
-        clickAboveElementByOffset(selectCenter, 60);
+        new Select(selectCenter).selectByIndex(1);
         pause(300);
         driver.switchTo().parentFrame();
         driver.switchTo().parentFrame();
@@ -265,8 +258,6 @@ public class ConfigurationUserPage extends BasePage<ConfigurationUserPage> {
         driver.switchTo().parentFrame();
         driver.switchTo().parentFrame();
     }
-
-
 
     // --- Validations ---
 
