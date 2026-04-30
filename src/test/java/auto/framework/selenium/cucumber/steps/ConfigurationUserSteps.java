@@ -4,6 +4,7 @@ import auto.framework.selenium.annotations.LazyAutowired;
 import auto.framework.selenium.pages.baxter_page.ConfigurationUserPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -12,48 +13,46 @@ public class ConfigurationUserSteps {
     @LazyAutowired
     private ConfigurationUserPage configurationUserPage;
 
-    @Then("I enter into Configuration User module")
+    @And("I enter into Configuration User module")
     public void iEnterIntoConfigurationUserModule() throws InterruptedException {
         configurationUserPage.openConfigurationUserModule();
     }
-
-
 
     @And("I open Users module in configuration user")
     public void iOpenUsersModuleInConfigurationUser() throws InterruptedException {
         configurationUserPage.openUsersModule();
     }
 
-    @And("I verify that Users module opened correctly")
+    @Then("I verify that Users module opened correctly")
     public void iVerifyThatUsersModuleOpenedCorrectly() throws InterruptedException {
         assertTrue(configurationUserPage.isUsersModuleDisplayed());
     }
 
-    @And("I click show inactive users")
+    @When("I click show inactive users")
     public void iClickShowInactiveUsers() throws InterruptedException {
         configurationUserPage.clickShowInactiveUsers();
     }
 
-    @And("I verify that inactive users filter is displayed correctly")
+    @Then("I verify that inactive users filter is displayed correctly")
     public void iVerifyThatInactiveUsersFilterIsDisplayedCorrectly() throws InterruptedException {
         assertTrue(configurationUserPage.isInactiveUsersFilterDisplayed());
     }
 
     // --- Three points menu ---
 
-    @And("I click the three points menu in users module")
+    @When("I click the three points menu in users module")
     public void iClickThreePointsMenuInUsersModule() throws InterruptedException {
         configurationUserPage.clickThreePointsMenuInUsersModule();
     }
 
-    @And("I click {string} option in users module menu")
+    @When("I click {string} option in users module menu")
     public void iClickOptionInUsersModuleMenu(String option) throws InterruptedException {
         configurationUserPage.clickOptionInUsersModuleMenu(option);
     }
 
     // --- Create new user form — Staff section ---
 
-    @And("I enter the last name in the user form {string}")
+    @When("I enter the last name in the user form {string}")
     public void iEnterTheLastNameInTheUserForm(String lastName) throws InterruptedException {
         configurationUserPage.enterLastNameInUserForm(lastName);
     }
@@ -100,16 +99,14 @@ public class ConfigurationUserSteps {
         configurationUserPage.enterConfirmPasswordInUserForm(password);
     }
 
-
-
     // --- Validations ---
 
-    @And("I verify the required fields validation is displayed")
+    @Then("I verify the required fields validation is displayed")
     public void iVerifyTheRequiredFieldsValidationIsDisplayed() throws InterruptedException {
         assertTrue(configurationUserPage.isRequiredFieldsValidationDisplayed());
     }
 
-    @And("I verify the duplicate username error is displayed")
+    @Then("I verify the duplicate username error is displayed")
     public void iVerifyTheDuplicateUsernameErrorIsDisplayed() throws InterruptedException {
         assertTrue(configurationUserPage.isDuplicateUsernameErrorDisplayed());
     }
@@ -117,5 +114,32 @@ public class ConfigurationUserSteps {
     @Then("I verify the passwords do not match error is displayed")
     public void iVerifyThePasswordsDoNotMatchErrorIsDisplayed() throws InterruptedException {
         assertTrue(configurationUserPage.isPasswordMismatchErrorDisplayed());
+    }
+
+    // --- Modify user ---
+
+    @When("I select the user {string} in users module")
+    public void iSelectTheUserInUsersModule(String userName) throws InterruptedException {
+        configurationUserPage.selectUserInUsersModule(userName);
+    }
+
+    @When("I enter the license number in the user form {string}")
+    public void iEnterTheLicenseNumberInTheUserForm(String licenseNo) throws InterruptedException {
+        configurationUserPage.enterLicenseNoInUserForm(licenseNo);
+    }
+
+    @And("I enter the second surname in the user form {string}")
+    public void iEnterTheSecondSurnameInTheUserForm(String secondSurname) throws InterruptedException {
+        configurationUserPage.enterSecondSurnameInUserForm(secondSurname);
+    }
+
+    @And("I enter the NID in the user form {string}")
+    public void iEnterTheNIDInTheUserForm(String nid) throws InterruptedException {
+        configurationUserPage.enterNIDInUserForm(nid);
+    }
+
+    @Then("I verify the password does not meet requirements error is displayed")
+    public void iVerifyThePasswordDoesNotMeetRequirementsErrorIsDisplayed() throws InterruptedException {
+        assertTrue(configurationUserPage.isPasswordRequirementsErrorDisplayed());
     }
 }

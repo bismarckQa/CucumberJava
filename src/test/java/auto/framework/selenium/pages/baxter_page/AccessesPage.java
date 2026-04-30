@@ -1067,7 +1067,7 @@ public class AccessesPage extends BasePage<AccessesPage>{
     }
     public void clickButtonOkModalError()throws InterruptedException{
         driver.switchTo().parentFrame();
-        pause(200);
+        pause(400);
         buttonOkModalError.isDisplayed();
         pause(200);
         click(buttonOkModalError);
