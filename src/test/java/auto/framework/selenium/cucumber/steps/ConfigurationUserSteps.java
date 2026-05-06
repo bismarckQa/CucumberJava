@@ -142,4 +142,41 @@ public class ConfigurationUserSteps {
     public void iVerifyThePasswordDoesNotMeetRequirementsErrorIsDisplayed() throws InterruptedException {
         assertTrue(configurationUserPage.isPasswordRequirementsErrorDisplayed());
     }
+
+    // --- Center assignment ---
+
+    @Then("I verify that Center assignment section is displayed")
+    public void iVerifyThatCenterAssignmentSectionIsDisplayed() throws InterruptedException {
+        assertTrue(configurationUserPage.isCenterAssignmentDisplayed());
+    }
+
+    @When("I click button new record in center assignment")
+    public void iClickButtonNewRecordInCenterAssignment() throws InterruptedException {
+        configurationUserPage.clickNewCenterAssignment();
+    }
+
+    @And("I select the center in center assignment row")
+    public void iSelectTheCenterInCenterAssignmentRow() throws InterruptedException {
+        configurationUserPage.selectCenterInCenterAssignmentRow();
+    }
+
+    @And("I enter the start date in center assignment row {string}")
+    public void iEnterTheStartDateInCenterAssignmentRow(String date) throws InterruptedException {
+        configurationUserPage.enterStartDateCenterAssignmentRow(date);
+    }
+
+    @And("I enter the end date in center assignment row {string}")
+    public void iEnterTheEndDateInCenterAssignmentRow(String date) throws InterruptedException {
+        configurationUserPage.enterEndDateCenterAssignmentRow(date);
+    }
+
+    @Then("I save the center assignment row")
+    public void iSaveTheCenterAssignmentRow() throws InterruptedException {
+        configurationUserPage.saveCenterAssignmentRow();
+    }
+
+    @Then("I cancel the center assignment row")
+    public void iCancelTheCenterAssignmentRow() throws InterruptedException {
+        configurationUserPage.cancelCenterAssignmentRow();
+    }
 }

@@ -101,6 +101,38 @@ public class ConfigurationUserPage extends BasePage<ConfigurationUserPage> {
     @FindBy(how = How.XPATH, using = "//p[contains(@ng-show,'erroresBLL.Password') and not(contains(@class,'ng-hide'))]")
     private WebElement errorPasswordRequirements;
 
+    // --- Center assignment ---
+
+    @FindBy(how = How.XPATH, using = "//h2[normalize-space()='Center assignment']")
+    private WebElement centerAssignmentTitle;
+
+    @FindBy(how = How.XPATH, using = "//asignacion-centros-personal//button[contains(@class,'k-grid-add')]")
+    private WebElement btnNewCenterAssignment;
+
+    @FindBy(how = How.XPATH, using = "//asignacion-centros-personal//tr[contains(@class,'k-grid-edit-row')]")
+    private WebElement centerAssignmentEditRow;
+
+    @FindBy(how = How.XPATH, using = "//h2[normalize-space(.)='Center assignment']/ancestor::div[contains(@class,'x_title')][1]/following-sibling::div[contains(@class,'x_content')][1]//td[@data-container-for='centroId']//span[contains(@class,'k-picker')]")
+    private WebElement dropDownCenterAssignmentRow;
+
+    @FindBy(how = How.XPATH, using = "//h2[normalize-space(.)='Center assignment']/ancestor::div[contains(@class,'x_title')][1]/following-sibling::div[contains(@class,'x_content')][1]//td[@data-container-for='centroId']//span[@role='button' and contains(@class,'k-input-button')]")
+    private WebElement dropDownButtonCenterAssignmentRow;
+
+    @FindBy(how = How.XPATH, using = "//h2[normalize-space(.)='Center assignment']/ancestor::div[contains(@class,'x_title')][1]/following-sibling::div[contains(@class,'x_content')][1]//td[@data-container-for='centroId']//span[contains(@class,'k-input-inner')]")
+    private WebElement inputCenterAssignmentRow;
+
+    @FindBy(how = How.XPATH, using = "//h2[normalize-space(.)='Center assignment']/ancestor::div[contains(@class,'x_title')][1]/following-sibling::div[contains(@class,'x_content')][1]//td[@data-container-for='fechaInicio']//input[@data-role='datepicker']")
+    private WebElement inputStartDateCenterAssignmentRow;
+
+    @FindBy(how = How.XPATH, using = "//h2[normalize-space(.)='Center assignment']/ancestor::div[contains(@class,'x_title')][1]/following-sibling::div[contains(@class,'x_content')][1]//td[@data-container-for='fechaFin']//input[@data-role='datepicker']")
+    private WebElement inputEndDateCenterAssignmentRow;
+
+    @FindBy(how = How.XPATH, using = "//h2[normalize-space(.)='Center assignment']/ancestor::div[contains(@class,'x_title')][1]/following-sibling::div[contains(@class,'x_content')][1]//td[contains(@class,'k-command-cell')]//button[contains(@class,'k-grid-update')]")
+    private WebElement btnSaveCenterAssignmentRow;
+
+    @FindBy(how = How.XPATH, using = "//h2[normalize-space(.)='Center assignment']/ancestor::div[contains(@class,'x_title')][1]/following-sibling::div[contains(@class,'x_content')][1]//td[contains(@class,'k-command-cell')]//button[contains(@class,'k-grid-cancel')]")
+    private WebElement btnCancelCenterAssignmentRow;
+
     @Override
     public boolean isAt() throws InterruptedException {
         return isUsersModuleDisplayed();
@@ -331,10 +363,8 @@ public class ConfigurationUserPage extends BasePage<ConfigurationUserPage> {
         scrollToElementMove(staffMemberPicker);
         click(staffMemberPicker);
         pause(500);
-
         searchUserInOpenedStaffDropdown(userName);
         clickStaffDropdownOption(userName);
-
         pause(500);
         driver.switchTo().parentFrame();
         driver.switchTo().parentFrame();
@@ -433,10 +463,99 @@ public class ConfigurationUserPage extends BasePage<ConfigurationUserPage> {
     }
 
     public boolean isPasswordRequirementsErrorDisplayed() throws InterruptedException {
-        pause(500);
+        driver.switchTo().frame("frmContenido");
+        driver.switchTo().frame("iframeV2");
         waitElements(errorPasswordRequirements);
         boolean isDisplayed = errorPasswordRequirements.isDisplayed();
-
+        driver.switchTo().parentFrame();
+        driver.switchTo().parentFrame();
         return isDisplayed;
+    }
+
+    // --- Center assignment ---
+
+    public boolean isCenterAssignmentDisplayed() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        driver.switchTo().frame("iframeV2");
+        waitElements(centerAssignmentTitle);
+        scrollToElementMove(centerAssignmentTitle);
+        boolean isDisplayed = centerAssignmentTitle.isDisplayed();
+        driver.switchTo().parentFrame();
+        driver.switchTo().parentFrame();
+        return isDisplayed;
+    }
+
+    public void clickNewCenterAssignment() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        driver.switchTo().frame("iframeV2");
+        waitElements(btnNewCenterAssignment);
+        scrollToElementMove(btnNewCenterAssignment);
+        click(btnNewCenterAssignment);
+        pause(1500);
+        click(btnNewCenterAssignment);
+        pause(3000);
+        driver.switchTo().parentFrame();
+        driver.switchTo().parentFrame();
+    }
+
+    public void selectCenterInCenterAssignmentRow() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        driver.switchTo().frame("iframeV2");
+        pause(2000);
+        waitElements(dropDownCenterAssignmentRow);
+        click(dropDownCenterAssignmentRow);
+        pause(500);
+        clickBelowElementByOffset(inputCenterAssignmentRow, 60);
+        pause(500);
+        driver.switchTo().parentFrame();
+        driver.switchTo().parentFrame();
+    }
+
+    public void enterStartDateCenterAssignmentRow(String date) throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        driver.switchTo().frame("iframeV2");
+        waitElements(inputStartDateCenterAssignmentRow);
+        scrollToElementMove(inputStartDateCenterAssignmentRow);
+        inputStartDateCenterAssignmentRow.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+        inputStartDateCenterAssignmentRow.sendKeys(Keys.DELETE);
+        inputStartDateCenterAssignmentRow.sendKeys(date);
+        pause(500);
+        driver.switchTo().parentFrame();
+        driver.switchTo().parentFrame();
+    }
+
+    public void enterEndDateCenterAssignmentRow(String date) throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        driver.switchTo().frame("iframeV2");
+        waitElements(inputEndDateCenterAssignmentRow);
+        scrollToElementMove(inputEndDateCenterAssignmentRow);
+        inputEndDateCenterAssignmentRow.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+        inputEndDateCenterAssignmentRow.sendKeys(Keys.DELETE);
+        inputEndDateCenterAssignmentRow.sendKeys(date);
+        pause(500);
+        driver.switchTo().parentFrame();
+        driver.switchTo().parentFrame();
+    }
+
+    public void saveCenterAssignmentRow() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        driver.switchTo().frame("iframeV2");
+        waitElements(btnSaveCenterAssignmentRow);
+        scrollToElementMove(btnSaveCenterAssignmentRow);
+        click(btnSaveCenterAssignmentRow);
+        pause(500);
+        driver.switchTo().parentFrame();
+        driver.switchTo().parentFrame();
+    }
+
+    public void cancelCenterAssignmentRow() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        driver.switchTo().frame("iframeV2");
+        waitElements(btnCancelCenterAssignmentRow);
+        scrollToElementMove(btnCancelCenterAssignmentRow);
+        click(btnCancelCenterAssignmentRow);
+        pause(500);
+        driver.switchTo().parentFrame();
+        driver.switchTo().parentFrame();
     }
 }

@@ -6,10 +6,10 @@
 @3.2
 #Module
 @ConfigurationUser
-Feature: Modify User
+Feature: Assign Center
 
-  @test @regression @TestCase_11208
-  Scenario: The password does not meet the requirements
+  @test @regression @TestCase_2377
+  Scenario: New center
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
     And   I login successful
@@ -19,16 +19,11 @@ Feature: Modify User
     And   I verify that Users module opened correctly
     When  I click button arrow up
     And   I select the user "QA Automation, Test" in users module
-    And   I click the three points menu in users module
-    When  I click "Edit" option in users module menu
-    And   I enter the password in the user form "123"
-    And   I enter the confirm password in the user form "123"
-    And   I click button arrow up
-    And   I click the three points menu in users module
-    When  I click "Save" option in users module menu
-    And   I click button OK modal error
-    And   I click the three points menu in users module
-    Then  I click "Cancel" option in users module menu
+    Then  I verify that Center assignment section is displayed
+    When  I click button new record in center assignment
+    And   I select the center in center assignment row
+    And   I enter the start date in center assignment row "05/05/2026"
+    Then  I save the center assignment row
     And   I verify the action was performed successfully
 
 
