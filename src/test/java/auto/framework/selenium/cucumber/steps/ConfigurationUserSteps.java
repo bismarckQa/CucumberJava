@@ -160,6 +160,11 @@ public class ConfigurationUserSteps {
         configurationUserPage.selectCenterInCenterAssignmentRow();
     }
 
+    @When("I click button edit center assignment row")
+    public void iClickButtonEditCenterAssignmentRow() throws InterruptedException {
+        configurationUserPage.clickEditCenterAssignmentRow();
+    }
+
     @And("I enter the start date in center assignment row {string}")
     public void iEnterTheStartDateInCenterAssignmentRow(String date) throws InterruptedException {
         configurationUserPage.enterStartDateCenterAssignmentRow(date);

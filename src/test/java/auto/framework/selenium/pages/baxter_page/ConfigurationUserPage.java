@@ -112,6 +112,9 @@ public class ConfigurationUserPage extends BasePage<ConfigurationUserPage> {
     @FindBy(how = How.XPATH, using = "//asignacion-centros-personal//tr[contains(@class,'k-grid-edit-row')]")
     private WebElement centerAssignmentEditRow;
 
+    @FindBy(how = How.XPATH, using = "//h2[normalize-space(.)='Center assignment']/ancestor::div[contains(@class,'x_title')][1]/following-sibling::div[contains(@class,'x_content')][1]//tr[td[normalize-space(.)='Centro medico S.Brigida']]//button[contains(@class,'k-grid-edit')]")
+    private WebElement btnEditCenterAssignmentRow;
+
     @FindBy(how = How.XPATH, using = "//h2[normalize-space(.)='Center assignment']/ancestor::div[contains(@class,'x_title')][1]/following-sibling::div[contains(@class,'x_content')][1]//td[@data-container-for='centroId']//span[contains(@class,'k-picker')]")
     private WebElement dropDownCenterAssignmentRow;
 
@@ -507,6 +510,18 @@ public class ConfigurationUserPage extends BasePage<ConfigurationUserPage> {
         pause(500);
         clickBelowElementByOffset(inputCenterAssignmentRow, 60);
         pause(500);
+        driver.switchTo().parentFrame();
+        driver.switchTo().parentFrame();
+    }
+
+    public void clickEditCenterAssignmentRow() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        driver.switchTo().frame("iframeV2");
+        waitElements(btnEditCenterAssignmentRow);
+        scrollToElementMove(btnEditCenterAssignmentRow);
+        click(btnEditCenterAssignmentRow);
+        pause(800);
+        click(btnEditCenterAssignmentRow);
         driver.switchTo().parentFrame();
         driver.switchTo().parentFrame();
     }

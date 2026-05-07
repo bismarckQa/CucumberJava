@@ -6,10 +6,11 @@
 @3.2
 #Module
 @ConfigurationUser
-Feature: Assign Center
+Feature: Modify Center
 
-  @test @regression @TestCase_2377
-  Scenario: New center
+
+  @test @regression @TestCase_2384
+  Scenario: All data correct
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
     And   I login successful
@@ -20,10 +21,9 @@ Feature: Assign Center
     When  I click button arrow up
     And   I select the user "QA Automation, Test" in users module
     Then  I verify that Center assignment section is displayed
-    When  I click button new record in center assignment
-    And   I select the center in center assignment row
-    And   I enter the start date in center assignment row "05/05/2026"
+    When  I click button edit center assignment row
+    And   I enter the start date in center assignment row "04/01/2026"
+    And   I enter the end date in center assignment row "12/25/2026"
     Then  I save the center assignment row
     And   I verify the action was performed successfully
-
 
