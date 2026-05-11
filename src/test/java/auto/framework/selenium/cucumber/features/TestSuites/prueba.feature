@@ -6,10 +6,10 @@
 @3.2
 #Module
 @ConfigurationUser
-Feature: Finalize Assignment Center
+Feature: Add Contact
 
-  @test @regression @TestCase_2389
-  Scenario: Delete a center
+  @test @regression @TestCase_2391
+  Scenario: Add contact
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
     And   I login successful
@@ -19,7 +19,10 @@ Feature: Finalize Assignment Center
     And   I verify that Users module opened correctly
     When  I click button arrow up
     And   I select the user "QA Automation, Test" in users module
-    Then  I verify that Center assignment section is displayed
-    When  I accept delete center assignment row
-    Then  I verify the action was performed successfully
+    Then  I verify that Contacts section is displayed
+    When  I click button new record in contacts
+    And   I select the contact type in contacts row
+    And   I enter the value in contacts row "qatest@vantive.com"
+    Then  I save the contacts row
+    And   I verify the action was performed successfully
 

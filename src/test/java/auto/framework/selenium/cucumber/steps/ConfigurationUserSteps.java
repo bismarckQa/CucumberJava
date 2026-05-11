@@ -199,4 +199,36 @@ public class ConfigurationUserSteps {
     public void iCancelTheCenterAssignmentRow() throws InterruptedException {
         configurationUserPage.cancelCenterAssignmentRow();
     }
+
+    // --- Contacts ---
+
+    @Then("I verify that Contacts section is displayed")
+    public void iVerifyThatContactsSectionIsDisplayed() throws InterruptedException {
+        assertTrue(configurationUserPage.isContactsDisplayed());
+    }
+
+    @When("I click button new record in contacts")
+    public void iClickButtonNewRecordInContacts() throws InterruptedException {
+        configurationUserPage.clickNewContact();
+    }
+
+    @And("I select the contact type in contacts row")
+    public void iSelectTheContactTypeInContactsRow() throws InterruptedException {
+        configurationUserPage.selectContactTypeRow();
+    }
+
+    @And("I enter the value in contacts row {string}")
+    public void iEnterTheValueInContactsRow(String value) throws InterruptedException {
+        configurationUserPage.enterContactValueRow(value);
+    }
+
+    @Then("I save the contacts row")
+    public void iSaveTheContactsRow() throws InterruptedException {
+        configurationUserPage.saveContactRow();
+    }
+
+    @Then("I cancel the contacts row")
+    public void iCancelTheContactsRow() throws InterruptedException {
+        configurationUserPage.cancelContactRow();
+    }
 }

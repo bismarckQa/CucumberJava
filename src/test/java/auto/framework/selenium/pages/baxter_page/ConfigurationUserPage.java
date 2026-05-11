@@ -139,6 +139,32 @@ public class ConfigurationUserPage extends BasePage<ConfigurationUserPage> {
     @FindBy(how = How.XPATH, using = "//h2[normalize-space(.)='Center assignment']/ancestor::div[contains(@class,'x_title')][1]/following-sibling::div[contains(@class,'x_content')][1]//td[contains(@class,'k-command-cell')]//button[contains(@class,'k-grid-cancel')]")
     private WebElement btnCancelCenterAssignmentRow;
 
+    // --- Contacts ---
+
+    @FindBy(how = How.XPATH, using = "//h2[normalize-space()='Contacts']")
+    private WebElement contactsTitle;
+
+    @FindBy(how = How.XPATH, using = "//medios-contacto-personal//button[contains(@class,'k-grid-add')]")
+    private WebElement btnNewContact;
+
+    @FindBy(how = How.XPATH, using = "//medios-contacto-personal//tr[contains(@class,'k-grid-edit-row')]")
+    private WebElement contactEditRow;
+
+    @FindBy(how = How.XPATH, using = "//h2[normalize-space(.)='Contacts']/ancestor::div[contains(@class,'x_title')][1]/following-sibling::div[contains(@class,'x_content')][1]//td[@data-container-for='tipoContactoId']//span[contains(@class,'k-picker')]")
+    private WebElement dropDownContactTypeRow;
+
+    @FindBy(how = How.XPATH, using = "//h2[normalize-space(.)='Contacts']/ancestor::div[contains(@class,'x_title')][1]/following-sibling::div[contains(@class,'x_content')][1]//td[@data-container-for='tipoContactoId']//span[contains(@class,'k-input-inner')]")
+    private WebElement inputContactTypeRow;
+
+    @FindBy(how = How.XPATH, using = "//h2[normalize-space(.)='Contacts']/ancestor::div[contains(@class,'x_title')][1]/following-sibling::div[contains(@class,'x_content')][1]//td[@data-container-for='info']//input")
+    private WebElement inputContactValueRow;
+
+    @FindBy(how = How.XPATH, using = "//h2[normalize-space(.)='Contacts']/ancestor::div[contains(@class,'x_title')][1]/following-sibling::div[contains(@class,'x_content')][1]//td[contains(@class,'k-command-cell')]//button[contains(@class,'k-grid-update')]")
+    private WebElement btnSaveContactRow;
+
+    @FindBy(how = How.XPATH, using = "//h2[normalize-space(.)='Contacts']/ancestor::div[contains(@class,'x_title')][1]/following-sibling::div[contains(@class,'x_content')][1]//td[contains(@class,'k-command-cell')]//button[contains(@class,'k-grid-cancel')]")
+    private WebElement btnCancelContactRow;
+
     @Override
     public boolean isAt() throws InterruptedException {
         return isUsersModuleDisplayed();
@@ -593,6 +619,80 @@ public class ConfigurationUserPage extends BasePage<ConfigurationUserPage> {
         waitElements(btnCancelCenterAssignmentRow);
         scrollToElementMove(btnCancelCenterAssignmentRow);
         click(btnCancelCenterAssignmentRow);
+        pause(500);
+        driver.switchTo().parentFrame();
+        driver.switchTo().parentFrame();
+    }
+
+    // --- Contacts ---
+
+    public boolean isContactsDisplayed() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        driver.switchTo().frame("iframeV2");
+        waitElements(contactsTitle);
+        scrollToElementMove(contactsTitle);
+        boolean isDisplayed = contactsTitle.isDisplayed();
+        driver.switchTo().parentFrame();
+        driver.switchTo().parentFrame();
+        return isDisplayed;
+    }
+
+    public void clickNewContact() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        driver.switchTo().frame("iframeV2");
+        waitElements(btnNewContact);
+        scrollToElementMove(btnNewContact);
+        click(btnNewContact);
+        pause(1500);
+        click(btnNewContact);
+        pause(2000);
+        driver.switchTo().parentFrame();
+        driver.switchTo().parentFrame();
+    }
+
+    public void selectContactTypeRow() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        driver.switchTo().frame("iframeV2");
+        waitElements(contactEditRow);
+        waitElements(dropDownContactTypeRow);
+        click(dropDownContactTypeRow);
+        pause(500);
+        clickBelowElementByOffset(inputContactTypeRow, 90);
+        pause(500);
+        driver.switchTo().parentFrame();
+        driver.switchTo().parentFrame();
+    }
+
+    public void enterContactValueRow(String value) throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        driver.switchTo().frame("iframeV2");
+        waitElements(inputContactValueRow);
+        scrollToElementMove(inputContactValueRow);
+        inputContactValueRow.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+        inputContactValueRow.sendKeys(Keys.DELETE);
+        write(inputContactValueRow, value);
+        pause(500);
+        driver.switchTo().parentFrame();
+        driver.switchTo().parentFrame();
+    }
+
+    public void saveContactRow() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        driver.switchTo().frame("iframeV2");
+        waitElements(btnSaveContactRow);
+        scrollToElementMove(btnSaveContactRow);
+        click(btnSaveContactRow);
+        pause(500);
+        driver.switchTo().parentFrame();
+        driver.switchTo().parentFrame();
+    }
+
+    public void cancelContactRow() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        driver.switchTo().frame("iframeV2");
+        waitElements(btnCancelContactRow);
+        scrollToElementMove(btnCancelContactRow);
+        click(btnCancelContactRow);
         pause(500);
         driver.switchTo().parentFrame();
         driver.switchTo().parentFrame();
