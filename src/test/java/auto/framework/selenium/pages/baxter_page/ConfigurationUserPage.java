@@ -115,6 +115,9 @@ public class ConfigurationUserPage extends BasePage<ConfigurationUserPage> {
     @FindBy(how = How.XPATH, using = "//h2[normalize-space(.)='Center assignment']/ancestor::div[contains(@class,'x_title')][1]/following-sibling::div[contains(@class,'x_content')][1]//tr[td[normalize-space(.)='Centro medico S.Brigida']]//button[contains(@class,'k-grid-edit')]")
     private WebElement btnEditCenterAssignmentRow;
 
+    @FindBy(how = How.XPATH, using = "//h2[normalize-space(.)='Center assignment']/ancestor::div[contains(@class,'x_title')][1]/following-sibling::div[contains(@class,'x_content')][1]//tr[td[normalize-space(.)='Centro medico S.Brigida']]//button[contains(@class,'k-grid-delete')]")
+    private WebElement btnDeleteCenterAssignmentRow;
+
     @FindBy(how = How.XPATH, using = "//h2[normalize-space(.)='Center assignment']/ancestor::div[contains(@class,'x_title')][1]/following-sibling::div[contains(@class,'x_content')][1]//td[@data-container-for='centroId']//span[contains(@class,'k-picker')]")
     private WebElement dropDownCenterAssignmentRow;
 
@@ -524,6 +527,27 @@ public class ConfigurationUserPage extends BasePage<ConfigurationUserPage> {
         click(btnEditCenterAssignmentRow);
         driver.switchTo().parentFrame();
         driver.switchTo().parentFrame();
+    }
+
+    public void clickDeleteCenterAssignmentRow() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        driver.switchTo().frame("iframeV2");
+        waitElements(btnDeleteCenterAssignmentRow);
+        scrollToElementMove(btnDeleteCenterAssignmentRow);
+        click(btnDeleteCenterAssignmentRow);
+        pause(500);
+    }
+
+    public void acceptDeleteCenterAssignmentRow() throws InterruptedException {
+        clickDeleteCenterAssignmentRow();
+        acceptBrowserAlert();
+        pause(500);
+    }
+
+    public void dismissDeleteCenterAssignmentRow() throws InterruptedException {
+        clickDeleteCenterAssignmentRow();
+        dismissBrowserAlert();
+        pause(500);
     }
 
     public void enterStartDateCenterAssignmentRow(String date) throws InterruptedException {

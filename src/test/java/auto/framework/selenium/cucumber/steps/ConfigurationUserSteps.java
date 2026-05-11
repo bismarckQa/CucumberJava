@@ -165,6 +165,21 @@ public class ConfigurationUserSteps {
         configurationUserPage.clickEditCenterAssignmentRow();
     }
 
+    @When("I click button delete center assignment row")
+    public void iClickButtonDeleteCenterAssignmentRow() throws InterruptedException {
+        configurationUserPage.clickDeleteCenterAssignmentRow();
+    }
+
+    @When("I accept delete center assignment row")
+    public void iAcceptDeleteCenterAssignmentRow() throws InterruptedException {
+        configurationUserPage.acceptDeleteCenterAssignmentRow();
+    }
+
+    @When("I cancel delete center assignment row")
+    public void iCancelDeleteCenterAssignmentRow() throws InterruptedException {
+        configurationUserPage.dismissDeleteCenterAssignmentRow();
+    }
+
     @And("I enter the start date in center assignment row {string}")
     public void iEnterTheStartDateInCenterAssignmentRow(String date) throws InterruptedException {
         configurationUserPage.enterStartDateCenterAssignmentRow(date);

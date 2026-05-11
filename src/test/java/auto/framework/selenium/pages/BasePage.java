@@ -499,6 +499,8 @@ public abstract class BasePage <P>{
      */
     public void acceptBrowserAlert() {
         new WebDriverWait(driver, Duration.ofSeconds(3)).until(ExpectedConditions.alertIsPresent()).accept();
+        driver.switchTo().parentFrame();
+        driver.switchTo().parentFrame();
     }
 
     /**
@@ -506,6 +508,8 @@ public abstract class BasePage <P>{
      */
     public void dismissBrowserAlert() {
         new WebDriverWait(driver, Duration.ofSeconds(3)).until(ExpectedConditions.alertIsPresent()).dismiss();
+        driver.switchTo().parentFrame();
+        driver.switchTo().parentFrame();
     }
 
     protected void clickPrintPreviewButton(String action) throws InterruptedException {
