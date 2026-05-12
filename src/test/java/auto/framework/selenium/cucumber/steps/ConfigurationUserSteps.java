@@ -212,9 +212,14 @@ public class ConfigurationUserSteps {
         configurationUserPage.clickNewContact();
     }
 
-    @And("I select the contact type in contacts row")
-    public void iSelectTheContactTypeInContactsRow() throws InterruptedException {
-        configurationUserPage.selectContactTypeRow();
+    @And("I select the contact type {string} in contacts row")
+    public void iSelectTheContactTypeInContactsRow(String contactType) throws InterruptedException {
+        configurationUserPage.selectContactTypeRow(contactType);
+    }
+
+    @When("I click button edit contacts row")
+    public void iClickButtonEditContactsRow() throws InterruptedException {
+        configurationUserPage.clickEditContactRow();
     }
 
     @And("I enter the value in contacts row {string}")

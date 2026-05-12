@@ -150,6 +150,9 @@ public class ConfigurationUserPage extends BasePage<ConfigurationUserPage> {
     @FindBy(how = How.XPATH, using = "//medios-contacto-personal//tr[contains(@class,'k-grid-edit-row')]")
     private WebElement contactEditRow;
 
+    @FindBy(how = How.XPATH, using = "//h2[normalize-space(.)='Contacts']/ancestor::div[contains(@class,'x_panel')][1]//button[contains(@class,'k-grid-edit')]")
+    private WebElement btnEditContactRow;
+
     @FindBy(how = How.XPATH, using = "//h2[normalize-space(.)='Contacts']/ancestor::div[contains(@class,'x_title')][1]/following-sibling::div[contains(@class,'x_content')][1]//td[@data-container-for='tipoContactoId']//span[contains(@class,'k-picker')]")
     private WebElement dropDownContactTypeRow;
 
@@ -650,15 +653,25 @@ public class ConfigurationUserPage extends BasePage<ConfigurationUserPage> {
         driver.switchTo().parentFrame();
     }
 
-    public void selectContactTypeRow() throws InterruptedException {
+    public void selectContactTypeRow(String contactType) throws InterruptedException {
         driver.switchTo().frame("frmContenido");
         driver.switchTo().frame("iframeV2");
         waitElements(contactEditRow);
         waitElements(dropDownContactTypeRow);
-        click(dropDownContactTypeRow);
-        pause(500);
-        clickBelowElementByOffset(inputContactTypeRow, 90);
-        pause(500);
+        selectKendoDropdownOption(dropDownContactTypeRow, contactType);
+        driver.switchTo().parentFrame();
+        driver.switchTo().parentFrame();
+    }
+
+    public void clickEditContactRow() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        driver.switchTo().frame("iframeV2");
+        waitElements(btnEditContactRow);
+        scrollToElementMove(btnEditContactRow);
+        click(btnEditContactRow);
+        pause(1500);
+        click(btnEditContactRow);
+        pause(2000);
         driver.switchTo().parentFrame();
         driver.switchTo().parentFrame();
     }

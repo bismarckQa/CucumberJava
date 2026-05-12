@@ -352,6 +352,27 @@ public abstract class BasePage <P>{
         js.executeScript(script, referenceElement, offsetY);
     }
 
+    protected void selectKendoDropdownOption(WebElement dropdownElement, String optionText) throws InterruptedException {
+        if (optionText == null || optionText.trim().isEmpty()) {
+            throw new IllegalArgumentException("Kendo dropdown option text cannot be empty");
+        }
+        scrollToElementMove(dropdownElement);
+        click(dropdownElement);
+        pause(500);
+
+        String optionLiteral = xpathLiteral(optionText.trim());
+        By exactOption = By.xpath("//div[contains(@class,'k-animation-container') and not(contains(@style,'display: none'))]" +
+                "//*[self::li or @role='option'][normalize-space(.)=" + optionLiteral + "]");
+        WebElement option = wait.until(ExpectedConditions.elementToBeClickable(exactOption));
+        javascriptExecutor.executeScript("arguments[0].scrollIntoView({block:'center'});", option);
+        try {
+            option.click();
+        } catch (ElementClickInterceptedException e) {
+            javascriptExecutor.executeScript("arguments[0].click();", option);
+        }
+        pause(500);
+    }
+
     private String xpathLiteral(String s) {
         if (s.contains("'") && s.contains("\"")) {
             StringBuilder sb = new StringBuilder("concat(");
