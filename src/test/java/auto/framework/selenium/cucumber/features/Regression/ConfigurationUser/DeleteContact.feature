@@ -6,21 +6,10 @@
 @3.2
 #Module
 @ConfigurationUser
-Feature: View User
+Feature: Delete Contact
 
-  @test @regression @TestCase_2365
-  Scenario: Data user view
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    And   I open options of user
-    Then  I enter into Configuration User module
-    And   I open Users module in configuration user
-
-    And   I verify that Users module opened correctly
-
-  @test @regression @TestCase_2366
-  Scenario: Inactive users view
+  @test @regression @TestCase_2398
+  Scenario: Delete a contact
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
     And   I login successful
@@ -28,5 +17,23 @@ Feature: View User
     Then  I enter into Configuration User module
     And   I open Users module in configuration user
     And   I verify that Users module opened correctly
-    And   I click show inactive users
-    And   I verify that inactive users filter is displayed correctly
+    When  I click button arrow up
+    And   I select the user "QA Automation, Test" in users module
+    Then  I verify that Contacts section is displayed
+    When  I accept delete contacts row
+    Then  I verify the action was performed successfully
+
+  @test @regression @TestCase_2399
+  Scenario: Cancelling a delete contact
+    Given I open the Baxter website
+    And   I try to login with "login_baxter" credentials
+    And   I login successful
+    And   I open options of user
+    Then  I enter into Configuration User module
+    And   I open Users module in configuration user
+    And   I verify that Users module opened correctly
+    When  I click button arrow up
+    And   I select the user "QA Automation, Test" in users module
+    Then  I verify that Contacts section is displayed
+    When  I cancel delete contacts row
+    Then  I verify the action was performed successfully

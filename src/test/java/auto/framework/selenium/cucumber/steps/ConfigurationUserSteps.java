@@ -200,6 +200,58 @@ public class ConfigurationUserSteps {
         configurationUserPage.cancelCenterAssignmentRow();
     }
 
+    // --- Additional identifications ---
+
+    @Then("I verify that Additional identifications section is displayed")
+    public void iVerifyThatAdditionalIdentificationsSectionIsDisplayed() throws InterruptedException {
+        assertTrue(configurationUserPage.isAdditionalIdentificationsDisplayed());
+    }
+
+    @When("I click button new record in additional identifications")
+    public void iClickButtonNewRecordInAdditionalIdentifications() throws InterruptedException {
+        configurationUserPage.clickNewAdditionalIdentification();
+    }
+
+    @And("I select the identification type {string} in additional identifications row")
+    public void iSelectTheIdentificationTypeInAdditionalIdentificationsRow(String identificationType) throws InterruptedException {
+        configurationUserPage.selectAdditionalIdentificationTypeRow(identificationType);
+    }
+
+    @When("I click button edit additional identifications row")
+    public void iClickButtonEditAdditionalIdentificationsRow() throws InterruptedException {
+        configurationUserPage.clickEditAdditionalIdentificationRow();
+    }
+
+    @When("I accept delete additional identifications row")
+    public void iAcceptDeleteAdditionalIdentificationsRow() throws InterruptedException {
+        configurationUserPage.acceptDeleteAdditionalIdentificationRow();
+    }
+
+    @When("I cancel delete additional identifications row")
+    public void iCancelDeleteAdditionalIdentificationsRow() throws InterruptedException {
+        configurationUserPage.dismissDeleteAdditionalIdentificationRow();
+    }
+
+    @And("I enter the value in additional identifications row {string}")
+    public void iEnterTheValueInAdditionalIdentificationsRow(String value) throws InterruptedException {
+        configurationUserPage.enterAdditionalIdentificationValueRow(value);
+    }
+
+    @And("I enter the observations in additional identifications row {string}")
+    public void iEnterTheObservationsInAdditionalIdentificationsRow(String observations) throws InterruptedException {
+        configurationUserPage.enterAdditionalIdentificationObservationsRow(observations);
+    }
+
+    @Then("I save the additional identifications row")
+    public void iSaveTheAdditionalIdentificationsRow() throws InterruptedException {
+        configurationUserPage.saveAdditionalIdentificationRow();
+    }
+
+    @Then("I cancel the additional identifications row")
+    public void iCancelTheAdditionalIdentificationsRow() throws InterruptedException {
+        configurationUserPage.cancelAdditionalIdentificationRow();
+    }
+
     // --- Contacts ---
 
     @Then("I verify that Contacts section is displayed")
@@ -220,6 +272,16 @@ public class ConfigurationUserSteps {
     @When("I click button edit contacts row")
     public void iClickButtonEditContactsRow() throws InterruptedException {
         configurationUserPage.clickEditContactRow();
+    }
+
+    @When("I accept delete contacts row")
+    public void iAcceptDeleteContactsRow() throws InterruptedException {
+        configurationUserPage.acceptDeleteContactRow();
+    }
+
+    @When("I cancel delete contacts row")
+    public void iCancelDeleteContactsRow() throws InterruptedException {
+        configurationUserPage.dismissDeleteContactRow();
     }
 
     @And("I enter the value in contacts row {string}")

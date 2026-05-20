@@ -139,6 +139,38 @@ public class ConfigurationUserPage extends BasePage<ConfigurationUserPage> {
     @FindBy(how = How.XPATH, using = "//h2[normalize-space(.)='Center assignment']/ancestor::div[contains(@class,'x_title')][1]/following-sibling::div[contains(@class,'x_content')][1]//td[contains(@class,'k-command-cell')]//button[contains(@class,'k-grid-cancel')]")
     private WebElement btnCancelCenterAssignmentRow;
 
+    // --- Additional identifications ---
+
+    @FindBy(how = How.XPATH, using = "//h2[normalize-space(.)='Additional identifications']")
+    private WebElement additionalIdentificationsTitle;
+
+    @FindBy(how = How.XPATH, using = "//h2[normalize-space(.)='Additional identifications']/ancestor::div[contains(@class,'x_title')][1]/following-sibling::div[contains(@class,'x_content')][1]//button[contains(@class,'k-grid-add')]")
+    private WebElement btnNewAdditionalIdentification;
+
+    @FindBy(how = How.XPATH, using = "//h2[normalize-space(.)='Additional identifications']/ancestor::div[contains(@class,'x_title')][1]/following-sibling::div[contains(@class,'x_content')][1]//tr[contains(@class,'k-grid-edit-row')]")
+    private WebElement additionalIdentificationEditRow;
+
+    @FindBy(how = How.XPATH, using = "//h2[normalize-space(.)='Additional identifications']/ancestor::div[contains(@class,'x_panel')][1]//tr[contains(@class,'k-master-row') and not(contains(@class,'k-grid-edit-row'))]//button[contains(@class,'k-grid-edit')]")
+    private WebElement btnEditAdditionalIdentificationRow;
+
+    @FindBy(how = How.XPATH, using = "//h2[normalize-space(.)='Additional identifications']/ancestor::div[contains(@class,'x_panel')][1]//tr[contains(@class,'k-master-row') and not(contains(@class,'k-grid-edit-row'))]//button[contains(@class,'k-grid-delete')]")
+    private WebElement btnDeleteAdditionalIdentificationRow;
+
+    @FindBy(how = How.XPATH, using = "//h2[normalize-space(.)='Additional identifications']/ancestor::div[contains(@class,'x_title')][1]/following-sibling::div[contains(@class,'x_content')][1]//td[@data-container-for='tipoIdentificacionId']//span[contains(@class,'k-picker')]")
+    private WebElement dropDownAdditionalIdentificationTypeRow;
+
+    @FindBy(how = How.XPATH, using = "//h2[normalize-space(.)='Additional identifications']/ancestor::div[contains(@class,'x_title')][1]/following-sibling::div[contains(@class,'x_content')][1]//td[@data-container-for='valor']//input")
+    private WebElement inputAdditionalIdentificationValueRow;
+
+    @FindBy(how = How.XPATH, using = "//h2[normalize-space(.)='Additional identifications']/ancestor::div[contains(@class,'x_title')][1]/following-sibling::div[contains(@class,'x_content')][1]//td[@data-container-for='observaciones']//input")
+    private WebElement inputAdditionalIdentificationObservationsRow;
+
+    @FindBy(how = How.XPATH, using = "//h2[normalize-space(.)='Additional identifications']/ancestor::div[contains(@class,'x_title')][1]/following-sibling::div[contains(@class,'x_content')][1]//td[contains(@class,'k-command-cell')]//button[contains(@class,'k-grid-update')]")
+    private WebElement btnSaveAdditionalIdentificationRow;
+
+    @FindBy(how = How.XPATH, using = "//h2[normalize-space(.)='Additional identifications']/ancestor::div[contains(@class,'x_title')][1]/following-sibling::div[contains(@class,'x_content')][1]//td[contains(@class,'k-command-cell')]//button[contains(@class,'k-grid-cancel')]")
+    private WebElement btnCancelAdditionalIdentificationRow;
+
     // --- Contacts ---
 
     @FindBy(how = How.XPATH, using = "//h2[normalize-space()='Contacts']")
@@ -152,6 +184,9 @@ public class ConfigurationUserPage extends BasePage<ConfigurationUserPage> {
 
     @FindBy(how = How.XPATH, using = "//h2[normalize-space(.)='Contacts']/ancestor::div[contains(@class,'x_panel')][1]//button[contains(@class,'k-grid-edit')]")
     private WebElement btnEditContactRow;
+
+    @FindBy(how = How.XPATH, using = "//medios-contacto-personal//tr[contains(@class,'k-master-row') and not(contains(@class,'k-grid-edit-row'))]//button[contains(@class,'k-grid-delete')]")
+    private WebElement btnDeleteContactRow;
 
     @FindBy(how = How.XPATH, using = "//h2[normalize-space(.)='Contacts']/ancestor::div[contains(@class,'x_title')][1]/following-sibling::div[contains(@class,'x_content')][1]//td[@data-container-for='tipoContactoId']//span[contains(@class,'k-picker')]")
     private WebElement dropDownContactTypeRow;
@@ -627,6 +662,124 @@ public class ConfigurationUserPage extends BasePage<ConfigurationUserPage> {
         driver.switchTo().parentFrame();
     }
 
+    // --- Additional identifications ---
+
+    public boolean isAdditionalIdentificationsDisplayed() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        driver.switchTo().frame("iframeV2");
+        waitElements(additionalIdentificationsTitle);
+        scrollToElementMove(additionalIdentificationsTitle);
+        boolean isDisplayed = additionalIdentificationsTitle.isDisplayed();
+        driver.switchTo().parentFrame();
+        driver.switchTo().parentFrame();
+        return isDisplayed;
+    }
+
+    public void clickNewAdditionalIdentification() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        driver.switchTo().frame("iframeV2");
+        waitElements(btnNewAdditionalIdentification);
+        scrollToElementMove(btnNewAdditionalIdentification);
+        click(btnNewAdditionalIdentification);
+        pause(1500);
+        click(btnNewAdditionalIdentification);
+        pause(2000);
+        driver.switchTo().parentFrame();
+        driver.switchTo().parentFrame();
+    }
+
+    public void selectAdditionalIdentificationTypeRow(String identificationType) throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        driver.switchTo().frame("iframeV2");
+        waitElements(additionalIdentificationEditRow);
+        waitElements(dropDownAdditionalIdentificationTypeRow);
+        selectKendoDropdownOption(dropDownAdditionalIdentificationTypeRow, identificationType);
+        driver.switchTo().parentFrame();
+        driver.switchTo().parentFrame();
+    }
+
+    public void clickEditAdditionalIdentificationRow() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        driver.switchTo().frame("iframeV2");
+        waitElements(btnEditAdditionalIdentificationRow);
+        scrollToElementMove(btnEditAdditionalIdentificationRow);
+        click(btnEditAdditionalIdentificationRow);
+        pause(1500);
+        click(btnEditAdditionalIdentificationRow);
+        pause(2000);
+        driver.switchTo().parentFrame();
+        driver.switchTo().parentFrame();
+    }
+
+    public void clickDeleteAdditionalIdentificationRow() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        driver.switchTo().frame("iframeV2");
+        waitElements(btnDeleteAdditionalIdentificationRow);
+        scrollToElementMove(btnDeleteAdditionalIdentificationRow);
+        click(btnDeleteAdditionalIdentificationRow);
+        pause(500);
+    }
+
+    public void acceptDeleteAdditionalIdentificationRow() throws InterruptedException {
+        clickDeleteAdditionalIdentificationRow();
+        acceptBrowserAlert();
+        pause(500);
+    }
+
+    public void dismissDeleteAdditionalIdentificationRow() throws InterruptedException {
+        clickDeleteAdditionalIdentificationRow();
+        dismissBrowserAlert();
+        pause(500);
+    }
+
+    public void enterAdditionalIdentificationValueRow(String value) throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        driver.switchTo().frame("iframeV2");
+        waitElements(inputAdditionalIdentificationValueRow);
+        scrollToElementMove(inputAdditionalIdentificationValueRow);
+        inputAdditionalIdentificationValueRow.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+        inputAdditionalIdentificationValueRow.sendKeys(Keys.DELETE);
+        write(inputAdditionalIdentificationValueRow, value);
+        pause(500);
+        driver.switchTo().parentFrame();
+        driver.switchTo().parentFrame();
+    }
+
+    public void enterAdditionalIdentificationObservationsRow(String observations) throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        driver.switchTo().frame("iframeV2");
+        waitElements(inputAdditionalIdentificationObservationsRow);
+        scrollToElementMove(inputAdditionalIdentificationObservationsRow);
+        inputAdditionalIdentificationObservationsRow.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+        inputAdditionalIdentificationObservationsRow.sendKeys(Keys.DELETE);
+        write(inputAdditionalIdentificationObservationsRow, observations);
+        pause(500);
+        driver.switchTo().parentFrame();
+        driver.switchTo().parentFrame();
+    }
+
+    public void saveAdditionalIdentificationRow() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        driver.switchTo().frame("iframeV2");
+        waitElements(btnSaveAdditionalIdentificationRow);
+        scrollToElementMove(btnSaveAdditionalIdentificationRow);
+        click(btnSaveAdditionalIdentificationRow);
+        pause(500);
+        driver.switchTo().parentFrame();
+        driver.switchTo().parentFrame();
+    }
+
+    public void cancelAdditionalIdentificationRow() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        driver.switchTo().frame("iframeV2");
+        waitElements(btnCancelAdditionalIdentificationRow);
+        scrollToElementMove(btnCancelAdditionalIdentificationRow);
+        click(btnCancelAdditionalIdentificationRow);
+        pause(500);
+        driver.switchTo().parentFrame();
+        driver.switchTo().parentFrame();
+    }
+
     // --- Contacts ---
 
     public boolean isContactsDisplayed() throws InterruptedException {
@@ -674,6 +827,27 @@ public class ConfigurationUserPage extends BasePage<ConfigurationUserPage> {
         pause(2000);
         driver.switchTo().parentFrame();
         driver.switchTo().parentFrame();
+    }
+
+    public void clickDeleteContactRow() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        driver.switchTo().frame("iframeV2");
+        waitElements(btnDeleteContactRow);
+        scrollToElementMove(btnDeleteContactRow);
+        click(btnDeleteContactRow);
+        pause(500);
+    }
+
+    public void acceptDeleteContactRow() throws InterruptedException {
+        clickDeleteContactRow();
+        acceptBrowserAlert();
+        pause(500);
+    }
+
+    public void dismissDeleteContactRow() throws InterruptedException {
+        clickDeleteContactRow();
+        dismissBrowserAlert();
+        pause(500);
     }
 
     public void enterContactValueRow(String value) throws InterruptedException {
