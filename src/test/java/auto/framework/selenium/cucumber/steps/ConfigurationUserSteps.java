@@ -298,4 +298,76 @@ public class ConfigurationUserSteps {
     public void iCancelTheContactsRow() throws InterruptedException {
         configurationUserPage.cancelContactRow();
     }
+
+    // --- Addresses ---
+
+    @Then("I verify that Addresses section is displayed")
+    public void iVerifyThatAddressesSectionIsDisplayed() throws InterruptedException {
+        assertTrue(configurationUserPage.isAddressesDisplayed());
+    }
+
+    @When("I click button new record in addresses")
+    public void iClickButtonNewRecordInAddresses() throws InterruptedException {
+        configurationUserPage.clickNewAddress();
+    }
+
+    @When("I click button edit addresses row")
+    public void iClickButtonEditAddressesRow() throws InterruptedException {
+        configurationUserPage.clickEditAddressRow();
+    }
+
+    @When("I accept delete addresses row")
+    public void iAcceptDeleteAddressesRow() throws InterruptedException {
+        configurationUserPage.acceptDeleteAddressRow();
+    }
+
+    @When("I cancel delete addresses row")
+    public void iCancelDeleteAddressesRow() throws InterruptedException {
+        configurationUserPage.dismissDeleteAddressRow();
+    }
+
+    @And("I select the address type {string} in addresses row")
+    public void iSelectTheAddressTypeInAddressesRow(String addressType) throws InterruptedException {
+        configurationUserPage.selectAddressTypeRow(addressType);
+    }
+
+    @And("I enter the address in addresses row {string}")
+    public void iEnterTheAddressInAddressesRow(String address) throws InterruptedException {
+        configurationUserPage.enterAddressRow(address);
+    }
+
+    @And("I enter the number in addresses row {string}")
+    public void iEnterTheNumberInAddressesRow(String number) throws InterruptedException {
+        configurationUserPage.enterAddressNumberRow(number);
+    }
+
+    @And("I enter the ZIP code in addresses row {string}")
+    public void iEnterTheZIPCodeInAddressesRow(String zipCode) throws InterruptedException {
+        configurationUserPage.enterAddressZipCodeRow(zipCode);
+    }
+
+    @And("I select the country {string} in addresses row")
+    public void iSelectTheCountryInAddressesRow(String country) throws InterruptedException {
+        configurationUserPage.selectAddressCountryRow(country);
+    }
+
+    @And("I select the province {string} in addresses row")
+    public void iSelectTheProvinceInAddressesRow(String province) throws InterruptedException {
+        configurationUserPage.selectAddressProvinceRow(province);
+    }
+
+    @And("I enter the other field in addresses row {string}")
+    public void iEnterTheOtherFieldInAddressesRow(String other) throws InterruptedException {
+        configurationUserPage.enterAddressOtherRow(other);
+    }
+
+    @Then("I save the addresses row")
+    public void iSaveTheAddressesRow() throws InterruptedException {
+        configurationUserPage.saveAddressRow();
+    }
+
+    @Then("I cancel the addresses row")
+    public void iCancelTheAddressesRow() throws InterruptedException {
+        configurationUserPage.cancelAddressRow();
+    }
 }

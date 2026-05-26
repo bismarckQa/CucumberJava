@@ -203,6 +203,50 @@ public class ConfigurationUserPage extends BasePage<ConfigurationUserPage> {
     @FindBy(how = How.XPATH, using = "//h2[normalize-space(.)='Contacts']/ancestor::div[contains(@class,'x_title')][1]/following-sibling::div[contains(@class,'x_content')][1]//td[contains(@class,'k-command-cell')]//button[contains(@class,'k-grid-cancel')]")
     private WebElement btnCancelContactRow;
 
+    // --- Addresses ---
+
+    @FindBy(how = How.XPATH, using = "//h2[normalize-space(.)='Addresses']")
+    private WebElement addressesTitle;
+
+    @FindBy(how = How.XPATH, using = "//h2[normalize-space(.)='Addresses']/ancestor::div[contains(@class,'x_panel')][1]//button[contains(@class,'k-grid-add')]")
+    private WebElement btnNewAddress;
+
+    @FindBy(how = How.XPATH, using = "//h2[normalize-space(.)='Addresses']/ancestor::div[contains(@class,'x_panel')][1]//tr[contains(@class,'k-grid-edit-row')]")
+    private WebElement addressEditRow;
+
+    @FindBy(how = How.XPATH, using = "//h2[normalize-space(.)='Addresses']/ancestor::div[contains(@class,'x_panel')][1]//tr[contains(@class,'k-master-row') and not(contains(@class,'k-grid-edit-row'))]//button[contains(@class,'k-grid-edit')]")
+    private WebElement btnEditAddressRow;
+
+    @FindBy(how = How.XPATH, using = "//h2[normalize-space(.)='Addresses']/ancestor::div[contains(@class,'x_panel')][1]//tr[contains(@class,'k-master-row') and not(contains(@class,'k-grid-edit-row'))]//button[contains(@class,'k-grid-delete')]")
+    private WebElement btnDeleteAddressRow;
+
+    @FindBy(how = How.XPATH, using = "//h2[normalize-space(.)='Addresses']/ancestor::div[contains(@class,'x_panel')][1]//td[@data-container-for='tipoDireccionId']//span[contains(@class,'k-picker')]")
+    private WebElement dropDownAddressTypeRow;
+
+    @FindBy(how = How.XPATH, using = "//h2[normalize-space(.)='Addresses']/ancestor::div[contains(@class,'x_panel')][1]//td[@data-container-for='direccion']//input")
+    private WebElement inputAddressRow;
+
+    @FindBy(how = How.XPATH, using = "//h2[normalize-space(.)='Addresses']/ancestor::div[contains(@class,'x_panel')][1]//td[@data-container-for='numero']//input[not(contains(@style,'display: none'))][1]")
+    private WebElement inputAddressNumberRow;
+
+    @FindBy(how = How.XPATH, using = "//h2[normalize-space(.)='Addresses']/ancestor::div[contains(@class,'x_panel')][1]//td[@data-container-for='codPostal']//input")
+    private WebElement inputAddressZipCodeRow;
+
+    @FindBy(how = How.XPATH, using = "//h2[normalize-space(.)='Addresses']/ancestor::div[contains(@class,'x_panel')][1]//td[@data-container-for='paisId']//span[contains(@class,'k-picker')]")
+    private WebElement dropDownAddressCountryRow;
+
+    @FindBy(how = How.XPATH, using = "//h2[normalize-space(.)='Addresses']/ancestor::div[contains(@class,'x_panel')][1]//td[@data-container-for='provinciaId']//span[contains(@class,'k-picker')]")
+    private WebElement dropDownAddressProvinceRow;
+
+    @FindBy(how = How.XPATH, using = "//h2[normalize-space(.)='Addresses']/ancestor::div[contains(@class,'x_panel')][1]//td[@data-container-for='otros']//input")
+    private WebElement inputAddressOtherRow;
+
+    @FindBy(how = How.XPATH, using = "//h2[normalize-space(.)='Addresses']/ancestor::div[contains(@class,'x_panel')][1]//td[contains(@class,'k-command-cell')]//button[contains(@class,'k-grid-update')]")
+    private WebElement btnSaveAddressRow;
+
+    @FindBy(how = How.XPATH, using = "//h2[normalize-space(.)='Addresses']/ancestor::div[contains(@class,'x_panel')][1]//td[contains(@class,'k-command-cell')]//button[contains(@class,'k-grid-cancel')]")
+    private WebElement btnCancelAddressRow;
+
     @Override
     public boolean isAt() throws InterruptedException {
         return isUsersModuleDisplayed();
@@ -883,5 +927,158 @@ public class ConfigurationUserPage extends BasePage<ConfigurationUserPage> {
         pause(500);
         driver.switchTo().parentFrame();
         driver.switchTo().parentFrame();
+    }
+
+    // --- Addresses ---
+
+    public boolean isAddressesDisplayed() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        driver.switchTo().frame("iframeV2");
+        waitElements(addressesTitle);
+        scrollToElementMove(addressesTitle);
+        boolean isDisplayed = addressesTitle.isDisplayed();
+        driver.switchTo().parentFrame();
+        driver.switchTo().parentFrame();
+        return isDisplayed;
+    }
+
+    public void clickNewAddress() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        driver.switchTo().frame("iframeV2");
+        waitElements(btnNewAddress);
+        scrollToElementMove(btnNewAddress);
+        click(btnNewAddress);
+        pause(1500);
+        click(btnNewAddress);
+        pause(2000);
+        driver.switchTo().parentFrame();
+        driver.switchTo().parentFrame();
+    }
+
+    public void clickEditAddressRow() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        driver.switchTo().frame("iframeV2");
+        waitElements(btnEditAddressRow);
+        scrollToElementMove(btnEditAddressRow);
+        click(btnEditAddressRow);
+        pause(1500);
+        click(btnEditAddressRow);
+        pause(2000);
+        driver.switchTo().parentFrame();
+        driver.switchTo().parentFrame();
+    }
+
+    public void clickDeleteAddressRow() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        driver.switchTo().frame("iframeV2");
+        waitElements(btnDeleteAddressRow);
+        scrollToElementMove(btnDeleteAddressRow);
+        click(btnDeleteAddressRow);
+        pause(500);
+    }
+
+    public void acceptDeleteAddressRow() throws InterruptedException {
+        clickDeleteAddressRow();
+        acceptBrowserAlert();
+        pause(500);
+    }
+
+    public void dismissDeleteAddressRow() throws InterruptedException {
+        clickDeleteAddressRow();
+        dismissBrowserAlert();
+        pause(500);
+    }
+
+    public void selectAddressTypeRow(String addressType) throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        driver.switchTo().frame("iframeV2");
+        waitElements(addressEditRow);
+        waitElements(dropDownAddressTypeRow);
+        selectKendoDropdownOption(dropDownAddressTypeRow, addressType);
+        driver.switchTo().parentFrame();
+        driver.switchTo().parentFrame();
+    }
+
+    public void selectAddressCountryRow(String country) throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        driver.switchTo().frame("iframeV2");
+        waitElements(addressEditRow);
+        waitElements(dropDownAddressCountryRow);
+        selectKendoDropdownOption(dropDownAddressCountryRow, country);
+        driver.switchTo().parentFrame();
+        driver.switchTo().parentFrame();
+    }
+
+    public void selectAddressProvinceRow(String province) throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        driver.switchTo().frame("iframeV2");
+        waitElements(addressEditRow);
+        waitElements(dropDownAddressProvinceRow);
+        selectKendoDropdownOption(dropDownAddressProvinceRow, province);
+        driver.switchTo().parentFrame();
+        driver.switchTo().parentFrame();
+    }
+
+    public void enterAddressRow(String address) throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        driver.switchTo().frame("iframeV2");
+        clearAndWriteAddressInput(inputAddressRow, address);
+        driver.switchTo().parentFrame();
+        driver.switchTo().parentFrame();
+    }
+
+    public void enterAddressNumberRow(String number) throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        driver.switchTo().frame("iframeV2");
+        clearAndWriteAddressInput(inputAddressNumberRow, number);
+        driver.switchTo().parentFrame();
+        driver.switchTo().parentFrame();
+    }
+
+    public void enterAddressZipCodeRow(String zipCode) throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        driver.switchTo().frame("iframeV2");
+        clearAndWriteAddressInput(inputAddressZipCodeRow, zipCode);
+        driver.switchTo().parentFrame();
+        driver.switchTo().parentFrame();
+    }
+
+    public void enterAddressOtherRow(String other) throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        driver.switchTo().frame("iframeV2");
+        clearAndWriteAddressInput(inputAddressOtherRow, other);
+        driver.switchTo().parentFrame();
+        driver.switchTo().parentFrame();
+    }
+
+    public void saveAddressRow() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        driver.switchTo().frame("iframeV2");
+        waitElements(btnSaveAddressRow);
+        scrollToElementMove(btnSaveAddressRow);
+        click(btnSaveAddressRow);
+        pause(500);
+        driver.switchTo().parentFrame();
+        driver.switchTo().parentFrame();
+    }
+
+    public void cancelAddressRow() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        driver.switchTo().frame("iframeV2");
+        waitElements(btnCancelAddressRow);
+        scrollToElementMove(btnCancelAddressRow);
+        click(btnCancelAddressRow);
+        pause(500);
+        driver.switchTo().parentFrame();
+        driver.switchTo().parentFrame();
+    }
+
+    private void clearAndWriteAddressInput(WebElement input, String value) throws InterruptedException {
+        waitElements(input);
+        scrollToElementMove(input);
+        input.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+        input.sendKeys(Keys.DELETE);
+        write(input, value);
+        pause(500);
     }
 }
