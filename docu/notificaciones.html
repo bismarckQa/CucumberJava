@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plan de pruebas - Notificaciones</title>
+  <style>
+    :root {
+      --ink: #17202a;
+      --muted: #5d6d7e;
+      --line: #d6dbdf;
+      --soft: #f4f6f7;
+      --accent: #0f5f6f;
+      --accent-soft: #e8f6f8;
+      --warn: #8a5a00;
+      --warn-soft: #fff4d6;
+      --ok: #1f7a4d;
+      --ok-soft: #e8f7ef;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #eef1f4;
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+    }
+
+    .page {
+      width: min(1240px, calc(100% - 36px));
+      margin: 28px auto;
+      background: #fff;
+      border: 1px solid var(--line);
+      box-shadow: 0 12px 34px rgba(23, 32, 42, 0.08);
+    }
+
+    header {
+      padding: 42px 52px 32px;
+      border-bottom: 4px solid var(--accent);
+    }
+
+    main {
+      padding: 34px 52px 52px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin-top: 0;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      margin-bottom: 12px;
+      font-size: 34px;
+      line-height: 1.15;
+    }
+
+    h2 {
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--line);
+      color: var(--accent);
+      font-size: 24px;
+    }
+
+    h3 {
+      margin-bottom: 8px;
+      font-size: 18px;
+    }
+
+    p {
+      margin: 0 0 12px;
+    }
+
+    .eyebrow {
+      margin-bottom: 10px;
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .subtitle {
+      max-width: 920px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    section {
+      margin-bottom: 34px;
+    }
+
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .metric {
+      min-height: 86px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      background: var(--soft);
+    }
+
+    .metric strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--accent);
+      font-size: 26px;
+      line-height: 1;
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .callout {
+      padding: 16px 18px;
+      border-left: 4px solid var(--accent);
+      background: var(--accent-soft);
+    }
+
+    .warning {
+      border-color: var(--warn);
+      background: var(--warn-soft);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .box {
+      padding: 16px;
+      border: 1px solid var(--line);
+      background: #fbfcfd;
+      break-inside: avoid;
+    }
+
+    ul,
+    ol {
+      margin: 8px 0 0;
+      padding-left: 22px;
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+      font-size: 14px;
+    }
+
+    th,
+    td {
+      vertical-align: top;
+      padding: 10px 11px;
+      border: 1px solid var(--line);
+      text-align: left;
+    }
+
+    th {
+      background: #edf3f5;
+      color: #20313a;
+      font-size: 13px;
+    }
+
+    tbody tr:nth-child(even) {
+      background: #fafbfc;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 3px 7px;
+      border-radius: 3px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .tag.manual {
+      background: var(--warn-soft);
+      color: var(--warn);
+    }
+
+    .tag.auto {
+      background: var(--ok-soft);
+      color: var(--ok);
+    }
+
+    .steps td:first-child {
+      width: 190px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    footer {
+      padding: 18px 52px 28px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      .page {
+        width: 100%;
+        margin: 0;
+        border: 0;
+        box-shadow: none;
+      }
+
+      header,
+      main,
+      footer {
+        padding-left: 28px;
+        padding-right: 28px;
+      }
+
+      section,
+      .box,
+      table {
+        break-inside: avoid;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .page {
+        width: 100%;
+        margin: 0;
+        border: 0;
+      }
+
+      header,
+      main,
+      footer {
+        padding-left: 22px;
+        padding-right: 22px;
+      }
+
+      .summary,
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <article class="page">
+    <header>
+      <p class="eyebrow">Borrador de Azure Test Plans</p>
+      <h1>Plan de pruebas - Modulo Notificaciones</h1>
+      <p class="subtitle">
+        Documento de trabajo para definir los test cases del modulo Notificaciones antes de
+        crearlos en Azure Test Plans y, posteriormente, automatizar los escenarios candidatos.
+      </p>
+
+      <div class="summary">
+        <div class="metric">
+          <strong>30</strong>
+          <span>Casos propuestos inicialmente.</span>
+        </div>
+        <div class="metric">
+          <strong>22</strong>
+          <span>Candidatos claros a automatizacion funcional.</span>
+        </div>
+        <div class="metric">
+          <strong>8</strong>
+          <span>Casos manuales o dependientes de permisos/configuracion.</span>
+        </div>
+        <div class="metric">
+          <strong>4</strong>
+          <span>Bloques principales: Home, Centro, CRUD y permisos.</span>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section>
+        <h2>Alcance funcional detectado</h2>
+        <div class="grid">
+          <div class="box">
+            <h3>Componente del Home</h3>
+            <ul>
+              <li>Campana de notificaciones compartida con alertas biometricas.</li>
+              <li>Indicador numerico de notificaciones pendientes de leer.</li>
+              <li>Pestanas de notificaciones por paciente y por seccion.</li>
+              <li>Acceso al centro desde el enlace "Ir al centro de notificaciones".</li>
+              <li>Apertura directa del centro desde una notificacion pendiente.</li>
+            </ul>
+          </div>
+
+          <div class="box">
+            <h3>Centro de Notificaciones</h3>
+            <ul>
+              <li>Panel superior con tabla de notificaciones.</li>
+              <li>Panel inferior con detalle de la notificacion seleccionada.</li>
+              <li>Filtro de activas/todas.</li>
+              <li>Filtro por paciente y por seccion.</li>
+              <li>Seleccion automatica de la primera notificacion al entrar.</li>
+            </ul>
+          </div>
+
+          <div class="box">
+            <h3>Acciones con permiso de escritura</h3>
+            <ul>
+              <li>Crear una notificacion desde el menu de tres puntos.</li>
+              <li>Cancelar la creacion.</li>
+              <li>Guardar la creacion.</li>
+              <li>Editar solo la fecha de fin.</li>
+              <li>Borrar con confirmacion "Si" o "No".</li>
+            </ul>
+          </div>
+
+          <div class="box">
+            <h3>Reglas importantes</h3>
+            <ul>
+              <li>Inicio es obligatorio.</li>
+              <li>Fin es opcional.</li>
+              <li>Paciente o seccion: al menos uno debe informarse.</li>
+              <li>Centros se habilita y se vuelve obligatorio al seleccionar un perfil.</li>
+              <li>Solo aparecen en Home las notificaciones activas, no leidas y no borradas.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Estrategia para crear el Test Plan</h2>
+        <table class="steps">
+          <tbody>
+            <tr>
+              <td>1. Crear suite</td>
+              <td>Crear una suite llamada <strong>Notificaciones</strong> dentro del plan correspondiente en Azure Test Plans.</td>
+            </tr>
+            <tr>
+              <td>2. Separar bloques</td>
+              <td>Dividir en suites hijas: Home, Centro de Notificaciones, Crear, Modificar, Borrar, Permisos y Validaciones.</td>
+            </tr>
+            <tr>
+              <td>3. Crear test cases</td>
+              <td>Registrar los casos con titulo claro, precondiciones, pasos, resultado esperado y datos de prueba.</td>
+            </tr>
+            <tr>
+              <td>4. Ejecutar manual</td>
+              <td>Validar primero en la interfaz real con capturas para confirmar textos, botones, modales, filtros y permisos.</td>
+            </tr>
+            <tr>
+              <td>5. Automatizar</td>
+              <td>Pasar a automatizacion los casos estables usando Selenium, Cucumber, Gherkin y Page Object Model.</td>
+            </tr>
+            <tr>
+              <td>6. Evidencias</td>
+              <td>Subir capturas por paso o por resultado segun pida el flujo corporativo de Azure Test Plans / ALM Test.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>Casos propuestos</h2>
+        <p>
+          Esta lista es inicial. Cuando tengamos capturas de la interfaz se ajustaran nombres exactos,
+          orden de pasos, datos de prueba y criterios de automatizacion.
+        </p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>ID temporal</th>
+              <th>Suite</th>
+              <th>Titulo del test case</th>
+              <th>Tipo</th>
+              <th>Prioridad</th>
+              <th>Automatizable</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>NOT-001</td>
+              <td>Home</td>
+              <td>Visualizar campana de notificaciones con usuario con permiso de lectura</td>
+              <td>Permisos</td>
+              <td>Alta</td>
+              <td><span class="tag auto">Si</span></td>
+            </tr>
+            <tr>
+              <td>NOT-002</td>
+              <td>Home</td>
+              <td>Ocultar referencias de notificaciones con usuario sin permiso</td>
+              <td>Permisos</td>
+              <td>Alta</td>
+              <td><span class="tag manual">Manual</span></td>
+            </tr>
+            <tr>
+              <td>NOT-003</td>
+              <td>Home</td>
+              <td>Desplegar panel de campana desde el Home</td>
+              <td>Navegacion</td>
+              <td>Alta</td>
+              <td><span class="tag auto">Si</span></td>
+            </tr>
+            <tr>
+              <td>NOT-004</td>
+              <td>Home</td>
+              <td>Visualizar pestana de notificaciones por paciente</td>
+              <td>Consulta</td>
+              <td>Media</td>
+              <td><span class="tag auto">Si</span></td>
+            </tr>
+            <tr>
+              <td>NOT-005</td>
+              <td>Home</td>
+              <td>Visualizar pestana de notificaciones por seccion</td>
+              <td>Consulta</td>
+              <td>Media</td>
+              <td><span class="tag auto">Si</span></td>
+            </tr>
+            <tr>
+              <td>NOT-006</td>
+              <td>Home</td>
+              <td>Validar contador de notificaciones pendientes de leer</td>
+              <td>Validacion</td>
+              <td>Alta</td>
+              <td><span class="tag manual">Manual</span></td>
+            </tr>
+            <tr>
+              <td>NOT-007</td>
+              <td>Home</td>
+              <td>Abrir centro de notificaciones desde enlace de paciente</td>
+              <td>Navegacion</td>
+              <td>Alta</td>
+              <td><span class="tag auto">Si</span></td>
+            </tr>
+            <tr>
+              <td>NOT-008</td>
+              <td>Home</td>
+              <td>Abrir centro de notificaciones desde enlace de seccion</td>
+              <td>Navegacion</td>
+              <td>Alta</td>
+              <td><span class="tag auto">Si</span></td>
+            </tr>
+            <tr>
+              <td>NOT-009</td>
+              <td>Home</td>
+              <td>Abrir una notificacion concreta desde el panel del Home</td>
+              <td>Navegacion</td>
+              <td>Alta</td>
+              <td><span class="tag auto">Si</span></td>
+            </tr>
+            <tr>
+              <td>NOT-010</td>
+              <td>Centro</td>
+              <td>Validar apertura del centro con filtro por paciente activo por defecto</td>
+              <td>Filtro</td>
+              <td>Alta</td>
+              <td><span class="tag auto">Si</span></td>
+            </tr>
+            <tr>
+              <td>NOT-011</td>
+              <td>Centro</td>
+              <td>Cambiar filtro a notificaciones por seccion</td>
+              <td>Filtro</td>
+              <td>Alta</td>
+              <td><span class="tag auto">Si</span></td>
+            </tr>
+            <tr>
+              <td>NOT-012</td>
+              <td>Centro</td>
+              <td>Mostrar todas las notificaciones activando la casilla correspondiente</td>
+              <td>Filtro</td>
+              <td>Media</td>
+              <td><span class="tag auto">Si</span></td>
+            </tr>
+            <tr>
+              <td>NOT-013</td>
+              <td>Centro</td>
+              <td>Combinar filtro por seccion con mostrar todas las notificaciones</td>
+              <td>Filtro</td>
+              <td>Media</td>
+              <td><span class="tag auto">Si</span></td>
+            </tr>
+            <tr>
+              <td>NOT-014</td>
+              <td>Centro</td>
+              <td>Seleccionar una notificacion y visualizar su detalle</td>
+              <td>Consulta</td>
+              <td>Alta</td>
+              <td><span class="tag auto">Si</span></td>
+            </tr>
+            <tr>
+              <td>NOT-015</td>
+              <td>Centro</td>
+              <td>Validar orden de notificaciones no leidas antes que leidas</td>
+              <td>Ordenacion</td>
+              <td>Media</td>
+              <td><span class="tag manual">Manual</span></td>
+            </tr>
+            <tr>
+              <td>NOT-016</td>
+              <td>Crear</td>
+              <td>Abrir formulario de nueva notificacion desde menu de tres puntos</td>
+              <td>Creacion</td>
+              <td>Alta</td>
+              <td><span class="tag auto">Si</span></td>
+            </tr>
+            <tr>
+              <td>NOT-017</td>
+              <td>Crear</td>
+              <td>Cancelar una nueva notificacion</td>
+              <td>Creacion</td>
+              <td>Alta</td>
+              <td><span class="tag auto">Si</span></td>
+            </tr>
+            <tr>
+              <td>NOT-018</td>
+              <td>Crear</td>
+              <td>Crear notificacion asociada a paciente</td>
+              <td>Creacion</td>
+              <td>Alta</td>
+              <td><span class="tag auto">Si</span></td>
+            </tr>
+            <tr>
+              <td>NOT-019</td>
+              <td>Crear</td>
+              <td>Crear notificacion asociada a seccion</td>
+              <td>Creacion</td>
+              <td>Alta</td>
+              <td><span class="tag auto">Si</span></td>
+            </tr>
+            <tr>
+              <td>NOT-020</td>
+              <td>Crear</td>
+              <td>Crear notificacion asociada a paciente y seccion</td>
+              <td>Creacion</td>
+              <td>Media</td>
+              <td><span class="tag auto">Si</span></td>
+            </tr>
+            <tr>
+              <td>NOT-021</td>
+              <td>Crear</td>
+              <td>Validar campos obligatorios vacios en nueva notificacion</td>
+              <td>Validacion</td>
+              <td>Alta</td>
+              <td><span class="tag auto">Si</span></td>
+            </tr>
+            <tr>
+              <td>NOT-022</td>
+              <td>Crear</td>
+              <td>Validar que paciente o seccion sean obligatorios de forma alternativa</td>
+              <td>Validacion</td>
+              <td>Alta</td>
+              <td><span class="tag auto">Si</span></td>
+            </tr>
+            <tr>
+              <td>NOT-023</td>
+              <td>Crear</td>
+              <td>Validar habilitacion obligatoria de centros al seleccionar perfil</td>
+              <td>Validacion</td>
+              <td>Alta</td>
+              <td><span class="tag auto">Si</span></td>
+            </tr>
+            <tr>
+              <td>NOT-024</td>
+              <td>Crear</td>
+              <td>Crear notificacion sin fecha de fin</td>
+              <td>Validacion</td>
+              <td>Media</td>
+              <td><span class="tag auto">Si</span></td>
+            </tr>
+            <tr>
+              <td>NOT-025</td>
+              <td>Crear</td>
+              <td>Validar fecha de fin anterior a fecha de inicio</td>
+              <td>Validacion</td>
+              <td>Alta</td>
+              <td><span class="tag auto">Si</span></td>
+            </tr>
+            <tr>
+              <td>NOT-026</td>
+              <td>Modificar</td>
+              <td>Abrir edicion de una notificacion existente</td>
+              <td>Modificacion</td>
+              <td>Alta</td>
+              <td><span class="tag auto">Si</span></td>
+            </tr>
+            <tr>
+              <td>NOT-027</td>
+              <td>Modificar</td>
+              <td>Cancelar la edicion de fecha de fin</td>
+              <td>Modificacion</td>
+              <td>Alta</td>
+              <td><span class="tag auto">Si</span></td>
+            </tr>
+            <tr>
+              <td>NOT-028</td>
+              <td>Modificar</td>
+              <td>Modificar correctamente la fecha de fin</td>
+              <td>Modificacion</td>
+              <td>Alta</td>
+              <td><span class="tag auto">Si</span></td>
+            </tr>
+            <tr>
+              <td>NOT-029</td>
+              <td>Borrar</td>
+              <td>Cancelar borrado de notificacion desde confirmacion</td>
+              <td>Borrado</td>
+              <td>Alta</td>
+              <td><span class="tag auto">Si</span></td>
+            </tr>
+            <tr>
+              <td>NOT-030</td>
+              <td>Borrar</td>
+              <td>Borrar correctamente una notificacion desde confirmacion</td>
+              <td>Borrado</td>
+              <td>Alta</td>
+              <td><span class="tag auto">Si</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>Plantilla para escribir cada test case</h2>
+        <table class="steps">
+          <tbody>
+            <tr>
+              <td>Titulo</td>
+              <td>Nombre claro del caso, empezando por la accion principal.</td>
+            </tr>
+            <tr>
+              <td>Precondiciones</td>
+              <td>Usuario, permiso, datos existentes, notificacion activa/inactiva y configuracion necesaria.</td>
+            </tr>
+            <tr>
+              <td>Datos de prueba</td>
+              <td>Paciente, seccion, centro, perfil, personal destinatario, fechas y texto de notificacion.</td>
+            </tr>
+            <tr>
+              <td>Pasos</td>
+              <td>Acciones exactas en la interfaz, usando textos reales de botones, filtros, menus y modales.</td>
+            </tr>
+            <tr>
+              <td>Resultado esperado</td>
+              <td>Comportamiento observable: pantalla, tabla, mensaje, validacion, detalle, contador o cambio de estado.</td>
+            </tr>
+            <tr>
+              <td>Automatizacion</td>
+              <td>Indicar si sera automatizado, manual o mixto, y que escenario Cucumber podria cubrirlo.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>Capturas necesarias</h2>
+        <div class="callout warning">
+          Para escribir los pasos exactos necesito capturas de: campana del Home, panel desplegado,
+          centro de notificaciones, menu de tres puntos, formulario nuevo, dropdowns, tabla, detalle,
+          editar, borrar y confirmacion. Con eso dejamos los casos listos para Azure Test Plans.
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      Borrador inicial basado en el documento funcional de Notificaciones. Pendiente de ajustar con capturas reales de la interfaz.
+    </footer>
+  </article>
+</body>
+</html>

@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guía del Rol QA Automatizador - Versia Renal</title>
+  <style>
+    :root {
+      --ink: #1f2933;
+      --muted: #5f6b7a;
+      --line: #d8dee6;
+      --accent: #155e75;
+      --accent-dark: #0f4556;
+      --accent-soft: #e6f3f7;
+      --paper: #ffffff;
+      --page: #f3f5f7;
+      --soft: #fafbfc;
+      --warn: #7a4b00;
+      --warn-soft: #fff4d6;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--page);
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.58;
+    }
+
+    .page {
+      width: min(1180px, calc(100% - 40px));
+      margin: 32px auto;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+    }
+
+    header {
+      padding: 52px 58px 38px;
+      border-bottom: 5px solid var(--accent);
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 36px;
+      line-height: 1.16;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      max-width: 900px;
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .meta {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .meta div {
+      min-height: 70px;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      background: var(--soft);
+    }
+
+    .meta strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    main {
+      padding: 40px 58px 58px;
+    }
+
+    section {
+      margin-bottom: 42px;
+    }
+
+    h2 {
+      margin: 0 0 15px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--line);
+      color: var(--accent);
+      font-size: 24px;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin: 24px 0 10px;
+      color: var(--accent-dark);
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+
+    p {
+      margin: 0 0 12px;
+    }
+
+    .toc {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px 28px;
+      counter-reset: item;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .toc li {
+      counter-increment: item;
+      display: grid;
+      grid-template-columns: 36px 1fr;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px solid #edf0f4;
+      break-inside: avoid;
+    }
+
+    .toc li::before {
+      content: counter(item, decimal-leading-zero);
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .toc span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .callout {
+      margin-top: 16px;
+      padding: 16px 18px;
+      border-left: 4px solid var(--accent);
+      background: var(--accent-soft);
+    }
+
+    .warning {
+      border-color: var(--warn);
+      background: var(--warn-soft);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .box {
+      padding: 18px;
+      border: 1px solid var(--line);
+      background: var(--soft);
+      break-inside: avoid;
+    }
+
+    .box h3 {
+      margin-top: 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+      font-size: 14px;
+    }
+
+    th,
+    td {
+      padding: 10px 11px;
+      border: 1px solid var(--line);
+      vertical-align: top;
+      text-align: left;
+    }
+
+    th {
+      background: #edf3f5;
+      color: #20313a;
+      font-size: 13px;
+    }
+
+    tbody tr:nth-child(even) {
+      background: #fbfcfd;
+    }
+
+    ul,
+    ol {
+      margin: 8px 0 0;
+      padding-left: 21px;
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
+
+    code,
+    .pill {
+      padding: 2px 5px;
+      border-radius: 3px;
+      background: #edf2f5;
+      color: #17202a;
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 0.94em;
+    }
+
+    .step-table td:first-child {
+      width: 58px;
+      color: var(--accent);
+      font-weight: 700;
+      text-align: center;
+    }
+
+    footer {
+      padding: 18px 58px 28px;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      font-size: 13px;
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      .page {
+        width: 100%;
+        margin: 0;
+        border: 0;
+        box-shadow: none;
+      }
+
+      header,
+      main,
+      footer {
+        padding-left: 32px;
+        padding-right: 32px;
+      }
+
+      section,
+      .box,
+      table {
+        break-inside: avoid;
+      }
+    }
+
+    @media (max-width: 860px) {
+      .page {
+        width: 100%;
+        margin: 0;
+        border: 0;
+      }
+
+      header,
+      main,
+      footer {
+        padding-left: 22px;
+        padding-right: 22px;
+      }
+
+      .meta,
+      .toc,
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <article class="page">
+    <header>
+      <p class="eyebrow">Guía práctica de QA</p>
+      <h1>Rol QA Automatizador en el Proyecto Versia Renal</h1>
+      <p class="subtitle">
+        Guía para una persona que llega desde cero a trabajar como QA en Versia Renal.
+        Explica qué debe aprender, qué herramientas usar, cómo crear casos de prueba,
+        cómo ejecutarlos, cómo documentar evidencias y cómo empezar a automatizar dentro
+        del framework del proyecto.
+      </p>
+
+      <div class="meta">
+        <div>
+          <strong>Área</strong>
+          Calidad de Software
+        </div>
+        <div>
+          <strong>Rol</strong>
+          QA Automatizador
+        </div>
+        <div>
+          <strong>Proyecto</strong>
+          Versia Renal
+        </div>
+        <div>
+          <strong>Versión</strong>
+          Guía inicial
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section>
+        <h2>Resumen</h2>
+        <p>
+          El rol QA Automatizador en Versia Renal combina conocimiento funcional del producto,
+          diseño de pruebas, ejecución manual, documentación de evidencias y automatización web.
+          La persona que asuma el rol debe entender cómo se comporta la aplicación, cómo se
+          organizan los casos en Azure Test Plans y ALM Test, y cómo se transforma un caso manual
+          en un escenario automatizado usando Java, Selenium, Cucumber y Gherkin.
+        </p>
+        <p>
+          Esta guía está escrita como documento práctico de entrada. No sustituye la formación
+          funcional ni la revisión con el equipo, pero permite seguir un camino ordenado para
+          empezar a trabajar, comprender las herramientas y ejecutar tareas de QA con criterio.
+        </p>
+        <div class="callout">
+          <strong>Enfoque:</strong> el documento se centra en el flujo corporativo del proyecto:
+          Azure DevOps, Azure Test Plans, ALM Test, evidencias y framework de automatización. No
+          documenta procesos personales ni repositorios externos usados fuera del flujo oficial.
+        </div>
+      </section>
+
+      <section>
+        <h2>Índice</h2>
+        <ol class="toc">
+          <li><div>Objetivo y alcance<span>Qué cubre esta guía y cómo debe usarse.</span></div></li>
+          <li><div>Rol QA Automatizador<span>Responsabilidades y expectativas principales.</span></div></li>
+          <li><div>Herramientas corporativas<span>Azure DevOps, Azure Test Plans, ALM Test y ALM SaaS.</span></div></li>
+          <li><div>Tecnologías necesarias<span>Java, Selenium, Cucumber, Gherkin, Spring, Maven y navegador.</span></div></li>
+          <li><div>Conocimiento funcional<span>Módulos, reglas de negocio y validaciones.</span></div></li>
+          <li><div>Gestión de pruebas manuales<span>Test plans, suites, test cases, steps y evidencias.</span></div></li>
+          <li><div>Azure Test Plans<span>Cómo crear planes, suites, casos y ejecutar pruebas.</span></div></li>
+          <li><div>ALM Test / ALM SaaS<span>Uso, evidencias y consideraciones tras migración.</span></div></li>
+          <li><div>Framework de automatización<span>Estructura del proyecto y patrón Page Object.</span></div></li>
+          <li><div>Creación de escenarios<span>De test case manual a feature Cucumber.</span></div></li>
+          <li><div>Ejecución y validación<span>Cómo probar localmente y revisar resultados.</span></div></li>
+          <li><div>Depuración de fallos<span>HTML, XPath, iframes, Kendo UI, alerts, logs y screenshots.</span></div></li>
+          <li><div>Buenas prácticas<span>Criterios para mantener pruebas estables y legibles.</span></div></li>
+          <li><div>Checklist de entrega<span>Validaciones antes de cerrar un trabajo.</span></div></li>
+          <li><div>Ruta de aprendizaje<span>Camino sugerido para empezar desde cero.</span></div></li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>1. Objetivo y alcance</h2>
+        <p>
+          El objetivo de esta guía es explicar cómo trabaja un QA Automatizador dentro del proyecto
+          Versia Renal. La guía permite conocer qué herramientas se usan, cómo se documentan las
+          pruebas, cómo se preparan los datos, cómo se ejecutan los casos y cómo se automatizan los
+          flujos repetitivos.
+        </p>
+        <p>
+          El documento está orientado a una persona que ya tenga una base de QA o desarrollo, pero
+          que no conozca aún el proyecto. Por eso se explican tanto las responsabilidades del rol
+          como el flujo práctico que debe seguirse en el día a día.
+        </p>
+      </section>
+
+      <section>
+        <h2>2. Rol QA Automatizador</h2>
+        <div class="grid">
+          <div class="box">
+            <h3>Responsabilidades principales</h3>
+            <ul>
+              <li>Analizar requisitos, incidencias o cambios funcionales.</li>
+              <li>Diseñar casos de prueba positivos, negativos y de cancelación.</li>
+              <li>Crear y mantener test cases en Azure Test Plans o ALM Test.</li>
+              <li>Ejecutar pruebas manuales cuando la funcionalidad es nueva o inestable.</li>
+              <li>Automatizar los casos repetibles y de regresión.</li>
+              <li>Adjuntar evidencias claras para cada ejecución relevante.</li>
+              <li>Reportar defectos con pasos reproducibles y resultado esperado.</li>
+              <li>Mantener el framework y corregir pruebas cuando cambia la interfaz.</li>
+            </ul>
+          </div>
+
+          <div class="box">
+            <h3>Criterio esperado</h3>
+            <ul>
+              <li>Entender el flujo funcional antes de automatizar.</li>
+              <li>No crear automatización sobre pasos que no han sido validados manualmente.</li>
+              <li>Usar nombres claros en features, scenarios, steps y métodos.</li>
+              <li>Evitar duplicar código si ya existe un método reutilizable.</li>
+              <li>Revisar las capturas, el HTML y el comportamiento real de la pantalla.</li>
+              <li>Confirmar que el caso deja el sistema en un estado controlado.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>3. Herramientas corporativas</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Herramienta</th>
+              <th>Uso dentro del rol</th>
+              <th>Qué debe conocer el QA</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Azure DevOps</td>
+              <td>Plataforma corporativa para trabajo del proyecto.</td>
+              <td>Ubicar el proyecto, acceder a Test Plans, consultar trabajo relacionado y moverse por el entorno.</td>
+            </tr>
+            <tr>
+              <td>Azure Repos</td>
+              <td>Repositorio corporativo del framework y código relacionado.</td>
+              <td>Conocer ramas, cambios, revisiones y ubicación del framework.</td>
+            </tr>
+            <tr>
+              <td>Azure Test Plans</td>
+              <td>Creación, organización y ejecución de pruebas.</td>
+              <td>Crear Test Plan, suites, test cases, steps, ejecuciones y evidencias.</td>
+            </tr>
+            <tr>
+              <td>ALM Test / ALM SaaS</td>
+              <td>Gestión histórica o actual de casos, steps y evidencias según flujo definido.</td>
+              <td>Consultar test cases, revisar evidencias, crear pasos y validar información migrada.</td>
+            </tr>
+            <tr>
+              <td>Microsoft Teams / Outlook</td>
+              <td>Comunicación operativa con equipo, responsables y sistemas.</td>
+              <td>Reportar bloqueos, pedir datos, validar incidencias y coordinar pruebas.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>4. Tecnologías necesarias</h2>
+        <div class="grid">
+          <div class="box">
+            <h3>Automatización</h3>
+            <ul>
+              <li><strong>Java:</strong> lenguaje base del framework.</li>
+              <li><strong>Selenium WebDriver:</strong> interacción con navegador y elementos web.</li>
+              <li><strong>Cucumber:</strong> ejecución de escenarios escritos en lenguaje Gherkin.</li>
+              <li><strong>Gherkin:</strong> formato Given/When/Then para describir escenarios.</li>
+              <li><strong>Spring / Spring Context:</strong> inyección de pages, steps y configuración.</li>
+              <li><strong>Maven:</strong> gestión de dependencias y ejecución del proyecto.</li>
+            </ul>
+          </div>
+
+          <div class="box">
+            <h3>Análisis de interfaz</h3>
+            <ul>
+              <li><strong>HTML / DOM:</strong> lectura de estructura de pantalla.</li>
+              <li><strong>XPath y CSS selectors:</strong> localización de elementos.</li>
+              <li><strong>Chrome DevTools:</strong> inspección, búsqueda y depuración.</li>
+              <li><strong>Kendo UI:</strong> grids, dropdowns, multiselects y controles dinámicos.</li>
+              <li><strong>Iframes:</strong> cambio de contexto para acceder a formularios internos.</li>
+              <li><strong>Alerts y modales:</strong> manejo de confirmaciones del navegador y de la aplicación.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>5. Conocimiento funcional del producto</h2>
+        <p>
+          Antes de crear pruebas, el QA debe entender qué hace el módulo, qué datos modifica, qué
+          permisos intervienen y cuál es el resultado esperado. En Versia Renal existen módulos de
+          pacientes, configuración, prescripciones, tratamientos, accesos, laboratorios, medicación,
+          notificaciones y otros flujos clínicos u operativos.
+        </p>
+        <p>
+          El conocimiento funcional se obtiene revisando documentación, capturas, HTML de pantallas,
+          casos existentes, ejecuciones previas y validación con el equipo. Un caso automatizado sin
+          entendimiento funcional puede pasar técnicamente pero validar algo incorrecto.
+        </p>
+      </section>
+
+      <section>
+        <h2>6. Gestión de pruebas manuales</h2>
+        <p>
+          La prueba manual es el primer paso cuando el flujo es nuevo, cambió la interfaz o no se
+          conoce el comportamiento exacto. El QA debe crear pasos claros, ejecutar, adjuntar
+          evidencias y confirmar el resultado antes de decidir si el caso se automatiza.
+        </p>
+        <table class="step-table">
+          <thead>
+            <tr>
+              <th>Paso</th>
+              <th>Acción</th>
+              <th>Resultado esperado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Identificar el módulo y el flujo que se debe probar.</td>
+              <td>El alcance de la prueba queda claro.</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Crear test case con título descriptivo.</td>
+              <td>El caso puede ser entendido por otro miembro del equipo.</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Escribir steps con acción y expected result.</td>
+              <td>La ejecución es reproducible.</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>Ejecutar el caso y adjuntar evidencias.</td>
+              <td>Existe prueba visual o documental del resultado.</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>Reportar defectos si el resultado difiere del esperado.</td>
+              <td>El equipo puede reproducir y corregir la incidencia.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>7. Azure Test Plans</h2>
+        <p>
+          Azure Test Plans se usa para organizar las pruebas por plan, suites, test cases y steps.
+          La estructura debe ser clara y consistente con el resto del proyecto.
+        </p>
+        <div class="callout">
+          <strong>Estructura:</strong> Test Plan &gt; Suite &gt; Test Case &gt; Steps &gt; Evidencias.
+        </div>
+        <h3>Flujo recomendado</h3>
+        <ol>
+          <li>Entrar en Azure DevOps y abrir el proyecto <span class="pill">Versia Renal - Comercial</span>.</li>
+          <li>Abrir <span class="pill">Test Plans</span>.</li>
+          <li>Crear o abrir el Test Plan correspondiente al módulo.</li>
+          <li>Crear suites para agrupar funcionalidad: View, Create, Modify, Delete, Filters, Permissions, etc.</li>
+          <li>Crear los test cases dentro de su suite.</li>
+          <li>Escribir steps en inglés si ese es el estándar del proyecto.</li>
+          <li>Ejecutar manualmente y adjuntar capturas.</li>
+          <li>Marcar o asociar automatización cuando exista feature Cucumber implementado.</li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>8. ALM Test / ALM SaaS</h2>
+        <p>
+          ALM Test o ALM SaaS puede usarse para consultar, gestionar o conservar casos de prueba,
+          steps y evidencias según el flujo de la empresa. Tras una migración, es importante
+          verificar que los steps y evidencias históricas siguen disponibles; si falta información,
+          se debe comunicar al responsable correspondiente con detalle.
+        </p>
+        <p>
+          Cuando se trabaje con ALM, el QA debe asegurar que el caso tenga nombre claro, steps
+          reproducibles, resultado esperado y evidencias adjuntas. Si se detecta pérdida de datos o
+          diferencia entre ALM antiguo y ALM SaaS, debe registrarse como incidencia operativa.
+        </p>
+      </section>
+
+      <section>
+        <h2>9. Framework de automatización</h2>
+        <p>
+          El framework de Versia Renal está orientado a pruebas web automatizadas. La estructura
+          habitual separa escenarios Gherkin, steps Java y métodos de página mediante Page Object
+          Model.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Elemento</th>
+              <th>Función</th>
+              <th>Ejemplo de responsabilidad</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Feature</td>
+              <td>Archivo Gherkin con escenarios.</td>
+              <td>Describe el caso funcional con Given, When, Then y And.</td>
+            </tr>
+            <tr>
+              <td>Steps</td>
+              <td>Clase Java que conecta Gherkin con código.</td>
+              <td>Llama métodos de Page para ejecutar acciones.</td>
+            </tr>
+            <tr>
+              <td>Page</td>
+              <td>Clase Page Object con locators y acciones.</td>
+              <td>Contiene XPath, WebElements y métodos reutilizables.</td>
+            </tr>
+            <tr>
+              <td>BasePage</td>
+              <td>Métodos comunes del framework.</td>
+              <td>Clicks, waits, dropdowns Kendo, alerts, frames y utilidades.</td>
+            </tr>
+            <tr>
+              <td>Resources</td>
+              <td>Datos o referencias auxiliares.</td>
+              <td>HTML de pantallas, propiedades, logs o información de apoyo.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>10. Creación de escenarios automatizados</h2>
+        <p>
+          Un escenario automatizado debe salir de un caso manual entendido y probado. Primero se
+          valida el flujo en la aplicación, después se crea el feature y finalmente se implementan
+          los steps y métodos de Page necesarios.
+        </p>
+        <h3>Proceso de trabajo</h3>
+        <ol>
+          <li>Leer el test case manual y confirmar datos de prueba.</li>
+          <li>Crear el archivo feature en el módulo correspondiente.</li>
+          <li>Nombrar el scenario con el mismo objetivo del test case.</li>
+          <li>Reutilizar steps existentes cuando sea posible.</li>
+          <li>Crear nuevos steps solo si el comportamiento no existe.</li>
+          <li>Definir locators en la parte superior de la Page siguiendo el patrón del proyecto.</li>
+          <li>Implementar métodos pequeños y reutilizables.</li>
+          <li>Probar primero en una suite de prueba controlada.</li>
+          <li>Si funciona, incluir el caso en regression o en la suite que corresponda.</li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>11. Ejecución y validación</h2>
+        <p>
+          La ejecución puede ser individual o por suite. Al terminar, el QA debe revisar resultado,
+          logs, screenshots y reportes. Un caso no debe considerarse listo solo porque ejecutó una
+          vez; debe ser estable, claro y no depender de tiempos o datos frágiles.
+        </p>
+        <div class="grid">
+          <div class="box">
+            <h3>Antes de ejecutar</h3>
+            <ul>
+              <li>Confirmar usuario y permisos.</li>
+              <li>Confirmar datos de prueba.</li>
+              <li>Revisar si el caso modifica o borra información.</li>
+              <li>Asegurar que el navegador y entorno están disponibles.</li>
+            </ul>
+          </div>
+
+          <div class="box">
+            <h3>Después de ejecutar</h3>
+            <ul>
+              <li>Revisar reportes y screenshots.</li>
+              <li>Confirmar que el resultado funcional es correcto.</li>
+              <li>Documentar fallos reproducibles.</li>
+              <li>Limpiar o restaurar datos si el caso lo requiere.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>12. Depuración de fallos</h2>
+        <p>
+          Los fallos más comunes en automatización web no siempre son errores funcionales. Pueden
+          deberse a tiempos de carga, iframes, elementos dinámicos, dropdowns Kendo, alerts del
+          navegador o XPaths frágiles.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Problema</th>
+              <th>Cómo analizarlo</th>
+              <th>Solución habitual</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Elemento no encontrado</td>
+              <td>Inspeccionar HTML y verificar iframes.</td>
+              <td>Cambiar al frame correcto y usar XPath estable.</td>
+            </tr>
+            <tr>
+              <td>Dropdown Kendo no selecciona</td>
+              <td>Verificar si la lista se renderiza fuera del contenedor.</td>
+              <td>Usar helper global de Kendo o localizar opción visible por texto.</td>
+            </tr>
+            <tr>
+              <td>Click cierra formulario</td>
+              <td>Revisar doble carga, timing o evento no estable.</td>
+              <td>Esperar estado correcto, repetir click si el flujo lo requiere y documentar incidencia.</td>
+            </tr>
+            <tr>
+              <td>Alert nativa bloquea Selenium</td>
+              <td>Confirmar si es modal interno o alert del navegador.</td>
+              <td>Usar accept/dismiss alert y cerrar frames correctamente.</td>
+            </tr>
+            <tr>
+              <td>XPath frágil</td>
+              <td>Revisar si depende de índices dinámicos.</td>
+              <td>Basarlo en títulos, labels, columnas o texto estable.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>13. Buenas prácticas</h2>
+        <ul>
+          <li>Usar nombres de steps directos, sin parámetros si el step solo se utiliza en un caso concreto.</li>
+          <li>Separar locators, steps y lógica de Page según el patrón existente.</li>
+          <li>No duplicar métodos si ya existe una utilidad común.</li>
+          <li>No automatizar con datos que puedan desaparecer sin control.</li>
+          <li>Usar waits explícitos en lugar de depender solo de pausas.</li>
+          <li>Cerrar iframes con el patrón correcto del proyecto.</li>
+          <li>Documentar defectos cuando se detecte comportamiento anormal de la aplicación.</li>
+          <li>No subir archivos generados, reportes o HTML locales si no forman parte de la entrega.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>14. Checklist de entrega</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Validación</th>
+              <th>Estado esperado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Test case manual creado</td><td>Título, steps y expected result claros.</td></tr>
+            <tr><td>Evidencias adjuntas</td><td>Capturas suficientes para justificar el resultado.</td></tr>
+            <tr><td>Feature creado</td><td>Escenario con nombre y tags correctos.</td></tr>
+            <tr><td>Steps implementados</td><td>Reutilizables y coherentes con el estilo del proyecto.</td></tr>
+            <tr><td>Page actualizada</td><td>Locators arriba, métodos claros y sin duplicación innecesaria.</td></tr>
+            <tr><td>Ejecución local</td><td>El caso pasa en entorno controlado.</td></tr>
+            <tr><td>Reportes revisados</td><td>No hay fallos ocultos en logs o screenshots.</td></tr>
+            <tr><td>Entrega limpia</td><td>No se incluyen archivos temporales o generados.</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>15. Ruta de aprendizaje inicial</h2>
+        <p>
+          Para una persona que empieza desde cero, se recomienda avanzar por fases. Primero debe comprender el
+          producto y las herramientas, luego ejecutar pruebas manuales, después leer el framework y
+          finalmente automatizar casos pequeños antes de tocar flujos críticos.
+        </p>
+        <table class="step-table">
+          <thead>
+            <tr>
+              <th>Fase</th>
+              <th>Actividad</th>
+              <th>Resultado esperado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Revisar esta guía, accesos y herramientas.</td>
+              <td>Comprende el flujo general del puesto.</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Ejecutar casos manuales existentes con evidencias.</td>
+              <td>Aprende la aplicación y la documentación de pruebas.</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Leer features, steps y pages ya implementados.</td>
+              <td>Comprende el patrón del framework.</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>Automatizar un caso simple de consulta o cancelación.</td>
+              <td>Puede crear cambios pequeños con bajo riesgo.</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>Automatizar un flujo CRUD completo.</td>
+              <td>Puede trabajar sobre regresión de forma autónoma.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+
+    <footer>
+      Guía práctica para empezar a trabajar como QA Automatizador en el proyecto Versia Renal.
+    </footer>
+  </article>
+</body>
+</html>
+
+
+RequestStateUpdated
+Software Request (Vantive)
+REQ1867324
+Bismarck Colombo
+Closed Complete
+ 3mo ago3 months ago
+Software Request (Vantive)
+REQ1867320
+Bismarck Colombo
+Closed Complete
+ 3mo ago3 months ago
+PC name doesnt appears in IT now
+INC1699183
+3 - Moderate
+Closed
+ 3mo ago3 months ago
+Software Request (Vantive)
+REQ1867373
+Bismarck Colombo
+Closed Complete
+ 3mo ago3 months ago
+SailPoint-Informative ticket/Corresponding support team
+INC1698190
+3 - Moderate
+Closed
+ 3mo ago3 months ago
+Local Admin Access
+INC1697764
+3 - Moderate
+Closed
+ 3mo ago3 months ago
+User - blue screen-Recovery key
+INC1691265
+3 - Moderate
+Closed
+ 3mo ago3 months ago
+PC out of domain
+INC1696580
+4 - Low
+Closed
+ 3mo ago3 months ago
+Software Request (Vantive)
+REQ1863135
+Bismarck Colombo
+Closed Complete
+ 3mo ago3 months ago
+Computer name not recognized, when trying to submit Software request(Vantive) from ITNow portal.
+INC1696425
+4 - Low
+Closed
+ 3mo ago3 months ago
+Software Request (Vantive)
+REQ1863194
+Bismarck Colombo
+Closed Complete
+ 3mo ago3 months ago
+zscaler / unable to access
+INC1695327
+3 - Moderate
+Closed
+ 4mo ago4 months ago
+Software Request (Vantive)
+REQ1861116
+Bismarck Colombo
+Closed Complete
+ 4mo ago4 months ago
+Software Request (Vantive)
+REQ1861126
+Bismarck Colombo
+Closed Complete
+ 4mo ago
