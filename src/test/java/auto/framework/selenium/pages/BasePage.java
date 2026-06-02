@@ -353,22 +353,70 @@ public abstract class BasePage <P>{
     }
 
     protected void selectKendoDropdownOption(WebElement dropdownElement, String optionText) throws InterruptedException {
+        selectKendoDropdownOption(dropdownElement, optionText, optionText);
+    }
+
+    protected void selectKendoDropdownOption(WebElement dropdownElement, String searchText, String optionText) throws InterruptedException {
         if (optionText == null || optionText.trim().isEmpty()) {
             throw new IllegalArgumentException("Kendo dropdown option text cannot be empty");
         }
+        String option = optionText.trim();
+        String search = searchText == null || searchText.trim().isEmpty() ? option : searchText.trim();
         scrollToElementMove(dropdownElement);
         click(dropdownElement);
         pause(500);
 
-        String optionLiteral = xpathLiteral(optionText.trim());
+        By openedKendoSearchInput = By.xpath("//div[contains(@class,'k-animation-container') and not(contains(@style,'display: none'))]" +
+                "//input[not(@type='hidden') and not(contains(@class,'ng-hide')) and not(@disabled)]");
+        WebElement searchInput = null;
+        try {
+            searchInput = new WebDriverWait(driver, Duration.ofSeconds(2))
+                    .until(ExpectedConditions.elementToBeClickable(openedKendoSearchInput));
+        } catch (TimeoutException ignored) {
+            try {
+                searchInput = dropdownElement.findElement(By.xpath(".//input[not(@type='hidden') and not(contains(@class,'ng-hide')) and not(@disabled)]"));
+            } catch (Exception ignoredInput) {
+            }
+        }
+        if (searchInput != null) {
+            try {
+                searchInput.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+                searchInput.sendKeys(Keys.DELETE);
+                searchInput.sendKeys(search);
+            } catch (ElementClickInterceptedException e) {
+                javascriptExecutor.executeScript("arguments[0].value=''; arguments[0].click();", searchInput);
+                searchInput.sendKeys(search);
+            }
+            pause(500);
+        }
+
+        String optionLiteral = xpathLiteral(option);
         By exactOption = By.xpath("//div[contains(@class,'k-animation-container') and not(contains(@style,'display: none'))]" +
                 "//*[self::li or @role='option'][normalize-space(.)=" + optionLiteral + "]");
-        WebElement option = wait.until(ExpectedConditions.elementToBeClickable(exactOption));
-        javascriptExecutor.executeScript("arguments[0].scrollIntoView({block:'center'});", option);
+        By containsOption = By.xpath("//div[contains(@class,'k-animation-container') and not(contains(@style,'display: none'))]" +
+                "//*[self::li or @role='option'][contains(normalize-space(.), " + optionLiteral + ")]");
+        WebElement kendoOption;
         try {
-            option.click();
+            kendoOption = new WebDriverWait(driver, Duration.ofSeconds(5))
+                    .until(ExpectedConditions.elementToBeClickable(exactOption));
+        } catch (TimeoutException e) {
+            try {
+                kendoOption = new WebDriverWait(driver, Duration.ofSeconds(5))
+                        .until(ExpectedConditions.elementToBeClickable(containsOption));
+            } catch (TimeoutException notFound) {
+                if (searchInput != null) {
+                    searchInput.sendKeys(Keys.ENTER);
+                    pause(500);
+                    return;
+                }
+                throw notFound;
+            }
+        }
+        javascriptExecutor.executeScript("arguments[0].scrollIntoView({block:'center'});", kendoOption);
+        try {
+            kendoOption.click();
         } catch (ElementClickInterceptedException e) {
-            javascriptExecutor.executeScript("arguments[0].click();", option);
+            javascriptExecutor.executeScript("arguments[0].click();", kendoOption);
         }
         pause(500);
     }
