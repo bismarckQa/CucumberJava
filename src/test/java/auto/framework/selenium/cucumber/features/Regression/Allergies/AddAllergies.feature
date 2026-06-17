@@ -1,6 +1,6 @@
 
 Feature: Add Allergies
-  @test @smoke
+  @test
   Scenario: New Allergy Canceled
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -12,7 +12,7 @@ Feature: Add Allergies
     And   I fill in the new allergy data "Qa test data"
     Then  I cancel the creation of a new allergy
 
-  @test @smoke
+  @test
   Scenario: Successful added Allergy
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -26,7 +26,7 @@ Feature: Add Allergies
     And   I check the new Allergies was created correctly
     And   I delete the allergy created
 
-  @test @smoke
+  @test
   Scenario: Save new allergy with empty required fields
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -38,7 +38,7 @@ Feature: Add Allergies
     And   I fill in the new allergy data with empty required field "QA test Data"
 
 
-  @test @smoke
+  @test
   Scenario: Creating a new record with Active Filter the new data shall not disappear from screen
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

@@ -1,5 +1,5 @@
 Feature: Views Hospitalizations
-  @test @smoke
+  @test
   Scenario: Enter in Hospitalization window
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

@@ -7,7 +7,7 @@
 #Module
 @LabTest
 Feature: Modify laboratory request
-  @test @smoke @test_Case_3765
+  @test @test_Case_3765
   Scenario: Successful edited laboratory request
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -22,7 +22,7 @@ Feature: Modify laboratory request
     Then  I click button save edit laboratory request
     And   I click button arrow up
 
-  @test @smoke @test_Case_3766
+  @test @test_Case_3766
   Scenario: Cancelling edited laboratory request
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

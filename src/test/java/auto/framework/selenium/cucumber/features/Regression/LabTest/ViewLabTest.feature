@@ -7,7 +7,7 @@
 #Module
 @LabTest
 Feature: View Lab Test
-  @test @smoke @test_Case_3614
+  @test @test_Case_3614
   Scenario: Enter in laboratory results window
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -18,7 +18,7 @@ Feature: View Lab Test
     And   I click button lab test section
     Then  I click button "Select" option
 
-  @test @smoke @test_Case_3646
+  @test @test_Case_3646
   Scenario: Show none laboratory results
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

@@ -1,5 +1,5 @@
 Feature: Add Complementary Test Configuration
-  @test @smoke
+  @test
   Scenario: Cancelling add complementary test
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -9,7 +9,7 @@ Feature: Add Complementary Test Configuration
     And   I verify that the user configuration opened correctly
     Then  I try to create a new supplementary test, but I select cancel
 
-  @test @smoke
+  @test
   Scenario: Successful add Complementary test
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -19,7 +19,7 @@ Feature: Add Complementary Test Configuration
     And   I verify that the user configuration opened correctly
     Then  I created the Supplementary Test successfully
 
-  @test @smoke
+  @test
   Scenario: Duplicated record
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

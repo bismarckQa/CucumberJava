@@ -7,7 +7,7 @@
 #Module
 @LabTest
 Feature: Import lab tests
-  @test @smoke @test_Case_3582
+  @test @test_Case_3582
   Scenario: Successful import lab tests
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -24,7 +24,7 @@ Feature: Import lab tests
     Then  I click button "Import results" option
     And   I click button arrow up
 
-  @test @smoke @test_Case_3600
+  @test @test_Case_3600
   Scenario: Cancelling an import lab tests
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -41,7 +41,7 @@ Feature: Import lab tests
     And   I click button close modal import laboratory results
     And   I click button arrow up
 
-  @test @smoke @test_Case_3585
+  @test @test_Case_3585
   Scenario: Show none results to import
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

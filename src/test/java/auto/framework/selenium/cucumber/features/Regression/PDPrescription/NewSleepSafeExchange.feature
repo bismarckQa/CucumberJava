@@ -1,5 +1,5 @@
 Feature: New Sleep Safe Exchange
-  @test @smoke
+  @test
   Scenario:  Add a New Sleep Safe Exchange
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -9,7 +9,7 @@ Feature: New Sleep Safe Exchange
     And   I open PD Prescription module
     Then  I create new Exchange with system sleep safe
 
-  @test @smoke
+  @test
   Scenario:  Save a New Sleep Safe Exchange with at least one Required field empty
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -19,7 +19,7 @@ Feature: New Sleep Safe Exchange
     And   I open PD Prescription module
     Then  I try to create new Exchange with system sleep safe with required field empty
 
-  @test @smoke
+  @test
   Scenario:  Delete Sleep Safe Exchange
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

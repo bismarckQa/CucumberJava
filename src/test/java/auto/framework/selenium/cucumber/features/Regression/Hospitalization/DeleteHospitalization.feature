@@ -1,5 +1,5 @@
 Feature: Delete Hospitalization
-  @test @smoke
+  @test
   Scenario: Cancelling a deleted Infection
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -9,7 +9,7 @@ Feature: Delete Hospitalization
     Then  I check the module Hospitalization appear correctly
     And   I cancel remove the Hospitalization created
 
-  @test @smoke
+  @test
   Scenario: Successful deleted Infection
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

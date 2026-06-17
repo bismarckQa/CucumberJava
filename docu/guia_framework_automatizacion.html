@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guía Técnica del Framework de Automatización - Versia Renal</title>
+  <style>
+    :root {
+      --blue: #003b8f;
+      --blue-2: #0057bd;
+      --ink: #1f2937;
+      --muted: #64748b;
+      --line: #d8dee9;
+      --soft: #f4f7fb;
+      --white: #ffffff;
+      --green: #0f766e;
+      --red: #b42318;
+      --code: #111827;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #e9edf3;
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.55;
+    }
+
+    .page {
+      max-width: 1180px;
+      margin: 0 auto;
+      background: var(--white);
+      min-height: 100vh;
+      box-shadow: 0 0 30px rgba(15, 23, 42, 0.16);
+    }
+
+    header {
+      background: var(--blue);
+      color: var(--white);
+      padding: 34px 48px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 32px;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+
+    header p {
+      margin: 12px 0 0;
+      max-width: 920px;
+      color: #dbeafe;
+      font-size: 16px;
+    }
+
+    main {
+      padding: 34px 48px 54px;
+    }
+
+    section {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      margin-bottom: 24px;
+      background: var(--white);
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      color: var(--blue);
+      font-size: 24px;
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin: 22px 0 10px;
+      color: #0f172a;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+
+    p {
+      margin: 0 0 12px;
+    }
+
+    ul, ol {
+      margin: 10px 0 0 22px;
+      padding: 0;
+    }
+
+    li {
+      margin: 7px 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 14px;
+      font-size: 14px;
+    }
+
+    th, td {
+      border: 1px solid var(--line);
+      padding: 10px 12px;
+      vertical-align: top;
+    }
+
+    th {
+      background: var(--soft);
+      color: #0f172a;
+      text-align: left;
+    }
+
+    code {
+      background: #eef2f7;
+      border: 1px solid #d7dee9;
+      border-radius: 4px;
+      padding: 1px 5px;
+      font-family: Consolas, "Courier New", monospace;
+      color: #111827;
+      font-size: 13px;
+    }
+
+    pre {
+      background: var(--code);
+      color: #e5e7eb;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 13px;
+      line-height: 1.45;
+      margin: 12px 0 0;
+    }
+
+    .toc {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .toc a {
+      display: block;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      color: var(--blue);
+      text-decoration: none;
+      background: var(--soft);
+      font-weight: 700;
+    }
+
+    .toc span {
+      display: block;
+      color: var(--muted);
+      font-weight: 400;
+      font-size: 13px;
+      margin-top: 4px;
+    }
+
+    .note {
+      border-left: 5px solid var(--blue-2);
+      background: #eff6ff;
+      padding: 14px 16px;
+      margin: 14px 0;
+      border-radius: 4px;
+    }
+
+    .warning {
+      border-left: 5px solid var(--red);
+      background: #fff5f5;
+      padding: 14px 16px;
+      margin: 14px 0;
+      border-radius: 4px;
+    }
+
+    .success {
+      border-left: 5px solid var(--green);
+      background: #ecfdf5;
+      padding: 14px 16px;
+      margin: 14px 0;
+      border-radius: 4px;
+    }
+
+    .pill {
+      display: inline-block;
+      border-radius: 999px;
+      background: #e0ecff;
+      color: var(--blue);
+      padding: 2px 9px;
+      font-size: 12px;
+      font-weight: 700;
+      border: 1px solid #b7cdfa;
+      margin: 2px 4px 2px 0;
+    }
+
+    .script {
+      background: #f8fafc;
+      border: 1px dashed #94a3b8;
+      padding: 14px 16px;
+      border-radius: 8px;
+      margin-top: 12px;
+    }
+
+    .script strong {
+      color: var(--blue);
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      .page {
+        box-shadow: none;
+        max-width: none;
+      }
+
+      section {
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <h1>Guía Técnica del Framework de Automatización</h1>
+      <p>
+        Documento de apoyo para explicar cómo está construida la herramienta de automatización
+        del proyecto Versia Renal, cómo se organiza el código, cómo se ejecutan los escenarios,
+        cómo se generan evidencias y qué aporta cada decisión técnica del framework.
+      </p>
+    </header>
+
+    <main>
+      <section id="resumen">
+        <h2>Resumen</h2>
+        <p>
+          Este documento está pensado para una exposición técnica. La idea es poder leerlo en una
+          pantalla mientras en la otra se muestra IntelliJ, el navegador, los reports o Azure Test
+          Plans. No sustituye la documentación funcional: explica cómo funciona la herramienta de
+          automatización por dentro.
+        </p>
+        <div class="note">
+          <strong>Mensaje principal:</strong> el framework permite transformar test cases manuales
+          en escenarios automatizados mantenibles, separando lenguaje de negocio, pasos técnicos,
+          acciones de pantalla, utilidades comunes y evidencias.
+        </div>
+      </section>
+
+      <section id="indice">
+        <h2>Índice</h2>
+        <div class="toc">
+          <a href="#objetivo">1. Objetivo técnico<span>Qué problema resuelve el framework.</span></a>
+          <a href="#tecnologias">2. Tecnologías utilizadas<span>Lenguaje, librerías y herramientas del framework.</span></a>
+          <a href="#aop">3. Programación orientada a aspectos<span>Por qué se separa la lógica transversal.</span></a>
+          <a href="#estructura">4. Estructura del proyecto<span>Carpetas y responsabilidad de cada capa.</span></a>
+          <a href="#flujo">5. Flujo Feature - Steps - Page<span>Cómo viaja una acción desde Gherkin hasta Selenium.</span></a>
+          <a href="#basepage">6. BasePage<span>Métodos comunes y reutilización.</span></a>
+          <a href="#properties">7. Properties y configuración<span>URL, credenciales, navegador y timeouts.</span></a>
+          <a href="#xpaths">8. XPaths desde el DOM<span>Cómo encontrar elementos de forma estable.</span></a>
+          <a href="#iframes">9. Iframes, alertas y modales<span>Por qué Selenium cambia de contexto.</span></a>
+          <a href="#reports">10. Reports y evidencias<span>Qué se genera tras ejecutar.</span></a>
+          <a href="#ejemplo">11. Ejemplo real: Messages<span>Cómo explicar un módulo reciente.</span></a>
+          <a href="#explicacion">12. Puntos clave de la explicación<span>Por qué esta estructura aporta valor.</span></a>
+          <a href="#checklist">13. Checklist antes de entregar<span>Qué revisar antes de subir cambios.</span></a>
+        </div>
+      </section>
+
+      <section id="objetivo">
+        <h2>1. Objetivo técnico</h2>
+        <p>
+          El objetivo del framework es automatizar pruebas funcionales end-to-end del producto
+          Versia Renal. La automatización ejecuta el navegador, inicia sesión, navega por la
+          aplicación, interactúa con formularios y valida que el resultado esperado se cumple.
+        </p>
+        <p>
+          El framework no es solo una colección de scripts. Está organizado para que el trabajo sea
+          mantenible: si cambia una pantalla, se modifica principalmente su Page; si cambia el caso
+          de prueba, se modifica el Feature; si se necesita una acción común, se coloca en BasePage.
+        </p>
+        <div class="script">
+          <strong>Lectura sugerida:</strong>
+          "La herramienta separa el lenguaje del caso de prueba de la implementación técnica. Esto
+          permite que un escenario sea legible para QA, pero que internamente Selenium ejecute las
+          acciones reales sobre la aplicación."
+        </div>
+      </section>
+
+      <section id="tecnologias">
+        <h2>2. Tecnologías utilizadas</h2>
+        <p>
+          Antes de entrar en la estructura del proyecto, es importante entender las tecnologías que
+          forman la base del framework. Cada una cubre una parte concreta: lenguaje, ejecución,
+          automatización del navegador, escritura de escenarios, configuración y generación de
+          evidencias.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Tecnología</th>
+              <th>Uso dentro del framework</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>Java</code></td>
+              <td>Lenguaje principal. Aquí se implementan steps, Pages, utilidades y lógica de automatización.</td>
+            </tr>
+            <tr>
+              <td><code>Maven</code></td>
+              <td>Gestiona dependencias, compilación y ejecución de pruebas desde el archivo <code>pom.xml</code>.</td>
+            </tr>
+            <tr>
+              <td><code>Selenium WebDriver</code></td>
+              <td>Controla el navegador: clicks, escritura en campos, navegación, iframes, alertas y validaciones visuales.</td>
+            </tr>
+            <tr>
+              <td><code>Cucumber</code></td>
+              <td>Conecta escenarios escritos en Gherkin con métodos Java mediante steps.</td>
+            </tr>
+            <tr>
+              <td><code>Gherkin</code></td>
+              <td>Lenguaje de los archivos Feature. Permite describir casos con <code>Given</code>, <code>When</code> y <code>Then</code>.</td>
+            </tr>
+            <tr>
+              <td><code>Spring / Spring Boot</code></td>
+              <td>Gestiona contexto, inyección de dependencias y configuración compartida entre Pages, Steps y utilidades.</td>
+            </tr>
+            <tr>
+              <td><code>JUnit</code></td>
+              <td>Permite lanzar la suite de pruebas y conectar la ejecución con Cucumber.</td>
+            </tr>
+            <tr>
+              <td><code>Extent Reports</code></td>
+              <td>Genera reportes HTML con escenarios, pasos ejecutados, resultados y evidencias.</td>
+            </tr>
+            <tr>
+              <td><code>application.properties</code></td>
+              <td>Centraliza URL, credenciales por clave, navegador, timeouts y rutas de ejecución.</td>
+            </tr>
+            <tr>
+              <td><code>WebDriverManager / ChromeDriver</code></td>
+              <td>Prepara el driver del navegador para que Selenium pueda abrir y controlar Chrome.</td>
+            </tr>
+          </tbody>
+        </table>
+        <h3>El papel del pom.xml</h3>
+        <p>
+          El archivo <code>pom.xml</code> es el archivo principal de Maven. Define cómo se construye
+          el proyecto, qué dependencias necesita y cómo se ejecutan las pruebas. Cuando se abre el
+          framework en IntelliJ, Maven lee este archivo y descarga las librerías necesarias para que
+          Java, Selenium, Cucumber, Spring y los reportes funcionen correctamente.
+        </p>
+        <p>
+          También permite ejecutar el framework desde terminal con comandos <code>mvn</code>, sin
+          tener que configurar manualmente cada librería. Por eso el proyecto siempre debe abrirse
+          desde la carpeta raíz donde está el <code>pom.xml</code>.
+        </p>
+        <div class="script">
+          <strong>Lectura sugerida:</strong>
+          "El framework está construido principalmente con Java, Maven, Selenium, Cucumber, Gherkin
+          y Spring. Java contiene la lógica, Maven gestiona el proyecto, Selenium controla el navegador,
+          Cucumber conecta los escenarios con código Java, y Spring ayuda a organizar e inyectar las
+          clases que se usan durante la ejecución."
+        </div>
+      </section>
+
+      <section id="aop">
+        <h2>3. Programación orientada a aspectos</h2>
+        <p>
+          El framework usa programación orientada a aspectos para ejecutar lógica transversal sin
+          meterla manualmente en cada step. En automatización esto se usa principalmente para
+          evidencias, por ejemplo capturas de pantalla asociadas a pasos ejecutados.
+        </p>
+        <p>
+          Una lógica transversal es una acción que afecta a muchos puntos del sistema: logging,
+          capturas, medición de tiempos o reporting. Si se pusiera manualmente en cada step, habría
+          mucha repetición y sería fácil olvidarlo.
+        </p>
+        <h3>Por qué se explica al inicio</h3>
+        <p>
+          Antes de enseñar carpetas y clases conviene entender esta idea: el framework separa la
+          prueba funcional de las tareas comunes que rodean a la prueba. Por eso existen capas,
+          métodos reutilizables y evidencias automáticas. La estructura del proyecto tiene sentido
+          cuando se entiende primero esa separación.
+        </p>
+        <h3>Comparación técnica</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Sin AOP</th>
+              <th>Con AOP</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>El código de captura se repite en muchos steps.</td>
+              <td>La captura se dispara desde una regla común.</td>
+            </tr>
+            <tr>
+              <td>Mayor riesgo de olvidar evidencias.</td>
+              <td>La evidencia se genera de forma más consistente.</td>
+            </tr>
+            <tr>
+              <td>Los steps mezclan lógica funcional y lógica de reporte.</td>
+              <td>Los steps se mantienen enfocados en la acción de negocio.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="note">
+          La idea clave es separar lo que se prueba de cómo se registra la evidencia.
+        </div>
+      </section>
+
+      <section id="estructura">
+        <h2>4. Estructura del proyecto</h2>
+        <p>
+          El proyecto sigue una estructura típica de automatización Java con Cucumber, Selenium y
+          Spring. Las carpetas más importantes son:
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Ruta</th>
+              <th>Uso</th>
+              <th>Cómo explicarlo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>src/test/java/.../cucumber/features</code></td>
+              <td>Contiene los escenarios escritos en Gherkin.</td>
+              <td>Es la capa legible del test case: Given, When, Then.</td>
+            </tr>
+            <tr>
+              <td><code>src/test/java/.../cucumber/steps</code></td>
+              <td>Implementa los steps de Cucumber en Java.</td>
+              <td>Traduce cada frase Gherkin a una llamada Java.</td>
+            </tr>
+            <tr>
+              <td><code>src/test/java/.../pages/baxter_page</code></td>
+              <td>Contiene las Page Objects de cada módulo.</td>
+              <td>Aquí viven los XPaths y acciones de pantalla.</td>
+            </tr>
+            <tr>
+              <td><code>src/test/java/.../pages/BasePage.java</code></td>
+              <td>Clase base con acciones reutilizables.</td>
+              <td>Evita duplicar esperas, clicks, manejo de alertas y dropdowns.</td>
+            </tr>
+            <tr>
+              <td><code>src/test/java/.../configuration</code></td>
+              <td>Configuración de WebDriver, waits y contexto Spring.</td>
+              <td>Define cómo se crea el navegador y las dependencias.</td>
+            </tr>
+            <tr>
+              <td><code>src/test/java/.../aspect_oriented_programming</code></td>
+              <td>Aspectos para capturar evidencias.</td>
+              <td>Permite ejecutar lógica transversal sin repetirla en cada test.</td>
+            </tr>
+            <tr>
+              <td><code>src/test/resources/application.properties</code></td>
+              <td>URL, credenciales, navegador y parámetros de ejecución.</td>
+              <td>Centraliza datos de entorno y evita hardcodear en los tests.</td>
+            </tr>
+            <tr>
+              <td><code>target/reports</code></td>
+              <td>Reports generados después de ejecutar.</td>
+              <td>Sirve para revisar resultado, pasos ejecutados y fallos.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="flujo">
+        <h2>5. Flujo Feature - Steps - Page</h2>
+        <p>
+          El flujo principal del framework tiene tres capas. Esta separación es clave para explicar
+          el diseño:
+        </p>
+        <ol>
+          <li><strong>Feature:</strong> describe el escenario en lenguaje Gherkin.</li>
+          <li><strong>Steps:</strong> enlaza cada frase del Feature con código Java.</li>
+          <li><strong>Page:</strong> ejecuta la acción real con Selenium sobre el DOM.</li>
+        </ol>
+        <h3>Ejemplo de flujo</h3>
+        <pre><code>Feature:
+When I click messages icon
+
+Steps:
+@When("I click messages icon")
+public void iClickMessagesIcon() throws InterruptedException {
+    messagesPage.clickMessagesIcon();
+}
+
+Page:
+public void clickMessagesIcon() throws InterruptedException {
+    driver.switchTo().defaultContent();
+    waitElements(btnMessagesIcon);
+    clickJS(btnMessagesIcon);
+}</code></pre>
+        <div class="note">
+          Este patrón permite que el Feature se mantenga limpio, que los Steps sean reutilizables y
+          que los detalles del DOM estén concentrados en la Page.
+        </div>
+      </section>
+
+      <section id="basepage">
+        <h2>6. BasePage</h2>
+        <p>
+          <code>BasePage</code> es una pieza central. Todas las Page Objects heredan de esta clase.
+          Su función es ofrecer métodos comunes para que cada módulo no repita la misma lógica.
+        </p>
+        <h3>Qué aporta BasePage</h3>
+        <ul>
+          <li>Escritura en inputs con <code>write(...)</code>.</li>
+          <li>Clicks normales y clicks JavaScript.</li>
+          <li>Esperas explícitas con <code>WebDriverWait</code>.</li>
+          <li>Scroll a elementos antes de interactuar.</li>
+          <li>Manejo de alertas del navegador: aceptar o cancelar.</li>
+          <li>Manejo de dropdowns Kendo reutilizable.</li>
+          <li>Funciones auxiliares para modales, textos y acciones comunes.</li>
+        </ul>
+        <h3>Por qué es importante</h3>
+        <p>
+          Si cada Page implementara su propio click, su propia espera o su propio método de Kendo,
+          el framework crecería con duplicación y sería más difícil de mantener. La BasePage hace
+          que las acciones comunes tengan una sola fuente de verdad.
+        </p>
+        <div class="script">
+          <strong>Lectura sugerida:</strong>
+          "BasePage es la capa común de Selenium. Nos permite normalizar cómo esperamos elementos,
+          cómo hacemos click, cómo seleccionamos opciones y cómo evitamos repetir código en cada
+          módulo."
+        </div>
+      </section>
+
+      <section id="properties">
+        <h2>7. Properties y configuración</h2>
+        <p>
+          El archivo <code>application.properties</code> centraliza valores que no deberían estar
+          repartidos por los Features o las Pages. Por ejemplo:
+        </p>
+        <ul>
+          <li>URL base de la aplicación.</li>
+          <li>Usuarios y contraseñas por clave.</li>
+          <li>Navegador usado para ejecutar.</li>
+          <li>Timeouts y rutas de evidencias.</li>
+        </ul>
+        <h3>Ejemplo de credenciales</h3>
+        <pre><code>application.users={login_baxter:'support', login_baxter_t:'trasplante'}
+application.passwords={login_baxter:'renal2', login_baxter_t:'trasplante'}</code></pre>
+        <p>
+          En un Feature no se escribe el usuario real. Se escribe la clave:
+        </p>
+        <pre><code>And I try to login with "login_baxter_t" credentials</code></pre>
+        <p>
+          El step recibe <code>login_baxter_t</code>, la Page busca esa clave en los mapas de
+          usuarios y contraseñas, y Selenium escribe los valores reales en la pantalla.
+        </p>
+        <div class="success">
+          Esto permite cambiar credenciales o entorno sin modificar todos los escenarios.
+        </div>
+      </section>
+
+      <section id="xpaths">
+        <h2>8. XPaths desde el DOM</h2>
+        <p>
+          Los XPaths son localizadores que permiten a Selenium encontrar elementos en el DOM. Un
+          buen XPath debe ser estable, legible y lo bastante específico para no coger otro elemento.
+        </p>
+        <h3>Cómo conseguir un XPath desde el DOM</h3>
+        <ol>
+          <li>Abrir la pantalla en el navegador.</li>
+          <li>Pulsar F12 o inspeccionar el elemento.</li>
+          <li>Buscar un texto estable, un id, una clase o un componente padre reconocible.</li>
+          <li>Construir el XPath tomando un padre claro y luego el hijo que se necesita.</li>
+          <li>Probarlo en consola con <code>$x("...")</code>.</li>
+          <li>Evitar XPaths absolutos con muchas posiciones si hay una alternativa estable.</li>
+        </ol>
+        <h3>Ejemplos recomendables</h3>
+        <p>
+          La forma más sencilla es localizar primero un texto padre claro y después buscar el hijo
+          que interesa. Si el DOM tiene un título como <code>Medication</code>, <code>Messages</code>
+          o <code>Contacts</code>, se usa ese título como referencia y se baja al botón, icono,
+          input o fila que está dentro del mismo bloque.
+        </p>
+        <pre><code>//h2[text()='Medication']//span[contains(@class,'k-icon')]
+//h2[text()='Messages']//button[contains(@class,'k-grid-add')]
+//h2[text()='Contacts']//button[contains(@class,'k-grid-edit')]</code></pre>
+        <p>
+          Cuando el botón no es hijo directo del título, se sube al panel padre y luego se busca el
+          hijo dentro de ese panel:
+        </p>
+        <pre><code>//h2[text()='Messages']/ancestor::div[contains(@class,'x_panel')]//button[contains(@class,'k-grid-add')]
+//h2[text()='Contacts']/ancestor::div[contains(@class,'x_panel')]//button[contains(@class,'k-grid-edit')]</code></pre>
+        <p>
+          Para una tabla, se puede localizar la fila por texto visible y desde esa fila coger el botón
+          de acción:
+        </p>
+        <pre><code>//tr[.//td[contains(text(),'Foianini Baggio')]]//button[contains(@class,'k-grid-edit')]
+//tr[.//td[contains(text(),'qatest@vantive.com')]]//button[contains(@class,'k-grid-delete')]</code></pre>
+        <p>
+          Si el elemento tiene un atributo estable, se puede usar directamente:
+        </p>
+        <pre><code>//textarea[@name='textoNotificacion']
+//input[@name='fechaFin']
+//button[contains(@class,'k-grid-cancel')]</code></pre>
+        <p>
+          Estos XPaths son mejores que usar una ruta absoluta como:
+        </p>
+        <pre><code>/html/body/div[3]/div[1]/div[4]/div/div[2]/ul/li[1]</code></pre>
+        <h3>Reglas prácticas</h3>
+        <ul>
+          <li>Usar textos visibles cuando son estables: <code>normalize-space(.)='Messages'</code>.</li>
+          <li>Usar un contenedor padre claro: título, panel, tabla o formulario.</li>
+          <li>Evitar ids dinámicos generados por Kendo o Angular si cambian entre ejecuciones.</li>
+          <li>Si hay muchos botones iguales, localizar primero el panel y luego el botón.</li>
+          <li>Para Kendo, buscar el wrapper visible, no el select oculto.</li>
+        </ul>
+        <div class="script">
+          <strong>Lectura sugerida:</strong>
+          "No se trata de copiar cualquier XPath del navegador. Intentamos construir XPaths
+          mantenibles, usando un título o panel como padre y después el elemento concreto que
+          necesitamos."
+        </div>
+      </section>
+
+      <section id="iframes">
+        <h2>9. Iframes, alertas y modales</h2>
+        <p>
+          Versia Renal usa iframes en varios módulos. Selenium solo puede interactuar con elementos
+          del contexto actual. Por eso, antes de buscar un elemento dentro del módulo hay que entrar
+          al iframe correcto.
+        </p>
+        <h3>Patrón habitual</h3>
+        <pre><code>driver.switchTo().frame("frmContenido");
+// acciones dentro del módulo
+driver.switchTo().parentFrame();</code></pre>
+        <p>
+          <code>driver.switchTo().frame("frmContenido")</code> cambia el contexto de Selenium:
+          desde ese momento los botones, inputs y tablas se buscan dentro de ese iframe. Al terminar,
+          <code>driver.switchTo().parentFrame()</code> vuelve un nivel hacia fuera. Si no se sale,
+          el siguiente step puede fallar porque Selenium seguirá buscando dentro del módulo anterior.
+        </p>
+        <p>
+          Si hay dos iframes, se entra dos veces y se sale dos veces:
+        </p>
+        <pre><code>driver.switchTo().frame("frmContenido");
+driver.switchTo().frame("iframeV2");
+// acciones dentro del formulario
+driver.switchTo().parentFrame();
+driver.switchTo().parentFrame();</code></pre>
+        <p>
+          La regla práctica es simétrica: cada entrada a un iframe debe tener su salida. Esto deja el
+          navegador preparado para el siguiente step.
+        </p>
+        <h3>Alertas</h3>
+        <p>
+          Hay dos tipos de alertas:
+        </p>
+        <ul>
+          <li><strong>Alertas del navegador:</strong> ventanas nativas tipo aceptar/cancelar.</li>
+          <li><strong>Modales de la aplicación:</strong> HTML dentro de la página o dentro de iframe.</li>
+        </ul>
+        <p>
+          Las alertas nativas se gestionan con <code>driver.switchTo().alert()</code> o métodos
+          comunes como <code>acceptBrowserAlert()</code> y <code>dismissBrowserAlert()</code>.
+          Los modales HTML se tratan como elementos normales del DOM.
+        </p>
+      </section>
+
+      <section id="reports">
+        <h2>10. Reports y evidencias</h2>
+        <p>
+          Después de ejecutar, el framework genera reportes que sirven para demostrar qué escenario
+          se lanzó, qué pasos pasaron, cuál falló y qué captura quedó asociada.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Elemento</th>
+              <th>Uso</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>target/reports/VersiaRenal-ExtentReport.html</code></td>
+              <td>Reporte visual de ejecución con estado de escenarios y steps.</td>
+            </tr>
+            <tr>
+              <td><code>target/reports/cucumber-report.xml</code></td>
+              <td>Resultado estructurado de Cucumber, útil para CI o análisis técnico.</td>
+            </tr>
+            <tr>
+              <td><code>target/screenshots</code></td>
+              <td>Capturas generadas durante la ejecución, especialmente en fallos.</td>
+            </tr>
+            <tr>
+              <td><code>src/test/resources/screenshots/test-execution.log</code></td>
+              <td>Log de ejecución con trazas útiles para depurar.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="warning">
+          Los reports, logs y archivos de <code>target</code> son generados por ejecución. Sirven
+          para revisar, pero normalmente no se suben al repositorio como cambios funcionales.
+        </div>
+      </section>
+
+      <section id="ejemplo">
+        <h2>11. Ejemplo real: módulo Messages</h2>
+        <p>
+          El módulo Messages es un buen ejemplo para explicar el flujo completo porque incluye:
+          icono fuera de iframe, navegación al módulo, panel de mensajes dentro de iframe, tabs,
+          contador de mensajes y formulario de creación.
+        </p>
+        <h3>Feature</h3>
+        <pre><code>Feature: View Message
+
+Scenario: View unread received message from messages icon
+  Given I open the Baxter website
+  And   I try to login with "login_baxter_t" credentials
+  And   I login successful
+  Then  I verify messages icon badge is greater than 1
+  When  I click messages icon
+  And   I click see all messages
+  And   I scroll to messages section
+  And   I click received messages tab
+  Then  I verify received messages displayed</code></pre>
+        <h3>Qué demuestra este caso</h3>
+        <ul>
+          <li>Uso de credenciales por clave desde properties.</li>
+          <li>Validación del contador del icono sin depender de un número exacto.</li>
+          <li>Click en un menú desplegable fuera de iframe.</li>
+          <li>Entrada al iframe <code>frmContenido</code> para trabajar dentro del módulo.</li>
+          <li>Verificación flexible del panel de mensajes recibidos.</li>
+        </ul>
+        <h3>New Message</h3>
+        <p>
+          En creación de mensajes se reutiliza el método global para Kendo multiselect, igual que
+          en Notificaciones con <code>Available for</code>. Esto evita métodos especiales por cada
+          dropdown.
+        </p>
+        <pre><code>And I select the recipient "Trasplante Ap1 Transplante Ap2, Trasplante N" in new message
+And I enter the case "QA message automation test" in new message
+And I enter the message "QA message automation text" in new message
+And I verify send message button is displayed
+Then I click send message button</code></pre>
+      </section>
+
+      <section id="explicacion">
+        <h2>12. Puntos clave de la explicación</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Tema</th>
+              <th>Explicación para la exposición</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Cucumber</td>
+              <td>Porque permite expresar casos en lenguaje legible y conectar esos pasos con automatización real.</td>
+            </tr>
+            <tr>
+              <td>Separación Feature, Steps y Page</td>
+              <td>Porque cada capa tiene una responsabilidad: negocio, traducción técnica y acciones de pantalla.</td>
+            </tr>
+            <tr>
+              <td>BasePage</td>
+              <td>Para centralizar acciones repetidas y mantener consistencia en esperas, clicks, alertas y Kendo.</td>
+            </tr>
+            <tr>
+              <td>Reports generados</td>
+              <td>Porque son artefactos generados por ejecución; el repositorio debe contener código fuente y features.</td>
+            </tr>
+            <tr>
+              <td>XPaths</td>
+              <td>Se construyen desde un padre estable y se evita depender de posiciones o ids dinámicos.</td>
+            </tr>
+            <tr>
+              <td>Evidencias</td>
+              <td>Permiten demostrar qué se ejecutó, dónde falló y qué veía el navegador en ese momento.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="checklist">
+        <h2>13. Checklist antes de entregar</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Revisión</th>
+              <th>Criterio</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Feature</td>
+              <td>Nombre claro, tags correctos y test case si ya existe.</td>
+            </tr>
+            <tr>
+              <td>Steps</td>
+              <td>No duplicar pasos existentes y usar nombres coherentes.</td>
+            </tr>
+            <tr>
+              <td>Page</td>
+              <td>Locators arriba, métodos abajo, sin lógica innecesaria en steps.</td>
+            </tr>
+            <tr>
+              <td>BasePage</td>
+              <td>Solo tocar si el método será reutilizable en varios módulos.</td>
+            </tr>
+            <tr>
+              <td>XPaths</td>
+              <td>Probados en DOM y basados en padres estables.</td>
+            </tr>
+            <tr>
+              <td>Ejecución</td>
+              <td>Probar en <code>prueba.feature</code> antes de subir.</td>
+            </tr>
+            <tr>
+              <td>Git</td>
+              <td>Subir solo archivos fuente; excluir reports, target, logs y recursos HTML temporales.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="script">
+          <strong>Cierre:</strong>
+          "El valor del framework no está solo en ejecutar clicks. Está en tener una estructura que
+          convierte casos manuales en pruebas repetibles, con evidencias, trazabilidad y mantenimiento
+          razonable cuando la aplicación cambia."
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

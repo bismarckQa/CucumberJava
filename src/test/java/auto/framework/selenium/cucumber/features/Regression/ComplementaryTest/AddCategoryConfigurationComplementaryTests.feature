@@ -1,5 +1,5 @@
 Feature: Add Category Configuration Complementary tests
-  @test @smoke
+  @test
   Scenario: Cancelling add category
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -9,7 +9,7 @@ Feature: Add Category Configuration Complementary tests
     And   I verify that the user configuration opened correctly
     Then  I try to add a new category of complementary tests, but I cancel the add
 
-  @test @smoke
+  @test
   Scenario: Successful add category
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -19,7 +19,7 @@ Feature: Add Category Configuration Complementary tests
     And   I verify that the user configuration opened correctly
     Then  I successfully created a new Category
 
-  @test @smoke
+  @test
   Scenario: Duplicated record
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

@@ -18,6 +18,7 @@ Feature: Modify Patient Data
     And   I verify that the demographic module opened correctly
     And   I click the three points menu of demographics
     And   I click button option "EDIT"
+    And   I click button edit in patient data demographics
     And   I enter the surname 2 "Baggio"
     And   I select the sex at birth
     Then  I click the three points menu of demographics

@@ -7,7 +7,7 @@
 #Module
 @LabTest
 Feature: View lab tests graph
-  @test @smoke @test_Case_3645
+  @test @test_Case_3645
   Scenario: Enter in laboratory results graph window
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

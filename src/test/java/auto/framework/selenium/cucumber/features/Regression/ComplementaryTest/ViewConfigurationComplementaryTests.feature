@@ -1,5 +1,5 @@
 Feature: View Configuration Complementary Tests
-  @test @smoke
+  @test
   Scenario: View Categories
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -9,7 +9,7 @@ Feature: View Configuration Complementary Tests
     And   I verify that the user configuration opened correctly
     Then  I will be able to view all the category records
 
-  @test @smoke
+  @test
   Scenario: View Complementary tests
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -20,7 +20,7 @@ Feature: View Configuration Complementary Tests
     Then  I will be able to view all the tests records
 
 
-  @test @smoke
+  @test
   Scenario: View relation Categories Tests
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

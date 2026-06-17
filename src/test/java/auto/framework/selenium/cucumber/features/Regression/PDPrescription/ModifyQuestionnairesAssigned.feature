@@ -1,5 +1,5 @@
 Feature: Modify questionnaires assigned
-  @test @smoke
+  @test
   Scenario:  Edit and Modify questionnaires assigned
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

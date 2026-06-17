@@ -8,7 +8,7 @@
 @Demographics
 Feature: Create New Patient
 
-  @test @smoke @test_Case_2960
+  @test @test_Case_2960
   Scenario: New patient. No data required (Not Applicable)
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

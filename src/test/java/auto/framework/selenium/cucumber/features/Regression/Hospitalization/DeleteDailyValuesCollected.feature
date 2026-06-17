@@ -1,5 +1,5 @@
 Feature: Delete Daily Values Collected
-  @test @smoke
+  @test
   Scenario: Cancelling a deleted daily values collected
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -9,7 +9,7 @@ Feature: Delete Daily Values Collected
     Then  I check the module Hospitalization appear correctly
     And   I try to delete the collected daily values, but it cancels
 
-  @test @smoke
+  @test
   Scenario: Successful deleted daily values collected
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

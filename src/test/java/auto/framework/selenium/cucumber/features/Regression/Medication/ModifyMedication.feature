@@ -1,5 +1,5 @@
 Feature: Smoke test Modify Medication module
-  @test @smoke
+  @test
   Scenario: Check editable fields
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -11,7 +11,7 @@ Feature: Smoke test Modify Medication module
     Then  I verify that the new medication was added
     And   I check if the fields are editable: date stopped "11/25/2025" and Observations "test edit observations"
 
-  @test @smoke
+  @test
   Scenario: Set stopped date and Observations: inactivate medication treatment
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -21,7 +21,7 @@ Feature: Smoke test Modify Medication module
     Then  I check the module Medication appear correctly
     And   I modified the medication in the end date "6/26/2025" and observations "Observations change test" and clicked show inactive
 
-  @test @smoke
+  @test
   Scenario: Successful edit medication
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

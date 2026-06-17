@@ -1,5 +1,5 @@
 Feature: Smoke test Medication module
-  @test @smoke
+  @test
   Scenario: Unused Medication
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -11,7 +11,7 @@ Feature: Smoke test Medication module
     Then  I verify that the new medication was added
     And   I remove the added medication, confirm the reason "Qa Testing"
 
-  @test @smoke
+  @test
   Scenario: wrong confirmation password, wrong confirmation reason
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

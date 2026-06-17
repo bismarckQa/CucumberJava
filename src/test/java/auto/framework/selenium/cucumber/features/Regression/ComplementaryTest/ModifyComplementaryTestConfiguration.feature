@@ -1,5 +1,5 @@
 Feature: Modify Complementary Test configuration
-  @test @smoke
+  @test
   Scenario: Cancelling edit complementary test
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -10,7 +10,7 @@ Feature: Modify Complementary Test configuration
     Then  I try to edit the supplementary test, but the editing is cancelled
 
 
-  @test @smoke
+  @test
   Scenario: Duplicated record Supplementary Test
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -20,7 +20,7 @@ Feature: Modify Complementary Test configuration
     And   I verify that the user configuration opened correctly
     Then  I try to edit the complementary test by duplicating it, but the system shows an alert that it is not possible
 
-  @test @smoke
+  @test
   Scenario: Successfully edit complementary test
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

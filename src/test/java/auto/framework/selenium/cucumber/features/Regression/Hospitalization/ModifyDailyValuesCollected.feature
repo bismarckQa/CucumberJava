@@ -1,5 +1,5 @@
 Feature: Modify daily values collected
-  @test @smoke
+  @test
   Scenario: Cancelling an edited daily values collected
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -10,7 +10,7 @@ Feature: Modify daily values collected
     #And   I create added values daily and successfully collect them
     And   I try to edit the daily values collected, but it cancels
 
-  @test @smoke
+  @test
   Scenario: Successful edited daily values collected
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

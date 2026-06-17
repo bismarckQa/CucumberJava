@@ -7,7 +7,7 @@
 #Module
 @LabTest
 Feature: Filters options
-  @test @smoke @test_Case_3658
+  @test @test_Case_3658
   Scenario: Filter options view
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -24,7 +24,7 @@ Feature: Filters options
     And   I insert data into input end date analytics "02/26/2026"
     When  I click button "Select" option
 
-  @test @smoke @test_Case_3675
+  @test @test_Case_3675
   Scenario: Show none lab tests results
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

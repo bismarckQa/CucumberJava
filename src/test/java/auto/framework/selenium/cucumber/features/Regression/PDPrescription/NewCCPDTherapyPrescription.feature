@@ -1,5 +1,5 @@
 Feature: New CCPD therapy Prescription
-  @test @smoke
+  @test
   Scenario:  Create a New CCPD Prescription for Baxter Exchange
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -9,7 +9,7 @@ Feature: New CCPD therapy Prescription
     And   I open PD Prescription module
     Then  I am trying to create a new CCPD prescription using the Housing Choice System
 
-  @test @smoke
+  @test
   Scenario:  Cancel a New CCPD Prescription
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

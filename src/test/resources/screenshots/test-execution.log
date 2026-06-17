@@ -1,106 +1,16 @@
-2026-06-01T16:00:43.670+02:00  INFO 3656 --- [main] a.f.s.c.CucumberSpringContextConfig      : Starting CucumberSpringContextConfig using Java 17.0.18 with PID 3656 (started by colombb in C:\Users\colombb\Versia\Baxter SQA Framework)
-2026-06-01T16:00:43.686+02:00  INFO 3656 --- [main] a.f.s.c.CucumberSpringContextConfig      : No active profile set, falling back to 1 default profile: "default"
-2026-06-01T16:00:44.727+02:00  INFO 3656 --- [main] a.f.s.c.CucumberSpringContextConfig      : Started CucumberSpringContextConfig in 1.264 seconds (process running for 3.816)
-2026-06-01T16:03:30.092+02:00  INFO 25744 --- [main] a.f.s.c.CucumberSpringContextConfig      : Starting CucumberSpringContextConfig using Java 17.0.18 with PID 25744 (started by colombb in C:\Users\colombb\Versia\Baxter SQA Framework)
-2026-06-01T16:03:30.092+02:00  INFO 25744 --- [main] a.f.s.c.CucumberSpringContextConfig      : No active profile set, falling back to 1 default profile: "default"
-2026-06-01T16:03:30.968+02:00  INFO 25744 --- [main] a.f.s.c.CucumberSpringContextConfig      : Started CucumberSpringContextConfig in 1.068 seconds (process running for 3.431)
-2026-06-01T16:03:52.880+02:00  WARN 25744 --- [main] o.o.selenium.manager.SeleniumManager     : There was an error managing chrome (request or response body error: error reading a body from connection: Se ha forzado la interrupción de una conexión existente por el host remoto. (os error 10054)); using driver found in the cache
-2026-06-01T16:03:57.930+02:00  WARN 25744 --- [main] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 148
-2026-06-01T16:03:57.930+02:00  WARN 25744 --- [main] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 148.0.7778.179. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.13.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
-2026-06-01T16:28:47.457+02:00  INFO 26708 --- [main] a.f.s.c.CucumberSpringContextConfig      : Starting CucumberSpringContextConfig using Java 17.0.18 with PID 26708 (started by colombb in C:\Users\colombb\Versia\Baxter SQA Framework)
-2026-06-01T16:28:47.457+02:00  INFO 26708 --- [main] a.f.s.c.CucumberSpringContextConfig      : No active profile set, falling back to 1 default profile: "default"
-2026-06-01T16:28:48.373+02:00  INFO 26708 --- [main] a.f.s.c.CucumberSpringContextConfig      : Started CucumberSpringContextConfig in 1.118 seconds (process running for 3.71)
-2026-06-01T16:29:29.561+02:00  WARN 26708 --- [main] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 149
-2026-06-01T16:29:29.561+02:00  WARN 26708 --- [main] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 149.0.7827.54. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.13.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
-2026-06-01T16:31:12.644+02:00  INFO 27296 --- [main] a.f.s.c.CucumberSpringContextConfig      : Starting CucumberSpringContextConfig using Java 17.0.18 with PID 27296 (started by colombb in C:\Users\colombb\Versia\Baxter SQA Framework)
-2026-06-01T16:31:12.644+02:00  INFO 27296 --- [main] a.f.s.c.CucumberSpringContextConfig      : No active profile set, falling back to 1 default profile: "default"
-2026-06-01T16:31:13.535+02:00  INFO 27296 --- [main] a.f.s.c.CucumberSpringContextConfig      : Started CucumberSpringContextConfig in 1.048 seconds (process running for 3.361)
-2026-06-01T16:31:16.712+02:00  WARN 27296 --- [main] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 149
-2026-06-01T16:31:16.712+02:00  WARN 27296 --- [main] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 149.0.7827.54. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.13.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
-2026-06-01T16:31:47.349+02:00  WARN 27296 --- [AsyncHttpClient-1-4] o.a.netty.handler.WebSocketHandler       : onError
-
-java.net.SocketException: Connection reset
-	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:394) ~[na:na]
-	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:426) ~[na:na]
-	at io.netty.buffer.PooledByteBuf.setBytes(PooledByteBuf.java:259) ~[netty-buffer-4.1.86.Final.jar:4.1.86.Final]
-	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1132) ~[netty-buffer-4.1.86.Final.jar:4.1.86.Final]
-	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:357) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
-	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:151) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
-	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:788) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
-	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
-	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
-	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
-	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
-	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
-	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
-	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
-
-2026-06-01T16:31:47.352+02:00  WARN 27296 --- [AsyncHttpClient-1-4] o.openqa.selenium.remote.http.WebSocket  : Connection reset
-
-java.net.SocketException: Connection reset
-	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:394) ~[na:na]
-	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:426) ~[na:na]
-	at io.netty.buffer.PooledByteBuf.setBytes(PooledByteBuf.java:259) ~[netty-buffer-4.1.86.Final.jar:4.1.86.Final]
-	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1132) ~[netty-buffer-4.1.86.Final.jar:4.1.86.Final]
-	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:357) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
-	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:151) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
-	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:788) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
-	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
-	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
-	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
-	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
-	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
-	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
-	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
-
-2026-06-01T16:47:58.027+02:00  INFO 4284 --- [main] a.f.s.c.CucumberSpringContextConfig      : Starting CucumberSpringContextConfig using Java 17.0.18 with PID 4284 (started by colombb in C:\Users\colombb\Versia\Baxter SQA Framework)
-2026-06-01T16:47:58.027+02:00  INFO 4284 --- [main] a.f.s.c.CucumberSpringContextConfig      : No active profile set, falling back to 1 default profile: "default"
-2026-06-01T16:47:58.965+02:00  INFO 4284 --- [main] a.f.s.c.CucumberSpringContextConfig      : Started CucumberSpringContextConfig in 1.144 seconds (process running for 3.537)
-2026-06-01T16:48:02.639+02:00  WARN 4284 --- [main] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 149
-2026-06-01T16:48:02.639+02:00  WARN 4284 --- [main] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 149.0.7827.54. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.13.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
-2026-06-01T16:50:37.323+02:00  INFO 26660 --- [main] a.f.s.c.CucumberSpringContextConfig      : Starting CucumberSpringContextConfig using Java 17.0.18 with PID 26660 (started by colombb in C:\Users\colombb\Versia\Baxter SQA Framework)
-2026-06-01T16:50:37.323+02:00  INFO 26660 --- [main] a.f.s.c.CucumberSpringContextConfig      : No active profile set, falling back to 1 default profile: "default"
-2026-06-01T16:50:38.225+02:00  INFO 26660 --- [main] a.f.s.c.CucumberSpringContextConfig      : Started CucumberSpringContextConfig in 1.114 seconds (process running for 3.699)
-2026-06-01T16:50:41.503+02:00  WARN 26660 --- [main] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 149
-2026-06-01T16:50:41.503+02:00  WARN 26660 --- [main] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 149.0.7827.54. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.13.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
-2026-06-01T16:51:14.002+02:00  WARN 26660 --- [AsyncHttpClient-1-4] o.a.netty.handler.WebSocketHandler       : onError
-
-java.net.SocketException: Connection reset
-	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:394) ~[na:na]
-	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:426) ~[na:na]
-	at io.netty.buffer.PooledByteBuf.setBytes(PooledByteBuf.java:259) ~[netty-buffer-4.1.86.Final.jar:4.1.86.Final]
-	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1132) ~[netty-buffer-4.1.86.Final.jar:4.1.86.Final]
-	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:357) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
-	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:151) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
-	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:788) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
-	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
-	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
-	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
-	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
-	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
-	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
-	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
-
-2026-06-01T16:51:14.002+02:00  WARN 26660 --- [AsyncHttpClient-1-4] o.openqa.selenium.remote.http.WebSocket  : Connection reset
-
-java.net.SocketException: Connection reset
-	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:394) ~[na:na]
-	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:426) ~[na:na]
-	at io.netty.buffer.PooledByteBuf.setBytes(PooledByteBuf.java:259) ~[netty-buffer-4.1.86.Final.jar:4.1.86.Final]
-	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1132) ~[netty-buffer-4.1.86.Final.jar:4.1.86.Final]
-	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:357) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
-	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:151) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
-	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:788) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
-	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
-	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
-	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
-	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
-	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
-	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
-	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
-
-2026-06-01T17:38:39.838+02:00  INFO 26184 --- [main] a.f.s.c.CucumberSpringContextConfig      : Starting CucumberSpringContextConfig using Java 17.0.18 with PID 26184 (started by colombb in C:\Users\colombb\Versia\Baxter SQA Framework)
-2026-06-01T17:38:39.838+02:00  INFO 26184 --- [main] a.f.s.c.CucumberSpringContextConfig      : No active profile set, falling back to 1 default profile: "default"
-2026-06-01T17:38:40.854+02:00  INFO 26184 --- [main] a.f.s.c.CucumberSpringContextConfig      : Started CucumberSpringContextConfig in 1.249 seconds (process running for 3.744)
-2026-06-01T17:38:46.441+02:00  WARN 26184 --- [main] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 149
-2026-06-01T17:38:46.441+02:00  WARN 26184 --- [main] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 149.0.7827.54. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.13.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+2026-06-09T15:57:10.629+02:00  INFO 17844 --- [main] a.f.s.c.CucumberSpringContextConfig      : Starting CucumberSpringContextConfig using Java 25.0.3 with PID 17844 (started by colombb in C:\Users\colombb\Versia\Baxter SQA Framework)
+2026-06-09T15:57:10.646+02:00  INFO 17844 --- [main] a.f.s.c.CucumberSpringContextConfig      : No active profile set, falling back to 1 default profile: "default"
+2026-06-09T15:57:11.868+02:00  INFO 17844 --- [main] a.f.s.c.CucumberSpringContextConfig      : Started CucumberSpringContextConfig in 1.574 seconds (process running for 4.163)
+2026-06-09T15:57:52.462+02:00  WARN 17844 --- [main] o.o.selenium.devtools.CdpVersionFinder   : Unable to find an exact match for CDP version 149, returning the closest version; found: 148; Please update to a Selenium version that supports CDP version 149
+2026-06-09T16:00:26.045+02:00  INFO 28072 --- [main] a.f.s.c.CucumberSpringContextConfig      : Starting CucumberSpringContextConfig using Java 25.0.3 with PID 28072 (started by colombb in C:\Users\colombb\Versia\Baxter SQA Framework)
+2026-06-09T16:00:26.048+02:00  INFO 28072 --- [main] a.f.s.c.CucumberSpringContextConfig      : No active profile set, falling back to 1 default profile: "default"
+2026-06-09T16:00:27.089+02:00  INFO 28072 --- [main] a.f.s.c.CucumberSpringContextConfig      : Started CucumberSpringContextConfig in 1.337 seconds (process running for 4.586)
+2026-06-09T16:00:31.800+02:00  WARN 28072 --- [main] o.o.selenium.devtools.CdpVersionFinder   : Unable to find an exact match for CDP version 149, returning the closest version; found: 148; Please update to a Selenium version that supports CDP version 149
+2026-06-09T16:06:05.150+02:00  INFO 2804 --- [main] a.f.s.c.CucumberSpringContextConfig      : Starting CucumberSpringContextConfig using Java 25.0.3 with PID 2804 (started by colombb in C:\Users\colombb\Versia\Baxter SQA Framework)
+2026-06-09T16:06:05.152+02:00  INFO 2804 --- [main] a.f.s.c.CucumberSpringContextConfig      : No active profile set, falling back to 1 default profile: "default"
+2026-06-09T16:06:06.135+02:00  INFO 2804 --- [main] a.f.s.c.CucumberSpringContextConfig      : Started CucumberSpringContextConfig in 1.248 seconds (process running for 4.462)
+2026-06-09T16:06:09.740+02:00  WARN 2804 --- [main] o.o.selenium.devtools.CdpVersionFinder   : Unable to find an exact match for CDP version 149, returning the closest version; found: 148; Please update to a Selenium version that supports CDP version 149
+2026-06-09T16:36:33.173+02:00  INFO 6760 --- [main] a.f.s.c.CucumberSpringContextConfig      : Starting CucumberSpringContextConfig using Java 25.0.3 with PID 6760 (started by colombb in C:\Users\colombb\Versia\Baxter SQA Framework)
+2026-06-09T16:36:33.198+02:00  INFO 6760 --- [main] a.f.s.c.CucumberSpringContextConfig      : No active profile set, falling back to 1 default profile: "default"
+2026-06-09T16:36:36.188+02:00  INFO 6760 --- [main] a.f.s.c.CucumberSpringContextConfig      : Started CucumberSpringContextConfig in 3.912 seconds (process running for 11.7)
+2026-06-09T16:36:55.376+02:00  WARN 6760 --- [main] o.o.selenium.devtools.CdpVersionFinder   : Unable to find an exact match for CDP version 149, returning the closest version; found: 148; Please update to a Selenium version that supports CDP version 149

@@ -1,5 +1,5 @@
 Feature: Modify Biometric Marker
-  @test @smoke
+  @test
   Scenario:  Modify Biometric Marker
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

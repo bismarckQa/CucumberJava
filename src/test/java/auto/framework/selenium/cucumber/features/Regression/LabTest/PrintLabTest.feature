@@ -7,7 +7,7 @@
 #Module
 @LabTest
 Feature: Print lab tests
-  @test @smoke @test_Case_3591
+  @test @test_Case_3591
   Scenario: Lab tests print correctly
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -23,7 +23,7 @@ Feature: Print lab tests
     And   I click "Imprimir" button in print preview
     And   I click button arrow up
 
-  @test @smoke @test_Case_3602
+  @test @test_Case_3602
   Scenario: Cancelling lab tests print
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

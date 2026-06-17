@@ -1,5 +1,5 @@
 Feature: Smoke test Medication module
-  @test @smoke
+  @test
   Scenario: Copy medication future start date
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -9,7 +9,7 @@ Feature: Smoke test Medication module
     Then  I check the module Medication appear correctly
     And   I try to copy the selected medication with the new parameters, dosage "Postdialisis test", observations "closed test"
 
-  @test @smoke
+  @test
   Scenario: Copy medication past start date
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

@@ -38,7 +38,11 @@ public class ModalityModulePage extends BasePage<ModalityModulePage>{
     @FindBy(how = How.ID, using = "ctl00_mainContent_fvDetalle_comboSubmodalidad_Arrow")
     private WebElement arrowSubmodality;
 
+    @FindBy(how = How.XPATH, using = "//*[@id=\"menuItem 1\"]")
+    private WebElement btnAccess;
 
+    @FindBy(how = How.XPATH, using = "//*[@id=\"RadWindowWrapper_search99999Win\"]/table/tbody/tr[1]/td[2]/table/tbody/tr/td[2]/em")
+    private WebElement searchTitle;
 
     //*********Page Methods*********
 
@@ -86,6 +90,18 @@ public class ModalityModulePage extends BasePage<ModalityModulePage>{
     public void selectSubmodality(String submodality){
         By loc = By.xpath("//div[@id='ctl00_mainContent_fvDetalle_comboSubmodalidad_DropDown']/div/ul/li[contains(text(),'"+submodality+"')]");
         click(loc);
+    }
+
+
+    public void clickButtonAccesesModule()throws InterruptedException{
+        pause(3000);
+        click(btnAccess);
+    }
+
+    public void  verifyModalSearchIsDisplayed()throws InterruptedException{
+        waitElements(searchTitle);
+        isDisplayed(searchTitle);
+        pause(3000);
     }
 
 

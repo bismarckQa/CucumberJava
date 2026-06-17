@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guia para crear un nuevo modulo en el framework</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      color: #202124;
+      background: #f6f8fa;
+    }
+
+    main {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 32px 20px 64px;
+      background: #ffffff;
+    }
+
+    h1, h2, h3 {
+      color: #17202a;
+      line-height: 1.25;
+    }
+
+    h1 {
+      border-bottom: 3px solid #2f6f9f;
+      padding-bottom: 12px;
+    }
+
+    h2 {
+      margin-top: 36px;
+      border-bottom: 1px solid #d0d7de;
+      padding-bottom: 8px;
+    }
+
+    code {
+      background: #eef2f5;
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, "Courier New", monospace;
+    }
+
+    pre {
+      background: #0f1720;
+      color: #f8fafc;
+      padding: 16px;
+      overflow-x: auto;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    pre code {
+      background: transparent;
+      padding: 0;
+      color: inherit;
+    }
+
+    .note {
+      border-left: 4px solid #2f6f9f;
+      background: #eef6fb;
+      padding: 12px 16px;
+      margin: 16px 0;
+    }
+
+    .warning {
+      border-left: 4px solid #b42318;
+      background: #fff1f0;
+      padding: 12px 16px;
+      margin: 16px 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+    }
+
+    th, td {
+      border: 1px solid #d0d7de;
+      padding: 10px;
+      vertical-align: top;
+    }
+
+    th {
+      background: #eef2f5;
+      text-align: left;
+    }
+
+    .path {
+      font-weight: bold;
+      color: #1f5f85;
+    }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Guia para crear un nuevo modulo en el framework Selenium Cucumber</h1>
+
+  <p>
+    Esta guia explica el flujo basico para crear un modulo nuevo dentro del framework:
+    primero se crea el archivo <code>.feature</code>, luego la <code>Page</code>, y despues los
+    <code>Steps</code>. La idea es separar claramente que se prueba, como se conecta con Java,
+    y como Selenium ejecuta la accion real.
+  </p>
+
+  <div class="note">
+    <strong>Regla principal:</strong> el Selenium va en la clase <code>Page</code>. Los
+    <code>Steps</code> solo conectan frases de Cucumber con metodos Java.
+  </div>
+
+  <h2>1. Estructura general</h2>
+
+  <p>Para un modulo nuevo se crean tres piezas principales:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Pieza</th>
+        <th>Ruta</th>
+        <th>Responsabilidad</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Feature</td>
+        <td><code>src/test/java/auto/framework/selenium/cucumber/features/Regression/MiModulo</code></td>
+        <td>Describe el escenario en lenguaje Gherkin.</td>
+      </tr>
+      <tr>
+        <td>Page</td>
+        <td><code>src/test/java/auto/framework/selenium/pages/baxter_page/MiModuloPage.java</code></td>
+        <td>Contiene localizadores y acciones Selenium.</td>
+      </tr>
+      <tr>
+        <td>Steps</td>
+        <td><code>src/test/java/auto/framework/selenium/cucumber/steps/MiModuloSteps.java</code></td>
+        <td>Conecta frases del feature con metodos de la Page.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>El flujo queda asi:</p>
+
+  <pre><code>Feature -&gt; Steps -&gt; Page -&gt; Selenium/WebDriver</code></pre>
+
+  <h2>2. Crear la carpeta del modulo</h2>
+
+  <p>
+    Si el modulo se llama <code>Search</code>, la carpeta se crea dentro de
+    <code>Regression</code>:
+  </p>
+
+  <pre><code>src/test/java/auto/framework/selenium/cucumber/features/Regression/Search</code></pre>
+
+  <p>
+    Si el modulo se llama <code>Medication</code>, seria:
+  </p>
+
+  <pre><code>src/test/java/auto/framework/selenium/cucumber/features/Regression/Medication</code></pre>
+
+  <p>
+    La carpeta sirve para agrupar los escenarios del modulo y mantener el proyecto ordenado.
+  </p>
+
+  <h2>3. Crear el Feature</h2>
+
+  <p>Ejemplo basado en el modulo <code>Search</code>:</p>
+
+  <p class="path">Archivo:</p>
+
+  <pre><code>src/test/java/auto/framework/selenium/cucumber/features/Regression/Search/ViewSearch.feature</code></pre>
+
+  <pre><code>@Environment_dev @versia_renal @3.2 @Search @regression
+Feature: Search - View search results
+
+  Background:
+    Given I open the Baxter website
+    And   I try to login with "login_baxter" credentials
+    And   I login successful
+
+  Scenario: View search results
+    When  I click search icon</code></pre>
+
+  <h3>Explicacion linea por linea</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Linea</th>
+        <th>Para que sirve</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>@Environment_dev @versia_renal @3.2 @Search @regression</code></td>
+        <td>Son tags. Permiten ejecutar grupos de pruebas por ambiente, version, modulo o tipo de prueba.</td>
+      </tr>
+      <tr>
+        <td><code>Feature: Search - View search results</code></td>
+        <td>Nombre funcional de la caracteristica que se esta probando.</td>
+      </tr>
+      <tr>
+        <td><code>Background:</code></td>
+        <td>Pasos comunes que se ejecutan antes de cada escenario del archivo.</td>
+      </tr>
+      <tr>
+        <td><code>Given I open the Baxter website</code></td>
+        <td>Abre la aplicacion. Este step ya existe en el framework.</td>
+      </tr>
+      <tr>
+        <td><code>And I try to login with "login_baxter" credentials</code></td>
+        <td>Hace login usando credenciales definidas en la configuracion.</td>
+      </tr>
+      <tr>
+        <td><code>And I login successful</code></td>
+        <td>Valida que el login fue correcto.</td>
+      </tr>
+      <tr>
+        <td><code>Scenario: View search results</code></td>
+        <td>Define el caso de prueba concreto.</td>
+      </tr>
+      <tr>
+        <td><code>When I click search icon</code></td>
+        <td>Accion del escenario. Esta frase debe existir en una clase Steps con <code>@When</code>.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>4. Crear la Page</h2>
+
+  <p>
+    La Page es donde vive Selenium. Aqui se definen los elementos de pantalla y los metodos
+    que hacen click, escriben, esperan, validan o navegan.
+  </p>
+
+  <p class="path">Archivo:</p>
+
+  <pre><code>src/test/java/auto/framework/selenium/pages/baxter_page/SearchPage.java</code></pre>
+
+  <pre><code>package auto.framework.selenium.pages.baxter_page;
+
+import auto.framework.selenium.annotations.LazyComponent;
+import auto.framework.selenium.pages.BasePage;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
+@LazyComponent
+public class SearchPage extends BasePage&lt;SearchPage&gt; {
+
+    @FindBy(how = How.XPATH, using = "//*[contains(@class,'fa-search') or contains(@class,'glyphicon-search') or contains(@class,'k-i-search')]/ancestor::*[self::button or self::a or self::li or self::span][1]")
+    private WebElement btnSearchIcon;
+
+    @Override
+    public boolean isAt() {
+        return wait.until((d) -&gt; btnSearchIcon.isDisplayed());
+    }
+
+    public void clickSearchIcon() throws InterruptedException {
+        wait.until(ExpectedConditions.elementToBeClickable(btnSearchIcon));
+        click(btnSearchIcon);
+        pause(500);
+    }
+}</code></pre>
+
+  <h3>Explicacion de la Page</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Linea</th>
+        <th>Explicacion</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>package auto.framework.selenium.pages.baxter_page;</code></td>
+        <td>Indica que esta clase pertenece al paquete de Pages de la aplicacion Baxter.</td>
+      </tr>
+      <tr>
+        <td><code>import auto.framework.selenium.annotations.LazyComponent;</code></td>
+        <td>Importa la anotacion propia del framework para registrar esta Page en Spring.</td>
+      </tr>
+      <tr>
+        <td><code>import auto.framework.selenium.pages.BasePage;</code></td>
+        <td>Permite heredar metodos comunes como <code>click</code>, <code>pause</code> y el objeto <code>wait</code>.</td>
+      </tr>
+      <tr>
+        <td><code>import org.openqa.selenium.WebElement;</code></td>
+        <td>Representa un elemento HTML de la pagina.</td>
+      </tr>
+      <tr>
+        <td><code>import org.openqa.selenium.support.FindBy;</code></td>
+        <td>Permite declarar elementos con anotaciones en lugar de buscarlos manualmente.</td>
+      </tr>
+      <tr>
+        <td><code>import org.openqa.selenium.support.How;</code></td>
+        <td>Permite indicar el tipo de localizador: XPATH, ID, CSS, NAME, etc.</td>
+      </tr>
+      <tr>
+        <td><code>import org.openqa.selenium.support.ui.ExpectedConditions;</code></td>
+        <td>Permite usar condiciones de espera, por ejemplo esperar que un boton sea clicable.</td>
+      </tr>
+      <tr>
+        <td><code>@LazyComponent</code></td>
+        <td>Le dice a Spring que esta clase puede ser creada e inyectada cuando se necesite.</td>
+      </tr>
+      <tr>
+        <td><code>public class SearchPage extends BasePage&lt;SearchPage&gt;</code></td>
+        <td>Declara la clase Page y hereda de <code>BasePage</code> para reutilizar acciones comunes.</td>
+      </tr>
+      <tr>
+        <td><code>@FindBy(...)</code></td>
+        <td>Define como Selenium encuentra el elemento en la pantalla.</td>
+      </tr>
+      <tr>
+        <td><code>private WebElement btnSearchIcon;</code></td>
+        <td>Guarda la referencia al boton/icono de busqueda.</td>
+      </tr>
+      <tr>
+        <td><code>@Override public boolean isAt()</code></td>
+        <td>Metodo para validar si la Page esta en la pantalla esperada.</td>
+      </tr>
+      <tr>
+        <td><code>wait.until(...)</code></td>
+        <td>Espera explicita. Evita fallos por intentar usar un elemento antes de que cargue.</td>
+      </tr>
+      <tr>
+        <td><code>click(btnSearchIcon);</code></td>
+        <td>Usa el metodo comun de <code>BasePage</code> para hacer click.</td>
+      </tr>
+      <tr>
+        <td><code>pause(500);</code></td>
+        <td>Pausa corta despues de la accion. En general es mejor usar esperas explicitas cuando sea posible.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>5. Crear los Steps</h2>
+
+  <p>
+    Los Steps conectan el texto del feature con Java. No deben contener Selenium directo.
+  </p>
+
+  <p class="path">Archivo:</p>
+
+  <pre><code>src/test/java/auto/framework/selenium/cucumber/steps/SearchSteps.java</code></pre>
+
+  <pre><code>package auto.framework.selenium.cucumber.steps;
+
+import auto.framework.selenium.annotations.LazyAutowired;
+import auto.framework.selenium.pages.baxter_page.SearchPage;
+import io.cucumber.java.en.When;
+
+public class SearchSteps {
+
+    @LazyAutowired
+    private SearchPage searchPage;
+
+    @When("I click search icon")
+    public void iClickSearchIcon() throws InterruptedException {
+        searchPage.clickSearchIcon();
+    }
+}</code></pre>
+
+  <h3>Explicacion de los Steps</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Linea</th>
+        <th>Explicacion</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>package auto.framework.selenium.cucumber.steps;</code></td>
+        <td>Indica que esta clase pertenece al paquete de Steps de Cucumber.</td>
+      </tr>
+      <tr>
+        <td><code>import auto.framework.selenium.annotations.LazyAutowired;</code></td>
+        <td>Permite inyectar la Page usando Spring de forma lazy.</td>
+      </tr>
+      <tr>
+        <td><code>import auto.framework.selenium.pages.baxter_page.SearchPage;</code></td>
+        <td>Importa la Page que contiene la accion Selenium.</td>
+      </tr>
+      <tr>
+        <td><code>import io.cucumber.java.en.When;</code></td>
+        <td>Permite usar la anotacion <code>@When</code> para conectar con Gherkin.</td>
+      </tr>
+      <tr>
+        <td><code>public class SearchSteps</code></td>
+        <td>Clase que agrupa los pasos del modulo Search.</td>
+      </tr>
+      <tr>
+        <td><code>@LazyAutowired private SearchPage searchPage;</code></td>
+        <td>Spring crea e inyecta la Page. Asi no se usa <code>new SearchPage()</code>.</td>
+      </tr>
+      <tr>
+        <td><code>@When("I click search icon")</code></td>
+        <td>Debe coincidir exactamente con la frase del feature: <code>When I click search icon</code>.</td>
+      </tr>
+      <tr>
+        <td><code>searchPage.clickSearchIcon();</code></td>
+        <td>Llama al metodo de la Page. Aqui no se escribe Selenium directamente.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>6. Que es @LazyComponent</h2>
+
+  <p>
+    <code>@LazyComponent</code> es una anotacion creada en el framework para combinar varias
+    anotaciones de Spring:
+  </p>
+
+  <pre><code>@Lazy
+@Component
+@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+public @interface LazyComponent {
+}</code></pre>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Anotacion</th>
+        <th>Significado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>@Component</code></td>
+        <td>Spring puede detectar y crear esta clase automaticamente.</td>
+      </tr>
+      <tr>
+        <td><code>@Lazy</code></td>
+        <td>La clase no se crea hasta que realmente se necesita.</td>
+      </tr>
+      <tr>
+        <td><code>@Scope(PROTOTYPE)</code></td>
+        <td>Spring crea una instancia nueva cuando se solicita. Es util para Pages en pruebas.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>7. Que es @LazyAutowired</h2>
+
+  <p>
+    <code>@LazyAutowired</code> tambien es una anotacion propia del framework. Combina
+    <code>@Autowired</code> y <code>@Lazy</code>.
+  </p>
+
+  <pre><code>@Lazy
+@Autowired
+public @interface LazyAutowired {
+}</code></pre>
+
+  <p>
+    Se usa en los Steps para pedirle a Spring una Page:
+  </p>
+
+  <pre><code>@LazyAutowired
+private SearchPage searchPage;</code></pre>
+
+  <p>
+    Gracias a esto no se crean objetos manualmente. Spring administra las dependencias.
+  </p>
+
+  <h2>8. Plantilla general para un modulo nuevo</h2>
+
+  <h3>Feature</h3>
+
+  <pre><code>@Environment_dev @versia_renal @3.2 @MiModulo @regression
+Feature: MiModulo - View screen
+
+  Background:
+    Given I open the Baxter website
+    And   I try to login with "login_baxter" credentials
+    And   I login successful
+
+  Scenario: Open MiModulo
+    When I click MiModulo option</code></pre>
+
+  <h3>Page</h3>
+
+  <pre><code>package auto.framework.selenium.pages.baxter_page;
+
+import auto.framework.selenium.annotations.LazyComponent;
+import auto.framework.selenium.pages.BasePage;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
+@LazyComponent
+public class MiModuloPage extends BasePage&lt;MiModuloPage&gt; {
+
+    @FindBy(how = How.XPATH, using = "TU_XPATH_AQUI")
+    private WebElement btnMiModulo;
+
+    @Override
+    public boolean isAt() {
+        return wait.until((d) -&gt; btnMiModulo.isDisplayed());
+    }
+
+    public void clickMiModuloOption() throws InterruptedException {
+        wait.until(ExpectedConditions.elementToBeClickable(btnMiModulo));
+        click(btnMiModulo);
+    }
+}</code></pre>
+
+  <h3>Steps</h3>
+
+  <pre><code>package auto.framework.selenium.cucumber.steps;
+
+import auto.framework.selenium.annotations.LazyAutowired;
+import auto.framework.selenium.pages.baxter_page.MiModuloPage;
+import io.cucumber.java.en.When;
+
+public class MiModuloSteps {
+
+    @LazyAutowired
+    private MiModuloPage miModuloPage;
+
+    @When("I click MiModulo option")
+    public void iClickMiModuloOption() throws InterruptedException {
+        miModuloPage.clickMiModuloOption();
+    }
+}</code></pre>
+
+  <h2>9. Checklist antes de compilar</h2>
+
+  <ul>
+    <li>La frase del feature debe coincidir exactamente con la anotacion del Step.</li>
+    <li>La Page debe tener <code>@LazyComponent</code>.</li>
+    <li>El Step debe inyectar la Page con <code>@LazyAutowired</code>.</li>
+    <li>El Step no debe tener Selenium directo.</li>
+    <li>El nombre de la clase Page y el import del Step deben coincidir.</li>
+    <li>El XPath o localizador debe apuntar a un elemento real.</li>
+    <li>Antes de subir cambios, ejecutar <code>.\mvnw.cmd clean test-compile</code> o <code>mvn clean test-compile</code>.</li>
+  </ul>
+
+  <div class="warning">
+    <strong>Error comun:</strong> si Maven dice <code>cannot find symbol</code>, normalmente
+    significa que el Step esta importando una Page que no existe, o que el nombre de la clase
+    no coincide con el nombre del archivo.
+  </div>
+
+  <h2>10. Orden recomendado de trabajo</h2>
+
+  <ol>
+    <li>Crear carpeta del modulo dentro de <code>features/Regression</code>.</li>
+    <li>Crear el archivo <code>.feature</code> con tags, background y escenario.</li>
+    <li>Crear la clase <code>Page</code> con localizadores y metodos Selenium.</li>
+    <li>Crear la clase <code>Steps</code> conectando frases del feature con la Page.</li>
+    <li>Compilar con Maven.</li>
+    <li>Ejecutar el escenario por tag.</li>
+    <li>Hacer commit cuando el feature funcione.</li>
+  </ol>
+</main>
+</body>
+</html>

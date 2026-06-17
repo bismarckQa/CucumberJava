@@ -29,6 +29,9 @@ public class BrowserOps {
         HashMap<String, Object> prefs = new HashMap<>();
         prefs.put("profile.default_content_settings.popups", 0);
         prefs.put("download.default_directory", this.download);
+        prefs.put("credentials_enable_service", false);
+        prefs.put("profile.password_manager_enabled", false);
+        prefs.put("profile.password_manager_leak_detection", false);
 
         TrustManager[] trustAllCerts = new TrustManager[] { new X509TrustManager() {
             public X509Certificate[] getAcceptedIssuers() { return null; }
@@ -47,7 +50,7 @@ public class BrowserOps {
         };
         // Install the all-trusting host verifier
         HttpsURLConnection.setDefaultHostnameVerifier(allHostsValid);
-        
+
         ChromeOptions co = new ChromeOptions();
         co.setAcceptInsecureCerts(true);
         co.setExperimentalOption("prefs", prefs);
@@ -79,7 +82,7 @@ public class BrowserOps {
 //                .setUdid("emulator-5554")
                 .setAvd("pixel3-emulator")
                 .withBrowserName("chrome");
-                /*.setApp("/home/myapp.apk");*/
+        /*.setApp("/home/myapp.apk");*/
         return options;
     }
 
@@ -93,8 +96,8 @@ public class BrowserOps {
         logPrefs.enable(LogType.DRIVER, Level.ALL);
 
         firefoxOptions
-            .setProfile(firefoxProfile)
-            .setCapability("moz:loggingPrefs", logPrefs);
+                .setProfile(firefoxProfile)
+                .setCapability("moz:loggingPrefs", logPrefs);
         return firefoxOptions;
     }
 }

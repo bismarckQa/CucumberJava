@@ -1,5 +1,5 @@
 Feature: Add Daily Values Collected
-  @test @smoke
+  @test
   Scenario: Cancelling an added daily values collected
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -9,7 +9,7 @@ Feature: Add Daily Values Collected
     Then  I check the module Hospitalization appear correctly
     And   I try to create a new daily values but I cancel it
 
-  @test @smoke
+  @test
   Scenario: Successful added daily values collected
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

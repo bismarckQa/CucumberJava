@@ -1,5 +1,5 @@
 Feature: Clinical Encounter Reviews
-  @test @smoke
+  @test
   Scenario: Successful added clinical encounter (Physician profile)
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -12,7 +12,7 @@ Feature: Clinical Encounter Reviews
     Then  I successfully delete the review created
 
 
-  @test @smoke
+  @test
   Scenario: Canceling added clinical encounter (Physician profile)
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -22,7 +22,7 @@ Feature: Clinical Encounter Reviews
     Then  I check the module Reviews appear correctly
     And   I cancel creating a new review "Qa test case"
 
-  @test @smoke
+  @test
   Scenario: Add new clinical encounter with empty required fields
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

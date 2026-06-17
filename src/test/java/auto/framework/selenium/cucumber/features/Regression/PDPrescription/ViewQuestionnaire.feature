@@ -1,5 +1,5 @@
 Feature: View Questionnaire
-  @test @smoke
+  @test
   Scenario:  View Questionnaire
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

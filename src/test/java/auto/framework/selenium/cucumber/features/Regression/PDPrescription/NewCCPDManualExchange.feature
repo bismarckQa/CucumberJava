@@ -1,6 +1,6 @@
 Feature:  New CCPD Manual Exchange
 
-  @test @smoke
+  @test
   Scenario:  Save a New CCPD manual exchange with at least one Required field empty
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -10,7 +10,7 @@ Feature:  New CCPD Manual Exchange
     And   I open PD Prescription module
     Then  I try to save a new CCPD Manual Exchange with one required field empty
 
-  @test @smoke
+  @test
   Scenario:  Add a New CCPD manual exchange
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -21,7 +21,7 @@ Feature:  New CCPD Manual Exchange
     Then  I create a new CCPD prescription with Manual Exchange
 
 
-  @test @smoke
+  @test
   Scenario:  Delete CCPD manual exchange
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

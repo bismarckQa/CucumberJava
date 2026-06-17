@@ -1,5 +1,5 @@
 Feature: New biometric marker
-  @test @smoke
+  @test
   Scenario:  Save a New Biometric Marker with at least one Required field empty
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -11,7 +11,7 @@ Feature: New biometric marker
     And   I try to save a new biometric marker with at least one required field empty
 
 
-  @test @smoke
+  @test
   Scenario:  Create a New Biometric Marker
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

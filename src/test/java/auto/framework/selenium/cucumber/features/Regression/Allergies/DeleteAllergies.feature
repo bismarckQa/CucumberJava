@@ -1,6 +1,6 @@
 Feature: Delete Allergies
 
-  @test @smoke
+  @test
   Scenario: Successful Deleted Allergy
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -15,7 +15,7 @@ Feature: Delete Allergies
     And   I delete the allergy created
 
 
-  @test @smoke
+  @test
   Scenario: Cancelling a deleted Allergy
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

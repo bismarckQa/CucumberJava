@@ -1,6 +1,6 @@
 Feature: Add new HD reading (Session)
 
-  @test @smoke
+  @test
   Scenario: Delete a active HD Treatment
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -11,7 +11,7 @@ Feature: Add new HD reading (Session)
     When  I click remove the actual treatment
     And   I accept the delete Alert windows, fill the data and the reason "TestQA"
 
-  @test @smoke
+  @test
   Scenario: Cancelling a active HD Treatment
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -22,7 +22,7 @@ Feature: Add new HD reading (Session)
     When  I click remove the actual treatment
     And   I cancel remove in alert window
 
-  @test @smoke
+  @test
   Scenario: Delete a finalized HD Treatment (treatment must finalised)
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

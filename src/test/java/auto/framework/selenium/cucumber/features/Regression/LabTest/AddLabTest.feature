@@ -8,7 +8,7 @@
 @LabTest
 Feature: Add lab tests
 
-  @test @smoke @test_Case_3565
+  @test @test_Case_3565
   Scenario:  Successful add laboratory result
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -27,7 +27,7 @@ Feature: Add lab tests
     And   I select option action in modal "Yes"
     And   I click button arrow up
 
-  @test @smoke @test_Case_3569
+  @test @test_Case_3569
   Scenario:  Cancelling added laboratory result
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -47,7 +47,7 @@ Feature: Add lab tests
     Then  I click button "Cancel" option
     And   I click button arrow up
 
-  @test @smoke @test_Case_3570
+  @test @test_Case_3570
   Scenario:  Add laboratory result with empty required fields
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -65,7 +65,7 @@ Feature: Add lab tests
     Then  I click button "Cancel" option
     And   I click button arrow up
 
-  @test @smoke @test_Case_3572
+  @test @test_Case_3572
   Scenario:  Remove added laboratory result
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -84,7 +84,7 @@ Feature: Add lab tests
     Then  I click button "Cancel" option
     And   I click button arrow up
 
-  @test @smoke @test_Case_3578
+  @test @test_Case_3578
   Scenario:  Add profiles of new result
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

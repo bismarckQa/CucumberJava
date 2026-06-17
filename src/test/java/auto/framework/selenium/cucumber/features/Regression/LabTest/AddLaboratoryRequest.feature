@@ -7,7 +7,7 @@
 #Module
 @LabTest
 Feature: Add laboratory request
-  @test @smoke @test_Case_3744
+  @test @test_Case_3744
   Scenario: Add laboratory request with empty required fields
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -22,7 +22,7 @@ Feature: Add laboratory request
     And   I click button "Save" option in iframe laboratory request
     And   I click button "Cancel" option in iframe laboratory request
 
-  @test @smoke @test_Case_3749
+  @test @test_Case_3749
   Scenario: Successful add laboratory request
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -39,7 +39,7 @@ Feature: Add laboratory request
     Then  I click button arrow up
 
 
-  @test @smoke @test_Case_3750
+  @test @test_Case_3750
   Scenario: Cancelling added laboratory request
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

@@ -1,6 +1,6 @@
 Feature: View Allergies
 
-  @test @smoke
+  @test
   Scenario: Canceling check no known  allergies
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -10,7 +10,7 @@ Feature: View Allergies
     Then  I check the module Allergies appear correctly
     And   I canceling check no known allergies
 
-  @test @smoke
+  @test
   Scenario: Successful check no known  allergies
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -21,7 +21,7 @@ Feature: View Allergies
     And   I checked successful no known allergies
     And   I verified successfully, no known allergies
 
-  @test @smoke
+  @test
   Scenario: Successful uncheck no known  allergies
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

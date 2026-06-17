@@ -7,7 +7,7 @@
 #Module
 @LabTest
 Feature: Delete lab tests
-  @test @smoke @test_Case_3597
+  @test @test_Case_3597
   Scenario: Successful deleted laboratory result
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -21,7 +21,7 @@ Feature: Delete lab tests
     When  I click button "Yes" in action modal
     Then  I click button arrow up
 
-  @test @smoke @test_Case_3601
+  @test @test_Case_3601
   Scenario: Cancelling deleted laboratory result
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

@@ -1,5 +1,5 @@
 Feature: Add Hospitalization
-  @test @smoke
+  @test
   Scenario: Cancelling an added Hospitalization
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -10,7 +10,7 @@ Feature: Add Hospitalization
     Then  I enter all the necessary data to create a new hospitalization
     And   I cancel saving the new hospitalization
 
-  @test @smoke
+  @test
   Scenario: Successful added Hospitalization
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

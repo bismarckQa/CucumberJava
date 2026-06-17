@@ -1,6 +1,6 @@
 Feature: Modify Parameter adjustments
 
-  @test @smoke
+  @test
   Scenario:  Modify parameter Adjustments
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

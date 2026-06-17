@@ -1,7 +1,7 @@
 Feature: Modify Allergies
 
 
-  @test @smoke
+  @test
   Scenario: Edit Allergy with blank required fields
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -16,7 +16,7 @@ Feature: Modify Allergies
     And   I try edit allergy with blank required fields
     And   I delete the allergy created
 
-  @test @smoke
+  @test
   Scenario: Edit Allergy Canceled
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -32,7 +32,7 @@ Feature: Modify Allergies
     And   I delete the allergy created
 
 
-  @test @smoke
+  @test
   Scenario: Successful edited allergy
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

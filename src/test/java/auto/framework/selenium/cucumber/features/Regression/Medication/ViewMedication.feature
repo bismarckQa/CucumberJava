@@ -1,5 +1,5 @@
 Feature: View Medication module
-  @test @smoke
+  @test
   Scenario: Enter in medication window
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -11,7 +11,7 @@ Feature: View Medication module
     Then  I verify that the new medication was added
 
 
-  @test @smoke
+  @test
   Scenario: Clear all medication categories
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -21,7 +21,7 @@ Feature: View Medication module
     Then  I check the module Medication appear correctly
     And   I uncheck all the categories at the top Categories of the medication module
 
-  @test @smoke
+  @test
   Scenario: Show inactive medications
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -32,7 +32,7 @@ Feature: View Medication module
     And   I Checked Show inactive checkbox
 
 
-  @test @smoke
+  @test
   Scenario: Show medications of only one category
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -43,7 +43,7 @@ Feature: View Medication module
     And   I Checked only one medication category in top combo box
 
 
-  @test @smoke
+  @test
   Scenario: Show only home medications
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -53,7 +53,7 @@ Feature: View Medication module
     Then  I check the module Medication appear correctly
     And   I checked show only home check box
 
-  @test @smoke
+  @test
   Scenario: View allergies from medication
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

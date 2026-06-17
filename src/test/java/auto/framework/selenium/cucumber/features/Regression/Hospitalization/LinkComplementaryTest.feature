@@ -1,5 +1,5 @@
 Feature: Link complementary test
-  @test @smoke
+  @test
   Scenario: Cancelling an associated additional test
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -10,7 +10,7 @@ Feature: Link complementary test
     And   I try to create an additional associated test, but I cancel it
 
 
-  @test @smoke
+  @test
   Scenario: Successful associated additional test
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

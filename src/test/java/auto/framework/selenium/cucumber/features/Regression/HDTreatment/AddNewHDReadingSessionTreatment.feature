@@ -1,6 +1,6 @@
 Feature: Add New HD Reading Sessions HDTreatment
 
-  @test @smoke
+  @test
   Scenario: Add New HD Prescription
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -10,7 +10,7 @@ Feature: Add New HD Reading Sessions HDTreatment
     Then  I create a new simple prescription
     
 
-  @test @smoke
+  @test
   Scenario: New Treatment with active HD Treatment
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -19,7 +19,7 @@ Feature: Add New HD Reading Sessions HDTreatment
     And   I open HD Treatment module
     Then  I open three buttons menu and add new HD Treatment
 
-  @test @smoke
+  @test
   Scenario: Add new reading register to an active HD Treatment (empty registry)
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -35,7 +35,7 @@ Feature: Add New HD Reading Sessions HDTreatment
     Then  I check the data new observations is empty
 
 
-  @test @smoke
+  @test
   Scenario: Add new reading register to an active HD Treatment (Full registry)
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

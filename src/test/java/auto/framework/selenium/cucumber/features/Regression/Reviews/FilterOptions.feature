@@ -1,5 +1,5 @@
 Feature: Filter Options
-  @test @smoke
+  @test
   Scenario: Selection with filters
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

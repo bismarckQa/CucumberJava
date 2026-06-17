@@ -1,5 +1,5 @@
 Feature: Link Complementary Tests to a category
-  @test @smoke
+  @test
   Scenario:  Add test to category
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -9,7 +9,7 @@ Feature: Link Complementary Tests to a category
     And   I verify that the user configuration opened correctly
     Then  I drag and drop any test from the left grid to the right
 
-  @test @smoke
+  @test
   Scenario:  Remove test from category
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

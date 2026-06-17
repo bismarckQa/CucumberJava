@@ -8,7 +8,7 @@
 @LabTest
 Feature: Delete laboratory request
 
-  @test @smoke @test_Case_3758
+  @test @test_Case_3758
   Scenario: Successful deleted laboratory request
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -19,7 +19,7 @@ Feature: Delete laboratory request
     When  I click button laboratory request section
     And   I click button delete laboratory request and accept it
 
-  @test @smoke @test_Case_3759
+  @test @test_Case_3759
   Scenario: Cancelling deleted laboratory request
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

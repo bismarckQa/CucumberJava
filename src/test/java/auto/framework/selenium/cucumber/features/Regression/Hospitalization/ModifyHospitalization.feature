@@ -1,5 +1,5 @@
 Feature: Modify Hospitalization
-  @test @smoke
+  @test
   Scenario: Cancelling an edited Hospitalization
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

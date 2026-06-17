@@ -1,5 +1,5 @@
 Feature: Modify Category Configuration
-  @test @smoke
+  @test
   Scenario: Cancelling edit category
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -9,7 +9,7 @@ Feature: Modify Category Configuration
     And   I verify that the user configuration opened correctly
     Then  I try to edit the selected category, but I cancel it
 
-  @test @smoke
+  @test
   Scenario: Duplicated record
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -19,7 +19,7 @@ Feature: Modify Category Configuration
     And   I verify that the user configuration opened correctly
     Then  I try to Edit by duplicating a category, but the system shows an alert that it is not possible
 
-  @test @smoke
+  @test
   Scenario: Successful edit category
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

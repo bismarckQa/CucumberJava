@@ -1,7 +1,7 @@
 Feature: Add New HDTreatment
 
 
-  @test @smoke
+  @test
   Scenario: New Treatment without active HD Prescription
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -11,7 +11,7 @@ Feature: Add New HDTreatment
     And   I open three buttons menu and add new HD Treatment
     Then  I Check Alert window and close it
 
-  @test @smoke
+  @test
   Scenario: Add New HD Prescription
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -20,7 +20,7 @@ Feature: Add New HDTreatment
     And   I open HD Prescription module
     Then  I create a new simple prescription
 
-  @test @smoke
+  @test
   Scenario: New Treatment with active HD Treatment
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -30,7 +30,7 @@ Feature: Add New HDTreatment
     And   I open three buttons menu and add new HD Treatment
     Then  I Check Preparation and Admin drug other Tabs
 
-  @test @smoke
+  @test
   Scenario: In HD Treatment - Treatment History, the value for "Convection Volume" must be the last observation value
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

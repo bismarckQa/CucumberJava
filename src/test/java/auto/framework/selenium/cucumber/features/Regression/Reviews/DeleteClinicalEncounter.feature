@@ -1,5 +1,5 @@
 Feature: Delete Clinical Encounter
-  @test @smoke
+  @test
   Scenario: Cancelling a deleted clinical encounter
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -12,7 +12,7 @@ Feature: Delete Clinical Encounter
     And   I cancelling delete the review created
     Then  I successfully delete the review created
 
-  @test @smoke
+  @test
   Scenario: Successful deleted clinical encounter
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

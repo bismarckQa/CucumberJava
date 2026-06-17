@@ -1,5 +1,5 @@
 Feature: Modify Clinical Encounter Reviews
-  @test @smoke
+  @test
   Scenario: Canceling an edited clinical encounter
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -12,7 +12,7 @@ Feature: Modify Clinical Encounter Reviews
     And   I try to edit the review created but I cancel it "Editing data"
     Then  I successfully delete the review created
 
-  @test @smoke
+  @test
   Scenario: Successful edited clinical encounter (Physician profile)
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -25,7 +25,7 @@ Feature: Modify Clinical Encounter Reviews
     And   I edit the review created successful "Editing data but cancel"
     Then  I successfully delete the review created
 
-  @test @smoke
+  @test
   Scenario: Edit clinical encounter with empty required fields
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

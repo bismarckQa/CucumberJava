@@ -1,5 +1,5 @@
 Feature: New Home Choose Clara Solution
-  @test @smoke
+  @test
   Scenario:  Add a HomeChoice / Claria solution
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -9,7 +9,7 @@ Feature: New Home Choose Clara Solution
     And   I open PD Prescription module
     Then  I trying to add a Home Choice Claria solution
 
-  @test @smoke
+  @test
   Scenario:  Save a new home choise / Claria Solution to a prescription
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

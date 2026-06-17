@@ -1,5 +1,5 @@
 Feature: Modify Progress Data
-  @test @smoke
+  @test
   Scenario: Cancelling an edited progress data
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -10,7 +10,7 @@ Feature: Modify Progress Data
     #And   I complete the progress data and it is added successfully
     And   I try to edit progress data, but it cancels
 
-  @test @smoke
+  @test
   Scenario: Successful edited progress data
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

@@ -1,5 +1,5 @@
 Feature: Clinical Encounter Reviews
-  @test @smoke
+  @test
   Scenario: Enter in clinical encounter window
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

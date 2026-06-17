@@ -8,7 +8,7 @@
 @LabTest
 Feature: Modify lab tests
 
-  @test @smoke @test_Case_3610
+  @test @test_Case_3610
   Scenario:  Successful edited lab test result
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -23,7 +23,7 @@ Feature: Modify lab tests
     And   I click button "Save" option
     Then   I click button arrow up
 
-  @test @smoke @test_Case_3612
+  @test @test_Case_3612
   Scenario:  Cancelling edited lab test result
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

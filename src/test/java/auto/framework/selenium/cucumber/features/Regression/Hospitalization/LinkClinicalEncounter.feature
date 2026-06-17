@@ -1,5 +1,5 @@
 Feature: Link Clinical Encounter
-  @test @smoke
+  @test
   Scenario: Cancelling an associated review
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -9,7 +9,7 @@ Feature: Link Clinical Encounter
     Then  I check the module Hospitalization appear correctly
     And   I trying to create an associated review, but it gets cancelled
 
-  @test @smoke
+  @test
   Scenario: Successful associated review
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

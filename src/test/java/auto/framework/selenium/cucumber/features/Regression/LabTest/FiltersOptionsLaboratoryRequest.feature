@@ -8,7 +8,7 @@
 @LabTest
 Feature: Filters Options Laboratory Request
 
-  @test @smoke @test_Case_3776
+  @test @test_Case_3776
   Scenario: Filter options view
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -20,7 +20,7 @@ Feature: Filters Options Laboratory Request
     And   I select option in profiles in laboratory request
     Then  I click button search laboratory request
 
-  @test @smoke @test_Case_3777
+  @test @test_Case_3777
   Scenario: Show none laboratory request results
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

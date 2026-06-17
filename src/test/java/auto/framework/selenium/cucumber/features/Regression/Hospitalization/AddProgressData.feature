@@ -1,5 +1,5 @@
 Feature: Add Progress Data
-  @test @smoke
+  @test
   Scenario: cancelling an added progress data
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -9,7 +9,7 @@ Feature: Add Progress Data
     Then  I check the module Hospitalization appear correctly
     And   I try to add progress data, but it gets cancelled
 
-  @test @smoke
+  @test
   Scenario: Successful added Progress Data
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

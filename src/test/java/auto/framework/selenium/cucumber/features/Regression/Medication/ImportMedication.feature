@@ -1,5 +1,5 @@
 Feature: Smoke test Medication module
-  @test @smoke
+  @test
   Scenario: wrong confirmation password, wrong confirmation reason
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
