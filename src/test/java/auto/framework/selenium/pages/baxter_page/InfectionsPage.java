@@ -13,34 +13,78 @@ public class InfectionsPage extends BasePage<InfectionsPage> {
 
     private static final String INFECTIONS_PANEL =
             "//h2[normalize-space(.)='Infections']/ancestor::div[contains(@class,'x_panel')][1]";
+    private static final String CULTURES_PANEL =
+            "//h2[normalize-space(.)='Cultures']/ancestor::div[contains(@class,'x_panel')][1]";
     private static final String INPUT_PRESENTATION_DATE_INFECTION_XPATH = INFECTIONS_PANEL +
             "//label[normalize-space(.)='Presentation date']/following::input[@data-role='datepicker' and not(@disabled)" +
             " and not(ancestor::*[contains(@class,'ng-hide')])][1]";
+    private static final String OPTION_NEW_CULTURE_XPATH =
+            CULTURES_PANEL + "//ul[contains(@class,'dropdown-menu') and contains(@class,'three-points')]" +
+                    "//a[not(ancestor::*[contains(@class,'ng-hide')])][.//span[normalize-space(.)='New culture']]";
+    private static final String OPTION_EDIT_CULTURE_XPATH =
+            CULTURES_PANEL + "//ul[contains(@class,'dropdown-menu') and contains(@class,'three-points')]" +
+                    "//a[not(ancestor::*[contains(@class,'ng-hide')])][.//span[normalize-space(.)='Edit']]";
+    private static final String OPTION_DELETE_CULTURE_XPATH =
+            CULTURES_PANEL + "//ul[contains(@class,'dropdown-menu') and contains(@class,'three-points')]" +
+                    "//a[not(ancestor::*[contains(@class,'ng-hide')])][.//span[normalize-space(.)='Delete']]";
+    private static final String OPTION_SAVE_CULTURE_XPATH =
+            CULTURES_PANEL + "//ul[contains(@class,'dropdown-menu') and contains(@class,'three-points')]" +
+                    "//a[not(ancestor::*[contains(@class,'ng-hide')])][.//span[normalize-space(.)='Save']]";
+    private static final String OPTION_CANCEL_CULTURE_XPATH =
+            CULTURES_PANEL + "//ul[contains(@class,'dropdown-menu') and contains(@class,'three-points')]" +
+                    "//a[not(ancestor::*[contains(@class,'ng-hide')])][.//span[normalize-space(.)='Cancel']]";
     private static final String OPTION_NEW_INFECTION_XPATH =
             "//ul[contains(@class,'dropdown-menu') and contains(@class,'three-points')]" +
                     "//a[not(ancestor::*[contains(@class,'ng-hide')])][.//span[normalize-space(.)='New infection']]";
+    private static final String OPTION_EDIT_INFECTION_XPATH =
+            "//ul[contains(@class,'dropdown-menu') and contains(@class,'three-points')]" +
+                    "//a[not(ancestor::*[contains(@class,'ng-hide')])][.//span[normalize-space(.)='Edit']]";
     private static final String OPTION_SAVE_INFECTION_XPATH =
             "//ul[contains(@class,'dropdown-menu') and contains(@class,'three-points')]" +
                     "//a[not(ancestor::*[contains(@class,'ng-hide')])][.//span[normalize-space(.)='Save']]";
     private static final String OPTION_CANCEL_INFECTION_XPATH =
             "//ul[contains(@class,'dropdown-menu') and contains(@class,'three-points')]" +
                     "//a[not(ancestor::*[contains(@class,'ng-hide')])][.//span[normalize-space(.)='Cancel']]";
-
     @FindBy(how = How.XPATH, using = "//*[contains(text(),'Infections')]")
     private WebElement titleInfections;
+
+    @FindBy(how = How.XPATH, using = CULTURES_PANEL)
+    private WebElement culturesPanel;
 
     @FindBy(how = How.XPATH, using = INFECTIONS_PANEL +
             "//a[contains(@class,'dropdown-toggle')][.//i[contains(@class,'icon-three-points')]]")
     private WebElement threePointsMenuInfections;
 
+    @FindBy(how = How.XPATH, using = CULTURES_PANEL +
+            "//a[contains(@class,'dropdown-toggle')][.//i[contains(@class,'icon-three-points')]]")
+    private WebElement threePointsMenuCultures;
+
     @FindBy(how = How.XPATH, using = OPTION_NEW_INFECTION_XPATH)
     private WebElement optionNewInfection;
+
+    @FindBy(how = How.XPATH, using = OPTION_EDIT_INFECTION_XPATH)
+    private WebElement optionEditInfection;
 
     @FindBy(how = How.XPATH, using = OPTION_SAVE_INFECTION_XPATH)
     private WebElement optionSaveInfection;
 
     @FindBy(how = How.XPATH, using = OPTION_CANCEL_INFECTION_XPATH)
     private WebElement optionCancelInfection;
+
+    @FindBy(how = How.XPATH, using = OPTION_NEW_CULTURE_XPATH)
+    private WebElement optionNewCulture;
+
+    @FindBy(how = How.XPATH, using = OPTION_EDIT_CULTURE_XPATH)
+    private WebElement optionEditCulture;
+
+    @FindBy(how = How.XPATH, using = OPTION_DELETE_CULTURE_XPATH)
+    private WebElement optionDeleteCulture;
+
+    @FindBy(how = How.XPATH, using = OPTION_SAVE_CULTURE_XPATH)
+    private WebElement optionSaveCulture;
+
+    @FindBy(how = How.XPATH, using = OPTION_CANCEL_CULTURE_XPATH)
+    private WebElement optionCancelCulture;
 
     @FindBy(how = How.XPATH, using = INPUT_PRESENTATION_DATE_INFECTION_XPATH)
     private WebElement inputPresentationDateInfection;
@@ -80,6 +124,30 @@ public class InfectionsPage extends BasePage<InfectionsPage> {
             "//p[contains(@class,'bllInvalido') and not(contains(@class,'ng-hide'))]")
     private WebElement dateValidationInfection;
 
+    @FindBy(how = How.XPATH, using = CULTURES_PANEL +
+            "//b[normalize-space(.)='Culture date']/following::input[@data-role='datepicker' and not(@disabled)][1]")
+    private WebElement inputCultureDate;
+
+    @FindBy(how = How.XPATH, using = CULTURES_PANEL +
+            "//b[normalize-space(.)='Laboratory']/following::span[contains(@class,'k-combobox')][1]")
+    private WebElement dropDownCultureLaboratory;
+
+    @FindBy(how = How.XPATH, using = CULTURES_PANEL +
+            "//b[normalize-space(.)='Culture type']/following::span[contains(@class,'k-combobox')][1]")
+    private WebElement dropDownCultureType;
+
+    @FindBy(how = How.XPATH, using = CULTURES_PANEL +
+            "//b[normalize-space(.)='Result']/following::multiselect[1]//button[contains(@class,'dropdown-toggle')]")
+    private WebElement dropDownCultureResult;
+
+    @FindBy(how = How.XPATH, using = CULTURES_PANEL +
+            "//b[normalize-space(.)='Sample method']/following::span[contains(@class,'k-combobox')][1]")
+    private WebElement dropDownCultureSampleMethod;
+
+    @FindBy(how = How.XPATH, using = CULTURES_PANEL +
+            "//b[normalize-space(.)='Comments']/following::textarea[1]")
+    private WebElement textAreaCultureComments;
+
     public void isDisplayedTheTittle() {
         driver.switchTo().frame("frmContenido");
         waitElements(titleInfections);
@@ -108,6 +176,14 @@ public class InfectionsPage extends BasePage<InfectionsPage> {
         driver.switchTo().parentFrame();
     }
 
+    public void clickEditOptionInInfectionsMenu() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        waitElements(optionEditInfection);
+        click(optionEditInfection);
+        pause(700);
+        driver.switchTo().parentFrame();
+    }
+
     public void clickSaveOptionInInfectionsMenu() throws InterruptedException {
         driver.switchTo().frame("frmContenido");
         waitElements(optionSaveInfection);
@@ -129,6 +205,21 @@ public class InfectionsPage extends BasePage<InfectionsPage> {
         boolean isNotDisplayed = driver.findElements(By.xpath(OPTION_SAVE_INFECTION_XPATH)).isEmpty();
         driver.switchTo().parentFrame();
         return isNotDisplayed;
+    }
+
+    public boolean isSaveOptionInCulturesMenuNotDisplayed() {
+        driver.switchTo().frame("frmContenido");
+        boolean isNotDisplayed = driver.findElements(By.xpath(OPTION_SAVE_CULTURE_XPATH)).isEmpty();
+        driver.switchTo().parentFrame();
+        return isNotDisplayed;
+    }
+
+    public boolean isCulturesPanelDisplayed() {
+        driver.switchTo().frame("frmContenido");
+        waitElements(culturesPanel);
+        boolean isDisplayed = culturesPanel.isDisplayed();
+        driver.switchTo().parentFrame();
+        return isDisplayed;
     }
 
     public boolean isNewInfectionFormDisplayed() {
@@ -154,6 +245,79 @@ public class InfectionsPage extends BasePage<InfectionsPage> {
 
     public void enterResolutionDateInInfectionForm(String resolutionDate) throws InterruptedException {
         enterDateInInfectionForm(inputResolutionDateInfection, resolutionDate);
+    }
+
+    public void clickThreePointsMenuInCultures() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        waitElements(threePointsMenuCultures);
+        scrollToElementMove(threePointsMenuCultures);
+        click(threePointsMenuCultures);
+        pause(300);
+        driver.switchTo().parentFrame();
+    }
+
+    public void clickNewCultureOptionInCulturesMenu() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        waitElements(optionNewCulture);
+        click(optionNewCulture);
+        pause(700);
+        driver.switchTo().parentFrame();
+    }
+
+    public void clickEditCultureOptionInCulturesMenu() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        waitElements(optionEditCulture);
+        click(optionEditCulture);
+        pause(700);
+        driver.switchTo().parentFrame();
+    }
+
+    public void clickDeleteCultureOptionInCulturesMenu() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        waitElements(optionDeleteCulture);
+        click(optionDeleteCulture);
+        pause(700);
+        driver.switchTo().parentFrame();
+    }
+
+    public void clickSaveOptionInCulturesMenu() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        waitElements(optionSaveCulture);
+        click(optionSaveCulture);
+        pause(700);
+        driver.switchTo().parentFrame();
+    }
+
+    public void clickCancelOptionInCulturesMenu() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        waitElements(optionCancelCulture);
+        click(optionCancelCulture);
+        pause(700);
+        driver.switchTo().parentFrame();
+    }
+
+    public void enterCultureDateInCultureForm(String cultureDate) throws InterruptedException {
+        enterDateInInfectionForm(inputCultureDate, cultureDate);
+    }
+
+    public void selectLaboratoryInCultureForm(String laboratory) throws InterruptedException {
+        selectComboInInfectionForm(dropDownCultureLaboratory, laboratory);
+    }
+
+    public void selectCultureTypeInCultureForm(String cultureType) throws InterruptedException {
+        selectComboInInfectionForm(dropDownCultureType, cultureType);
+    }
+
+    public void selectResultInCultureForm(String result) throws InterruptedException {
+        selectCultureResult(result);
+    }
+
+    public void selectSampleMethodInCultureForm(String sampleMethod) throws InterruptedException {
+        selectComboInInfectionForm(dropDownCultureSampleMethod, sampleMethod);
+    }
+
+    public void enterCommentsInCultureForm(String comments) throws InterruptedException {
+        enterCultureComments(comments);
     }
 
     public void selectInfectionTypeInInfectionForm(String infectionType) throws InterruptedException {
@@ -207,7 +371,9 @@ public class InfectionsPage extends BasePage<InfectionsPage> {
         scrollToElementMove(inputDate);
         inputDate.sendKeys(Keys.chord(Keys.CONTROL, "a"));
         inputDate.sendKeys(Keys.DELETE);
-        write(inputDate, date);
+        if (date != null && !date.isEmpty()) {
+            write(inputDate, date);
+        }
         pause(300);
         driver.switchTo().parentFrame();
     }
@@ -216,6 +382,28 @@ public class InfectionsPage extends BasePage<InfectionsPage> {
         driver.switchTo().frame("frmContenido");
         waitElements(combo);
         selectKendoDropdownOption(combo, option);
+        driver.switchTo().parentFrame();
+    }
+
+    private void selectCultureResult(String result) throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        waitElements(dropDownCultureResult);
+        click(dropDownCultureResult);
+        click(By.xpath(CULTURES_PANEL + "//ul[contains(@class,'multi-select-popup')]" +
+                "//span[normalize-space(.)='" + result + "']/ancestor::a"));
+        pause(300);
+        click(dropDownCultureResult);
+        pause(300);
+        driver.switchTo().parentFrame();
+    }
+
+    private void enterCultureComments(String comments) throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        waitElements(textAreaCultureComments);
+        scrollToElementMove(textAreaCultureComments);
+        textAreaCultureComments.clear();
+        write(textAreaCultureComments, comments);
+        pause(300);
         driver.switchTo().parentFrame();
     }
 

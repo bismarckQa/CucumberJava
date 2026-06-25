@@ -48,6 +48,11 @@ public class InfectionsSteps {
         assertTrue(infectionsPage.isNewInfectionFormClosed());
     }
 
+    @And("I click edit option in infections menu")
+    public void iClickEditOptionInInfectionsMenu() throws InterruptedException {
+        infectionsPage.clickEditOptionInInfectionsMenu();
+    }
+
     @And("I enter presentation date {string} in infection form")
     public void iEnterPresentationDateInInfectionForm(String presentationDate) throws InterruptedException {
         infectionsPage.enterPresentationDateInInfectionForm(presentationDate);
@@ -91,5 +96,75 @@ public class InfectionsSteps {
     @Then("I verify save option is not displayed in infections menu")
     public void iVerifySaveOptionIsNotDisplayedInInfectionsMenu() {
         assertTrue(infectionsPage.isSaveOptionInInfectionsMenuNotDisplayed());
+    }
+
+    @When("I click the three points menu in cultures")
+    public void iClickTheThreePointsMenuInCultures() throws InterruptedException {
+        infectionsPage.clickThreePointsMenuInCultures();
+    }
+
+    @And("I click new culture option in cultures menu")
+    public void iClickNewCultureOptionInCulturesMenu() throws InterruptedException {
+        infectionsPage.clickNewCultureOptionInCulturesMenu();
+    }
+
+    @And("I click edit culture option in cultures menu")
+    public void iClickEditCultureOptionInCulturesMenu() throws InterruptedException {
+        infectionsPage.clickEditCultureOptionInCulturesMenu();
+    }
+
+    @And("I click delete culture option in cultures menu")
+    public void iClickDeleteCultureOptionInCulturesMenu() throws InterruptedException {
+        infectionsPage.clickDeleteCultureOptionInCulturesMenu();
+    }
+
+    @And("I enter culture date {string} in culture form")
+    public void iEnterCultureDateInCultureForm(String cultureDate) throws InterruptedException {
+        infectionsPage.enterCultureDateInCultureForm(cultureDate);
+    }
+
+    @And("I select laboratory {string} in culture form")
+    public void iSelectLaboratoryInCultureForm(String laboratory) throws InterruptedException {
+        infectionsPage.selectLaboratoryInCultureForm(laboratory);
+    }
+
+    @And("I select culture type {string} in culture form")
+    public void iSelectCultureTypeInCultureForm(String cultureType) throws InterruptedException {
+        infectionsPage.selectCultureTypeInCultureForm(cultureType);
+    }
+
+    @And("I select result {string} in culture form")
+    public void iSelectResultInCultureForm(String result) throws InterruptedException {
+        infectionsPage.selectResultInCultureForm(result);
+    }
+
+    @And("I select sample method {string} in culture form")
+    public void iSelectSampleMethodInCultureForm(String sampleMethod) throws InterruptedException {
+        infectionsPage.selectSampleMethodInCultureForm(sampleMethod);
+    }
+
+    @And("I enter comments {string} in culture form")
+    public void iEnterCommentsInCultureForm(String comments) throws InterruptedException {
+        infectionsPage.enterCommentsInCultureForm(comments);
+    }
+
+    @Then("I click save option in cultures menu")
+    public void iClickSaveOptionInCulturesMenu() throws InterruptedException {
+        infectionsPage.clickSaveOptionInCulturesMenu();
+    }
+
+    @Then("I click cancel option in cultures menu")
+    public void iClickCancelOptionInCulturesMenu() throws InterruptedException {
+        infectionsPage.clickCancelOptionInCulturesMenu();
+    }
+
+    @Then("I verify save option is not displayed in cultures menu")
+    public void iVerifySaveOptionIsNotDisplayedInCulturesMenu() {
+        assertTrue(infectionsPage.isSaveOptionInCulturesMenuNotDisplayed());
+    }
+
+    @Then("I verify cultures panel is displayed")
+    public void iVerifyCulturesPanelIsDisplayed() {
+        assertTrue(infectionsPage.isCulturesPanelDisplayed());
     }
 }
