@@ -9,7 +9,7 @@
 
 Feature:Attach a new photo/image to an access
 
-  @test @TestCase_3562
+  @test @TestCase_3562 @ALM_VR_TC_21
   Scenario: Attach  Photographs
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -24,8 +24,8 @@ Feature:Attach a new photo/image to an access
     And   I click button OK modal error
     And   I verify Historic Photographs of Accesses
 
-  @test @TestCase_3929
-  Scenario: Save/Add with no photo selected
+  @test @TestCase_3929 @ALM_VR_TC_330
+  Scenario: Save Add with no photo selected
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
     And   I login successful
@@ -39,8 +39,8 @@ Feature:Attach a new photo/image to an access
     And   I click button "Cancel" upload photo
     And   I verify Historic Photographs of Accesses
 
-  @test @TestCase_3930
-  Scenario: Save/Add with of required  field (date) empty
+  @test @TestCase_3930 @ALM_VR_TC_331
+  Scenario: Save Add with of required  field (date) empty
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
     And   I login successful

@@ -16,7 +16,7 @@ Feature: Add Culture
     And   I open Infections module
     Then  I check the module Infections appear correctly
 
-  @test @TestCase_3434
+  @test @TestCase_3434 @ALM_VR_TC_276
   Scenario: Successful added culture
     When  I click the three points menu in cultures
     And   I click new culture option in cultures menu
@@ -30,7 +30,7 @@ Feature: Add Culture
     And   I click save option in cultures menu
     Then  I verify the action was performed successfully
 
-  @test @TestCase_3435
+  @test @TestCase_3435 @ALM_VR_TC_277
   Scenario: Cancelling an added culture
     When  I click the three points menu in cultures
     And   I click new culture option in cultures menu
@@ -44,7 +44,7 @@ Feature: Add Culture
     And   I click cancel option in cultures menu
     Then  I verify cultures panel is displayed
 
-  @test @TestCase_3436
+  @test @TestCase_3436 @ALM_VR_TC_278
   Scenario: Add new culture with empty required fields
     When  I click the three points menu in cultures
     And   I click new culture option in cultures menu

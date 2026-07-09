@@ -9,7 +9,7 @@
 
 Feature: Create complication for an Access
 
-  @test @TestCase_3599
+  @test @TestCase_3599 @ALM_VR_TC_26
   Scenario: Add New Complication
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -24,7 +24,7 @@ Feature: Create complication for an Access
     And   I click button three points complications
     And   I click button save
 
-  @test @TestCase_3933
+  @test @TestCase_3933 @ALM_VR_TC_338
   Scenario: Cancel Complication
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -39,7 +39,7 @@ Feature: Create complication for an Access
     And   I click button three points complications
     And   I click button cancel
 
-  @test @TestCase_3934
+  @test @TestCase_3934 @ALM_VR_TC_339
   Scenario: Save with (at least one) of required  fields empty
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

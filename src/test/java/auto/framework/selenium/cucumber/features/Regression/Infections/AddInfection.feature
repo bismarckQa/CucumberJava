@@ -16,7 +16,7 @@ Feature: Add Infection
     And   I open Infections module
     Then  I check the module Infections appear correctly
 
-  @test @TestCase_3414
+  @test @TestCase_3414 @ALM_VR_TC_285
   Scenario: Successful added infection
     When  I click the three points menu in infections
     And   I click new infection option in infections menu
@@ -31,7 +31,7 @@ Feature: Add Infection
     And   I click save option in infections menu
     Then  I verify the action was performed successfully
 
-  @test @TestCase_3415
+  @test @TestCase_3415 @ALM_VR_TC_270
   Scenario: Cancelling an added infection
     When  I click the three points menu in infections
     And   I click new infection option in infections menu
@@ -46,7 +46,7 @@ Feature: Add Infection
     And   I click cancel option in infections menu
     Then  I verify new infection form is closed
 
-  @test @TestCase_3416
+  @test @TestCase_3416 @ALM_VR_TC_271
   Scenario: An added infection with a prior resolution date than presentation date
     When  I click the three points menu in infections
     And   I click new infection option in infections menu
@@ -64,7 +64,7 @@ Feature: Add Infection
     And   I click the three points menu in infections
     And   I click cancel option in infections menu
 
-  @test @TestCase_3417
+  @test @TestCase_3417 @ALM_VR_TC_269
   Scenario: Add new infection with empty required fields
     When  I click the three points menu in infections
     And   I click new infection option in infections menu

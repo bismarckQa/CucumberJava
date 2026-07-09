@@ -9,7 +9,7 @@
 
 Feature: Create a change of extension
 
-  @test @TestCase_3807
+  @test @TestCase_3807  @ALM_VR_TC_25
   Scenario: Create a Change of Extension
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -27,7 +27,7 @@ Feature: Create a change of extension
     And   I click button save
     Then  I click button arrow up
 
-  @test @TestCase_3945
+  @test @TestCase_3945 @ALM_VR_TC_335
   Scenario: Save with required  field empty (Date)
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -45,7 +45,7 @@ Feature: Create a change of extension
     And   I click button cancel
     Then  I click button arrow up
 
-  @test @TestCase_3946
+  @test @TestCase_3946 @ALM_VR_TC_336
   Scenario: Canceling a new Change extension
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -63,7 +63,7 @@ Feature: Create a change of extension
     And   I click button cancel
     Then  I click button arrow up
 
-  @test @TestCase_4316
+  @test @TestCase_4316  @ALM_VR_TC_337
   Scenario: Save with required field (Date) outside of the range
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

@@ -1,4 +1,3 @@
-#enviroment
 @Environment_dev
 #app_name
 @versia_renal
@@ -6,7 +5,7 @@
 @3.2
 #Module
 @Infections
-Feature: Delete Culture
+Feature: Delete Intervention
 
   Background:
     Given I open the Baxter website
@@ -16,16 +15,16 @@ Feature: Delete Culture
     And   I open Infections module
     Then  I check the module Infections appear correctly
 
-  @test @TestCase_3442 @ALM_VR_TC_283
-  Scenario: Cancelling a deleted culture
-    When  I click the three points menu in cultures
-    And   I click delete culture option in cultures menu
+  @test @TestCase_3453 @ALM_VR_TC_294
+  Scenario: Cancelling a delete intervention
+    When  I click the three points menu in interventions
+    And   I click delete intervention option in interventions menu
     And   I click button "No" in action modal
-    Then  I verify cultures panel is displayed
+    Then  I verify interventions panel is displayed
 
-  @test @TestCase_3443 @ALM_VR_TC_284
-  Scenario: Successful delete culture
-    When  I click the three points menu in cultures
-    And   I click delete culture option in cultures menu
+  @test @TestCase_3454 @ALM_VR_TC_295
+  Scenario: Successful delete intervention
+    When  I click the three points menu in interventions
+    And   I click delete intervention option in interventions menu
     And   I click button "Yes" in action modal
     Then  I verify the action was performed successfully

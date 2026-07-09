@@ -1,12 +1,8 @@
-2026-06-25T15:31:27.663+02:00  INFO 25872 --- [ForkJoinPool-1-worker-1] a.f.s.c.CucumberSpringContextConfig      : Starting CucumberSpringContextConfig using Java 25.0.3 with PID 25872 (started by colombb in c:\Users\colombb\Versia\Baxter SQA Framework)
-2026-06-25T15:31:27.678+02:00  INFO 25872 --- [ForkJoinPool-1-worker-1] a.f.s.c.CucumberSpringContextConfig      : No active profile set, falling back to 1 default profile: "default"
-2026-06-25T15:31:28.903+02:00  INFO 25872 --- [ForkJoinPool-1-worker-1] a.f.s.c.CucumberSpringContextConfig      : Started CucumberSpringContextConfig in 1.648 seconds (process running for 4.513)
-2026-06-25T15:31:32.982+02:00  WARN 25872 --- [ForkJoinPool-1-worker-1] o.o.selenium.devtools.CdpVersionFinder   : Unable to find an exact match for CDP version 149, returning the closest version; found: 148; Please update to a Selenium version that supports CDP version 149
-2026-06-25T15:34:06.262+02:00  INFO 12384 --- [ForkJoinPool-1-worker-1] a.f.s.c.CucumberSpringContextConfig      : Starting CucumberSpringContextConfig using Java 25.0.3 with PID 12384 (started by colombb in c:\Users\colombb\Versia\Baxter SQA Framework)
-2026-06-25T15:34:06.264+02:00  INFO 12384 --- [ForkJoinPool-1-worker-1] a.f.s.c.CucumberSpringContextConfig      : No active profile set, falling back to 1 default profile: "default"
-2026-06-25T15:34:07.055+02:00  INFO 12384 --- [ForkJoinPool-1-worker-1] a.f.s.c.CucumberSpringContextConfig      : Started CucumberSpringContextConfig in 1.028 seconds (process running for 3.558)
-2026-06-25T15:34:09.956+02:00  WARN 12384 --- [ForkJoinPool-1-worker-1] o.o.selenium.devtools.CdpVersionFinder   : Unable to find an exact match for CDP version 149, returning the closest version; found: 148; Please update to a Selenium version that supports CDP version 149
-2026-06-25T15:34:34.293+02:00  WARN 12384 --- [JdkHttpClient-1-0] o.openqa.selenium.remote.http.WebSocket  : Connection reset
+2026-07-08T13:25:17.183+02:00  INFO 26368 --- [ForkJoinPool-1-worker-1] a.f.s.c.CucumberSpringContextConfig      : Starting CucumberSpringContextConfig using Java 25.0.3 with PID 26368 (started by colombb in c:\Users\colombb\Versia\Baxter SQA Framework)
+2026-07-08T13:25:17.199+02:00  INFO 26368 --- [ForkJoinPool-1-worker-1] a.f.s.c.CucumberSpringContextConfig      : No active profile set, falling back to 1 default profile: "default"
+2026-07-08T13:25:20.167+02:00  INFO 26368 --- [ForkJoinPool-1-worker-1] a.f.s.c.CucumberSpringContextConfig      : Started CucumberSpringContextConfig in 3.664 seconds (process running for 9.609)
+2026-07-08T13:25:35.902+02:00  WARN 26368 --- [ForkJoinPool-1-worker-1] o.o.selenium.devtools.CdpVersionFinder   : Unable to find an exact match for CDP version 150, returning the closest version; found: 148; Please update to a Selenium version that supports CDP version 150
+2026-07-08T13:26:27.793+02:00  WARN 26368 --- [JdkHttpClient-1-2] o.openqa.selenium.remote.http.WebSocket  : Connection reset
 
 java.net.SocketException: Connection reset
 	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:399) ~[na:na]
@@ -26,51 +22,7 @@ java.net.SocketException: Connection reset
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604) ~[na:na]
 	at java.net.http/jdk.internal.net.http.HttpClientImpl$SelectorManager.run(HttpClientImpl.java:1384) ~[java.net.http:na]
 
-2026-06-25T15:35:11.017+02:00  INFO 15844 --- [ForkJoinPool-1-worker-1] a.f.s.c.CucumberSpringContextConfig      : Starting CucumberSpringContextConfig using Java 25.0.3 with PID 15844 (started by colombb in c:\Users\colombb\Versia\Baxter SQA Framework)
-2026-06-25T15:35:11.018+02:00  INFO 15844 --- [ForkJoinPool-1-worker-1] a.f.s.c.CucumberSpringContextConfig      : No active profile set, falling back to 1 default profile: "default"
-2026-06-25T15:35:12.015+02:00  INFO 15844 --- [ForkJoinPool-1-worker-1] a.f.s.c.CucumberSpringContextConfig      : Started CucumberSpringContextConfig in 1.396 seconds (process running for 3.859)
-2026-06-25T15:35:14.752+02:00  WARN 15844 --- [ForkJoinPool-1-worker-1] o.o.selenium.devtools.CdpVersionFinder   : Unable to find an exact match for CDP version 149, returning the closest version; found: 148; Please update to a Selenium version that supports CDP version 149
-2026-06-25T15:40:46.589+02:00  INFO 5960 --- [ForkJoinPool-1-worker-1] a.f.s.c.CucumberSpringContextConfig      : Starting CucumberSpringContextConfig using Java 25.0.3 with PID 5960 (started by colombb in c:\Users\colombb\Versia\Baxter SQA Framework)
-2026-06-25T15:40:46.593+02:00  INFO 5960 --- [ForkJoinPool-1-worker-1] a.f.s.c.CucumberSpringContextConfig      : No active profile set, falling back to 1 default profile: "default"
-2026-06-25T15:40:48.380+02:00  INFO 5960 --- [ForkJoinPool-1-worker-1] a.f.s.c.CucumberSpringContextConfig      : Started CucumberSpringContextConfig in 2.563 seconds (process running for 7.457)
-2026-06-25T15:40:52.061+02:00  WARN 5960 --- [ForkJoinPool-1-worker-1] o.o.selenium.devtools.CdpVersionFinder   : Unable to find an exact match for CDP version 149, returning the closest version; found: 148; Please update to a Selenium version that supports CDP version 149
-2026-06-25T15:42:36.846+02:00  INFO 8912 --- [ForkJoinPool-1-worker-1] a.f.s.c.CucumberSpringContextConfig      : Starting CucumberSpringContextConfig using Java 25.0.3 with PID 8912 (started by colombb in c:\Users\colombb\Versia\Baxter SQA Framework)
-2026-06-25T15:42:36.849+02:00  INFO 8912 --- [ForkJoinPool-1-worker-1] a.f.s.c.CucumberSpringContextConfig      : No active profile set, falling back to 1 default profile: "default"
-2026-06-25T15:42:37.559+02:00  INFO 8912 --- [ForkJoinPool-1-worker-1] a.f.s.c.CucumberSpringContextConfig      : Started CucumberSpringContextConfig in 0.994 seconds (process running for 3.676)
-2026-06-25T15:42:42.474+02:00  WARN 8912 --- [ForkJoinPool-1-worker-1] o.o.selenium.devtools.CdpVersionFinder   : Unable to find an exact match for CDP version 149, returning the closest version; found: 148; Please update to a Selenium version that supports CDP version 149
-2026-06-25T15:58:29.928+02:00  INFO 9808 --- [ForkJoinPool-1-worker-1] a.f.s.c.CucumberSpringContextConfig      : Starting CucumberSpringContextConfig using Java 25.0.3 with PID 9808 (started by colombb in c:\Users\colombb\Versia\Baxter SQA Framework)
-2026-06-25T15:58:29.931+02:00  INFO 9808 --- [ForkJoinPool-1-worker-1] a.f.s.c.CucumberSpringContextConfig      : No active profile set, falling back to 1 default profile: "default"
-2026-06-25T15:58:31.045+02:00  INFO 9808 --- [ForkJoinPool-1-worker-1] a.f.s.c.CucumberSpringContextConfig      : Started CucumberSpringContextConfig in 1.493 seconds (process running for 6.176)
-2026-06-25T15:58:35.415+02:00  WARN 9808 --- [ForkJoinPool-1-worker-1] o.o.selenium.devtools.CdpVersionFinder   : Unable to find an exact match for CDP version 149, returning the closest version; found: 148; Please update to a Selenium version that supports CDP version 149
-2026-06-25T15:59:14.383+02:00  WARN 9808 --- [JdkHttpClient-1-0] o.openqa.selenium.remote.http.WebSocket  : Connection reset
-
-java.net.SocketException: Connection reset
-	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:399) ~[na:na]
-	at java.base/sun.nio.ch.SocketChannelImpl.implRead(SocketChannelImpl.java:431) ~[na:na]
-	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:489) ~[na:na]
-	at java.net.http/jdk.internal.net.http.SocketTube.readAvailable(SocketTube.java:1215) ~[java.net.http:na]
-	at java.net.http/jdk.internal.net.http.SocketTube$InternalReadPublisher$InternalReadSubscription.read(SocketTube.java:871) ~[java.net.http:na]
-	at java.net.http/jdk.internal.net.http.SocketTube$SocketFlowTask.run(SocketTube.java:181) ~[java.net.http:na]
-	at java.net.http/jdk.internal.net.http.common.SequentialScheduler$SchedulableTask.run(SequentialScheduler.java:207) ~[java.net.http:na]
-	at java.net.http/jdk.internal.net.http.common.SequentialScheduler.runOrSchedule(SequentialScheduler.java:280) ~[java.net.http:na]
-	at java.net.http/jdk.internal.net.http.common.SequentialScheduler.runOrSchedule(SequentialScheduler.java:233) ~[java.net.http:na]
-	at java.net.http/jdk.internal.net.http.SocketTube$InternalReadPublisher$InternalReadSubscription.signalReadable(SocketTube.java:812) ~[java.net.http:na]
-	at java.net.http/jdk.internal.net.http.SocketTube$InternalReadPublisher$ReadEvent.signalEvent(SocketTube.java:1002) ~[java.net.http:na]
-	at java.net.http/jdk.internal.net.http.SocketTube$SocketFlowEvent.handle(SocketTube.java:253) ~[java.net.http:na]
-	at java.net.http/jdk.internal.net.http.HttpClientImpl$SelectorManager.handleEvent(HttpClientImpl.java:1439) ~[java.net.http:na]
-	at java.net.http/jdk.internal.net.http.HttpClientImpl$SelectorManager.lambda$run$3(HttpClientImpl.java:1384) ~[java.net.http:na]
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604) ~[na:na]
-	at java.net.http/jdk.internal.net.http.HttpClientImpl$SelectorManager.run(HttpClientImpl.java:1384) ~[java.net.http:na]
-
-2026-06-25T16:10:12.938+02:00  INFO 15624 --- [ForkJoinPool-1-worker-1] a.f.s.c.CucumberSpringContextConfig      : Starting CucumberSpringContextConfig using Java 25.0.3 with PID 15624 (started by colombb in c:\Users\colombb\Versia\Baxter SQA Framework)
-2026-06-25T16:10:12.941+02:00  INFO 15624 --- [ForkJoinPool-1-worker-1] a.f.s.c.CucumberSpringContextConfig      : No active profile set, falling back to 1 default profile: "default"
-2026-06-25T16:10:14.050+02:00  INFO 15624 --- [ForkJoinPool-1-worker-1] a.f.s.c.CucumberSpringContextConfig      : Started CucumberSpringContextConfig in 1.436 seconds (process running for 6.339)
-2026-06-25T16:10:18.580+02:00  WARN 15624 --- [ForkJoinPool-1-worker-1] o.o.selenium.devtools.CdpVersionFinder   : Unable to find an exact match for CDP version 149, returning the closest version; found: 148; Please update to a Selenium version that supports CDP version 149
-2026-06-25T16:24:01.105+02:00  INFO 26320 --- [ForkJoinPool-1-worker-1] a.f.s.c.CucumberSpringContextConfig      : Starting CucumberSpringContextConfig using Java 25.0.3 with PID 26320 (started by colombb in c:\Users\colombb\Versia\Baxter SQA Framework)
-2026-06-25T16:24:01.108+02:00  INFO 26320 --- [ForkJoinPool-1-worker-1] a.f.s.c.CucumberSpringContextConfig      : No active profile set, falling back to 1 default profile: "default"
-2026-06-25T16:24:02.576+02:00  INFO 26320 --- [ForkJoinPool-1-worker-1] a.f.s.c.CucumberSpringContextConfig      : Started CucumberSpringContextConfig in 1.967 seconds (process running for 7.056)
-2026-06-25T16:24:08.494+02:00  WARN 26320 --- [ForkJoinPool-1-worker-1] o.o.selenium.devtools.CdpVersionFinder   : Unable to find an exact match for CDP version 149, returning the closest version; found: 148; Please update to a Selenium version that supports CDP version 149
-2026-06-25T16:37:57.586+02:00  INFO 24468 --- [ForkJoinPool-1-worker-1] a.f.s.c.CucumberSpringContextConfig      : Starting CucumberSpringContextConfig using Java 25.0.3 with PID 24468 (started by colombb in c:\Users\colombb\Versia\Baxter SQA Framework)
-2026-06-25T16:37:57.587+02:00  INFO 24468 --- [ForkJoinPool-1-worker-1] a.f.s.c.CucumberSpringContextConfig      : No active profile set, falling back to 1 default profile: "default"
-2026-06-25T16:37:58.231+02:00  INFO 24468 --- [ForkJoinPool-1-worker-1] a.f.s.c.CucumberSpringContextConfig      : Started CucumberSpringContextConfig in 0.857 seconds (process running for 3.446)
-2026-06-25T16:38:01.415+02:00  WARN 24468 --- [ForkJoinPool-1-worker-1] o.o.selenium.devtools.CdpVersionFinder   : Unable to find an exact match for CDP version 149, returning the closest version; found: 148; Please update to a Selenium version that supports CDP version 149
+2026-07-08T13:42:39.317+02:00  INFO 15564 --- [ForkJoinPool-1-worker-1] a.f.s.c.CucumberSpringContextConfig      : Starting CucumberSpringContextConfig using Java 25.0.3 with PID 15564 (started by colombb in c:\Users\colombb\Versia\Baxter SQA Framework)
+2026-07-08T13:42:39.322+02:00  INFO 15564 --- [ForkJoinPool-1-worker-1] a.f.s.c.CucumberSpringContextConfig      : No active profile set, falling back to 1 default profile: "default"
+2026-07-08T13:42:40.725+02:00  INFO 15564 --- [ForkJoinPool-1-worker-1] a.f.s.c.CucumberSpringContextConfig      : Started CucumberSpringContextConfig in 1.838 seconds (process running for 5.578)
+2026-07-08T13:42:44.612+02:00  WARN 15564 --- [ForkJoinPool-1-worker-1] o.o.selenium.devtools.CdpVersionFinder   : Unable to find an exact match for CDP version 150, returning the closest version; found: 148; Please update to a Selenium version that supports CDP version 150

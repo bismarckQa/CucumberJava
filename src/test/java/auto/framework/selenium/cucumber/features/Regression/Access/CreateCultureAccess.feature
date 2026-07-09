@@ -9,7 +9,7 @@
 
 Feature: Create a Culture for an Access
 
-  @test @TestCase_3673
+  @test @TestCase_3673 @ALM_VR_TC_28
   Scenario: Create New Swab of Access
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -24,7 +24,7 @@ Feature: Create a Culture for an Access
     Then  I click button three points swab
     And   I click button save
 
-  @test @TestCase_3940
+  @test @TestCase_3940 @ALM_VR_TC_340
   Scenario: Cancel a Swab
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -39,7 +39,7 @@ Feature: Create a Culture for an Access
     Then  I click button three points swab
     And   I click button cancel
 
-  @test @TestCase_3941
+  @test @TestCase_3941 @ALM_VR_TC_341
   Scenario: Save with at least one of required  fields empty
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

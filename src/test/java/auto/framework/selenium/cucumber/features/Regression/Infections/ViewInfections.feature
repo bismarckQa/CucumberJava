@@ -8,7 +8,7 @@
 @Infections
 Feature: View Infections
 
-  @test @TestCase_3413
+  @test @TestCase_3413 @ALM_VR_TC_279
   Scenario: Enter in Infection Window
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

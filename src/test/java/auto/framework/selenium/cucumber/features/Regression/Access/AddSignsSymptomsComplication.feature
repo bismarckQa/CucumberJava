@@ -9,7 +9,7 @@
 
 Feature: Add Signs or Symptoms to complication
 
-  @test @TestCase_3644
+  @test @TestCase_3644 @ALM_VR_TC_20
   Scenario: Assign Signs or Symptoms
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -23,7 +23,7 @@ Feature: Add Signs or Symptoms to complication
     Then  I select option in modal assign symptoms
     And   I click button "Add"
 
-  @test @TestCase_3938
+  @test @TestCase_3938 @ALM_VR_TC_328
   Scenario: Canceling a Signs or Symptoms assignation
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -37,8 +37,8 @@ Feature: Add Signs or Symptoms to complication
     Then  I select option in modal assign symptoms
     And   I click button "Cancel"
 
-  @test @TestCase_3939
-  Scenario: Add without (at least one) sign/ symptom selected
+  @test @TestCase_3939 @ALM_VR_TC_329
+  Scenario: Add without (at least one) sign symptom selected
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
     And   I login successful

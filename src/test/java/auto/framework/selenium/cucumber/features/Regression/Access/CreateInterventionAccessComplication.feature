@@ -10,7 +10,7 @@
 Feature: Create intervention to an access Complication
 
 Run_Peponcita1206_Today!!
-  @test @TestCase_3915
+  @test @TestCase_3915 @ALM_VR_TC_27
   Scenario: Create intervention
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -29,7 +29,7 @@ Run_Peponcita1206_Today!!
 
 
 
-  @test @TestCase_3916
+  @test @TestCase_3916 @ALM_VR_TC_342
   Scenario: Canceling  intervention
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -46,7 +46,7 @@ Run_Peponcita1206_Today!!
     And   I click button cancel
     Then  I click button arrow up
 
-  @test @TestCase_3917
+  @test @TestCase_3917 @ALM_VR_TC_343
   Scenario: Save with required  fields empty
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -62,7 +62,7 @@ Run_Peponcita1206_Today!!
     And   I click button cancel
     Then  I click button arrow up
 
-  @test @TestCase_3979
+  @test @TestCase_3979 @ALM_VR_TC_344
   Scenario: Save with wrong date
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

@@ -16,7 +16,7 @@ Feature: Modify Culture
     And   I open Infections module
     Then  I check the module Infections appear correctly
 
-  @test @TestCase_3439
+  @test @TestCase_3439 @ALM_VR_TC_280
   Scenario: Cancelling an edited culture
     When  I click the three points menu in cultures
     And   I click edit culture option in cultures menu
@@ -30,7 +30,7 @@ Feature: Modify Culture
     And   I click cancel option in cultures menu
     Then  I verify cultures panel is displayed
 
-  @test @TestCase_3440
+  @test @TestCase_3440 @ALM_VR_TC_281
   Scenario: Successful edited culture
     When  I click the three points menu in cultures
     And   I click edit culture option in cultures menu
@@ -44,7 +44,7 @@ Feature: Modify Culture
     And   I click save option in cultures menu
     Then  I verify the action was performed successfully
 
-  @test @TestCase_3441
+  @test @TestCase_3441 @ALM_VR_TC_282
   Scenario: Edit culture with empty required fields
     When  I click the three points menu in cultures
     And   I click edit culture option in cultures menu

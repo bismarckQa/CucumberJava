@@ -16,7 +16,7 @@ Feature: Modify Infection
     And   I open Infections module
     Then  I check the module Infections appear correctly
 
-  @test @TestCase_3418
+  @test @TestCase_3418 @ALM_VR_TC_272
   Scenario: Cancelling an edited infection
     When  I click the three points menu in infections
     And   I click edit option in infections menu
@@ -32,7 +32,7 @@ Feature: Modify Infection
     And   I click cancel option in infections menu
     Then  I verify new infection form is closed
 
-  @test @TestCase_3419
+  @test @TestCase_3419 @ALM_VR_TC_273
   Scenario: Successful edited infection
     When  I click the three points menu in infections
     And   I click edit option in infections menu
@@ -48,7 +48,7 @@ Feature: Modify Infection
     And   I click save option in infections menu
     Then  I verify the action was performed successfully
 
-  @test @TestCase_3420
+  @test @TestCase_3420 @ALM_VR_TC_274
   Scenario: Edit infection with empty required fields
     When  I click the three points menu in infections
     And   I click edit option in infections menu
@@ -61,7 +61,7 @@ Feature: Modify Infection
     And   I click cancel option in infections menu
     Then  I verify new infection form is closed
 
-    @test @TestCase_3421
+    @test @TestCase_3421 @ALM_VR_TC_275
   Scenario: Modify infection with a prior resolution date than presentation date
     When  I click the three points menu in infections
     And   I click edit option in infections menu

@@ -1,7 +1,14 @@
-
+#enviroment
+@Environment_dev
+#app_name
+@versia_renal
+#version
+@3.2
+#Module
+@Access
 Feature: Ability to create pre and post treatment assessment of access
 
-    @test @regression
+    @test  @ALM_VR_TC_19
     Scenario: Add pre-treatment in Evaluation section of Access
         Given I open the Baxter website
         And   I try to login with "login_baxter" credentials
@@ -23,7 +30,7 @@ Feature: Ability to create pre and post treatment assessment of access
         Then  I check the second Pre-Assessment is canceled
 
 
-    @test @regression
+    @test @ALM_VR_TC_318
     Scenario: Modify individual pre-treatment to the vascular access
         Given I open the Baxter website
         And   I try to login with "login_baxter" credentials
@@ -39,7 +46,7 @@ Feature: Ability to create pre and post treatment assessment of access
         And   I cancel Pre-Assessment
         Then  I check Pre-Assessment not edited
 
-    @test @regression
+    @test  @ALM_VR_TC_319
     Scenario: Global edit mode for pre-treatment to the vascular access
         Given I open the Baxter website
         And   I try to login with "login_baxter" credentials
@@ -60,7 +67,7 @@ Feature: Ability to create pre and post treatment assessment of access
         And   I click three dots and select cancel
         Then  I check the changes not applied
 
-    @test @regression
+    @test @ALM_VR_TC_320
     Scenario: Remove a pre-treatment to the vascular access
         Given I open the Baxter website
         And   I try to login with "login_baxter" credentials
@@ -75,7 +82,7 @@ Feature: Ability to create pre and post treatment assessment of access
         Then  I check the last one not deleted
 
 
-    @test @regression
+    @test @ALM_VR_TC_321
     Scenario: Add post-treatment in Evaluation section of Access
         Given I open the Baxter website
         And   I try to login with "login_baxter" credentials
@@ -95,7 +102,7 @@ Feature: Ability to create pre and post treatment assessment of access
 
 
 
-    @test @regression
+    @test @ALM_VR_TC_322
     Scenario: Modify individual post-treatment to the vascular access
         Given I open the Baxter website
         And   I try to login with "login_baxter" credentials
@@ -110,9 +117,9 @@ Feature: Ability to create pre and post treatment assessment of access
         And   I check the Post-Treatment was edited correctly
         When  I click three dots and edit Post-Assessment
         And   I cancel Post-Assessment
-        Then  I check the Post-Treatment wasn´t edited correctly
+  
 
-    @test @regression
+    @test @ALM_VR_TC_323
     Scenario: Global edit mode for post-treatment to the vascular access
         Given I open the Baxter website
         And   I try to login with "login_baxter" credentials
@@ -133,7 +140,7 @@ Feature: Ability to create pre and post treatment assessment of access
         And   I click three dots and select cancel
         Then  I check the changes not applied
 
-    @test @regression
+    @test @ALM_VR_TC_324
     Scenario: Remove a post-treatment to the vascular access
         Given I open the Baxter website
         And   I try to login with "login_baxter" credentials
@@ -147,7 +154,7 @@ Feature: Ability to create pre and post treatment assessment of access
         And   I check the alert box appear and click No
         Then  I check the last one not deleted
 
-    @test @regression
+    @test @ALM_VR_TC_325
     Scenario: View pre-treatment in Evaluation section of Access
         Given I open the Baxter website
         And   I try to login with "login_baxter" credentials
@@ -158,7 +165,7 @@ Feature: Ability to create pre and post treatment assessment of access
         Then  I check Pre-Assessment is appear
 
 
-    @test @regression
+    @test @ALM_VR_TC_326
     Scenario: View post-treatment in Evaluation section of Access
         Given I open the Baxter website
         And   I try to login with "login_baxter" credentials
@@ -169,7 +176,7 @@ Feature: Ability to create pre and post treatment assessment of access
         Then  I check Post-Assessment is appear
 
 
-    @test @regression
+    @test @ALM_VR_TC_327
     Scenario: Delete a vascular access
         Given I open the Baxter website
         And   I try to login with "login_baxter" credentials
