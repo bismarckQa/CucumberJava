@@ -1,5 +1,14 @@
-
+﻿
 Feature: View Access
+
+  Background:
+    Given I open the Baxter website
+    And   I try to login with "login_baxter" credentials
+    And   I login successful
+    When  I select the patient "Ape1_1838 Ape2_1838, Nom_1838 - 1838"
+    And   I open Accesses module
+    Then  I check the module Accesses appear correctly
+
 
     @test @regression
     Scenario: New Access
@@ -9,7 +18,7 @@ Feature: View Access
         When  I select the patient "Ape1_1838 Ape2_1838, Nom_1838 - 1838"
         And   I open Accesses module
         And   I click location accesses
-        When  I add all data correctly for add the Access: Access type "Catéter percutáneo femoral", Location "Muñeca izquierda", Date of first use "06102024", comment "QATestAccess", implantation date "06102024", date of removal "06212024" and removal center "Sistemes Renals"
+        When  I add all data correctly for add the Access: Access type "CatÃ©ter percutÃ¡neo femoral", Location "MuÃ±eca izquierda", Date of first use "06102024", comment "QATestAccess", implantation date "06102024", date of removal "06212024" and removal center "Sistemes Renals"
         Then  I save the Access Data Implantation
 
 
