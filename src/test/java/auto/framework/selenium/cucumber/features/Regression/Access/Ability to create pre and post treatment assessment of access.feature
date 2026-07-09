@@ -1,4 +1,4 @@
-﻿#enviroment
+#enviroment
 @Environment_dev
 #app_name
 @versia_renal
@@ -25,7 +25,7 @@ Feature: Ability to create pre and post treatment assessment of access
         When  I select the patient "Ape1_1838 Ape2_1838, Nom_1838 - 1838"
         And   I open Accesses module
         And   I click location accesses
-        When  I add all data correctly for add the Access: Access type "CatÃ©ter percutÃ¡neo femoral", Location "MuÃ±eca izquierda", Date of first use "06062024", comment "QATestAccess", implantation date "01062024", date of removal "12212024" and removal center "Sistemes Renals"
+        When  I add all data correctly for add the Access: Access type "Catéter percutáneo femoral", Location "Muñeca izquierda", Date of first use "06062024", comment "QATestAccess", implantation date "01062024", date of removal "12212024" and removal center "Sistemes Renals"
         And   I save the Access Data Implantation
         And   I select the Evaluation in main menu
         And   I click three dots and select Pre-Assessment

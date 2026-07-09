@@ -1,4 +1,4 @@
-﻿#enviroment
+#enviroment
 @Environment_Dev
 #app_namme
 @Versia_Renal
@@ -18,7 +18,7 @@ Feature: Edit All on a HD Access Implantation
     Then  I check the module Accesses appear correctly
 
 
-  @test @TestCase_3762
+  @test @TestCase_3762 @ALM_VR_TC
   Scenario: Edit all of an HD Access Implantation
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -35,7 +35,7 @@ Feature: Edit All on a HD Access Implantation
     And   I click button three points Access
     Then  I click button cancel
 
-  @test @TestCase_3924
+  @test @TestCase_3924 @ALM_VR_TC
   Scenario: Cancel edited HD Access Implantation
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -53,7 +53,7 @@ Feature: Edit All on a HD Access Implantation
     And   I click button three points Access
     Then  I click button cancel
 
-  @test @TestCase_3925
+  @test @TestCase_3925 @ALM_VR_TC
   Scenario: Save edited HD Access Implantation
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

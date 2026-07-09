@@ -1,4 +1,4 @@
-﻿#enviroment
+#enviroment
 @Environment_Dev
 #app_namme
 @Versia_Renal
@@ -18,7 +18,7 @@ Feature: Edit evaluation/assessment (for HD Access)
     Then  I check the module Accesses appear correctly
 
 
-  @test @TestCase_3961
+  @test @TestCase_3961 @ALM_VR_TC
   Scenario: Cancel Evaluation edition
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -34,7 +34,7 @@ Feature: Edit evaluation/assessment (for HD Access)
     Then  I click button arrow up
 
 
-  @test @TestCase_3962
+  @test @TestCase_3962 @ALM_VR_TC
   Scenario: Save with required (date) field empty
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

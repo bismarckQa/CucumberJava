@@ -1,4 +1,4 @@
-﻿#enviroment
+#enviroment
 @Environment_Dev
 #app_namme
 @Versia_Renal
@@ -18,7 +18,7 @@ Feature: Delete a change of extension
     Then  I check the module Accesses appear correctly
 
 
-  @test @TestCase_3950
+  @test @TestCase_3950 @ALM_VR_TC
   Scenario: Delete a change extension
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -32,7 +32,7 @@ Feature: Delete a change of extension
     And   I click button delete
     And   I check the alert box appear and click yes
 
-  @test @TestCase_3949
+  @test @TestCase_3949 @ALM_VR_TC
   Scenario: Cancel deletion
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

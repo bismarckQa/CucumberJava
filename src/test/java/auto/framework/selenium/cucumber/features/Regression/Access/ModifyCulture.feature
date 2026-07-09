@@ -1,4 +1,4 @@
-﻿#enviroment
+#enviroment
 @Environment_Dev
 #app_namme
 @Versia_Renal
@@ -18,7 +18,7 @@ Feature: Modify Culture
     Then  I check the module Accesses appear correctly
 
 
-  @test @TestCase_3673
+  @test @TestCase_3673 @ALM_VR_TC
   Scenario: Create New Swab of Access
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -33,7 +33,7 @@ Feature: Modify Culture
     Then  I click button three points swab
     And   I click button save
 
-  @test @TestCase_3789
+  @test @TestCase_3789 @ALM_VR_TC
   Scenario: Edit the Swab
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -49,7 +49,7 @@ Feature: Modify Culture
     Then  I click button three points swab
     And   I click button save
 
-  @test @TestCase_3942
+  @test @TestCase_3942 @ALM_VR_TC
   Scenario: Cancel edited Swab
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -67,7 +67,7 @@ Feature: Modify Culture
 
 
 
-  @test @TestCase_3943
+  @test @TestCase_3943 @ALM_VR_TC
   Scenario: Save with (at least one) of required  fields empty
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

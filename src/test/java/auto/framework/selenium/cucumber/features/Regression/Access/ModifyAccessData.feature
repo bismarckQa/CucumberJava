@@ -1,4 +1,4 @@
-﻿#enviroment
+#enviroment
 @Environment_Dev
 #app_namme
 @Versia_Renal
@@ -18,7 +18,7 @@ Feature: Edit Access Data
     Then  I check the module Accesses appear correctly
 
 
-  @test @TestCase_3544
+  @test @TestCase_3544 @ALM_VR_TC
   Scenario: Edit Access Data
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -35,7 +35,7 @@ Feature: Edit Access Data
     And   I click button three points Access
     Then  I click button cancel
 
-  @test @TestCase_3548
+  @test @TestCase_3548 @ALM_VR_TC
   Scenario: Add a New additional test
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -49,7 +49,7 @@ Feature: Edit Access Data
     And   I select associate additional study
     Then  I click button "Add" associate additional study
 
-  @test @TestCase_3551
+  @test @TestCase_3551 @ALM_VR_TC
   Scenario: Save with (at least one) of required  fields empty
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -67,7 +67,7 @@ Feature: Edit Access Data
     And  I click button three points Access Data
     Then  I click button cancel
 
-  @test @TestCase_3926
+  @test @TestCase_3926 @ALM_VR_TC
   Scenario: Cancel a New additional test
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -81,7 +81,7 @@ Feature: Edit Access Data
     And   I select associate additional study
     Then  I click button "Cancel" associate additional study
 
-  @test @TestCase_3927
+  @test @TestCase_3927 @ALM_VR_TC
   Scenario: Cancel edition of Access Data
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

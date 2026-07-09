@@ -1,4 +1,4 @@
-﻿#enviroment
+#enviroment
 @Environment_Dev
 #app_namme
 @Versia_Renal
@@ -18,7 +18,7 @@ Feature: Unlink hospitalization from an Access complication
     Then  I check the module Accesses appear correctly
 
 
-  @test @TestCase_3907
+  @test @TestCase_3907 @ALM_VR_TC
   Scenario: Delete an hospitalization assignation
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -32,7 +32,7 @@ Feature: Unlink hospitalization from an Access complication
     Then  I click button "Yes" in action modal
 
 
-  @test @TestCase_3908
+  @test @TestCase_3908 @ALM_VR_TC
   Scenario: Cancel deletion
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

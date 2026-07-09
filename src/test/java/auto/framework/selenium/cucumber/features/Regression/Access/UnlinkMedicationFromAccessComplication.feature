@@ -1,4 +1,4 @@
-﻿#enviroment
+#enviroment
 @Environment_Dev
 #app_namme
 @Versia_Renal
@@ -18,7 +18,7 @@ Feature: Unlink medication from an access complication
     Then  I check the module Accesses appear correctly
 
 
-  @test @TestCase_3913
+  @test @TestCase_3913 @ALM_VR_TC
   Scenario: Delete medication of an access complication
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -32,7 +32,7 @@ Feature: Unlink medication from an access complication
     Then  I click button "Yes" in action modal
 
 
-  @test @TestCase_3914
+  @test @TestCase_3914 @ALM_VR_TC
   Scenario: Cancel deletion
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

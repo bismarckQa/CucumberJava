@@ -1,4 +1,4 @@
-﻿#enviroment
+#enviroment
 @Environment_Dev
 #app_namme
 @Versia_Renal
@@ -18,7 +18,7 @@ Feature: Link hospitalization to an access complication
     Then  I check the module Accesses appear correctly
 
 
-  @test @TestCase_3899
+  @test @TestCase_3899 @ALM_VR_TC
   Scenario: Assign hospitalization to a Vascular Access Complication
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -32,7 +32,7 @@ Feature: Link hospitalization to an access complication
     When  I select option hospitalizations in complications
     And   I click button "Add"
 
-  @test @TestCase_3904
+  @test @TestCase_3904 @ALM_VR_TC
   Scenario: Add without hospitalization selected
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -46,7 +46,7 @@ Feature: Link hospitalization to an access complication
     Then  I click button "Add"
     And   I click button "Cancel"
 
-  @test @TestCase_3905
+  @test @TestCase_3905 @ALM_VR_TC
   Scenario: Cancel medication assignation
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

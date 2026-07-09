@@ -1,4 +1,4 @@
-﻿#enviroment
+#enviroment
 @Environment_Dev
 #app_namme
 @Versia_Renal
@@ -18,7 +18,7 @@ Feature: Modify an intervention of a access complication
     Then  I check the module Accesses appear correctly
 
 
-  @test @TestCase_3918
+  @test @TestCase_3918 @ALM_VR_TC
   Scenario: Edit /Modify intervention
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -33,7 +33,7 @@ Feature: Modify an intervention of a access complication
     And   I click button three points interventions actions
     And   I click button cancel
 
-  @test @TestCase_3919
+  @test @TestCase_3919 @ALM_VR_TC
   Scenario: Canceling edited  intervention
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -47,7 +47,7 @@ Feature: Modify an intervention of a access complication
     And   I click button three points interventions actions
     Then  I click button cancel
 
-  @test @TestCase_3920
+  @test @TestCase_3920 @ALM_VR_TC
   Scenario: Save with (at least one) required  fields empty
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

@@ -1,4 +1,4 @@
-﻿#enviroment
+#enviroment
 @Environment_Dev
 #app_namme
 @Versia_Renal
@@ -19,7 +19,7 @@ Feature: Link medication to an access complication
 
 
 
-  @test @TestCase_3909
+  @test @TestCase_3909 @ALM_VR_TC
   Scenario: Assign medication
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -34,7 +34,7 @@ Feature: Link medication to an access complication
     Then   I click button "Add"
 
 
-  @test @TestCase_3910
+  @test @TestCase_3910 @ALM_VR_TC
   Scenario: Cancel medication assignation
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -48,7 +48,7 @@ Feature: Link medication to an access complication
     Then  I select medication to assign in complication
     And   I click button "Cancel"
 
-  @test @TestCase_3911
+  @test @TestCase_3911 @ALM_VR_TC
   Scenario: Add without selected medication
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

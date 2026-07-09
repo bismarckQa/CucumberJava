@@ -1,4 +1,4 @@
-﻿#enviroment
+#enviroment
 @Environment_Dev
 #app_namme
 @Versia_Renal
@@ -18,7 +18,7 @@ Feature: Delete an Access Follow-up
     Then  I check the module Accesses appear correctly
 
 
-  @test @TestCase_3840
+  @test @TestCase_3840 @ALM_VR_TC
   Scenario: New Follow Up
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -35,7 +35,7 @@ Feature: Delete an Access Follow-up
     And   I click button save
 
 
-  @test @TestCase_3796
+  @test @TestCase_3796 @ALM_VR_TC
   Scenario: Delete a Follow-up
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

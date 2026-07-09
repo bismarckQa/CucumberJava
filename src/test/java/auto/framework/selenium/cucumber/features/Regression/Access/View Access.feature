@@ -1,4 +1,4 @@
-﻿
+
 Feature: View Access
 
   Background:
@@ -10,7 +10,7 @@ Feature: View Access
     Then  I check the module Accesses appear correctly
 
 
-    @test @regression
+    @test @regression @ALM_VR_TC
     Scenario: New Access
         Given I open the Baxter website
         And   I try to login with "login_baxter" credentials
@@ -18,11 +18,11 @@ Feature: View Access
         When  I select the patient "Ape1_1838 Ape2_1838, Nom_1838 - 1838"
         And   I open Accesses module
         And   I click location accesses
-        When  I add all data correctly for add the Access: Access type "CatÃ©ter percutÃ¡neo femoral", Location "MuÃ±eca izquierda", Date of first use "06102024", comment "QATestAccess", implantation date "06102024", date of removal "06212024" and removal center "Sistemes Renals"
+        When  I add all data correctly for add the Access: Access type "Catéter percutáneo femoral", Location "Muñeca izquierda", Date of first use "06102024", comment "QATestAccess", implantation date "06102024", date of removal "06212024" and removal center "Sistemes Renals"
         Then  I save the Access Data Implantation
 
 
-    @test @regression
+    @test @regression @ALM_VR_TC
     Scenario: Implantation for HD Access
         Given I open the Baxter website
         And   I try to login with "login_baxter" credentials
@@ -32,7 +32,7 @@ Feature: View Access
         And   I check that the main manu showed with Implantation, Evaluation and Complications
         Then  I check that the sections Location, Access Data and Swab Showed
 
-    @test @regression
+    @test @regression @ALM_VR_TC
     Scenario: Evaluation for HD Access
         Given I open the Baxter website
         And   I try to login with "login_baxter" credentials
@@ -44,7 +44,7 @@ Feature: View Access
         Then  I check that the sections Location, Follow-Up, Evaluation and Historic Photographs of Accesses
 
 
-    @test @regression
+    @test @regression @ALM_VR_TC
     Scenario: Complications
         Given I open the Baxter website
         And   I try to login with "login_baxter" credentials
@@ -55,7 +55,7 @@ Feature: View Access
         When  I select the Complications in main menu
         Then  I check that the sections Location, Complications, Interventions, Observations, Medications and Hospitalisations
 
-    @test @regression
+    @test @regression @ALM_VR_TC
     Scenario: Delete a vascular access
         Given I open the Baxter website
         And   I try to login with "login_baxter" credentials

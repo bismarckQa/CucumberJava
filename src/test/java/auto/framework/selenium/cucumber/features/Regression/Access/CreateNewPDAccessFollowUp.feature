@@ -1,4 +1,4 @@
-﻿#enviroment
+#enviroment
 @Environment_Dev
 #app_namme
 @Versia_Renal
@@ -18,7 +18,7 @@ Feature: Create a New PD Access Follow-Up
     Then  I check the module Accesses appear correctly
 
 
-  @test @TestCase_3840
+  @test @TestCase_3840 @ALM_VR_TC
   Scenario: New Follow Up
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -34,7 +34,7 @@ Feature: Create a New PD Access Follow-Up
     And   I click button three points follow up
     And   I click button save
 
-  @test @TestCase_4144
+  @test @TestCase_4144 @ALM_VR_TC
   Scenario: Save new Follow up with required  fields empty
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -51,7 +51,7 @@ Feature: Create a New PD Access Follow-Up
     And   I click button three points follow up
     And   I click button cancel
 
-  @test @TestCase_4145
+  @test @TestCase_4145 @ALM_VR_TC
   Scenario: Cancel a new Access Follow up
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -69,7 +69,7 @@ Feature: Create a New PD Access Follow-Up
 
 
 
-  @test @TestCase_4158
+  @test @TestCase_4158 @ALM_VR_TC
   Scenario: Save a new Follow up with the Date outside of range
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

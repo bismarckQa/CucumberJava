@@ -1,4 +1,4 @@
-﻿#enviroment
+#enviroment
 @Environment_Dev
 #app_namme
 @Versia_Renal
@@ -18,7 +18,7 @@ Feature: Delete Photo Access
     Then  I check the module Accesses appear correctly
 
 
-  @test @TestCase_4443
+  @test @TestCase_4443 @ALM_VR_TC
   Scenario: Cancel image deletion
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -31,7 +31,7 @@ Feature: Delete Photo Access
     And   I click button delete image
     Then  I select option action in modal "No"
 
-  @test @TestCase_3799
+  @test @TestCase_3799 @ALM_VR_TC
   Scenario: Delete photo / image
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

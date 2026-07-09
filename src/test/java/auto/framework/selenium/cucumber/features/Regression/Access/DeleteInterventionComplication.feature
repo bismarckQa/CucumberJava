@@ -1,4 +1,4 @@
-﻿#enviroment
+#enviroment
 @Environment_Dev
 #app_namme
 @Versia_Renal
@@ -18,7 +18,7 @@ Feature: Delete intervention of a access complication
     Then  I check the module Accesses appear correctly
 
 
-  @test @TestCase_3921
+  @test @TestCase_3921 @ALM_VR_TC
   Scenario: Delete intervention of Intervention
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -32,7 +32,7 @@ Feature: Delete intervention of a access complication
     And   I click button "Yes" in action modal
     Then  I click button arrow up
 
-  @test @TestCase_3922
+  @test @TestCase_3922 @ALM_VR_TC
   Scenario: Cancel deletion of Intervention
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

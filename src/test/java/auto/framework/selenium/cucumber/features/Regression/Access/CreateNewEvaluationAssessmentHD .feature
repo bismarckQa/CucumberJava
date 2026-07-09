@@ -1,4 +1,4 @@
-﻿#enviroment
+#enviroment
 @Environment_Dev
 #app_namme
 @Versia_Renal
@@ -17,7 +17,7 @@ Feature: Create New evaluation/assessment (for HD Access)
     And   I open Accesses module
     Then  I check the module Accesses appear correctly
 
-  @test @TestCase_3957
+  @test @TestCase_3957 @ALM_VR_TC
   Scenario: New Evaluation
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -34,7 +34,7 @@ Feature: Create New evaluation/assessment (for HD Access)
 
 
 
-  @test @TestCase_3958
+  @test @TestCase_3958 @ALM_VR_TC
   Scenario: Save with required  field empty
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -50,7 +50,7 @@ Feature: Create New evaluation/assessment (for HD Access)
     And   I click button cancel
     Then  I click button arrow up
 
-  @test @TestCase_3959
+  @test @TestCase_3959 @ALM_VR_TC
   Scenario: Canceling a new Evaluation
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -65,7 +65,7 @@ Feature: Create New evaluation/assessment (for HD Access)
     Then  I click button cancel
     And   I click button arrow up
 
-  @test @TestCase_4060
+  @test @TestCase_4060 @ALM_VR_TC
   Scenario: Save with the date out of range
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

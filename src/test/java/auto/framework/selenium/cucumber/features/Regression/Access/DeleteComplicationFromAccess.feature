@@ -1,4 +1,4 @@
-﻿#enviroment
+#enviroment
 @Environment_Dev
 #app_namme
 @Versia_Renal
@@ -18,7 +18,7 @@ Feature: Delete complication from an Access
     Then  I check the module Accesses appear correctly
 
 
-  @test @TestCase_3625
+  @test @TestCase_3625 @ALM_VR_TC
   Scenario: Delete Existing Complication
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -31,7 +31,7 @@ Feature: Delete complication from an Access
     And   I click button "Delete"
     And   I click button "Yes" in action modal
 
-  @test @TestCase_3035
+  @test @TestCase_3035 @ALM_VR_TC
   Scenario: Cancel deletion
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

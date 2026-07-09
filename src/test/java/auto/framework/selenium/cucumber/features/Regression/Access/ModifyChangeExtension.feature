@@ -1,4 +1,4 @@
-﻿#enviroment
+#enviroment
 @Environment_Dev
 #app_namme
 @Versia_Renal
@@ -18,7 +18,7 @@ Feature: Modify a change of extension
     Then  I check the module Accesses appear correctly
 
 
-  @test @TestCase_3808
+  @test @TestCase_3808 @ALM_VR_TC
   Scenario: Edit a Change of extension
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -35,7 +35,7 @@ Feature: Modify a change of extension
     And   I click button cancel
     And    I click button arrow up
 
-  @test @TestCase_3947
+  @test @TestCase_3947 @ALM_VR_TC
   Scenario: Canceling edited Change Extension
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -53,7 +53,7 @@ Feature: Modify a change of extension
     And   I click button cancel
     Then  I click button arrow up
 
-  @test @TestCase_3948
+  @test @TestCase_3948 @ALM_VR_TC
   Scenario: Save with required  fields, Date, empty
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -71,7 +71,7 @@ Feature: Modify a change of extension
     And   I click button cancel
     Then  I click button arrow up
 
-  @test @TestCase_4202
+  @test @TestCase_4202 @ALM_VR_TC
   Scenario: Save with Date outside the range
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

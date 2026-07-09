@@ -1,4 +1,4 @@
-﻿#enviroment
+#enviroment
 @Environment_Dev
 #app_namme
 @Versia_Renal
@@ -18,7 +18,7 @@ Feature: Delete Culture
     Then  I check the module Accesses appear correctly
 
 
-  @test @TestCase_3790
+  @test @TestCase_3790 @ALM_VR_TC
   Scenario: Delete a Swab
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -30,7 +30,7 @@ Feature: Delete Culture
     And   I click button "Delete"
     Then   I select option action in modal "Yes"
 
-  @test @TestCase_3944
+  @test @TestCase_3944 @ALM_VR_TC
   Scenario: Cancel Deletion
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

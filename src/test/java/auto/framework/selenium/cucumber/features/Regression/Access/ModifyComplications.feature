@@ -1,4 +1,4 @@
-﻿#enviroment
+#enviroment
 @Environment_Dev
 #app_namme
 @Versia_Renal
@@ -18,7 +18,7 @@ Feature: Modify complications
     Then  I check the module Accesses appear correctly
 
 
-  @test @TestCase_3626
+  @test @TestCase_3626 @ALM_VR_TC
   Scenario: Edit / Modify complications
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -35,7 +35,7 @@ Feature: Modify complications
     And   I click button three points complications
     And   I click button save
 
-  @test @TestCase_3936
+  @test @TestCase_3936 @ALM_VR_TC
   Scenario: Cancel edited complication
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -52,7 +52,7 @@ Feature: Modify complications
     And   I click button three points complications
     And   I click button cancel
 
-  @test @TestCase_3937
+  @test @TestCase_3937 @ALM_VR_TC
   Scenario: Save with at least one of required  fields empty
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -70,7 +70,7 @@ Feature: Modify complications
     And   I click button three points complications
     Then   I click button cancel
 
-  @test @TestCase_4098
+  @test @TestCase_4098 @ALM_VR_TC
   Scenario: Save with the Identification date out of range
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -90,7 +90,7 @@ Feature: Modify complications
     And   I click button three points complications
     Then  I click button cancel
 
-  @test @TestCase_4099
+  @test @TestCase_4099 @ALM_VR_TC
   Scenario: Save with the Resolution date out of range
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
