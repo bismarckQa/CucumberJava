@@ -808,14 +808,6 @@ public class AccessesPage extends BasePage<AccessesPage>{
         enterRemovalDateInAccessData(DateRemoval);
     }
 
-    public void clickOnUpArrow() throws InterruptedException {
-        driver.switchTo().defaultContent();
-        WebElement upArrow = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(.,'Top')]")));
-        click(upArrow);
-        pause(1000);
-    }
-
-
     public void selectRemovalCenter(String RemovalCenter) throws InterruptedException {
         selectRemovalCenterInAccessData(RemovalCenter);
     }

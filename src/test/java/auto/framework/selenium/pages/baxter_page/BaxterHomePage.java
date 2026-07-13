@@ -71,7 +71,7 @@ public class BaxterHomePage extends BasePage<BaxterHomePage> {
     @FindBy(how = How.XPATH, using = "/html/body/form/div[8]/div/div[1]/div[3]/div/div/div/ul/li[11]/a")
     private WebElement HospitalizationModule;
 
-    @FindBy(how = How.XPATH, using = "/html/body/form/div[8]/div/div[1]/div[3]/div/div/div/ul/li[12]/a")
+    @FindBy(how = How.XPATH, using = "/html/body/form/div[8]/div/div[1]/div[3]/div/div/div/ul/li[13]/a")
     private WebElement InfectionsModule;
 
     @FindBy(how = How.XPATH, using = "/html/body/form/div[8]/div/div[1]/div[3]/div/div/div/ul/li[13]/a")
@@ -141,6 +141,8 @@ public class BaxterHomePage extends BasePage<BaxterHomePage> {
     private WebElement buttonDropDownProfile;
     @FindBy(how = How.XPATH, using = "//a[contains(.,'Configuration')]")
     private WebElement optionConfigurationMenu;
+    @FindBy(how = How.XPATH, using = "//a[contains(.,'Top')]")
+    private WebElement upArrowOnPage;
 
     @FindBy(how = How.XPATH, using = "//h2[contains(.,'New patient')]")
     private WebElement titleNewPatientConfigurationModule;
@@ -197,6 +199,11 @@ public class BaxterHomePage extends BasePage<BaxterHomePage> {
 
     public void clickCloseSession(){
         click(this.ButtonCloseSession);
+    }
+    public void clickOnUpArrow() throws InterruptedException {
+        waitElements(upArrowOnPage);
+        click(upArrowOnPage);
+        pause(1000);
     }
     public void clickHDWaterQuality(){
         click(this.HDWaterQualityModule);
