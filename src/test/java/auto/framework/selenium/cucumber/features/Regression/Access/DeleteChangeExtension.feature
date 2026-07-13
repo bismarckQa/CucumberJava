@@ -13,35 +13,24 @@ Feature: Delete a change of extension
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
     And   I login successful
+    And   I Select the Group of patients "Paciente DP"
     When  I select the patient "Ape1_1838 Ape2_1838, Nom_1838 - 1838"
     And   I open Accesses module
     Then  I check the module Accesses appear correctly
 
-
   @test @TestCase_3950 @ALM_VR_TC
   Scenario: Delete a change extension
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    And   I Select the Group of patients "Paciente DP"
-    When  I select the patient "Ape1_1838 Ape2_1838, Nom_1838 - 1838"
-    And   I open Accesses module
-    And   I click button implantation section
+    When   I click button implantation section
     And   I verify section change of extension is displayed
     Then  I click button three points change of extension
     And   I click button delete
-    And   I check the alert box appear and click yes
+    When   I check the alert box appear and click yes
 
   @test @TestCase_3949 @ALM_VR_TC
   Scenario: Cancel deletion
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    And   I Select the Group of patients "Paciente DP"
-    When  I select the patient "Ape1_1838 Ape2_1838, Nom_1838 - 1838"
-    And   I open Accesses module
-    And   I click button implantation section
+    When   I click button implantation section
     And   I verify section change of extension is displayed
     Then  I click button three points change of extension
     And   I click button delete
-    And   I check the alert box appear and click No
+    When   I check the alert box appear and click No
+

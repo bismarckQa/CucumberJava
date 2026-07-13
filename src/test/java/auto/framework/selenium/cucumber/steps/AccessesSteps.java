@@ -91,6 +91,41 @@ public class AccessesSteps {
 
     }
 
+    @And("I select access type {string} in access data")
+    public void iSelectAccessTypeInAccessData(String accessType) throws InterruptedException {
+        AccessesPage.selectAccessTypeInAccessData(accessType);
+    }
+
+    @And("I select access location {string} in access data")
+    public void iSelectAccessLocationInAccessData(String location) throws InterruptedException {
+        AccessesPage.selectAccessLocationInAccessData(location);
+    }
+
+    @And("I enter first use date {string} in access data")
+    public void iEnterFirstUseDateInAccessData(String firstUseDate) throws InterruptedException {
+        AccessesPage.enterFirstUseDateInAccessData(firstUseDate);
+    }
+
+    @And("I enter access comment {string}")
+    public void iEnterAccessComment(String comment) throws InterruptedException {
+        AccessesPage.enterAccessComment(comment);
+    }
+
+    @And("I enter implantation date {string} in access data")
+    public void iEnterImplantationDateInAccessData(String implantationDate) throws InterruptedException {
+        AccessesPage.enterImplantationDateInAccessData(implantationDate);
+    }
+
+    @And("I enter removal date {string} in access data")
+    public void iEnterRemovalDateInAccessData(String removalDate) throws InterruptedException {
+        AccessesPage.enterRemovalDateInAccessData(removalDate);
+    }
+
+    @And("I select removal center {string} in access data")
+    public void iSelectRemovalCenterInAccessData(String removalCenter) throws InterruptedException {
+        AccessesPage.selectRemovalCenterInAccessData(removalCenter);
+    }
+
     @And("I click in edit all")
     public void iClickInEditAll() throws InterruptedException {
         AccessesPage.clickEditAll();

@@ -13,19 +13,13 @@ Feature: Modify an intervention of a access complication
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
     And   I login successful
+    And   I Select the Group of patients "Paciente DP"
     When  I select the patient "Ape1_1838 Ape2_1838, Nom_1838 - 1838"
     And   I open Accesses module
     Then  I check the module Accesses appear correctly
 
-
   @test @TestCase_3918 @ALM_VR_TC
   Scenario: Edit /Modify intervention
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    And   I Select the Group of patients "Paciente DP"
-    When  I select the patient "Ape1_1838 Ape2_1838, Nom_1838 - 1838"
-    And   I open Accesses module
     When  I select the Complications in main menu
     And   I click button three points interventions actions
     And   I click button "Edit"
@@ -35,29 +29,18 @@ Feature: Modify an intervention of a access complication
 
   @test @TestCase_3919 @ALM_VR_TC
   Scenario: Canceling edited  intervention
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    And   I Select the Group of patients "Paciente DP"
-    When  I select the patient "Ape1_1838 Ape2_1838, Nom_1838 - 1838"
-    And   I open Accesses module
     When  I select the Complications in main menu
     And   I click button three points interventions actions
     And   I click button "Edit"
-    And   I click button three points interventions actions
+    When   I click button three points interventions actions
     Then  I click button cancel
 
   @test @TestCase_3920 @ALM_VR_TC
   Scenario: Save with (at least one) required  fields empty
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    And   I Select the Group of patients "Paciente DP"
-    When  I select the patient "Ape1_1838 Ape2_1838, Nom_1838 - 1838"
-    And   I open Accesses module
     When  I select the Complications in main menu
     And   I click button three points interventions actions
     And   I click button "Edit"
-    And   I delete type of intervention selected
+    When   I delete type of intervention selected
     And   I click button three points interventions actions
     Then  I click button cancel
+

@@ -13,19 +13,13 @@ Feature: Modify complications
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
     And   I login successful
+    And   I Select the Group of patients "Paciente DP"
     When  I select the patient "Ape1_1838 Ape2_1838, Nom_1838 - 1838"
     And   I open Accesses module
     Then  I check the module Accesses appear correctly
 
-
   @test @TestCase_3626 @ALM_VR_TC
   Scenario: Edit / Modify complications
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    And   I Select the Group of patients "Paciente DP"
-    When  I select the patient "Ape1_1838 Ape2_1838, Nom_1838 - 1838"
-    And   I open Accesses module
     When  I select the Complications in main menu
     And   I click button three points complications
     And   I click button "Edit"
@@ -37,12 +31,6 @@ Feature: Modify complications
 
   @test @TestCase_3936 @ALM_VR_TC
   Scenario: Cancel edited complication
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    And   I Select the Group of patients "Paciente DP"
-    When  I select the patient "Ape1_1838 Ape2_1838, Nom_1838 - 1838"
-    And   I open Accesses module
     When  I select the Complications in main menu
     And   I click button three points complications
     And   I click button "Edit"
@@ -54,12 +42,6 @@ Feature: Modify complications
 
   @test @TestCase_3937 @ALM_VR_TC
   Scenario: Save with at least one of required  fields empty
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    And   I Select the Group of patients "Paciente DP"
-    When  I select the patient "Ape1_1838 Ape2_1838, Nom_1838 - 1838"
-    And   I open Accesses module
     When  I select the Complications in main menu
     And   I click button three points complications
     And   I click button "Edit"
@@ -72,12 +54,6 @@ Feature: Modify complications
 
   @test @TestCase_4098 @ALM_VR_TC
   Scenario: Save with the Identification date out of range
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    And   I Select the Group of patients "Paciente DP"
-    When  I select the patient "Ape1_1838 Ape2_1838, Nom_1838 - 1838"
-    And   I open Accesses module
     When  I select the Complications in main menu
     And   I click button three points complications
     And   I click button "Edit"
@@ -92,12 +68,6 @@ Feature: Modify complications
 
   @test @TestCase_4099 @ALM_VR_TC
   Scenario: Save with the Resolution date out of range
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    And   I Select the Group of patients "Paciente DP"
-    When  I select the patient "Ape1_1838 Ape2_1838, Nom_1838 - 1838"
-    And   I open Accesses module
     When  I select the Complications in main menu
     And   I click button three points complications
     And   I click button "Edit"
@@ -109,3 +79,4 @@ Feature: Modify complications
     And   I click button OK modal error
     And   I click button three points complications
     Then  I click button cancel
+

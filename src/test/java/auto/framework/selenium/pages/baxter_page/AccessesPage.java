@@ -13,6 +13,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 @LazyComponent
 public class AccessesPage extends BasePage<AccessesPage>{
 
+    private static final String ACCESS_DATA_PANEL =
+            "//h2[normalize-space(.)='Access data']/ancestor::div[contains(@class,'x_panel')][1]";
+    private static final String ACCESS_DATA_MENU_XPATH =
+            ACCESS_DATA_PANEL + "//a[contains(@class,'dropdown-toggle')][.//i[contains(@class,'icon-three-points')]]";
+    private static final String OPTION_NEW_ADDITIONAL_TEST_XPATH =
+            ACCESS_DATA_PANEL + "//ul[contains(@class,'dropdown-menu') and contains(@class,'three-points')]" +
+                    "//a[not(ancestor::*[contains(@class,'ng-hide')])][.//span[normalize-space(.)='New additional test']]";
+
 
     @FindBy(how = How.XPATH, using = "//*[contains(text(),'Location')]")
     private WebElement titleAccesses;
@@ -31,12 +39,6 @@ public class AccessesPage extends BasePage<AccessesPage>{
     @FindBy(how = How.ID, using = "Localizacion1")
     private WebElement accessLocation1;
 
-    @FindBy(how = How.XPATH, using = "(//button[@aria-label='expand combobox'])[1]")
-    private WebElement accessTypeButtonDropdown;
-
-    @FindBy(how = How.XPATH, using = "(//button[@aria-label='expand combobox'])[2]")
-    private WebElement accessLocationButtonDropdown;
-
     @FindBy(how = How.XPATH, using = "//*[@id=\"genericModalWin\"]/div[1]/div/div/div/span/button")
     private WebElement associateAdditionalStudyButtonDropdown;
 
@@ -46,17 +48,8 @@ public class AccessesPage extends BasePage<AccessesPage>{
     @FindBy(how = How.XPATH, using = "//*[@id=\"genericModalWin\"]/div[2]/div/button[1]")
     private WebElement associateAdditionalStudyAddButton;
 
-    @FindBy(how = How.XPATH, using = "//*[@id=\"AccesoVascularView\"]/ng-form/div[2]/div/ng-form/ng-form/div/div/div[1]/div[1]/menu-individual/ul")
-    private WebElement accessDataButtonDropdown;
-
-    @FindBy(how = How.XPATH, using = "//body[@contenteditable='true']")
-    private WebElement inputComments;
-
     @FindBy(how = How.XPATH, using = "(//i[@class='icon-three-points'])[1]")
     private WebElement threePointButtonOfAccesses;
-
-    @FindBy(how = How.XPATH, using = "(//i[@class='icon-three-points'])[3]")
-    private WebElement threePointButtonOfAccessData;
 
     @FindBy(how = How.XPATH, using = "//*[contains(text(),'Patient condition - Anemia')]")
     private WebElement testCheckConditionAnemia;
@@ -64,26 +57,12 @@ public class AccessesPage extends BasePage<AccessesPage>{
     @FindBy(how = How.XPATH, using = "(//span[@translate-once='Accesos_Label_Eliminar'])[1]")
     private WebElement deleteAccessButton;
 
-    @FindBy(how = How.XPATH, using = "//*[@id=\"mCSB_2_container\"]/div/div[4]/div[2]/div/span/input")
-    private WebElement inputDateOfFirstUse;
     @FindBy(how = How.XPATH, using = "//*[@id=\"genericModalWin\"]/div[2]/div/button[2]")
     private WebElement cancelDeleteAccess;
     @FindBy(how = How.XPATH, using = "(//button[@class='btn btn-primary ng-scope'])[1]")
     private WebElement acceptDeleteAccess;
     @FindBy(how = How.XPATH, using = "(//button[@class='btn btn-primary ng-scope'])[1]")
     private WebElement acceptInformationDeleteAccess;
-
-    @FindBy(how = How.XPATH, using = "(//input[@placeholder='MM/dd/yyyy'])[2]")
-    private WebElement inputImplantationDate;
-
-    @FindBy(how = How.XPATH, using = "(//input[@data-role='datepicker'])[3]")
-    private WebElement inputDateOfRemoval;
-
-    @FindBy(how = How.XPATH, using = "//a[contains(.,'Top')]")
-    private WebElement upArrowOnPage;
-
-    @FindBy(how = How.XPATH, using = "(//button[@aria-label='expand combobox'])[6]")
-    private WebElement accessRemovalCenterDropDown;
 
     @FindBy(how = How.XPATH, using = "//*[contains(text(),'Edit all')]")
     private WebElement editAllButton;
@@ -291,9 +270,6 @@ public class AccessesPage extends BasePage<AccessesPage>{
     @FindBy(how = How.XPATH, using = "//i[@title='Eliminar']")
     private WebElement iconDeleteImage;
 
-    @FindBy(how = How.XPATH, using = "//*[contains(text(), 'New additional test')]")
-    private WebElement optionNewAdditionalTest ;
-
     @FindBy(how = How.XPATH, using = "//span[@role='button']/following-sibling::button[1]")
     private WebElement dropDownAssociateAdditionalStudy ;
 
@@ -406,6 +382,15 @@ public class AccessesPage extends BasePage<AccessesPage>{
 
     @FindBy(how = How.XPATH, using = "(//span[@role='button'])[1]")
     private WebElement buttonDeleteOptionLocationSwab ;
+
+    @FindBy(how = How.XPATH, using = ACCESS_DATA_PANEL)
+    private WebElement accessDataPanel;
+
+    @FindBy(how = How.XPATH, using = ACCESS_DATA_MENU_XPATH)
+    private WebElement accessDataMenu;
+
+    @FindBy(how = How.XPATH, using = OPTION_NEW_ADDITIONAL_TEST_XPATH)
+    private WebElement optionNewAdditionalTest;
 
     public void clickPostTreatmentTab() throws InterruptedException {
         driver.switchTo().parentFrame();
@@ -721,15 +706,7 @@ public class AccessesPage extends BasePage<AccessesPage>{
 
 
     public void writeComment(String comment)throws InterruptedException{
-        driver.switchTo().frame("frmContenido");
-        driver.switchTo().frame(0);
-        pause(300);
-        scrollToElementMove(inputComments);
-        inputComments.sendKeys(Keys.CONTROL + "a");
-        inputComments.sendKeys(Keys.DELETE);
-        write(inputComments,comment);
-        driver.switchTo().parentFrame();
-        driver.switchTo().parentFrame();
+        enterAccessComment(comment);
     }
     public void approvedForUse()throws InterruptedException{
         driver.switchTo().frame("frmContenido");
@@ -748,11 +725,10 @@ public class AccessesPage extends BasePage<AccessesPage>{
     }
 
     public void clickThreeButtonsAccessData() throws InterruptedException {
-        driver.switchTo().parentFrame();
-        driver.switchTo().frame(0);
-        click(threePointButtonOfAccessData);
-        pause(500);
-        driver.switchTo().parentFrame();
+        withAccessContentFrame(() -> {
+            click(accessDataMenu);
+            pause(500);
+        });
     }
 
     public void clickSaveButton() throws InterruptedException {
@@ -818,86 +794,95 @@ public class AccessesPage extends BasePage<AccessesPage>{
     }
 
     public void writeDateOfFirstUse(String FirstUse){
-        driver.switchTo().parentFrame();
-        driver.switchTo().frame("frmContenido");
-        inputDateOfFirstUse.sendKeys(Keys.CONTROL + "a");
-        inputDateOfFirstUse.sendKeys(Keys.DELETE);
-        inputDateOfFirstUse.sendKeys(Keys.ENTER);
-        write(inputDateOfFirstUse,FirstUse);
-        driver.switchTo().parentFrame();
+        try {
+            enterFirstUseDateInAccessData(FirstUse);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            throw new RuntimeException(e);
+        }
     }
     public void writeImplantationDate(String ImplantationDate)throws InterruptedException{
-        driver.switchTo().parentFrame();
-        pause(200);
-        driver.switchTo().frame("frmContenido");
-        scrollToElementMove(inputImplantationDate);
-        inputImplantationDate.sendKeys(Keys.CONTROL + "a");
-        inputImplantationDate.sendKeys(Keys.DELETE);
-        inputImplantationDate.sendKeys(Keys.ENTER);
-        write(inputImplantationDate,ImplantationDate);
-        driver.switchTo().parentFrame();
-
+        enterImplantationDateInAccessData(ImplantationDate);
     }
     public void writeDateOfRemoval(String DateRemoval) throws InterruptedException {
-        driver.switchTo().parentFrame();
-        driver.switchTo().frame("frmContenido");
-        pause(100);
-        moveScrollToElement(inputDateOfRemoval);
-        inputDateOfRemoval.sendKeys(Keys.CONTROL + "a");
-        inputDateOfRemoval.sendKeys(Keys.DELETE);
-        inputDateOfRemoval.sendKeys(Keys.ENTER);
-        write(inputDateOfRemoval,DateRemoval);
-        pause(500);
-        driver.switchTo().parentFrame();
+        enterRemovalDateInAccessData(DateRemoval);
     }
 
     public void clickOnUpArrow() throws InterruptedException {
-        driver.switchTo().parentFrame();
-        waitElements(upArrowOnPage);
-        click(upArrowOnPage);
+        driver.switchTo().defaultContent();
+        WebElement upArrow = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(.,'Top')]")));
+        click(upArrow);
         pause(1000);
     }
 
 
     public void selectRemovalCenter(String RemovalCenter) throws InterruptedException {
-        driver.switchTo().parentFrame();
-        driver.switchTo().frame(0);
-        pause(1000);
-        click(accessRemovalCenterDropDown);
-        pause(1000);
-        //By loc = By.xpath("*[contains(text(),'"+RemovalCenter+"')]");
-        //click(loc);
-        clickBelowElementByOffset(inputDateOfRemoval,140);
-        driver.switchTo().parentFrame();
+        selectRemovalCenterInAccessData(RemovalCenter);
     }
 
     public void selectAccessType(String AccessType) throws InterruptedException {
-        driver.switchTo().parentFrame();
-        driver.switchTo().frame(0);
-        click(accessTypeButtonDropdown);
-        pause(1000);
-        By loc = By.xpath("//span[contains(text(),'"+AccessType+"')]");
-        click(loc);
-        driver.switchTo().parentFrame();
+        selectAccessTypeInAccessData(AccessType);
     }
 
     public void selectAccessLocation(String Location) throws InterruptedException {
-        driver.switchTo().parentFrame();
-        driver.switchTo().frame(0);
-        click(accessLocationButtonDropdown);
-        pause(1000);
-        By loc = By.xpath("//span[contains(text(),'"+Location+"')]");
-        click(loc);
-        driver.switchTo().parentFrame();
+        selectAccessLocationInAccessData(Location);
+    }
+
+    public void selectAccessTypeInAccessData(String accessType) throws InterruptedException {
+        withAccessContentFrame(() -> {
+            selectKendoDropdownOption(findAccessDataComboBox("Access type"), accessType);
+        });
+    }
+
+    public void selectAccessLocationInAccessData(String location) throws InterruptedException {
+        withAccessContentFrame(() -> {
+            selectKendoDropdownOption(findAccessDataComboBox("Location"), location);
+        });
+    }
+
+    public void enterFirstUseDateInAccessData(String firstUseDate) throws InterruptedException {
+        withAccessContentFrame(() -> {
+            clearAndWriteDate(findAccessDataDateInput("Date of first use"), firstUseDate);
+        });
+    }
+
+    public void enterAccessComment(String comment) throws InterruptedException {
+        withAccessContentFrame(() -> {
+            WebElement iframe = findAccessDataCommentIframe();
+            scrollToElementMove(iframe);
+            driver.switchTo().frame(iframe);
+            WebElement body = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("body")));
+            body.sendKeys(Keys.CONTROL + "a");
+            body.sendKeys(Keys.DELETE);
+            write(body, comment);
+            driver.switchTo().parentFrame();
+        });
+    }
+
+    public void enterImplantationDateInAccessData(String implantationDate) throws InterruptedException {
+        withAccessContentFrame(() -> {
+            clearAndWriteDate(findAccessDataDateInput("Implantation date"), implantationDate);
+        });
+    }
+
+    public void enterRemovalDateInAccessData(String removalDate) throws InterruptedException {
+        withAccessContentFrame(() -> {
+            clearAndWriteDate(findAccessDataDateInput("Date of removal"), removalDate);
+        });
+    }
+
+    public void selectRemovalCenterInAccessData(String removalCenter) throws InterruptedException {
+        withAccessContentFrame(() -> {
+            selectKendoDropdownOption(findAccessDataComboBox("Removal center"), removalCenter);
+        });
     }
 
     public void addAdditionalTestButton() throws InterruptedException {
-        driver.switchTo().parentFrame();
-        driver.switchTo().frame(0);
-        click(accessDataButtonDropdown);
-        click(newAdditionalTestButton);
-        driver.switchTo().parentFrame();
-        pause(1000);
+        withAccessContentFrame(() -> {
+            click(accessDataMenu);
+            click(optionNewAdditionalTest);
+            pause(1000);
+        });
     }
 
     public void goToAttachedTestOfAccesses() throws InterruptedException {
@@ -1435,6 +1420,94 @@ public class AccessesPage extends BasePage<AccessesPage>{
         pause(200);
         driver.switchTo().parentFrame();
 
+    }
+
+    private WebElement findAccessDataComboBox(String label) {
+        String labelLiteral = xpathTextLiteral(label);
+        By comboBy = By.xpath(ACCESS_DATA_PANEL +
+                "//label[.//b[normalize-space(.)=" + labelLiteral + "]]" +
+                "/ancestor::div[contains(@class,'form-group')][1]" +
+                "//span[contains(@class,'k-combobox')][1]");
+        return wait.until(ExpectedConditions.elementToBeClickable(comboBy));
+    }
+
+    private WebElement findAccessDataDateInput(String label) {
+        String labelLiteral = xpathTextLiteral(label);
+        By dateBy = By.xpath(ACCESS_DATA_PANEL +
+                "//label[.//b[normalize-space(.)=" + labelLiteral + "]]" +
+                "/ancestor::div[contains(@class,'form-group')][1]" +
+                "//input[@data-role='datepicker' and not(@disabled)][1]");
+        return wait.until(ExpectedConditions.elementToBeClickable(dateBy));
+    }
+
+    private WebElement findAccessDataCommentIframe() {
+        By iframeBy = By.xpath(ACCESS_DATA_PANEL +
+                "//label[.//b[normalize-space(.)='Comments']]" +
+                "/ancestor::div[contains(@class,'form-group')][1]" +
+                "//iframe[contains(@class,'k-iframe')][1]");
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(iframeBy));
+    }
+
+    private void clearAndWriteDate(WebElement input, String value) throws InterruptedException {
+        scrollToElementMove(input);
+        input.sendKeys(Keys.CONTROL + "a");
+        input.sendKeys(Keys.DELETE);
+        if (value == null || value.trim().isEmpty()) {
+            input.sendKeys(Keys.ENTER);
+            return;
+        }
+        write(input, value);
+        input.sendKeys(Keys.ENTER);
+        pause(300);
+    }
+
+    private void switchToAccessContentFrame() {
+        driver.switchTo().defaultContent();
+        driver.switchTo().frame("frmContenido");
+    }
+
+    private void leaveAccessContentFrame() {
+        driver.switchTo().defaultContent();
+    }
+
+    private void withAccessContentFrame(AccessFrameAction action) throws InterruptedException {
+        switchToAccessContentFrame();
+        try {
+            wait.until(ExpectedConditions.visibilityOf(accessDataPanel));
+            action.run();
+        } finally {
+            leaveAccessContentFrame();
+        }
+    }
+
+    private String xpathTextLiteral(String value) {
+        if (value.contains("'") && value.contains("\"")) {
+            StringBuilder builder = new StringBuilder("concat(");
+            for (int i = 0; i < value.length(); i++) {
+                char current = value.charAt(i);
+                if (current == '\'') {
+                    builder.append("\"'\"");
+                } else if (current == '"') {
+                    builder.append("'\"'");
+                } else {
+                    builder.append("'").append(current).append("'");
+                }
+                if (i < value.length() - 1) {
+                    builder.append(", ");
+                }
+            }
+            builder.append(")");
+            return builder.toString();
+        }
+        if (value.contains("'")) {
+            return "\"" + value + "\"";
+        }
+        return "'" + value + "'";
+    }
+
+    @FunctionalInterface
+    private interface AccessFrameAction {
+        void run() throws InterruptedException;
     }
 
     @Override

@@ -13,20 +13,14 @@ Feature: Create a New PD Access Follow-Up
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
     And   I login successful
+    And   I Select the Group of patients "Paciente DP"
     When  I select the patient "Ape1_1838 Ape2_1838, Nom_1838 - 1838"
     And   I open Accesses module
     Then  I check the module Accesses appear correctly
 
-
   @test @TestCase_3840 @ALM_VR_TC
   Scenario: New Follow Up
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    And   I Select the Group of patients "Paciente DP"
-    When  I select the patient "Ape1_1838 Ape2_1838, Nom_1838 - 1838"
-    And   I open Accesses module
-    And   I click button implantation section
+    When   I click button implantation section
     When  I select the Evaluation in main menu
     And   I click button three points follow up
     And   I click button "New follow-up"
@@ -36,30 +30,18 @@ Feature: Create a New PD Access Follow-Up
 
   @test @TestCase_4144 @ALM_VR_TC
   Scenario: Save new Follow up with required  fields empty
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    And   I Select the Group of patients "Paciente DP"
-    When  I select the patient "Ape1_1838 Ape2_1838, Nom_1838 - 1838"
-    And   I open Accesses module
-    And   I click button implantation section
+    When   I click button implantation section
     When  I select the Evaluation in main menu
     And   I click button three points follow up
     And   I click button "New follow-up"
-    And   I insert data into input date: ""
+    When   I insert data into input date: ""
     Then  I select evaluation in follow up
     And   I click button three points follow up
     And   I click button cancel
 
   @test @TestCase_4145 @ALM_VR_TC
   Scenario: Cancel a new Access Follow up
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    And   I Select the Group of patients "Paciente DP"
-    When  I select the patient "Ape1_1838 Ape2_1838, Nom_1838 - 1838"
-    And   I open Accesses module
-    And   I click button implantation section
+    When   I click button implantation section
     When  I select the Evaluation in main menu
     And   I click button three points follow up
     And   I click button "New follow-up"
@@ -67,21 +49,14 @@ Feature: Create a New PD Access Follow-Up
     And   I click button three points follow up
     And   I click button cancel
 
-
-
   @test @TestCase_4158 @ALM_VR_TC
   Scenario: Save a new Follow up with the Date outside of range
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    And   I Select the Group of patients "Paciente DP"
-    When  I select the patient "Ape1_1838 Ape2_1838, Nom_1838 - 1838"
-    And   I open Accesses module
-    And   I click button implantation section
+    When   I click button implantation section
     When  I select the Evaluation in main menu
     And   I click button three points follow up
     And   I click button "New follow-up"
-    And   I insert data into input date: "13/11/2000"
+    When   I insert data into input date: "13/11/2000"
     Then  I select evaluation in follow up
     And   I click button three points follow up
     Then  I click button cancel
+
