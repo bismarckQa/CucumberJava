@@ -211,6 +211,11 @@ public class BaxterHomeSteps {
         BaxterHomePage.dismissBrowserAlert();
     }
 
+    @And("I click button arrow up")
+    public void iClickButtonArrowUp() throws InterruptedException {
+        BaxterHomePage.clickOnUpArrow();
+    }
+
     @Then("I verify the action was performed successfully")
     public void iVerifyTheActionWasPerformedSuccessfully() {
         BaxterHomePage.waitForActionComplete();

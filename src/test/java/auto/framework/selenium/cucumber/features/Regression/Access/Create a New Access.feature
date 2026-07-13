@@ -41,6 +41,7 @@ Feature: Create a New Access
         When   I check the state of access is active with colour green
         When  I click in edit all
         And   I Change the date of removal to "06192024"
+        And   I click button arrow up
         And   I save the Access Data Implantation
         Then  I check the state of access is inactive with colour red
 

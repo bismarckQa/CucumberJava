@@ -3,7 +3,6 @@ package auto.framework.selenium.cucumber.steps;
 
 import auto.framework.selenium.annotations.LazyAutowired;
 import auto.framework.selenium.pages.baxter_page.AccessesPage;
-import auto.framework.selenium.pages.baxter_page.BaxterHomePage;
 import auto.framework.selenium.pages.baxter_page.HDTherapyConfigPage;
 import auto.framework.selenium.pages.baxter_page.WaitingListPage;
 import io.cucumber.java.PendingException;
@@ -18,9 +17,6 @@ public class AccessesSteps {
     @LazyAutowired
 
     private AccessesPage AccessesPage;
-    @LazyAutowired
-    private BaxterHomePage baxterHomePage;
-
     @When("I check the module Accesses appear correctly")
     public void iCheckTheModuleAccessesAppearCorrectly() {
         AccessesPage.isDisplayedTheTittle();
@@ -89,7 +85,6 @@ public class AccessesSteps {
         AccessesPage.writeImplantationDate(ImplantationDate);
         AccessesPage.writeDateOfRemoval(DateRemoval);
         AccessesPage.selectRemovalCenter(RemovalCenter);
-        baxterHomePage.clickOnUpArrow();
 
 
     }
@@ -152,7 +147,6 @@ public class AccessesSteps {
     @And("I Change the date of removal to {string}")
     public void iChangeTheDateOfRemovalTo(String DateRemoval) throws InterruptedException {
         AccessesPage.writeDateOfRemoval(DateRemoval);
-        baxterHomePage.clickOnUpArrow();
     }
 
     @Then("I check the state of access is inactive with colour red")
@@ -468,9 +462,6 @@ public class AccessesSteps {
         AccessesPage.selectAccessType(AccessType);
         AccessesPage.selectAccessLocation(Location);
         AccessesPage.writeComment(Comment);
-        baxterHomePage.clickOnUpArrow();
-
-
     }
 
     @And("I click button implantation section")

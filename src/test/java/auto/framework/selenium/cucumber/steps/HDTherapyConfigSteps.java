@@ -47,11 +47,6 @@ public class HDTherapyConfigSteps {
         HDTherapyConfigPage.selectOptionBaxterManufacturer();
     }
 
-    @And("I click button arrow up")
-    public void iClickButtonArrowUp() throws InterruptedException {
-        HDTherapyConfigPage.clickButtonArrowUp();
-    }
-
     @And("I select or unselect the dialyzer checkbox if it is {string}")
     public void iSelectOrUnselectTheDialyzerCheckboxIfItIs(String state) throws InterruptedException {
         HDTherapyConfigPage.checkOrUncheckChexboxStatus(state);
