@@ -29,6 +29,21 @@ Feature: Create a New Access
         And   I select removal center "Sistemes Renals" in access data
         Then  I save the Access Data Implantation
 
+    @test @TestCase @ALM_VR_TC
+    Scenario: Create New Access PD
+        And   I Select the Group of patients "Paciente DP"
+        When  I select the patient "Foianini Baggio, Pasquale"
+        And   I open Accesses module
+        And   I click location accesses
+        And   I select access type "Catetere peritoneale di cruz" in access data
+        And   I select access location "Peritoneal" in access data
+        And   I enter first use date "06102024" in access data
+        And   I enter access comment "QATestPDAccess"
+        And   I enter implantation date "06102024" in access data
+        And   I enter removal date "06212024" in access data
+        And   I select removal center "Sistemes Renals" in access data
+        Then  I save the Access Data Implantation
+
     @test @TestCase_3543 @ALM_VR_TC_332
     Scenario: Edit Access
         When   I click in edit all

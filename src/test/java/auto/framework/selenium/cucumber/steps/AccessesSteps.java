@@ -555,6 +555,11 @@ public class AccessesSteps {
         AccessesPage.selectOptionTypeOfConfigurationForChangeExtension();
     }
 
+    @When("I select type of configuration {string} for change extension")
+    public void iSelectTypeOfConfigurationForChangeExtension(String configurationType) throws InterruptedException {
+        AccessesPage.selectTypeOfConfigurationForChangeExtension(configurationType);
+    }
+
     @And("I click button save")
     public void iClickButtonSave()throws InterruptedException {
         AccessesPage.clickSaveButton();
@@ -643,6 +648,11 @@ public class AccessesSteps {
     @And("I select option location swab")
     public void iSelectOptionLocationSwab()throws InterruptedException {
         AccessesPage.selectOptionLocationSwab();
+    }
+
+    @And("I select swab location {string}")
+    public void iSelectSwabLocation(String swabType) throws InterruptedException {
+        AccessesPage.selectSwabLocation(swabType);
     }
 
     @And("I insert data into evaluation area {string}")

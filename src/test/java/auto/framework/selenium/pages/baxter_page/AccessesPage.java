@@ -15,6 +15,10 @@ public class AccessesPage extends BasePage<AccessesPage>{
 
     private static final String ACCESS_DATA_PANEL =
             "//h2[normalize-space(.)='Access data']/ancestor::div[contains(@class,'x_panel')][1]";
+    private static final String SWAB_PANEL =
+            "//h2[normalize-space(.)='Swab']/ancestor::div[contains(@class,'x_panel')][1]";
+    private static final String CHANGE_EXTENSION_PANEL =
+            "//h2[normalize-space(.)='Change of extension']/ancestor::div[contains(@class,'x_panel')][1]";
     private static final String ACCESS_DATA_MENU_XPATH =
             ACCESS_DATA_PANEL + "//a[contains(@class,'dropdown-toggle')][.//i[contains(@class,'icon-three-points')]]";
     private static final String OPTION_NEW_ADDITIONAL_TEST_XPATH =
@@ -1032,15 +1036,12 @@ public class AccessesPage extends BasePage<AccessesPage>{
         driver.switchTo().parentFrame();
     }
     public void selectOptionTypeOfConfigurationForChangeExtension()throws InterruptedException{
-        driver.switchTo().frame("frmContenido");
-        pause(500);
-        waitElements(dropDownTypeOfConfiguration);
-        click(dropDownTypeOfConfiguration);
-        pause(200);
-        clickBelowElementByOffset(inputDateChangeOfExtension,100);
-        pause(500);
-        driver.switchTo().parentFrame();
+        selectTypeOfConfigurationForChangeExtension("Programada");
+    }
 
+    public void selectTypeOfConfigurationForChangeExtension(String configurationType) throws InterruptedException {
+        withAccessContentFrame(() ->
+                selectKendoDropdownOption(findChangeExtensionComboBox("Type of configuration"), configurationType));
     }
     public void clickButtonOkModalError()throws InterruptedException{
         driver.switchTo().parentFrame();
@@ -1130,13 +1131,11 @@ public class AccessesPage extends BasePage<AccessesPage>{
     }
 
     public void selectOptionLocationSwab()throws InterruptedException{
-        driver.switchTo().frame("frmContenido");
-        pause(300);
-        click(dropDownLocationSwab);
-        pause(300);
-        clickBelowElementByOffset(inputSwabDate,80);
-        pause(300);
-        driver.switchTo().parentFrame();
+        selectSwabLocation("Frotis nasal");
+    }
+
+    public void selectSwabLocation(String swabType) throws InterruptedException {
+        withAccessContentFrame(() -> selectKendoDropdownOption(findSwabComboBox("Location"), swabType));
     }
 
     public void inputDataEvaluation(String evaluation)throws InterruptedException{
@@ -1438,6 +1437,24 @@ public class AccessesPage extends BasePage<AccessesPage>{
                 "/ancestor::div[contains(@class,'form-group')][1]" +
                 "//iframe[contains(@class,'k-iframe')][1]");
         return wait.until(ExpectedConditions.visibilityOfElementLocated(iframeBy));
+    }
+
+    private WebElement findSwabComboBox(String label) {
+        String labelLiteral = xpathTextLiteral(label);
+        By comboBy = By.xpath(SWAB_PANEL +
+                "//label[.//b[normalize-space(.)=" + labelLiteral + "]]" +
+                "/ancestor::div[contains(@class,'form-group')][1]" +
+                "//span[contains(@class,'k-combobox')][1]");
+        return wait.until(ExpectedConditions.elementToBeClickable(comboBy));
+    }
+
+    private WebElement findChangeExtensionComboBox(String label) {
+        String labelLiteral = xpathTextLiteral(label);
+        By comboBy = By.xpath(CHANGE_EXTENSION_PANEL +
+                "//label[.//b[normalize-space(.)=" + labelLiteral + "]]" +
+                "/ancestor::div[contains(@class,'form-group')][1]" +
+                "//span[contains(@class,'k-combobox')][1]");
+        return wait.until(ExpectedConditions.elementToBeClickable(comboBy));
     }
 
     private void clearAndWriteDate(WebElement input, String value) throws InterruptedException {
