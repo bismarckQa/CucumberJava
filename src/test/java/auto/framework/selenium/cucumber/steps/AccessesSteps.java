@@ -124,6 +124,11 @@ public class AccessesSteps {
         AccessesPage.selectRemovalCenterInAccessData(removalCenter);
     }
 
+    @And("I select removal method {string} in access data")
+    public void iSelectRemovalMethodInAccessData(String removalMethod) throws InterruptedException {
+        AccessesPage.selectRemovalMethodInAccessData(removalMethod);
+    }
+
     @And("I select implantation center {string} in access data")
     public void iSelectImplantationCenterInAccessData(String implantationCenter) throws InterruptedException {
         AccessesPage.selectImplantationCenterInAccessData(implantationCenter);

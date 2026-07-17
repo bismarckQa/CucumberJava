@@ -879,6 +879,12 @@ public class AccessesPage extends BasePage<AccessesPage>{
         });
     }
 
+    public void selectRemovalMethodInAccessData(String removalMethod) throws InterruptedException {
+        withAccessContentFrame(() -> {
+            selectKendoDropdownOption(findAccessDataComboBox("Removal method"), removalMethod);
+        });
+    }
+
     public void selectImplantationCenterInAccessData(String implantationCenter) throws InterruptedException {
         withAccessContentFrame(() -> {
             selectKendoDropdownOption(findAccessDataComboBox("Implantation center"), implantationCenter);

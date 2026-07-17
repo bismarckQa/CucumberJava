@@ -53,6 +53,7 @@ Feature: Create a New Access
         And   I select reason for implantation "Prueba Activo" in access data
         When  I enter removal date "06212024" in access data
         And   I select removal center "Sistemes Renals" in access data
+        And   I select removal method "Prueba Activo" in access data
         When  I click button arrow up
         And   I click button three points Access
         Then  I save the Access Data Implantation
