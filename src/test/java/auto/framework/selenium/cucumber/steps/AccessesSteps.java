@@ -124,6 +124,26 @@ public class AccessesSteps {
         AccessesPage.selectRemovalCenterInAccessData(removalCenter);
     }
 
+    @And("I select implantation center {string} in access data")
+    public void iSelectImplantationCenterInAccessData(String implantationCenter) throws InterruptedException {
+        AccessesPage.selectImplantationCenterInAccessData(implantationCenter);
+    }
+
+    @And("I select implantation method {string} in access data")
+    public void iSelectImplantationMethodInAccessData(String implantationMethod) throws InterruptedException {
+        AccessesPage.selectImplantationMethodInAccessData(implantationMethod);
+    }
+
+    @And("I select reason for implantation {string} in access data")
+    public void iSelectReasonForImplantationInAccessData(String reason) throws InterruptedException {
+        AccessesPage.selectReasonForImplantationInAccessData(reason);
+    }
+
+    @And("I set omentectomy to yes in access data")
+    public void iSetOmentectomyToYesInAccessData() throws InterruptedException {
+        AccessesPage.setOmentectomyInAccessData(true);
+    }
+
     @And("I click in edit all")
     public void iClickInEditAll() throws InterruptedException {
         AccessesPage.clickEditAll();
@@ -670,9 +690,94 @@ public class AccessesSteps {
         AccessesPage.selectEvaluationInFollowUp();
     }
 
+    @Then("I select follow up evaluation {string}")
+    public void iSelectFollowUpEvaluation(String evaluation) throws InterruptedException {
+        AccessesPage.selectFollowUpEvaluation(evaluation);
+    }
+
+    @And("I select follow up appearance {string}")
+    public void iSelectFollowUpAppearance(String appearance) throws InterruptedException {
+        AccessesPage.selectFollowUpAppearance(appearance);
+    }
+
+    @And("I select follow up tunnel evaluation {string}")
+    public void iSelectFollowUpTunnelEvaluation(String tunnelEvaluation) throws InterruptedException {
+        AccessesPage.selectFollowUpTunnelEvaluation(tunnelEvaluation);
+    }
+
+    @And("I select follow up care {string}")
+    public void iSelectFollowUpCare(String care) throws InterruptedException {
+        AccessesPage.selectFollowUpCare(care);
+    }
+
     @And("I insert data into input date: {string}")
     public void iInsertDataIntoInputDate(String date)throws InterruptedException {
         AccessesPage.insertDataIntoInputDate(date);
+    }
+
+    @And("I enter evaluation date {string}")
+    public void iEnterEvaluationDate(String date) throws InterruptedException {
+        AccessesPage.enterEvaluationDate(date);
+    }
+
+    @And("I enter evaluation average VP {string}")
+    public void iEnterEvaluationAverageVp(String value) throws InterruptedException {
+        AccessesPage.enterEvaluationAverageVp(value);
+    }
+
+    @And("I enter evaluation average BP {string}")
+    public void iEnterEvaluationAverageBp(String value) throws InterruptedException {
+        AccessesPage.enterEvaluationAverageBp(value);
+    }
+
+    @And("I enter evaluation SBP {string}")
+    public void iEnterEvaluationSbp(String value) throws InterruptedException {
+        AccessesPage.enterEvaluationSbp(value);
+    }
+
+    @And("I enter evaluation DBP {string}")
+    public void iEnterEvaluationDbp(String value) throws InterruptedException {
+        AccessesPage.enterEvaluationDbp(value);
+    }
+
+    @And("I enter evaluation arterial urea {string}")
+    public void iEnterEvaluationArterialUrea(String value) throws InterruptedException {
+        AccessesPage.enterEvaluationArterialUrea(value);
+    }
+
+    @And("I enter evaluation venous urea {string}")
+    public void iEnterEvaluationVenousUrea(String value) throws InterruptedException {
+        AccessesPage.enterEvaluationVenousUrea(value);
+    }
+
+    @And("I enter evaluation peripheral urea {string}")
+    public void iEnterEvaluationPeripheralUrea(String value) throws InterruptedException {
+        AccessesPage.enterEvaluationPeripheralUrea(value);
+    }
+
+    @And("I enter evaluation RT Mohan {string}")
+    public void iEnterEvaluationRtMohan(String value) throws InterruptedException {
+        AccessesPage.enterEvaluationRtMohan(value);
+    }
+
+    @And("I enter evaluation access flow {string}")
+    public void iEnterEvaluationAccessFlow(String value) throws InterruptedException {
+        AccessesPage.enterEvaluationAccessFlow(value);
+    }
+
+    @And("I enter evaluation recirculation {string}")
+    public void iEnterEvaluationRecirculation(String value) throws InterruptedException {
+        AccessesPage.enterEvaluationRecirculation(value);
+    }
+
+    @And("I select evaluation method {string}")
+    public void iSelectEvaluationMethod(String method) throws InterruptedException {
+        AccessesPage.selectEvaluationMethod(method);
+    }
+
+    @And("I enter evaluation comments {string}")
+    public void iEnterEvaluationComments(String comments) throws InterruptedException {
+        AccessesPage.enterEvaluationComments(comments);
     }
 
     @And("I click button image photo")

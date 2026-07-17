@@ -3,11 +3,13 @@ package auto.framework.selenium.pages.baxter_page;
 import auto.framework.selenium.annotations.LazyComponent;
 import auto.framework.selenium.pages.BasePage;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.springframework.beans.factory.annotation.Value;
+import java.util.List;
 import java.util.Map;
 
 @LazyComponent
@@ -151,6 +153,65 @@ public class BaxterHomePage extends BasePage<BaxterHomePage> {
 
     //*********Page Methods*********
 
+    private By moduleByText(String moduleName) {
+        return By.xpath("//ul[@id='fleximenu']/li/a[contains(normalize-space(.),'" + moduleName + "')]");
+    }
+
+    private WebElement findModule(String... moduleNames) {
+        for (String moduleName : moduleNames) {
+            List<WebElement> modules = driver.findElements(moduleByText(moduleName));
+            for (WebElement module : modules) {
+                return module;
+            }
+        }
+        return null;
+    }
+
+    private void clickModuleByName(String... moduleNames) throws InterruptedException {
+        pause(1500);
+        WebElement module = findModule(moduleNames);
+        String selectedModuleName = null;
+        int attempts = 0;
+
+        while (module == null && attempts < 15) {
+            if (!rightArrow.isDisplayed()) {
+                break;
+            }
+            click(rightArrow);
+            pause(800);
+            module = findModule(moduleNames);
+            attempts++;
+        }
+
+        if (module == null) {
+            throw new NoSuchElementException("Module not found in menu: " + String.join(" / ", moduleNames));
+        }
+
+        for (String moduleName : moduleNames) {
+            List<WebElement> modules = driver.findElements(moduleByText(moduleName));
+            for (WebElement currentModule : modules) {
+                selectedModuleName = moduleName;
+                break;
+            }
+            if (selectedModuleName != null) {
+                break;
+            }
+        }
+
+        By moduleLocator = moduleByText(selectedModuleName);
+        WebElement visibleModule = wait.until(ExpectedConditions.presenceOfElementLocated(moduleLocator));
+        javascriptExecutor.executeScript(
+                "arguments[0].scrollIntoView({block:'nearest', inline:'center'});",
+                visibleModule
+        );
+        javascriptExecutor.executeScript("arguments[0].click();", visibleModule);
+        pause(1000);
+    }
+
+    public void openModule(String moduleName) throws InterruptedException {
+        clickModuleByName(moduleName);
+    }
+
 
 
     public void selectPatient(String patient) throws InterruptedException {
@@ -169,6 +230,7 @@ public class BaxterHomePage extends BasePage<BaxterHomePage> {
             javascriptExecutor.executeScript("arguments[0].scrollIntoView(true);", element);
             element.click();
         }
+        pause(2500);
     }
 
     public void selectGroupPatient(String patient){
@@ -193,8 +255,8 @@ public class BaxterHomePage extends BasePage<BaxterHomePage> {
         doubleClick(this.groupPatientsCombo);
     }
 
-    public void clickModality(){
-        click(this.modality);
+    public void clickModality() throws InterruptedException {
+        clickModuleByName("Modality");
     }
 
     public void clickCloseSession(){
@@ -205,152 +267,86 @@ public class BaxterHomePage extends BasePage<BaxterHomePage> {
         click(upArrowOnPage);
         pause(1000);
     }
-    public void clickHDWaterQuality(){
-        click(this.HDWaterQualityModule);
+    public void clickHDWaterQuality() throws InterruptedException {
+        clickModuleByName("HD Water Quality");
     }
-    public void clickMedicalHistory(){
-        click(this.MedicalHistoryModule);
-    }
-
-    public void clickSupplementaryTests() {
-        do{
-            click(rightArrow);
-        }while (!isDisplayed(SupplementaryTestsModule));
-        click(SupplementaryTestsModule);
-
+    public void clickMedicalHistory() throws InterruptedException {
+        clickModuleByName("Medical History", "Antécédents");
     }
 
-    public void clickReviews() {
-        do{
-            click(rightArrow);
-        }while (!isDisplayed(ReviewsModule));
-
-        click(this.ReviewsModule);
+    public void clickSupplementaryTests() throws InterruptedException {
+        clickModuleByName("Additional Studies", "Complementary tests");
     }
 
-    public void clickMedication() {
-        do{
-            click(rightArrow);
-        }while (!isDisplayed(MedicationModule));
+    public void clickReviews() throws InterruptedException {
+        clickModuleByName("Clinical Encounter (REVIEW)", "Reviews");
+    }
 
-        click(this.MedicationModule);
-
+    public void clickMedication() throws InterruptedException {
+        clickModuleByName("Medication");
     }
 
     public void clickHospitalization()throws InterruptedException {
-        pause(500);
-        do{
-            click(rightArrow);
-        }while (!isDisplayed(HospitalizationModule));
-        pause(500);
-        click(this.HospitalizationModule);
-
+        clickModuleByName("Hospitalization", "Hospitalizacion Core");
     }
 
-    public void clickInfections() {
-        do{
-            click(rightArrow);
-        }while (!isDisplayed(InfectionsModule));
-
-        click(this.InfectionsModule);
-
+    public void clickInfections() throws InterruptedException {
+        clickModuleByName("Infections");
     }
 
-    public void clickWaitingList() {
-        do{
-            click(rightArrow);
-        }while (!isDisplayed(WaitingListModule));
-
-        click(this.WaitingListModule);
-
+    public void clickWaitingList() throws InterruptedException {
+        clickModuleByName("Waiting List");
     }
 
     public void clickAccesses() throws InterruptedException {
-        click(rightArrow);
-        pause(1000);
-        click(this.AccessesModule);
-        pause(1000);
+        clickModuleByName("Accesses");
     }
 
     public void clickPDDescription() throws InterruptedException {
-        pause(2000);
-        click(this.PDPrescription);
+        clickModuleByName("PD Prescription");
     }
 
     public void clickPDTreatment() throws InterruptedException {
-        pause(2000);
-        click(this.PDTreatment);
+        clickModuleByName("PD Treatment");
     }
 
     public void clickPDAdaptation() throws InterruptedException {
-        pause(2000);
-        click(this.PDAdaptation);
+        clickModuleByName("PD Adaptation", "Adecuación DP");
     }
 
     public void clickDonorAssignment() throws InterruptedException {
-        pause(2000);
-        click(rightArrow);
-        pause(2000);
-        click(rightArrow);
-        click(this.DonorAssignment);
+        clickModuleByName("Donor Assignment");
     }
 
     public void clickDonorEvaluation() throws InterruptedException {
-        pause(5000);
-        click(rightArrow);
-        click(this.DonorEvaluation);
+        clickModuleByName("Donor Evaluation");
     }
     public void clickBiopsy() throws InterruptedException {
-        pause(3000);
-        click(rightArrow);
-        pause(3000);
-        click(this.Biopsy);
+        clickModuleByName("Biopsy");
     }
 
     public void clickTransplant() throws InterruptedException {
-        pause(5000);
-        click(rightArrow);
-        click(this.Transplant);
+        clickModuleByName("Transplant");
     }
 
     public void clickAdequacy() throws InterruptedException {
-        pause(2000);
-        click(rightArrow);
-        pause(2000);
-        click(rightArrow);
-        click(this.AdequacyModule);
+        clickModuleByName("Adequacy");
     }
     public void clickHDPrescription() throws InterruptedException {
-        pause(2000);
-        click(rightArrow);
-        pause(2000);
-        click(rightArrow);
-        click(this.HDPrescriptionModule);
+        clickModuleByName("HD Prescription");
     }
 
 
     public void clickHDCalendar() throws InterruptedException {
-        pause(2000);
-        click(rightArrow);
-        pause(2000);
-        click(rightArrow);
-        click(this.HDCalendar);
+        clickModuleByName("HD Calendar");
     }
 
     public void clickHDMonitors() throws InterruptedException {
-        pause(2000);
-        click(rightArrow);
-        pause(2000);
-        click(rightArrow);
-        click(this.HDMonitors);
+        clickModuleByName("HD Monitors");
     }
 
     public void clickHDTreatment() throws InterruptedException {
-        pause(2000);
-        click(rightArrow);
-        pause(2000);
-        click(rightArrow);
-        click(this.HDTreatment);
+        clickModuleByName("HD Treatment");
     }
 
     public void clickHDTreatmentNurseProfile() throws InterruptedException {
@@ -359,52 +355,36 @@ public class BaxterHomePage extends BasePage<BaxterHomePage> {
     }
 
     public void clickPlanningCare() throws InterruptedException {
-        pause(2000);
-        click(rightArrow);
-        pause(2000);
-        click(rightArrow);
-        click(this.PlanningCare);
+        clickModuleByName("Planning Care");
     }
 
 
     public void clickNursingCare() throws InterruptedException {
-        pause(2000);
-        click(rightArrow);
-        pause(2000);
-        click(rightArrow);
-        click(this.NursingCare);
+        clickModuleByName("Nursing Care");
     }
     public void clickMedicalAppointment() throws InterruptedException {
-        pause(2000);
-        click(rightArrow);
-        pause(2000);
-        click(rightArrow);
-        click(this.MedicalAppointment);
+        clickModuleByName("Medical Appointment");
     }
     public void clickRRT() throws InterruptedException {
-        pause(2000);
-        click(rightArrow);
-        pause(2000);
-        click(rightArrow);
-        click(this.RRT);
+        clickModuleByName("RRT");
     }
 
 
 
-    public void clickLabTests() {
-        click(this.LabTestsModule);
+    public void clickLabTests() throws InterruptedException {
+        clickModuleByName("Lab Tests");
     }
 
 
 
-    public void clickAllergies(){
-        click(this.AllergiesModule);
+    public void clickAllergies() throws InterruptedException {
+        clickModuleByName("Allergies");
     }
-    public void clickDiagnoses(){
-        click(this.DiagnosesModule);
+    public void clickDiagnoses() throws InterruptedException {
+        clickModuleByName("Diagnoses");
     }
-    public void clickPhysicalAssessment(){
-        click(this.PhysicalAssessmentModule);
+    public void clickPhysicalAssessment() throws InterruptedException {
+        clickModuleByName("Physical assessment", "Physical Assessment");
     }
     public void clickUserMenuOptions(){
         click(this.UserMenu);

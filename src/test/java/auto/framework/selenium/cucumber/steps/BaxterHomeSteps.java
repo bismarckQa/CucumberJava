@@ -39,7 +39,7 @@ public class BaxterHomeSteps {
     }
 
     @When("I open Modality module")
-    public void iOpenModalityModule(){
+    public void iOpenModalityModule() throws InterruptedException {
         BaxterHomePage.clickModality();
     }
     @When("I logout of Baxter website")
@@ -49,47 +49,47 @@ public class BaxterHomeSteps {
     }
 
     @When("I open Complementary tests module")
-    public void iOpenSupplementaryTests() {
+    public void iOpenSupplementaryTests() throws InterruptedException {
         BaxterHomePage.clickSupplementaryTests();
     }
 
     @When("I open Reviews module")
-    public void iOpenReviewsModule() {
+    public void iOpenReviewsModule() throws InterruptedException {
         BaxterHomePage.clickReviews();
     }
 
     @When("I open HD Water Quality module")
-    public void iOpenHDWaterQualityModule() {
+    public void iOpenHDWaterQualityModule() throws InterruptedException {
         BaxterHomePage.clickHDWaterQuality();
     }
 
     @When("I open Physical Assessment module")
-    public void iOpenPhysicalAssessmentModule() {
+    public void iOpenPhysicalAssessmentModule() throws InterruptedException {
         BaxterHomePage.clickPhysicalAssessment();
     }
 
     @When("I open Allergies module")
-    public void iOpenAllergiesModule() {
+    public void iOpenAllergiesModule() throws InterruptedException {
         BaxterHomePage.clickAllergies();
     }
 
     @When("I open Diagnoses module")
-    public void iOpenDiagnosesModule() {
+    public void iOpenDiagnosesModule() throws InterruptedException {
         BaxterHomePage.clickDiagnoses();
     }
 
     @When("I open Medical History module")
-    public void iOpenMedicalHistoryModule() {
+    public void iOpenMedicalHistoryModule() throws InterruptedException {
         BaxterHomePage.clickMedicalHistory();
     }
 
     @When("I open Lab Tests module")
-    public void iOpenLabTestsModule() {
+    public void iOpenLabTestsModule() throws InterruptedException {
         BaxterHomePage.clickLabTests();
     }
 
     @When("I open Medication module")
-    public void iOpenLabMedicationModule() {
+    public void iOpenLabMedicationModule() throws InterruptedException {
         BaxterHomePage.clickMedication();
     }
 
@@ -99,13 +99,18 @@ public class BaxterHomeSteps {
     }
 
     @When("I open Infections module")
-    public void iOpenLabInfectionsModule() {
+    public void iOpenLabInfectionsModule() throws InterruptedException {
         BaxterHomePage.clickInfections();
     }
 
     @When("I open Waiting List module")
-    public void iOpenLabWaitingListModule() {
+    public void iOpenLabWaitingListModule() throws InterruptedException {
         BaxterHomePage.clickWaitingList();
+    }
+
+    @When("I open {string} module")
+    public void iOpenModuleByName(String moduleName) throws InterruptedException {
+        BaxterHomePage.openModule(moduleName);
     }
 
     @When("I open Accesses module")

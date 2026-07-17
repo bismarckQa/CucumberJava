@@ -1,29 +1,38 @@
 #enviroment
-@Environment_dev
-#app_name
-@versia_renal
+@Environment_Dev
+#app_namme
+@Versia_Renal
 #version
-@3.2
+@2024R1a
 #Module
-@Infections
-Feature: Delete Infection
+@HDAccess
+
+Feature: Prueba Access PD
 
   Background:
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
     And   I login successful
     When  I select the patient "Foianini Baggio, Pasquale"
-    And   I open Infections module
-    Then  I check the module Infections appear correctly
+    And   I open "Accesses" module
+    Then  I check the module Accesses appear correctly
 
-  @test @TestCase_3433
-  Scenario: Can't delete infection without correct password
-    When  I click the three points menu in infections
-    And   I click delete option in infections menu
-    Then  I verify delete infection modal is displayed
-    When  I enter password "wrong-password" in delete infection modal
-    And   I enter reason "QA wrong password delete infection" in delete infection modal
-    And   I click OK button in delete infection modal
-    Then  I verify delete infection modal is displayed
-
-
+  @test
+  Scenario: Create New Access PD
+    When  I click button implantation section
+    And   I click button three points Access
+    And   I click button new access
+    And   I select access type "Catetere peritoneale di cruz" in access data
+    And   I select access location "Peritoneal" in access data
+    And   I enter first use date "07162026" in access data
+    And   I enter access comment "QATestPDAccess"
+    And   I enter implantation date "07162026" in access data
+    And   I set omentectomy to yes in access data
+    And   I select implantation center "Sistemes Renals" in access data
+    And   I select implantation method "Tradizionale" in access data
+    And   I select reason for implantation "Prueba Activo" in access data
+    When  I enter removal date "" in access data
+    And   I select removal center "Sistemes Renals" in access data
+    When  I click button arrow up
+    And   I click button three points Access
+    Then  I save the Access Data Implantation

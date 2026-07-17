@@ -19,6 +19,10 @@ public class AccessesPage extends BasePage<AccessesPage>{
             "//h2[normalize-space(.)='Swab']/ancestor::div[contains(@class,'x_panel')][1]";
     private static final String CHANGE_EXTENSION_PANEL =
             "//h2[normalize-space(.)='Change of extension']/ancestor::div[contains(@class,'x_panel')][1]";
+    private static final String FOLLOW_UP_PANEL =
+            "//h2[normalize-space(.)='Follow-up']/ancestor::div[contains(@class,'x_panel')][1]";
+    private static final String EVALUATION_PANEL =
+            "//h2[normalize-space(.)='Evaluation']/ancestor::div[contains(@class,'x_panel')][1]";
     private static final String ACCESS_DATA_MENU_XPATH =
             ACCESS_DATA_PANEL + "//a[contains(@class,'dropdown-toggle')][.//i[contains(@class,'icon-three-points')]]";
     private static final String OPTION_NEW_ADDITIONAL_TEST_XPATH =
@@ -826,7 +830,9 @@ public class AccessesPage extends BasePage<AccessesPage>{
 
     public void selectAccessTypeInAccessData(String accessType) throws InterruptedException {
         withAccessContentFrame(() -> {
-            selectKendoDropdownOption(findAccessDataComboBox("Access type"), accessType);
+            selectKendoDropdownOption(findAccessTypeComboBox(), accessType);
+            waitForKendoComboValue(findAccessTypeComboBox(), accessType);
+            pause(500);
         });
     }
 
@@ -870,6 +876,36 @@ public class AccessesPage extends BasePage<AccessesPage>{
     public void selectRemovalCenterInAccessData(String removalCenter) throws InterruptedException {
         withAccessContentFrame(() -> {
             selectKendoDropdownOption(findAccessDataComboBox("Removal center"), removalCenter);
+        });
+    }
+
+    public void selectImplantationCenterInAccessData(String implantationCenter) throws InterruptedException {
+        withAccessContentFrame(() -> {
+            selectKendoDropdownOption(findAccessDataComboBox("Implantation center"), implantationCenter);
+        });
+    }
+
+    public void selectImplantationMethodInAccessData(String implantationMethod) throws InterruptedException {
+        withAccessContentFrame(() -> {
+            selectKendoDropdownOption(findAccessDataComboBox("Implantation method"), implantationMethod);
+        });
+    }
+
+    public void selectReasonForImplantationInAccessData(String reason) throws InterruptedException {
+        withAccessContentFrame(() -> {
+            selectKendoDropdownOption(findAccessDataComboBox("Reason for implantation"), reason);
+        });
+    }
+
+    public void setOmentectomyInAccessData(boolean enabled) throws InterruptedException {
+        withAccessContentFrame(() -> {
+            WebElement toggle = findAccessDataToggle("Omentectomy");
+            boolean currentValue = toggle.findElement(By.xpath(".//input[@type='checkbox']")).isSelected();
+            if (currentValue != enabled) {
+                scrollToElementMove(toggle);
+                click(toggle);
+                pause(300);
+            }
         });
     }
 
@@ -1162,24 +1198,89 @@ public class AccessesPage extends BasePage<AccessesPage>{
         driver.switchTo().parentFrame();
     }
     public void selectEvaluationInFollowUp()throws InterruptedException{
-        driver.switchTo().frame("frmContenido");
-        pause(1000);
-        isDisplayed(dropDownEvaluationFollowUp);
-        click(dropDownEvaluationFollowUp);
-        pause(500);
-        WebElement option = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//input[@aria-disabled='false'])[2]")));
-        clickBelowElementByOffset(option,40);
-        driver.switchTo().parentFrame();
+        selectFollowUpEvaluation("Granuloma");
+    }
+
+    public void selectFollowUpEvaluation(String evaluation) throws InterruptedException {
+        withFollowUpContentFrame(() -> selectKendoDropdownOption(findFollowUpComboBox("Evaluation"), evaluation));
+    }
+
+    public void selectFollowUpAppearance(String appearance) throws InterruptedException {
+        withFollowUpContentFrame(() -> selectKendoDropdownOption(findFollowUpComboBox("Appearance"), appearance));
+    }
+
+    public void selectFollowUpTunnelEvaluation(String tunnelEvaluation) throws InterruptedException {
+        withFollowUpContentFrame(() ->
+                selectKendoDropdownOption(findFollowUpComboBox("Tunnel evaluation"), tunnelEvaluation));
+    }
+
+    public void selectFollowUpCare(String care) throws InterruptedException {
+        withFollowUpContentFrame(() -> selectKendoDropdownOption(findFollowUpComboBox("Care"), care));
     }
 
     public void insertDataIntoInputDate(String date)throws InterruptedException{
-        driver.switchTo().frame("frmContenido");
-        pause(200);
-        inputDateFollowUp.sendKeys(Keys.CONTROL + "a");
-        inputDateFollowUp.sendKeys(Keys.DELETE);
-        inputDateFollowUp.sendKeys(Keys.ENTER);
-        write(inputDateFollowUp,date);
-        driver.switchTo().parentFrame();
+        withFollowUpContentFrame(() -> clearAndWriteDate(findFollowUpDateInput("Date"), date));
+    }
+
+    public void enterEvaluationDate(String date) throws InterruptedException {
+        withEvaluationContentFrame(() -> clearAndWriteDate(findEvaluationDateInput("Date"), date));
+    }
+
+    public void enterEvaluationAverageVp(String value) throws InterruptedException {
+        withEvaluationContentFrame(() -> clearAndWriteNumber(findEvaluationNumberInput("Average VP"), value));
+    }
+
+    public void enterEvaluationAverageBp(String value) throws InterruptedException {
+        withEvaluationContentFrame(() -> clearAndWriteNumber(findEvaluationNumberInput("Average BP"), value));
+    }
+
+    public void enterEvaluationSbp(String value) throws InterruptedException {
+        withEvaluationContentFrame(() -> clearAndWriteNumber(findEvaluationNumberInput("SBP"), value));
+    }
+
+    public void enterEvaluationDbp(String value) throws InterruptedException {
+        withEvaluationContentFrame(() -> clearAndWriteNumber(findEvaluationNumberInput("DBP"), value));
+    }
+
+    public void enterEvaluationArterialUrea(String value) throws InterruptedException {
+        withEvaluationContentFrame(() -> clearAndWriteNumber(findEvaluationNumberInput("Arterial urea"), value));
+    }
+
+    public void enterEvaluationVenousUrea(String value) throws InterruptedException {
+        withEvaluationContentFrame(() -> clearAndWriteNumber(findEvaluationNumberInput("Venous urea"), value));
+    }
+
+    public void enterEvaluationPeripheralUrea(String value) throws InterruptedException {
+        withEvaluationContentFrame(() -> clearAndWriteNumber(findEvaluationNumberInput("Peripheral urea"), value));
+    }
+
+    public void enterEvaluationRtMohan(String value) throws InterruptedException {
+        withEvaluationContentFrame(() -> clearAndWriteNumber(findEvaluationNumberInput("RT Mohan"), value));
+    }
+
+    public void enterEvaluationAccessFlow(String value) throws InterruptedException {
+        withEvaluationContentFrame(() -> clearAndWriteNumber(findEvaluationNumberInput("Access flow"), value));
+    }
+
+    public void enterEvaluationRecirculation(String value) throws InterruptedException {
+        withEvaluationContentFrame(() -> clearAndWriteNumber(findEvaluationNumberInput("Recirculation"), value));
+    }
+
+    public void selectEvaluationMethod(String method) throws InterruptedException {
+        withEvaluationContentFrame(() -> selectKendoDropdownOption(findEvaluationComboBox("Method"), method));
+    }
+
+    public void enterEvaluationComments(String comments) throws InterruptedException {
+        withEvaluationContentFrame(() -> {
+            WebElement textArea = findEvaluationCommentsTextArea();
+            scrollToElementMove(textArea);
+            textArea.sendKeys(Keys.CONTROL + "a");
+            textArea.sendKeys(Keys.DELETE);
+            if (comments != null && !comments.isBlank()) {
+                write(textArea, comments);
+            }
+            pause(300);
+        });
     }
     public void clickButtonImagePhoto()throws InterruptedException{
         driver.switchTo().frame("frmContenido");
@@ -1422,6 +1523,13 @@ public class AccessesPage extends BasePage<AccessesPage>{
         return wait.until(ExpectedConditions.elementToBeClickable(comboBy));
     }
 
+    private WebElement findAccessTypeComboBox() {
+        By comboBy = By.xpath(ACCESS_DATA_PANEL +
+                "//select[@kendo-combo-box='$comboBoxes.tipoAcceso']" +
+                "/ancestor::span[contains(@class,'k-combobox')][1]");
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(comboBy));
+    }
+
     private WebElement findAccessDataDateInput(String label) {
         String labelLiteral = xpathTextLiteral(label);
         By dateBy = By.xpath(ACCESS_DATA_PANEL +
@@ -1437,6 +1545,14 @@ public class AccessesPage extends BasePage<AccessesPage>{
                 "/ancestor::div[contains(@class,'form-group')][1]" +
                 "//iframe[contains(@class,'k-iframe')][1]");
         return wait.until(ExpectedConditions.visibilityOfElementLocated(iframeBy));
+    }
+
+    private WebElement findAccessDataToggle(String label) {
+        String labelLiteral = xpathTextLiteral(label);
+        By toggleBy = By.xpath(ACCESS_DATA_PANEL +
+                "//label[.//b[normalize-space(.)=" + labelLiteral + "]]" +
+                "/following::label[contains(@class,'toggle')][1]");
+        return wait.until(ExpectedConditions.elementToBeClickable(toggleBy));
     }
 
     private WebElement findSwabComboBox(String label) {
@@ -1457,6 +1573,56 @@ public class AccessesPage extends BasePage<AccessesPage>{
         return wait.until(ExpectedConditions.elementToBeClickable(comboBy));
     }
 
+    private WebElement findFollowUpComboBox(String label) {
+        String labelLiteral = xpathTextLiteral(label);
+        By comboBy = By.xpath(FOLLOW_UP_PANEL +
+                "//label[.//b[normalize-space(.)=" + labelLiteral + "]]" +
+                "/ancestor::div[contains(@class,'col-md-3') or contains(@class,'form-group')][1]" +
+                "/following-sibling::*[1]//span[contains(@class,'k-combobox')][1]");
+        return wait.until(ExpectedConditions.elementToBeClickable(comboBy));
+    }
+
+    private WebElement findFollowUpDateInput(String label) {
+        String labelLiteral = xpathTextLiteral(label);
+        By dateBy = By.xpath(FOLLOW_UP_PANEL +
+                "//label[.//b[normalize-space(.)=" + labelLiteral + "]]" +
+                "/ancestor::div[contains(@class,'col-md-3') or contains(@class,'form-group')][1]" +
+                "/following-sibling::*[1]//input[@data-role='datepicker' and not(@disabled)][1]");
+        return wait.until(ExpectedConditions.elementToBeClickable(dateBy));
+    }
+
+    private WebElement findEvaluationComboBox(String label) {
+        String labelLiteral = xpathTextLiteral(label);
+        By comboBy = By.xpath(EVALUATION_PANEL +
+                "//label[.//b[normalize-space(.)=" + labelLiteral + "]]" +
+                "/ancestor::div[contains(@class,'margin-sm-xs') or contains(@class,'form-group')][1]" +
+                "/following-sibling::*[1]//span[contains(@class,'k-combobox')][1]");
+        return wait.until(ExpectedConditions.elementToBeClickable(comboBy));
+    }
+
+    private WebElement findEvaluationDateInput(String label) {
+        String labelLiteral = xpathTextLiteral(label);
+        By dateBy = By.xpath(EVALUATION_PANEL +
+                "//input[contains(@ng-model,'valoracionesDinamicaHD') and contains(@ng-model,'.fecha') and @data-role='datepicker'][1]");
+        return wait.until(ExpectedConditions.elementToBeClickable(dateBy));
+    }
+
+    private WebElement findEvaluationNumberInput(String label) {
+        String labelLiteral = xpathTextLiteral(label);
+        By inputBy = By.xpath(EVALUATION_PANEL +
+                "//label[.//b[normalize-space(.)=" + labelLiteral + "]]" +
+                "/ancestor::div[contains(@class,'margin-sm-xs') or contains(@class,'form-group')][1]" +
+                "//following-sibling::div[1]//input[@type='number'][1]");
+        return wait.until(ExpectedConditions.elementToBeClickable(inputBy));
+    }
+
+    private WebElement findEvaluationCommentsTextArea() {
+        By textAreaBy = By.xpath(EVALUATION_PANEL +
+                "//label[.//b[normalize-space(.)='Comments']]" +
+                "/following::textarea[contains(@ng-model,'valoracionesDinamicaHD')][1]");
+        return wait.until(ExpectedConditions.elementToBeClickable(textAreaBy));
+    }
+
     private void clearAndWriteDate(WebElement input, String value) throws InterruptedException {
         scrollToElementMove(input);
         input.sendKeys(Keys.CONTROL + "a");
@@ -1468,6 +1634,33 @@ public class AccessesPage extends BasePage<AccessesPage>{
         write(input, value);
         input.sendKeys(Keys.ENTER);
         pause(300);
+    }
+
+    private void clearAndWriteNumber(WebElement input, String value) throws InterruptedException {
+        scrollToElementMove(input);
+        input.sendKeys(Keys.CONTROL + "a");
+        input.sendKeys(Keys.DELETE);
+        if (value != null && !value.isBlank()) {
+            write(input, value);
+        }
+        pause(300);
+    }
+
+    private void waitForKendoComboValue(WebElement combo, String expectedValue) {
+        String expected = expectedValue == null ? "" : expectedValue.trim();
+        By inputBy = By.xpath(".//input[contains(@class,'k-input-inner')]");
+        new WebDriverWait(driver, java.time.Duration.ofSeconds(5)).until(d -> {
+            try {
+                WebElement input = combo.findElement(inputBy);
+                String current = input.getAttribute("value");
+                if (current == null || current.isBlank()) {
+                    current = input.getAttribute("title");
+                }
+                return current != null && current.trim().equals(expected);
+            } catch (StaleElementReferenceException | NoSuchElementException ignored) {
+                return false;
+            }
+        });
     }
 
     private void switchToAccessContentFrame() {
@@ -1483,6 +1676,26 @@ public class AccessesPage extends BasePage<AccessesPage>{
         switchToAccessContentFrame();
         try {
             wait.until(ExpectedConditions.visibilityOf(accessDataPanel));
+            action.run();
+        } finally {
+            leaveAccessContentFrame();
+        }
+    }
+
+    private void withFollowUpContentFrame(AccessFrameAction action) throws InterruptedException {
+        switchToAccessContentFrame();
+        try {
+            wait.until(ExpectedConditions.visibilityOf(buttonThreePointsFollowUp));
+            action.run();
+        } finally {
+            leaveAccessContentFrame();
+        }
+    }
+
+    private void withEvaluationContentFrame(AccessFrameAction action) throws InterruptedException {
+        switchToAccessContentFrame();
+        try {
+            wait.until(ExpectedConditions.visibilityOf(buttonThreeEvaluation));
             action.run();
         } finally {
             leaveAccessContentFrame();
