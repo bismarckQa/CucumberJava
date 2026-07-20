@@ -545,6 +545,11 @@ public class AccessesSteps {
         AccessesPage.clickZoneRightLocation();
     }
 
+    @When("I click the removed vascular access in location")
+    public void iClickTheRemovedVascularAccessInLocation() throws InterruptedException {
+        AccessesPage.clickRemovedAccessLocation();
+    }
+
     @Then("I check the Comment changed {string}")
     public void iCheckTheCommentChanged(String comment)throws InterruptedException {
         AccessesPage.checkTheCommentChanged(comment);

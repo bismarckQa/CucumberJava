@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Access Test Control</title>
+  <style>
+    :root {
+      --bg: #f4f1ea;
+      --panel: #fffdf8;
+      --line: #d8cfbf;
+      --text: #2e2a26;
+      --muted: #6b6258;
+      --implantation: #d9ead3;
+      --evaluation: #d0e0f0;
+      --complication: #f4d6d6;
+      --accent: #8a5a2b;
+      --ok: #2f7d32;
+      --off: #b33a3a;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      background: linear-gradient(180deg, #f4f1ea 0%, #ebe4d6 100%);
+      color: var(--text);
+    }
+
+    .page {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    .hero,
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: 0 10px 30px rgba(82, 62, 37, 0.08);
+    }
+
+    .hero {
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+
+    h1,
+    h2 {
+      margin: 0;
+    }
+
+    .subtitle {
+      margin-top: 8px;
+      color: var(--muted);
+    }
+
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .summary-card {
+      padding: 16px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: #faf7f0;
+    }
+
+    .summary-card strong {
+      display: block;
+      font-size: 1.4rem;
+      margin-top: 4px;
+    }
+
+    .toolbar {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin: 20px 0;
+    }
+
+    button {
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--text);
+      border-radius: 999px;
+      padding: 10px 14px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    button:hover {
+      border-color: var(--accent);
+    }
+
+    .panel {
+      padding: 18px;
+      margin-bottom: 18px;
+    }
+
+    .feature-block {
+      margin-top: 18px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .feature-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      padding: 14px 16px;
+      background: #f8f4ec;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .feature-title {
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    .feature-meta {
+      color: var(--muted);
+      font-size: 0.88rem;
+      white-space: nowrap;
+    }
+
+    .section-tag {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .implantation {
+      background: var(--implantation);
+    }
+
+    .evaluation {
+      background: var(--evaluation);
+    }
+
+    .complication {
+      background: var(--complication);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.94rem;
+    }
+
+    th,
+    td {
+      border-bottom: 1px solid var(--line);
+      padding: 10px 8px;
+      vertical-align: top;
+      text-align: left;
+    }
+
+    th {
+      color: var(--muted);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    tr.done-row {
+      background: rgba(47, 125, 50, 0.08);
+    }
+
+    .bool {
+      font-weight: 700;
+    }
+
+    .bool.true {
+      color: var(--ok);
+    }
+
+    .bool.false {
+      color: var(--off);
+    }
+
+    .type-badge {
+      display: inline-block;
+      min-width: 52px;
+      text-align: center;
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #fff;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .note-input {
+      width: 100%;
+      min-width: 180px;
+      padding: 8px 10px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #fff;
+    }
+
+    .hint {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 960px) {
+      .summary {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      table,
+      thead,
+      tbody,
+      th,
+      td,
+      tr {
+        display: block;
+      }
+
+      thead {
+        display: none;
+      }
+
+      tr {
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        margin-bottom: 12px;
+        padding: 10px;
+      }
+
+      td {
+        border: 0;
+        padding: 6px 0;
+      }
+
+      td::before {
+        content: attr(data-label) ": ";
+        font-weight: 700;
+        color: var(--muted);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <section class="hero">
+      <h1>Access Feature Control Board</h1>
+      <p class="subtitle">
+        Control inicial de Access separado por Implantation, Evaluation y Complication.
+        Cada caso guarda su check en el navegador y refleja estado booleano true/false.
+      </p>
+
+      <div class="summary">
+        <div class="summary-card">
+          Total Cases
+          <strong id="totalCases">0</strong>
+        </div>
+        <div class="summary-card">
+          Checked
+          <strong id="checkedCases">0</strong>
+        </div>
+        <div class="summary-card">
+          Pending
+          <strong id="pendingCases">0</strong>
+        </div>
+        <div class="summary-card">
+          Progress
+          <strong id="progressPercent">0%</strong>
+        </div>
+      </div>
+    </section>
+
+    <div class="toolbar">
+      <button id="markAllPending" type="button">Mark all pending</button>
+      <button id="markAllDone" type="button">Mark all done</button>
+      <button id="clearNotes" type="button">Clear notes</button>
+      <button id="exportState" type="button">Export JSON state</button>
+    </div>
+
+    <section class="panel">
+      <span class="section-tag implantation">Implantation</span>
+      <h2>Zona 1</h2>
+      <p class="hint">Aqui van acceso, access data, swab, change extension y fotografia.</p>
+      <div id="implantationTable"></div>
+    </section>
+
+    <section class="panel">
+      <span class="section-tag evaluation">Evaluation</span>
+      <h2>Zona 2</h2>
+      <p class="hint">Aqui van follow-up, evaluation/assessment y pre/post treatment.</p>
+      <div id="evaluationTable"></div>
+    </section>
+
+    <section class="panel">
+      <span class="section-tag complication">Complication</span>
+      <h2>Zona 3</h2>
+      <p class="hint">Aqui van complication, interventions, medication y hospitalization.</p>
+      <div id="complicationTable"></div>
+    </section>
+  </div>
+
+  <script>
+    const STORAGE_KEY = "access-feature-control-board-v1";
+
+    const cases = [
+      { id: "imp-001", zone: "Implantation", type: "HD", feature: "Create a New Access.feature", scenario: "New Access" },
+      { id: "imp-002", zone: "Implantation", type: "PD", feature: "Create a New Access.feature", scenario: "Create New Access PD" },
+      { id: "imp-003", zone: "Implantation", type: "HD", feature: "Create a New Access.feature", scenario: "Edit Access" },
+      { id: "imp-004", zone: "Implantation", type: "HD", feature: "Create a New Access.feature", scenario: "Access Location" },
+      { id: "imp-005", zone: "Implantation", type: "HD", feature: "Create a New Access.feature", scenario: "Save with at least one of required fields empty" },
+      { id: "imp-006", zone: "Implantation", type: "HD", feature: "Delete Access.feature", scenario: "New Access" },
+      { id: "imp-007", zone: "Implantation", type: "HD", feature: "Delete Access.feature", scenario: "Cancel a vascular access deletion" },
+      { id: "imp-008", zone: "Implantation", type: "HD", feature: "Delete Access.feature", scenario: "Delete a vascular access" },
+      { id: "imp-010", zone: "Implantation", type: "HD", feature: "View Access.feature", scenario: "Implantation for HD Access", testCase: "3553", alm: "" },
+      { id: "imp-043", zone: "Implantation", type: "PD", feature: "View Access.feature", scenario: "Implantation for PD Access", testCase: "3895", alm: "" },
+      { id: "imp-044", zone: "Implantation", type: "HD", feature: "View Access.feature", scenario: "Zoom the Vascular Access Location", testCase: "3896", alm: "" },
+      { id: "imp-011", zone: "Implantation", type: "HD", feature: "ModifyAccessData.feature", scenario: "Edit Access Data" },
+      { id: "imp-012", zone: "Implantation", type: "HD", feature: "ModifyAccessData.feature", scenario: "Add a New additional test" },
+      { id: "imp-013", zone: "Implantation", type: "HD", feature: "ModifyAccessData.feature", scenario: "Save with (at least one) of required fields empty" },
+      { id: "imp-014", zone: "Implantation", type: "HD", feature: "ModifyAccessData.feature", scenario: "Cancel a New additional test" },
+      { id: "imp-015", zone: "Implantation", type: "HD", feature: "ModifyAccessData.feature", scenario: "Cancel edition of Access Data" },
+      { id: "imp-016", zone: "Implantation", type: "HD", feature: "EditAllHDAccessImplantation.feature", scenario: "Edit all of an HD Access Implantation" },
+      { id: "imp-017", zone: "Implantation", type: "HD", feature: "EditAllHDAccessImplantation.feature", scenario: "Cancel edited HD Access Implantation" },
+      { id: "imp-018", zone: "Implantation", type: "HD", feature: "EditAllHDAccessImplantation.feature", scenario: "Save edited HD Access Implantation" },
+      { id: "imp-019", zone: "Implantation", type: "HD", feature: "CreateChangeExtension.feature", scenario: "Create a Change of Extension" },
+      { id: "imp-020", zone: "Implantation", type: "HD", feature: "CreateChangeExtension.feature", scenario: "Save with required field empty (Date)" },
+      { id: "imp-021", zone: "Implantation", type: "HD", feature: "CreateChangeExtension.feature", scenario: "Canceling a new Change extension" },
+      { id: "imp-022", zone: "Implantation", type: "HD", feature: "CreateChangeExtension.feature", scenario: "Save with required field (Date) outside of the range" },
+      { id: "imp-023", zone: "Implantation", type: "HD", feature: "ModifyChangeExtension.feature", scenario: "Edit a Change of extension" },
+      { id: "imp-024", zone: "Implantation", type: "HD", feature: "ModifyChangeExtension.feature", scenario: "Canceling edited Change Extension" },
+      { id: "imp-025", zone: "Implantation", type: "HD", feature: "ModifyChangeExtension.feature", scenario: "Save with required fields, Date, empty" },
+      { id: "imp-026", zone: "Implantation", type: "HD", feature: "ModifyChangeExtension.feature", scenario: "Save with Date outside the range" },
+      { id: "imp-027", zone: "Implantation", type: "HD", feature: "DeleteChangeExtension.feature", scenario: "Delete a change extension" },
+      { id: "imp-028", zone: "Implantation", type: "HD", feature: "DeleteChangeExtension.feature", scenario: "Cancel deletion" },
+      { id: "imp-029", zone: "Implantation", type: "Both", feature: "CreateCultureAccess.feature", scenario: "Create New Swab of Access" },
+      { id: "imp-030", zone: "Implantation", type: "Both", feature: "CreateCultureAccess.feature", scenario: "Cancel a Swab" },
+      { id: "imp-031", zone: "Implantation", type: "Both", feature: "CreateCultureAccess.feature", scenario: "Save with at least one of required fields empty" },
+      { id: "imp-032", zone: "Implantation", type: "Both", feature: "ModifyCulture.feature", scenario: "Create New Swab of Access" },
+      { id: "imp-033", zone: "Implantation", type: "Both", feature: "ModifyCulture.feature", scenario: "Edit the Swab" },
+      { id: "imp-034", zone: "Implantation", type: "Both", feature: "ModifyCulture.feature", scenario: "Cancel edited Swab" },
+      { id: "imp-035", zone: "Implantation", type: "Both", feature: "ModifyCulture.feature", scenario: "Save with (at least one) of required fields empty" },
+      { id: "imp-036", zone: "Implantation", type: "Both", feature: "DeleteCulture.feature", scenario: "Delete a Swab" },
+      { id: "imp-037", zone: "Implantation", type: "Both", feature: "DeleteCulture.feature", scenario: "Cancel Deletion" },
+      { id: "imp-038", zone: "Implantation", type: "Both", feature: "AttachNewFhoto.feature", scenario: "Attach Photographs" },
+      { id: "imp-039", zone: "Implantation", type: "Both", feature: "AttachNewFhoto.feature", scenario: "Save Add with no photo selected" },
+      { id: "imp-040", zone: "Implantation", type: "Both", feature: "AttachNewFhoto.feature", scenario: "Save Add with required field (date) empty" },
+      { id: "imp-041", zone: "Implantation", type: "Both", feature: "DeletePhotoAccess.feature", scenario: "Cancel image deletion" },
+      { id: "imp-042", zone: "Implantation", type: "Both", feature: "DeletePhotoAccess.feature", scenario: "Delete photo / image" },
+
+      { id: "eva-001", zone: "Evaluation", type: "HD", feature: "View Access.feature", scenario: "Evaluation for HD Access", testCase: "3554", alm: "" },
+      { id: "eva-037", zone: "Evaluation", type: "PD", feature: "View Access.feature", scenario: "Evaluation for PD Access", testCase: "4458", alm: "" },
+      { id: "eva-002", zone: "Evaluation", type: "HD", feature: "CreateNewEvaluationAssessmentHD .feature", scenario: "New Evaluation" },
+      { id: "eva-003", zone: "Evaluation", type: "HD", feature: "CreateNewEvaluationAssessmentHD .feature", scenario: "Save with required field empty" },
+      { id: "eva-004", zone: "Evaluation", type: "HD", feature: "CreateNewEvaluationAssessmentHD .feature", scenario: "Canceling a new Evaluation" },
+      { id: "eva-005", zone: "Evaluation", type: "HD", feature: "CreateNewEvaluationAssessmentHD .feature", scenario: "Save with the date out of range" },
+      { id: "eva-006", zone: "Evaluation", type: "HD", feature: "EditEvaluationHDAccess.feature", scenario: "Cancel Evaluation edition" },
+      { id: "eva-007", zone: "Evaluation", type: "HD", feature: "EditEvaluationHDAccess.feature", scenario: "Save with required (date) field empty" },
+      { id: "eva-008", zone: "Evaluation", type: "HD", feature: "DeleteEvaluationAssessmentAccess.feature", scenario: "New Evaluation" },
+      { id: "eva-009", zone: "Evaluation", type: "HD", feature: "DeleteEvaluationAssessmentAccess.feature", scenario: "Cancel deletion" },
+      { id: "eva-010", zone: "Evaluation", type: "HD", feature: "DeleteEvaluationAssessmentAccess.feature", scenario: "Delete an evaluation/assessment" },
+      { id: "eva-011", zone: "Evaluation", type: "HD", feature: "CreateNewHDAccessFollowUp.feature", scenario: "New Follow Up" },
+      { id: "eva-012", zone: "Evaluation", type: "HD", feature: "CreateNewHDAccessFollowUp.feature", scenario: "Save new Follow up with required fields empty" },
+      { id: "eva-013", zone: "Evaluation", type: "HD", feature: "CreateNewHDAccessFollowUp.feature", scenario: "Cancel a new Access Follow up" },
+      { id: "eva-014", zone: "Evaluation", type: "HD", feature: "CreateNewHDAccessFollowUp.feature", scenario: "Save a new Follow up with the Date outside of range" },
+      { id: "eva-015", zone: "Evaluation", type: "PD", feature: "CreateNewPDAccessFollowUp.feature", scenario: "New Follow Up" },
+      { id: "eva-016", zone: "Evaluation", type: "PD", feature: "CreateNewPDAccessFollowUp.feature", scenario: "Save new Follow up with required fields empty" },
+      { id: "eva-017", zone: "Evaluation", type: "PD", feature: "CreateNewPDAccessFollowUp.feature", scenario: "Cancel a new Access Follow up" },
+      { id: "eva-018", zone: "Evaluation", type: "PD", feature: "CreateNewPDAccessFollowUp.feature", scenario: "Save a new Follow up with the Date outside of range" },
+      { id: "eva-019", zone: "Evaluation", type: "PD", feature: "Edit a follow-up of PD access.feature", scenario: "New Follow Up" },
+      { id: "eva-020", zone: "Evaluation", type: "PD", feature: "Edit a follow-up of PD access.feature", scenario: "Cancel Follow-up edition" },
+      { id: "eva-021", zone: "Evaluation", type: "PD", feature: "Edit a follow-up of PD access.feature", scenario: "Edit a Follow-up" },
+      { id: "eva-022", zone: "Evaluation", type: "PD", feature: "Edit a follow-up of PD access.feature", scenario: "Save selecting the Date out of range" },
+      { id: "eva-023", zone: "Evaluation", type: "PD", feature: "Edit a follow-up of PD access.feature", scenario: "Save with required field empty" },
+      { id: "eva-024", zone: "Evaluation", type: "Both", feature: "DeleteAccesFollowUp.feature", scenario: "New Follow Up" },
+      { id: "eva-025", zone: "Evaluation", type: "Both", feature: "DeleteAccesFollowUp.feature", scenario: "Delete a Follow-up" },
+      { id: "eva-026", zone: "Evaluation", type: "HD", feature: "Ability to create pre and post treatment assessment of access.feature", scenario: "Add pre-treatment in Evaluation section of Access" },
+      { id: "eva-027", zone: "Evaluation", type: "HD", feature: "Ability to create pre and post treatment assessment of access.feature", scenario: "Modify individual pre-treatment to the vascular access" },
+      { id: "eva-028", zone: "Evaluation", type: "HD", feature: "Ability to create pre and post treatment assessment of access.feature", scenario: "Global edit mode for pre-treatment to the vascular access" },
+      { id: "eva-029", zone: "Evaluation", type: "HD", feature: "Ability to create pre and post treatment assessment of access.feature", scenario: "Remove a pre-treatment to the vascular access" },
+      { id: "eva-030", zone: "Evaluation", type: "HD", feature: "Ability to create pre and post treatment assessment of access.feature", scenario: "Add post-treatment in Evaluation section of Access" },
+      { id: "eva-031", zone: "Evaluation", type: "HD", feature: "Ability to create pre and post treatment assessment of access.feature", scenario: "Modify individual post-treatment to the vascular access" },
+      { id: "eva-032", zone: "Evaluation", type: "HD", feature: "Ability to create pre and post treatment assessment of access.feature", scenario: "Global edit mode for post-treatment to the vascular access" },
+      { id: "eva-033", zone: "Evaluation", type: "HD", feature: "Ability to create pre and post treatment assessment of access.feature", scenario: "Remove a post-treatment to the vascular access" },
+      { id: "eva-034", zone: "Evaluation", type: "HD", feature: "Ability to create pre and post treatment assessment of access.feature", scenario: "View pre-treatment in Evaluation section of Access" },
+      { id: "eva-035", zone: "Evaluation", type: "HD", feature: "Ability to create pre and post treatment assessment of access.feature", scenario: "View post-treatment in Evaluation section of Access" },
+      { id: "eva-036", zone: "Evaluation", type: "HD", feature: "Ability to create pre and post treatment assessment of access.feature", scenario: "Delete a vascular access" },
+
+      { id: "com-001", zone: "Complication", type: "HD", feature: "View Access.feature", scenario: "Complications", testCase: "3555", alm: "" },
+      { id: "com-002", zone: "Complication", type: "Both", feature: "CreateComplicationForAccess.feature", scenario: "Add New Complication" },
+      { id: "com-003", zone: "Complication", type: "Both", feature: "CreateComplicationForAccess.feature", scenario: "Cancel Complication" },
+      { id: "com-004", zone: "Complication", type: "Both", feature: "CreateComplicationForAccess.feature", scenario: "Save with (at least one) of required fields empty" },
+      { id: "com-005", zone: "Complication", type: "Both", feature: "ModifyComplications.feature", scenario: "Edit / Modify complications" },
+      { id: "com-006", zone: "Complication", type: "Both", feature: "ModifyComplications.feature", scenario: "Cancel edited complication" },
+      { id: "com-007", zone: "Complication", type: "Both", feature: "ModifyComplications.feature", scenario: "Save with at least one of required fields empty" },
+      { id: "com-008", zone: "Complication", type: "Both", feature: "ModifyComplications.feature", scenario: "Save with the Identification date out of range" },
+      { id: "com-009", zone: "Complication", type: "Both", feature: "ModifyComplications.feature", scenario: "Save with the Resolution date out of range" },
+      { id: "com-010", zone: "Complication", type: "Both", feature: "DeleteComplicationFromAccess.feature", scenario: "Delete Existing Complication" },
+      { id: "com-011", zone: "Complication", type: "Both", feature: "DeleteComplicationFromAccess.feature", scenario: "Cancel deletion" },
+      { id: "com-012", zone: "Complication", type: "Both", feature: "AddSignsSymptomsComplication.feature", scenario: "Assign Signs or Symptoms" },
+      { id: "com-013", zone: "Complication", type: "Both", feature: "AddSignsSymptomsComplication.feature", scenario: "Canceling a Signs or Symptoms assignation" },
+      { id: "com-014", zone: "Complication", type: "Both", feature: "AddSignsSymptomsComplication.feature", scenario: "Add without (at least one) sign symptom selected" },
+      { id: "com-015", zone: "Complication", type: "Both", feature: "CreateInterventionAccessComplication.feature", scenario: "Create intervention" },
+      { id: "com-016", zone: "Complication", type: "Both", feature: "CreateInterventionAccessComplication.feature", scenario: "Canceling intervention" },
+      { id: "com-017", zone: "Complication", type: "Both", feature: "CreateInterventionAccessComplication.feature", scenario: "Save with required fields empty" },
+      { id: "com-018", zone: "Complication", type: "Both", feature: "CreateInterventionAccessComplication.feature", scenario: "Save with wrong date" },
+      { id: "com-019", zone: "Complication", type: "Both", feature: "ModifyInterventionAccessComplication.feature", scenario: "Edit /Modify intervention" },
+      { id: "com-020", zone: "Complication", type: "Both", feature: "ModifyInterventionAccessComplication.feature", scenario: "Canceling edited intervention" },
+      { id: "com-021", zone: "Complication", type: "Both", feature: "ModifyInterventionAccessComplication.feature", scenario: "Save with (at least one) required fields empty" },
+      { id: "com-022", zone: "Complication", type: "Both", feature: "DeleteInterventionComplication.feature", scenario: "Delete intervention of Intervention" },
+      { id: "com-023", zone: "Complication", type: "Both", feature: "DeleteInterventionComplication.feature", scenario: "Cancel deletion of Intervention" },
+      { id: "com-024", zone: "Complication", type: "Both", feature: "LinkMedicationAccessComplication.feature", scenario: "Assign medication" },
+      { id: "com-025", zone: "Complication", type: "Both", feature: "LinkMedicationAccessComplication.feature", scenario: "Cancel medication assignation" },
+      { id: "com-026", zone: "Complication", type: "Both", feature: "LinkMedicationAccessComplication.feature", scenario: "Add without selected medication" },
+      { id: "com-027", zone: "Complication", type: "Both", feature: "UnlinkMedicationFromAccessComplication.feature", scenario: "Delete medication of an access complication" },
+      { id: "com-028", zone: "Complication", type: "Both", feature: "UnlinkMedicationFromAccessComplication.feature", scenario: "Cancel deletion" },
+      { id: "com-029", zone: "Complication", type: "Both", feature: "LinkHospitalizationAccessComplication.feature", scenario: "Assign hospitalization to a Vascular Access Complication" },
+      { id: "com-030", zone: "Complication", type: "Both", feature: "LinkHospitalizationAccessComplication.feature", scenario: "Add without hospitalization selected" },
+      { id: "com-031", zone: "Complication", type: "Both", feature: "LinkHospitalizationAccessComplication.feature", scenario: "Cancel medication assignation" },
+      { id: "com-032", zone: "Complication", type: "Both", feature: "UnlinkHospitalizationAccessComplication.feature", scenario: "Delete an hospitalization assignation" },
+      { id: "com-033", zone: "Complication", type: "Both", feature: "UnlinkHospitalizationAccessComplication.feature", scenario: "Cancel deletion" }
+    ];
+
+    const state = loadState();
+
+    function loadState() {
+      try {
+        return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+      } catch (error) {
+        return {};
+      }
+    }
+
+    function saveState() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    }
+
+    function escapeHtml(value) {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function groupByFeature(zoneName) {
+      const zoneCases = cases.filter(testCase => testCase.zone === zoneName);
+      const featureMap = new Map();
+
+      zoneCases.forEach(testCase => {
+        if (!featureMap.has(testCase.feature)) {
+          featureMap.set(testCase.feature, []);
+        }
+        featureMap.get(testCase.feature).push(testCase);
+      });
+
+      return Array.from(featureMap.entries()).map(([feature, featureCases]) => ({
+        feature,
+        cases: featureCases
+      }));
+    }
+
+    function featureRows(featureCases) {
+      return featureCases.map((testCase, index) => {
+        const record = state[testCase.id] || { checked: false, note: "" };
+        const checked = Boolean(record.checked);
+        const note = record.note || "";
+
+        return `
+          <tr class="${checked ? "done-row" : ""}">
+            <td data-label="Order">${index + 1}</td>
+            <td data-label="Type"><span class="type-badge">${escapeHtml(testCase.type)}</span></td>
+            <td data-label="TestCase">${escapeHtml(testCase.testCase || "")}</td>
+            <td data-label="ALM">${escapeHtml(testCase.alm || "")}</td>
+            <td data-label="Scenario">${escapeHtml(testCase.scenario)}</td>
+            <td data-label="Done">
+              <input type="checkbox" data-id="${testCase.id}" class="done-checkbox" ${checked ? "checked" : ""}>
+            </td>
+            <td data-label="State">
+              <span class="bool ${checked ? "true" : "false"}">${checked}</span>
+            </td>
+            <td data-label="Note">
+              <input
+                type="text"
+                class="note-input"
+                data-note-id="${testCase.id}"
+                value="${escapeHtml(note)}"
+                placeholder="Notas, bloqueo, dato pendiente"
+              >
+            </td>
+          </tr>
+        `;
+      }).join("");
+    }
+
+    function renderTable(zoneName, targetId) {
+      const target = document.getElementById(targetId);
+      const featureGroups = groupByFeature(zoneName);
+
+      target.innerHTML = featureGroups.map(group => {
+        const total = group.cases.length;
+        const checked = group.cases.filter(testCase => state[testCase.id] && state[testCase.id].checked).length;
+
+        return `
+          <div class="feature-block">
+            <div class="feature-header">
+              <div class="feature-title">${escapeHtml(group.feature)}</div>
+              <div class="feature-meta">${checked}/${total} checked</div>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th>Order</th>
+                  <th>Type</th>
+                  <th>TestCase</th>
+                  <th>ALM</th>
+                  <th>Scenario</th>
+                  <th>Check</th>
+                  <th>Boolean</th>
+                  <th>Note</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${featureRows(group.cases)}
+              </tbody>
+            </table>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function updateSummary() {
+      const total = cases.length;
+      const checked = cases.filter(testCase => state[testCase.id] && state[testCase.id].checked).length;
+      const pending = total - checked;
+      const percent = total === 0 ? 0 : Math.round((checked / total) * 100);
+
+      document.getElementById("totalCases").textContent = total;
+      document.getElementById("checkedCases").textContent = checked;
+      document.getElementById("pendingCases").textContent = pending;
+      document.getElementById("progressPercent").textContent = `${percent}%`;
+    }
+
+    function render() {
+      renderTable("Implantation", "implantationTable");
+      renderTable("Evaluation", "evaluationTable");
+      renderTable("Complication", "complicationTable");
+      updateSummary();
+      bindEvents();
+    }
+
+    function bindEvents() {
+      document.querySelectorAll(".done-checkbox").forEach(checkbox => {
+        checkbox.addEventListener("change", event => {
+          const id = event.target.dataset.id;
+          state[id] = state[id] || { checked: false, note: "" };
+          state[id].checked = event.target.checked;
+          saveState();
+          render();
+        });
+      });
+
+      document.querySelectorAll(".note-input").forEach(input => {
+        input.addEventListener("input", event => {
+          const id = event.target.dataset.noteId;
+          state[id] = state[id] || { checked: false, note: "" };
+          state[id].note = event.target.value;
+          saveState();
+        });
+      });
+    }
+
+    document.getElementById("markAllPending").addEventListener("click", () => {
+      cases.forEach(testCase => {
+        state[testCase.id] = state[testCase.id] || { checked: false, note: "" };
+        state[testCase.id].checked = false;
+      });
+      saveState();
+      render();
+    });
+
+    document.getElementById("markAllDone").addEventListener("click", () => {
+      cases.forEach(testCase => {
+        state[testCase.id] = state[testCase.id] || { checked: false, note: "" };
+        state[testCase.id].checked = true;
+      });
+      saveState();
+      render();
+    });
+
+    document.getElementById("clearNotes").addEventListener("click", () => {
+      cases.forEach(testCase => {
+        state[testCase.id] = state[testCase.id] || { checked: false, note: "" };
+        state[testCase.id].note = "";
+      });
+      saveState();
+      render();
+    });
+
+    document.getElementById("exportState").addEventListener("click", async () => {
+      const exportData = cases.map(testCase => {
+        const record = state[testCase.id] || { checked: false, note: "" };
+        return {
+          id: testCase.id,
+          zone: testCase.zone,
+          type: testCase.type,
+          feature: testCase.feature,
+          scenario: testCase.scenario,
+          checked: Boolean(record.checked),
+          note: record.note || ""
+        };
+      });
+
+      const payload = JSON.stringify(exportData, null, 2);
+
+      try {
+        await navigator.clipboard.writeText(payload);
+        alert("JSON copied to clipboard");
+      } catch (error) {
+        alert(payload);
+      }
+    });
+
+    render();
+  </script>
+</body>
+</html>

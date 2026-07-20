@@ -1024,9 +1024,15 @@ public class AccessesPage extends BasePage<AccessesPage>{
         driver.switchTo().parentFrame();
     }
     public void clickZoneRightLocation()throws InterruptedException{
+        clickRemovedAccessLocation();
+    }
+
+    public void clickRemovedAccessLocation() throws InterruptedException {
         driver.switchTo().frame("frmContenido");
         pause(500);
-        click(zonaDer);
+        scrollToElementMove(locationTitle);
+        waitElements(target1InactiveRedColour);
+        click(target1InactiveRedColour);
         pause(200);
         driver.switchTo().parentFrame();
     }
