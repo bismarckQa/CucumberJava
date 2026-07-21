@@ -15,7 +15,7 @@ Feature:Attach a new photo/image to an access
     And   I login successful
     And   I Select the Group of patients "Paciente DP"
     When  I select the patient "Ape1_1838 Ape2_1838, Nom_1838 - 1838"
-    And   I open Accesses module
+    And   I open "Accesses" module
     Then  I check the module Accesses appear correctly
 
   @test @TestCase_3562 @ALM_VR_TC_21
@@ -23,7 +23,7 @@ Feature:Attach a new photo/image to an access
     When  I select the Evaluation in main menu
     And   I verify Historic Photographs of Accesses
     And   I click button image photo
-    Then  I select Image to upload
+    Then  I select image to upload from path "/home/kali/Documentos/CucumberJava/src/test/resources/screenshots/Create_New_Access_PD_Step_20260716_232503.png"
     And   I click button OK modal error
     And   I verify Historic Photographs of Accesses
 
@@ -41,9 +41,8 @@ Feature:Attach a new photo/image to an access
     When  I select the Evaluation in main menu
     And   I verify Historic Photographs of Accesses
     And   I click button image photo
-    When   I insert data into date add photograph " "
-    When  I select Image to upload
+    And   I insert data into date add photograph " "
+    When  I select image to upload from path "/home/kali/Documentos/CucumberJava/src/test/resources/screenshots/Create_New_Access_PD_Step_20260716_232503.png"
     And   I click button "Add" upload photo
     Then  I click button "Cancel" upload photo
     And   I verify Historic Photographs of Accesses
-

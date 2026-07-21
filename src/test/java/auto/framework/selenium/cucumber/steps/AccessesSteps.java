@@ -801,6 +801,11 @@ public class AccessesSteps {
 
     }
 
+    @Then("I select image to upload from path {string}")
+    public void iSelectImageToUploadFromPath(String imagePath) throws InterruptedException {
+        AccessesPage.selectImageToUpload(imagePath);
+    }
+
     @And("I click button {string} upload photo")
     public void iClickButtonUploadPhoto(String action)throws InterruptedException {
         AccessesPage.selectOptionAction(action);

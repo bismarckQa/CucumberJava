@@ -1302,9 +1302,12 @@ public class AccessesPage extends BasePage<AccessesPage>{
         driver.switchTo().parentFrame();
     }
     public void selectImageToUpload()throws InterruptedException{
+        selectImageToUpload("C:\\Users\\colombb\\Pictures\\capture1.png");
+    }
+
+    public void selectImageToUpload(String rutaFile)throws InterruptedException{
         pause(400);
         driver.switchTo().parentFrame();
-        String rutaFile= "C:\\Users\\colombb\\Pictures\\capture1.png";
         //((JavascriptExecutor)driver).executeScript("arguments[0].style.visibility = 'visible'; ",inputSelectFileImagePhotoEvaluation);
         //waitElements(inputSelectFileImagePhotoEvaluation);
         inputSelectFileImagePhotoEvaluation.sendKeys(rutaFile);
