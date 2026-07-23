@@ -17,7 +17,15 @@ Feature: Delete Photo Access
     And   I open Accesses module
     Then  I check the module Accesses appear correctly
 
-  @test @TestCase_4443 @ALM_VR_TC
+  @test @TestCase_3799 @ALM_VR_TC_32
+  Scenario: Delete a Photo Image from Access
+    When   I select the Evaluation in main menu
+    Then  I verify Historic Photographs of Accesses
+    And   I click button image evaluation
+    And   I click button delete image
+    Then  I select option action in modal "Yes"
+  
+  @test @TestCase_4443 @ALM_VR_TC_356
   Scenario: Cancel image deletion
     When   I select the Evaluation in main menu
     Then  I verify Historic Photographs of Accesses
@@ -25,11 +33,4 @@ Feature: Delete Photo Access
     And   I click button delete image
     Then  I select option action in modal "No"
 
-  @test @TestCase_3799 @ALM_VR_TC
-  Scenario: Delete photo / image
-    When   I select the Evaluation in main menu
-    Then  I verify Historic Photographs of Accesses
-    And   I click button image evaluation
-    And   I click button delete image
-    Then  I select option action in modal "Yes"
-
+  

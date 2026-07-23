@@ -5,64 +5,66 @@
 #version
 @2024R1a
 #Module
-@HDAccess
+@PDAccess
 
-Feature: Modify a change of extension
+Feature: Edit a change of extension (for PD access)
 
-  Background:
+ Background:
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
     And   I login successful
     And   I Select the Group of patients "Paciente DP"
-    When  I select the patient "Ape1_1838 Ape2_1838, Nom_1838 - 1838"
+    When  I select the patient "Foianini Baggio, Pasquale"
     And   I open Accesses module
     Then  I check the module Accesses appear correctly
 
-  @test @TestCase_3808 @ALM_VR_TC
-  Scenario: Edit a Change of extension
-    When   I click button implantation section
+  @test @TestCase_3947 @ALM_VR_TC_364
+  Scenario: Canceling edited Change Extension
+    And   I click button implantation section
     And   I verify section change of extension is displayed
     Then  I click button three points change of extension
     And   I click in edit extension
-    When   I insert data into date change of extension "11/06/2025"
+    And   I insert data into date change of extension "09/21/2025"
+    When  I select option type of configuration for change extension
+    And   I click button three points change of extension
+    And   I click button cancel
+    Then  I click button arrow up
+
+  
+  @test @TestCase_3808 @ALM_VR_TC_365
+  Scenario: Edit a Change of extension
+    And   I click button implantation section
+    And   I verify section change of extension is displayed
+    Then  I click button three points change of extension
+    And   I click in edit extension
+    And   I insert data into date change of extension "11/06/2025"
     When  I click button three points change of extension
     And   I click button cancel
     And    I click button arrow up
 
-  @test @TestCase_3947 @ALM_VR_TC
-  Scenario: Canceling edited Change Extension
-    When   I click button implantation section
-    And   I verify section change of extension is displayed
-    Then  I click button three points change of extension
-    And   I click in edit extension
-    When   I insert data into date change of extension "09/21/2025"
-    When  I select option type of configuration for change extension
-    And   I click button three points change of extension
-    And   I click button cancel
-    Then  I click button arrow up
-
-  @test @TestCase_3948 @ALM_VR_TC
-  Scenario: Save with required  fields, Date, empty
-    When   I click button implantation section
-    And   I verify section change of extension is displayed
-    Then  I click button three points change of extension
-    And   I click in edit extension
-    When   I insert data into date change of extension ""
-    When  I select option type of configuration for change extension
-    And   I click button three points change of extension
-    And   I click button cancel
-    Then  I click button arrow up
-
-  @test @TestCase_4202 @ALM_VR_TC
+  
+  @test @TestCase_4202 @ALM_VR_TC_366
   Scenario: Save with Date outside the range
-    When   I click button implantation section
+    And   I click button implantation section
     And   I verify section change of extension is displayed
     Then  I click button three points change of extension
     And   I click in edit extension
-    When   I insert data into date change of extension "10/21/1990"
+    And   I insert data into date change of extension "10/21/1990"
     When  I click button three points change of extension
     And   I click button save
     And   I click button OK modal error
     And   I click button three points change of extension
     Then  I click button cancel
 
+  
+  @test @TestCase_3948 @ALM_VR_TC_367
+  Scenario: Save with required  fields, Date, empty
+    And   I click button implantation section
+    And   I verify section change of extension is displayed
+    Then  I click button three points change of extension
+    And   I click in edit extension
+    And   I insert data into date change of extension ""
+    When  I select option type of configuration for change extension
+    And   I click button three points change of extension
+    And   I click button cancel
+    Then  I click button arrow up

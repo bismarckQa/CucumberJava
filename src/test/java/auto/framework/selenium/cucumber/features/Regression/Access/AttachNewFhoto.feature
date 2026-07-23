@@ -13,7 +13,6 @@ Feature:Attach a new photo/image to an access
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
     And   I login successful
-    And   I Select the Group of patients "Paciente DP"
     When  I select the patient "Ape1_1838 Ape2_1838, Nom_1838 - 1838"
     And   I open "Accesses" module
     Then  I check the module Accesses appear correctly
@@ -42,7 +41,7 @@ Feature:Attach a new photo/image to an access
     And   I verify Historic Photographs of Accesses
     And   I click button image photo
     And   I insert data into date add photograph " "
-    When  I select image to upload from path "/home/kali/Documentos/CucumberJava/src/test/resources/screenshots/Create_New_Access_PD_Step_20260716_232503.png"
+    When  I select image to upload from path "C:\\Users\\colombb\\OneDrive - Vantive US Healthcare LLC\\Pictures\\Versia\\accesss1.png"
     And   I click button "Add" upload photo
     Then  I click button "Cancel" upload photo
     And   I verify Historic Photographs of Accesses

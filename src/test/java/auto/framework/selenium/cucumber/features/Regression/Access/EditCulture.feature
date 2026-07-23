@@ -7,7 +7,7 @@
 #Module
 @HDAccess
 
-Feature: Modify Culture
+Feature: Edit Culture
 
   Background:
     Given I open the Baxter website
@@ -17,42 +17,31 @@ Feature: Modify Culture
     And   I open Accesses module
     And   I click button implantation section
 
-  @test @TestCase_3673 @ALM_VR_TC_
-  Scenario: Create New Swab of Access
-    Then  I click button three points swab
-    And   I click button "New swab"
-    And   I select option location swab
-    And   I insert data into evaluation area "Qa test"
-    Then  I click button three points swab
-    And   I click button save
-
-  @test @TestCase_3789 @ALM_VR_TC_
+  @test @TestCase_3789 @ALM_VR_TC_42
   Scenario: Edit the Swab
     Then  I click button three points swab
-    And   I click button "Edit"
-    When  I insert data into input date: "12/16/2025"
+    When  I click button "Edit"
+    And   I insert data into input date: "12/16/2025"
     And   I select option location swab
     And   I insert data into evaluation area "Swab Modified"
     Then  I click button three points swab
     And   I click button save
 
-  @test @TestCase_3942 @ALM_VR_TC_
+  @test @TestCase_3942 @ALM_VR_TC_402
   Scenario: Cancel edited Swab
     Then  I click button three points swab
-    And   I click button "Edit"
-    When  I insert data into input date: "12/17/2025"
+    When  I click button "Edit"
+    And   I insert data into input date: "12/17/2025"
     And   I select option location swab
     And   I insert data into evaluation area "Swab Modified"
     Then  I click button three points swab
     And   I click button cancel
 
-
-
-  @test @TestCase_3943 @ALM_VR_TC_
-  Scenario: Save with (at least one) of required  fields empty
+  @test @TestCase_3943 @ALM_VR_TC_403
+  Scenario: Save with (at least one) of required fields empty
     Then  I click button three points swab
-    And   I click button "Edit"
-    When  I insert data into input date: "12/17/2025"
+    When  I click button "Edit"
+    And   I insert data into input date: "12/17/2025"
     And   I clear input data location swab
     And   I insert data into evaluation area "Swab Modified"
     Then  I click button three points swab

@@ -5,7 +5,7 @@
 #version
 @2024R1a
 #Module
-@HDAccess
+@PDAccess
 
 Feature: Create a New PD Access Follow-Up
 
@@ -13,6 +13,7 @@ Feature: Create a New PD Access Follow-Up
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
     And   I login successful
+    And   I Select the Group of patients "Paciente DP"
     When  I select the patient "Foianini Baggio, Pasquale"
     And   I open Accesses module
     Then  I check the module Accesses appear correctly

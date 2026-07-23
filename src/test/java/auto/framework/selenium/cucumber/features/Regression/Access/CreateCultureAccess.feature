@@ -17,32 +17,32 @@ Feature: Create a Culture for an Access
     And   I open Accesses module
     Then  I check the module Accesses appear correctly
 
+
   @test @TestCase_3673 @ALM_VR_TC_28
   Scenario: Create New Swab of Access
-    When   I click button implantation section
+    And   I click button implantation section
     Then  I click button three points swab
     And   I click button "New swab"
-    When   I select option location swab
+    And   I select option location swab
     And   I insert data into evaluation area "Qa test"
     Then  I click button three points swab
     And   I click button save
 
   @test @TestCase_3940 @ALM_VR_TC_340
   Scenario: Cancel a Swab
-    When   I click button implantation section
+    And   I click button implantation section
     Then  I click button three points swab
     And   I click button "New swab"
-    When   I select option location swab
+    And   I select option location swab
     And   I insert data into evaluation area "Qa test"
     Then  I click button three points swab
     And   I click button cancel
 
   @test @TestCase_3941 @ALM_VR_TC_341
   Scenario: Save with at least one of required  fields empty
-    When   I click button implantation section
+    And   I click button implantation section
     Then  I click button three points swab
     And   I click button "New swab"
-    When   I insert data into evaluation area "Qa test"
+    And   I insert data into evaluation area "Qa test"
     Then  I click button three points swab
     And   I click button cancel
-

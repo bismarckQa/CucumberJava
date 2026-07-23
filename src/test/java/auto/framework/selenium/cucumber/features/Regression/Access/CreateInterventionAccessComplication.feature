@@ -13,7 +13,6 @@ Feature: Create intervention to an access Complication
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
     And   I login successful
-    And   I Select the Group of patients "Paciente DP"
     When  I select the patient "Ape1_1838 Ape2_1838, Nom_1838 - 1838"
     And   I open Accesses module
     Then  I check the module Accesses appear correctly
@@ -63,4 +62,3 @@ Feature: Create intervention to an access Complication
     Then  I click button OK modal error
     And   I click button three points interventions actions
     And   I click button cancel
-

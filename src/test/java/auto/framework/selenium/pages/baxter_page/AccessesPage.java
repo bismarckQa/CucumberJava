@@ -325,7 +325,12 @@ public class AccessesPage extends BasePage<AccessesPage>{
 
     @FindBy(how = How.XPATH, using = "//div[h2[contains(text(), 'Hospitalizations')]]//i[contains(@class, 'icon-three-points')][1]")
     private WebElement buttonThreePointsHospitalizations ;
-    @FindBy(how = How.XPATH, using = "//div[h2[contains(text(), 'Evaluation')]]//i[contains(@class, 'icon-three-points')][1]")
+    @FindBy(
+            how = How.XPATH,
+            using = "//input[@id='step-circle-3']" +
+                    "/ancestor::div[contains(@class,'x_panel')][1]" +
+                    "//a[contains(@class,'dropdown-toggle')][.//i[contains(@class,'icon-three-points')]][1]"
+    )
     private WebElement buttonThreeEvaluation ;
 
     @FindBy(how = How.XPATH, using = "//table[contains(@class,'table table-striped')]/tbody[1]/tr[1]/td[5]/div[1]/menu-individual[1]/ul[1]/li[1]/a[1]")
@@ -1171,7 +1176,11 @@ public class AccessesPage extends BasePage<AccessesPage>{
     public void selectOptionActionInAssociate(String action)throws InterruptedException{
         driver.switchTo().frame("frmContenido");
         pause(400);
-        WebElement button = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[contains(text(),'"+action+"')]")));
+        WebElement button = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(
+                "//ul[contains(@class,'dropdown-menu') and contains(@class,'three-points')" +
+                        " and not(contains(@style,'display: none'))]" +
+                        "//*[self::a or self::span][contains(normalize-space(.),'" + action + "')]"
+        )));
         pause(200);
         button.click();
         pause(300);
@@ -1616,9 +1625,9 @@ public class AccessesPage extends BasePage<AccessesPage>{
     }
 
     private WebElement findEvaluationDateInput(String label) {
-        String labelLiteral = xpathTextLiteral(label);
         By dateBy = By.xpath(EVALUATION_PANEL +
-                "//input[contains(@ng-model,'valoracionesDinamicaHD') and contains(@ng-model,'.fecha') and @data-role='datepicker'][1]");
+                "//div[contains(@class,'form-group')][1]" +
+                "//span[contains(@class,'k-datepicker')]//input[contains(@class,'k-input-inner')][1]");
         return wait.until(ExpectedConditions.elementToBeClickable(dateBy));
     }
 

@@ -13,7 +13,6 @@ Feature: Create complication for an Access
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
     And   I login successful
-    And   I Select the Group of patients "Paciente DP"
     When  I select the patient "Ape1_1838 Ape2_1838, Nom_1838 - 1838"
     And   I open Accesses module
     Then  I check the module Accesses appear correctly
@@ -44,4 +43,3 @@ Feature: Create complication for an Access
     When  I insert data into identification date "11/19/2025"
     And   I click button three points complications
     Then   I click button cancel
-

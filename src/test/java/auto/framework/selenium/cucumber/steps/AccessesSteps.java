@@ -517,7 +517,7 @@ public class AccessesSteps {
 
     @And("I select Date of first use {string}")
     public void iSelectDateOfFirstUse(String Date)throws InterruptedException {
-        AccessesPage.writeDatePostTreatment(Date);
+        AccessesPage.enterFirstUseDateInAccessData(Date);
     }
 
     @And("I insert data into text area comments {string}")
@@ -545,7 +545,7 @@ public class AccessesSteps {
         AccessesPage.clickZoneRightLocation();
     }
 
-    @When("I click the removed vascular access in location")
+    @When("I Make zoom out the Access location selected")
     public void iClickTheRemovedVascularAccessInLocation() throws InterruptedException {
         AccessesPage.clickRemovedAccessLocation();
     }
