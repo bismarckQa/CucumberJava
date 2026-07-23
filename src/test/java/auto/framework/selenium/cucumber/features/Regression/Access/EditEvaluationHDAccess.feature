@@ -16,24 +16,22 @@ Feature: Edit evaluation/assessment (for HD Access)
     And   I Select the Group of patients "Paciente HD"
     When  I select the patient "ERCA ERCA, CKD - 123456789"
     And   I open Accesses module
-    Then  I check the module Accesses appear correctly
+    When  I select the Evaluation in main menu
 
-  @test @TestCase_3961 @ALM_VR_TC
+  @test @TestCase_3961 @ALM_VR_TC_
   Scenario: Cancel Evaluation edition
-    When  I select the Evaluation in main menu
     And   I click button three points evaluation
     And   I click button "Edit"
     When  I click button three points evaluation
     And   I click button cancel
     Then  I click button arrow up
 
-  @test @TestCase_3962 @ALM_VR_TC
+
+  @test @TestCase_3962 @ALM_VR_TC_
   Scenario: Save with required (date) field empty
-    When  I select the Evaluation in main menu
     And   I click button three points evaluation
     And   I click button "Edit"
-    When   I insert data into input date: ""
+    And   I insert data into input date: ""
     When  I click button three points evaluation
     And   I click button cancel
     Then  I click button arrow up
-

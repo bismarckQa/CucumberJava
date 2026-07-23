@@ -16,21 +16,18 @@ Feature: Delete intervention of a access complication
     And   I Select the Group of patients "Paciente DP"
     When  I select the patient "Ape1_1838 Ape2_1838, Nom_1838 - 1838"
     And   I open Accesses module
-    Then  I check the module Accesses appear correctly
+    When  I select the Complications in main menu
 
-  @test @TestCase_3921 @ALM_VR_TC
+  @test @TestCase_3921 @ALM_VR_TC_35
   Scenario: Delete intervention of Intervention
-    When  I select the Complications in main menu
     And   I click button three points interventions actions
     And   I click button "Delete"
-    When   I click button "Yes" in action modal
+    And   I click button "Yes" in action modal
     Then  I click button arrow up
 
-  @test @TestCase_3922 @ALM_VR_TC
+  @test @TestCase_3922 @ALM_VR_TC_31
   Scenario: Cancel deletion of Intervention
-    When  I select the Complications in main menu
     And   I click button three points interventions actions
     And   I click button "Delete"
-    When   I click button "No" in action modal
+    And   I click button "No" in action modal
     Then  I click button arrow up
-

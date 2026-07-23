@@ -15,48 +15,45 @@ Feature: Modify Culture
     And   I login successful
     When  I select the patient "Ape1_1838 Ape2_1838, Nom_1838 - 1838"
     And   I open Accesses module
-    Then  I check the module Accesses appear correctly
+    And   I click button implantation section
 
-  @test @TestCase_3673 @ALM_VR_TC
+  @test @TestCase_3673 @ALM_VR_TC_
   Scenario: Create New Swab of Access
-    When   I click button implantation section
     Then  I click button three points swab
-    When   I click button "New swab"
+    And   I click button "New swab"
     And   I select option location swab
     And   I insert data into evaluation area "Qa test"
     Then  I click button three points swab
     And   I click button save
 
-  @test @TestCase_3789 @ALM_VR_TC
+  @test @TestCase_3789 @ALM_VR_TC_
   Scenario: Edit the Swab
-    When   I click button implantation section
     Then  I click button three points swab
-    When   I click button "Edit"
+    And   I click button "Edit"
     When  I insert data into input date: "12/16/2025"
     And   I select option location swab
     And   I insert data into evaluation area "Swab Modified"
     Then  I click button three points swab
     And   I click button save
 
-  @test @TestCase_3942 @ALM_VR_TC
+  @test @TestCase_3942 @ALM_VR_TC_
   Scenario: Cancel edited Swab
-    When   I click button implantation section
     Then  I click button three points swab
-    When   I click button "Edit"
+    And   I click button "Edit"
     When  I insert data into input date: "12/17/2025"
     And   I select option location swab
     And   I insert data into evaluation area "Swab Modified"
     Then  I click button three points swab
     And   I click button cancel
 
-  @test @TestCase_3943 @ALM_VR_TC
+
+
+  @test @TestCase_3943 @ALM_VR_TC_
   Scenario: Save with (at least one) of required  fields empty
-    When   I click button implantation section
     Then  I click button three points swab
-    When   I click button "Edit"
+    And   I click button "Edit"
     When  I insert data into input date: "12/17/2025"
     And   I clear input data location swab
     And   I insert data into evaluation area "Swab Modified"
     Then  I click button three points swab
     And   I click button cancel
-

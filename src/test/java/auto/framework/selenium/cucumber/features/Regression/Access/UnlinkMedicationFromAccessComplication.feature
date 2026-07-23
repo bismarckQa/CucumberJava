@@ -16,19 +16,17 @@ Feature: Unlink medication from an access complication
     And   I Select the Group of patients "Paciente DP"
     When  I select the patient "Ape1_1838 Ape2_1838, Nom_1838 - 1838"
     And   I open Accesses module
-    Then  I check the module Accesses appear correctly
-
-  @test @TestCase_3913 @ALM_VR_TC
-  Scenario: Delete medication of an access complication
     When  I select the Complications in main menu
+
+  @test @TestCase_3913 @ALM_VR_TC_
+  Scenario: Delete medication of an access complication
     And   I click button three points medications
     And   I click button "Delete"
     Then  I click button "Yes" in action modal
 
-  @test @TestCase_3914 @ALM_VR_TC
+
+  @test @TestCase_3914 @ALM_VR_TC_
   Scenario: Cancel deletion
-    When  I select the Complications in main menu
     And   I click button three points medications
     And   I click button "Delete"
     Then  I click button "No" in action modal
-

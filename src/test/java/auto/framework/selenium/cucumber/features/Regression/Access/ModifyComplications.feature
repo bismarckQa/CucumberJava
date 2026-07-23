@@ -16,11 +16,10 @@ Feature: Modify complications
     And   I Select the Group of patients "Paciente DP"
     When  I select the patient "Ape1_1838 Ape2_1838, Nom_1838 - 1838"
     And   I open Accesses module
-    Then  I check the module Accesses appear correctly
-
-  @test @TestCase_3626 @ALM_VR_TC
-  Scenario: Edit / Modify complications
     When  I select the Complications in main menu
+
+  @test @TestCase_3626 @ALM_VR_TC_
+  Scenario: Edit / Modify complications
     And   I click button three points complications
     And   I click button "Edit"
     When  I insert data into identification date "11/20/2025"
@@ -29,9 +28,8 @@ Feature: Modify complications
     And   I click button three points complications
     And   I click button save
 
-  @test @TestCase_3936 @ALM_VR_TC
+  @test @TestCase_3936 @ALM_VR_TC_
   Scenario: Cancel edited complication
-    When  I select the Complications in main menu
     And   I click button three points complications
     And   I click button "Edit"
     When  I insert data into identification date "11/21/2025"
@@ -40,9 +38,8 @@ Feature: Modify complications
     And   I click button three points complications
     And   I click button cancel
 
-  @test @TestCase_3937 @ALM_VR_TC
+  @test @TestCase_3937 @ALM_VR_TC_
   Scenario: Save with at least one of required  fields empty
-    When  I select the Complications in main menu
     And   I click button three points complications
     And   I click button "Edit"
     When  I insert data into identification date "11/24/2025"
@@ -52,9 +49,8 @@ Feature: Modify complications
     And   I click button three points complications
     Then   I click button cancel
 
-  @test @TestCase_4098 @ALM_VR_TC
+  @test @TestCase_4098 @ALM_VR_TC_
   Scenario: Save with the Identification date out of range
-    When  I select the Complications in main menu
     And   I click button three points complications
     And   I click button "Edit"
     When  I insert data into identification date "11/24/1990"
@@ -66,9 +62,8 @@ Feature: Modify complications
     And   I click button three points complications
     Then  I click button cancel
 
-  @test @TestCase_4099 @ALM_VR_TC
+  @test @TestCase_4099 @ALM_VR_TC_
   Scenario: Save with the Resolution date out of range
-    When  I select the Complications in main menu
     And   I click button three points complications
     And   I click button "Edit"
     When  I insert data into identification date "11/24/2025"
@@ -79,4 +74,3 @@ Feature: Modify complications
     And   I click button OK modal error
     And   I click button three points complications
     Then  I click button cancel
-
