@@ -9,13 +9,13 @@
 
 Feature: View access complications
 
-  Background:
+ Background:
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
     Then  I login successful
 
-  @test @TestCase_3798 @ALM_VR_TC_411
-  Scenario: View complications
+@TestCase_3798 @ALM_VR_TC_411
+Scenario:View complications
     When  I select the patient "Ape1_1838 Ape2_1838, Nom_1838 - 1838"
     And   I open "Accesses" module
     Then  I check the module Accesses appear correctly

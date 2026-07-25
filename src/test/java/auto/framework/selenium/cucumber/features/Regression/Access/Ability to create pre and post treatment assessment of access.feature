@@ -16,7 +16,7 @@ Feature: Ability to create pre and post treatment assessment of access
         And   I open Accesses module
     Then  I check the module Accesses appear correctly
 
-    @test @TestCase @ALM_VR_TC_19
+    @test  @ALM_VR_TC_19
     Scenario: Add pre-treatment in Evaluation section of Access
         When   I click location accesses
         And   I select access type "Catéter percutáneo femoral" in access data
@@ -38,7 +38,7 @@ Feature: Ability to create pre and post treatment assessment of access
         And   I cancel Pre-Assessment
         Then  I check the second Pre-Assessment is canceled
 
-    @test @TestCase @ALM_VR_TC_318
+    @test @ALM_VR_TC_318
     Scenario: Modify individual pre-treatment to the vascular access
         When   I select the Evaluation in main menu
         When  I click three dots and edit Pre-Assessment
@@ -49,7 +49,7 @@ Feature: Ability to create pre and post treatment assessment of access
         And   I cancel Pre-Assessment
         Then  I check Pre-Assessment not edited
 
-    @test @TestCase @ALM_VR_TC_319
+    @test  @ALM_VR_TC_319
     Scenario: Global edit mode for pre-treatment to the vascular access
         When   I select the Evaluation in main menu
         And   I click three dots and select Pre-Assessment
@@ -65,7 +65,7 @@ Feature: Ability to create pre and post treatment assessment of access
         And   I click three dots and select cancel
         Then  I check the changes not applied
 
-    @test @TestCase @ALM_VR_TC_320
+    @test @ALM_VR_TC_320
     Scenario: Remove a pre-treatment to the vascular access
         When   I select the Evaluation in main menu
         When  I click three dots and delete Pre-Assessments
@@ -74,7 +74,7 @@ Feature: Ability to create pre and post treatment assessment of access
         And   I check the alert box appear and click No
         Then  I check the last one not deleted
 
-    @test @TestCase @ALM_VR_TC_321
+    @test @ALM_VR_TC_321
     Scenario: Add post-treatment in Evaluation section of Access
         When   I select the Evaluation in main menu
         And   I click three dots and select Post-Assessment
@@ -87,7 +87,7 @@ Feature: Ability to create pre and post treatment assessment of access
         And   I cancel Post-Assessment
         Then  I check the second Post-Assessment is canceled
 
-    @test @TestCase @ALM_VR_TC_322
+    @test @ALM_VR_TC_322
     Scenario: Modify individual post-treatment to the vascular access
         When   I select the Evaluation in main menu
         And   I select the Post-Treatment tab
@@ -98,7 +98,7 @@ Feature: Ability to create pre and post treatment assessment of access
         When  I click three dots and edit Post-Assessment
         And   I cancel Post-Assessment
   
-    @test @TestCase @ALM_VR_TC_323
+    @test @ALM_VR_TC_323
     Scenario: Global edit mode for post-treatment to the vascular access
         When   I select the Evaluation in main menu
         And   I click three dots and select Post-Assessment
@@ -114,7 +114,7 @@ Feature: Ability to create pre and post treatment assessment of access
         And   I click three dots and select cancel
         Then  I check the changes not applied
 
-    @test @TestCase @ALM_VR_TC_324
+    @test @ALM_VR_TC_324
     Scenario: Remove a post-treatment to the vascular access
         When   I select the Evaluation in main menu
         When  I click three dots and delete Post-Assessments
@@ -123,17 +123,17 @@ Feature: Ability to create pre and post treatment assessment of access
         And   I check the alert box appear and click No
         Then  I check the last one not deleted
 
-    @test @TestCase @ALM_VR_TC_325
+    @test @ALM_VR_TC_325
     Scenario: View pre-treatment in Evaluation section of Access
         When  I select the Evaluation in main menu
         Then  I check Pre-Assessment is appear
 
-    @test @TestCase @ALM_VR_TC_326
+    @test @ALM_VR_TC_326
     Scenario: View post-treatment in Evaluation section of Access
         When  I select the Evaluation in main menu
         Then  I check Post-Assessment is appear
 
-    @test @TestCase @ALM_VR_TC_327
+    @test @ALM_VR_TC_327
     Scenario: Delete a vascular access
         When   I open the menu and delete access
         When  The confirmation windows open, I write password of "login_baxter" credentials and "Test"

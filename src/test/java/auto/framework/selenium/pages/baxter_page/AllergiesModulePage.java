@@ -2,6 +2,8 @@ package auto.framework.selenium.pages.baxter_page;
 
 import auto.framework.selenium.annotations.LazyComponent;
 import auto.framework.selenium.pages.BasePage;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
@@ -9,6 +11,8 @@ import org.openqa.selenium.support.How;
 
 @LazyComponent
 public class AllergiesModulePage extends BasePage<AllergiesModulePage>{
+
+    private static final String ALLERGIES_PANEL = "//div[contains(@id,'seccionAlergias')]";
 
 
     @FindBy(how = How.XPATH, using = "//*[@id=\"seccionAlergias\"]/div[3]/div/div[1]/div[1]/h2")
@@ -169,11 +173,11 @@ public class AllergiesModulePage extends BasePage<AllergiesModulePage>{
 
 
 
-    public void isDisplayedTheTittle(){
-        driver.switchTo().frame("frmContenido");
-        waitElements(titleAllergies);
-        titleAllergies.isDisplayed();
-        driver.switchTo().parentFrame();
+    public void isDisplayedTheTittle() throws InterruptedException {
+        withinAllergiesFrame(() -> {
+            waitElements(titleAllergies);
+            titleAllergies.isDisplayed();
+        });
     }
 
 
@@ -190,308 +194,119 @@ public class AllergiesModulePage extends BasePage<AllergiesModulePage>{
 
 
     public void openMenuNewAllergies() throws InterruptedException {
-        driver.switchTo().frame(0);
-        click(MenuButtonNewAllergies);
-        click(ButtonNewAllergy);
-        driver.switchTo().parentFrame();
+        withinAllergiesFrame(() -> {
+            click(By.xpath(ALLERGIES_PANEL + "//div[contains(@class,'x_title')]//a[contains(@class,'dropdown-toggle')][.//i[contains(@class,'icon-three-points')]]"));
+            click(By.xpath("//ul[contains(@class,'dropdown-menu') and not(contains(@style,'display: none'))]//*[self::a or self::span][normalize-space(.)='New allergy']"));
+        });
         pause(5000);
     }
 
     public void enterAllergyData(String observation) throws InterruptedException {
-        driver.switchTo().frame(0);
+        withinAllergiesFrame(() -> {
+            selectAllergyType("Medicamento");
+            selectAllergyName("Abacavir");
+            selectAllergySeverity("Grave");
+            selectAllergyReaction("Prueba Activo");
+            enterAllergyIdentificationDate("07/24/2026");
+            selectAllergyActiveState("Yes");
+            enterAllergyObservations(observation);
+        });
+        pause(3000);
+    }
 
-        click(DropDownTypeAllergy);
-        waitElements(SelectTheTypeOption);
+    public void selectAllergyType(String type) throws InterruptedException {
+        withinAllergiesFrame(() -> selectKendoDropdownOption(findDropdownByLabel("Type"), type));
+    }
+
+    public void selectAllergyName(String allergy) throws InterruptedException {
+        withinAllergiesFrame(() -> selectKendoDropdownOption(findAllergyDropdown(), allergy));
+    }
+
+    public void selectAllergySeverity(String severity) throws InterruptedException {
+        withinAllergiesFrame(() -> selectKendoDropdownOption(findDropdownByLabel("Severity"), severity));
+    }
+
+    public void selectAllergyReaction(String reaction) throws InterruptedException {
+        withinAllergiesFrame(() -> selectKendoDropdownOption(findDropdownByLabel("Reaction"), reaction));
+    }
+
+    public void enterAllergyIdentificationDate(String date) throws InterruptedException {
+        withinAllergiesFrame(() -> setIdentificationDate(date));
+    }
+
+    public void selectAllergyActiveState(String state) throws InterruptedException {
+        withinAllergiesFrame(() -> clickActiveState(state));
+    }
+
+    public void enterAllergyObservations(String observation) throws InterruptedException {
+        withinAllergiesFrame(() -> writeObservation(observation));
+    }
+
+    public void clickEditAllergyButton() throws InterruptedException {
+        withinAllergiesFrame(() -> {
+            click(buttonEditAllergy);
+            pause(500);
+            waitElements(titlePageAllergiesAdded);
+            titlePageAllergiesAdded.isDisplayed();
+        });
+    }
+
+    public void clickDeleteAllergyButton() throws InterruptedException {
+        withinAllergiesFrame(() -> click(DeleteButtonAllergy));
         pause(500);
-        click(SelectTheTypeOption);
+        waitElements(TitleModalDeleteAllergy);
+        TitleModalDeleteAllergy.isDisplayed();
+    }
 
-        click(DropDownAllergy);
-        click(SelectAllergyOption);
+    public void confirmDeleteAllergyModal() throws InterruptedException {
+        click(AcceptDeleteButtonAllergy);
+        waitElements(mesaggeAllergyHasEliminated);
+        mesaggeAllergyHasEliminated.isDisplayed();
+        click(buttonOkDeleteAllergy);
+    }
 
-        click(DropDownSeverityAllergy);
-        click(SelectTheSeverityOption);
+    public void cancelDeleteAllergyModal() throws InterruptedException {
+        click(CancelDeleteButtonAllergy);
+        pause(500);
+    }
 
+    public void cancelAllergyEdition() throws InterruptedException {
+        withinAllergiesFrame(() -> click(CancelButtonAllergy));
+    }
 
-
-        click(DropDownReaction);
-        click(SelectReactionOption);
-
-
-        driver.switchTo().frame(iframeObservations);
-        write(TextAreaObservations, observation);
-        driver.switchTo().parentFrame();
-
-        pause(5000);
-
-
-        driver.switchTo().parentFrame();
-
-
+    public void saveAllergyEdition() throws InterruptedException {
+        withinAllergiesFrame(() -> click(SaveButtonAllergy));
     }
 
     public void canceledCreateNewAllergy() throws InterruptedException {
-
-        driver.switchTo().frame(0);
-        click(CancelButtonAllergy);
-        driver.switchTo().parentFrame();
+        withinAllergiesFrame(() -> click(CancelButtonAllergy));
         pause(5000);
     }
 
     public void successCreateNewAllergy() throws InterruptedException {
-
-        driver.switchTo().frame(0);
-        click(SaveButtonAllergy);
-        driver.switchTo().parentFrame();
+        withinAllergiesFrame(() -> click(SaveButtonAllergy));
         pause(500);
 
     }
 
     public void checkNewAllergyCreated() throws InterruptedException {
-
-        driver.switchTo().frame("frmContenido");
-        waitElements(titlePageAllergiesAdded);
-        titlePageAllergiesAdded.isDisplayed();
-        driver.switchTo().parentFrame();
+        withinAllergiesFrame(() -> {
+            waitElements(titlePageAllergiesAdded);
+            titlePageAllergiesAdded.isDisplayed();
+        });
         pause(10000);
 
     }
 
-    public void cancelRemoveAllergy() throws InterruptedException {
-        driver.switchTo().frame("frmContenido");
-
-        click(DeleteButtonAllergy);
-
-        driver.switchTo().parentFrame();
-
-        pause(500);
-        driver.switchTo().parentFrame();
-
-        waitElements(TitleModalDeleteAllergy);
-        TitleModalDeleteAllergy. isDisplayed();
-
-        click(CancelDeleteButtonAllergy);
-        pause(500);
-
-    }
-
     public void deleteAllergy() throws InterruptedException {
-
-        driver.switchTo().frame("frmContenido");
-
-        click(DeleteButtonAllergy);
-        driver.switchTo().parentFrame();
-        pause(1000);
-
-        driver.switchTo().parentFrame();
-
-        waitElements(TitleModalDeleteAllergy);
-        TitleModalDeleteAllergy.isDisplayed();
-
-        click(AcceptDeleteButtonAllergy);
-        waitElements(mesaggeAllergyHasEliminated);
-        mesaggeAllergyHasEliminated.isDisplayed();
-        click(buttonOkDeleteAllergy);
-
-        driver.switchTo().frame("frmContenido");
-        pause(500);
-        noDataAllergyTitle.isDisplayed();
-        driver.switchTo().parentFrame();
+        clickDeleteAllergyButton();
+        confirmDeleteAllergyModal();
+        withinAllergiesFrame(() -> {
+            pause(500);
+            noDataAllergyTitle.isDisplayed();
+        });
     }
 
-    public void enterAllergyDataFieldsEmpty(String observation) throws InterruptedException {
-        driver.switchTo().frame(0);
-
-        click(DropDownSeverityAllergy);
-        click(SelectTheSeverityOption);
-
-        click(DropDownReaction);
-        click(SelectReactionOption);
-
-        driver.switchTo().frame(iframeObservations);
-        write(TextAreaObservations, observation);
-        driver.switchTo().parentFrame();
-
-        pause(5000);
-
-        driver.switchTo().parentFrame();
-
-    }
-
-    public void enterAllergyDataActiveYes(String observation) throws InterruptedException{
-
-        driver.switchTo().frame(0);
-
-         click(DropDownTypeAllergy);
-         waitElements(SelectTheTypeOption);
-         pause(500);
-        click(SelectTheTypeOption);
-
-        click(DropDownAllergy);
-        waitElements(SelectAllergyOption);
-        click(SelectAllergyOption);
-
-        click(DropDownSeverityAllergy);
-        click(SelectTheSeverityOption);
-
-
-
-        click(DropDownReaction);
-        click(SelectReactionOption);
-
-        click(buttonNoActiveAllergy);
-        pause(500);
-        click(buttonYesActiveAllergy);
-
-
-        driver.switchTo().frame(iframeObservations);
-        write(TextAreaObservations, observation);
-        driver.switchTo().parentFrame();
-
-        pause(5000);
-
-        driver.switchTo().parentFrame();
-
-    }
-
-
-    public void verifyFilterActiveAllergy() throws InterruptedException {
-        driver.switchTo().frame(0);
-
-        click(MenuButtonNewAllergies);
-        pause(500);
-
-        click(buttonFilter);
-        pause(500);
-
-        waitElements(selectRadioInactiveWindowsFilterAllergies);
-        click(selectRadioInactiveWindowsFilterAllergies);
-        pause(500);
-        waitElements(selectRadioActiveWindowsFilterAllergies);
-        click(selectRadioActiveWindowsFilterAllergies);
-
-        pause(500);
-        waitElements(buttonCloseWindowsFilterAllergies);
-        pause(500);
-        click(buttonCloseWindowsFilterAllergies);
-
-        waitElements(textFilterSelectedActive);
-        textFilterSelectedActive.isDisplayed();
-
-
-        driver.switchTo().parentFrame();
-        pause(500);
-    }
-
-
-    public void tryEditAllergyWithBlankRequiredFields() throws InterruptedException{
-        driver.switchTo().frame("frmContenido");
-
-        click(buttonEditAllergy);
-        pause(500);
-
-        waitElements(titlePageAllergiesAdded);
-        titlePageAllergiesAdded.isDisplayed();
-
-        click(DropDownTypeAllergy);
-        pause(500);
-
-        waitElements(SelectOtrasTypeOption);
-        click(SelectOtrasTypeOption);
-        pause(3000);
-
-        click(CancelButtonAllergy);
-        pause(500);
-
-        driver.switchTo().parentFrame();
-
-    }
-
-    public void tryEditAllergyButICancelIt(String observation) throws InterruptedException{
-
-        driver.switchTo().frame("frmContenido");
-
-        click(buttonEditAllergy);
-        pause(500);
-
-        waitElements(titlePageAllergiesAdded);
-        titlePageAllergiesAdded.isDisplayed();
-
-
-        click(DropDownAllergy);
-        waitElements(SelectAllergyOption2);
-        click(SelectAllergyOption2);
-
-
-        click(DropDownTypeAllergy);
-        pause(500);
-        waitElements(SelectTheTypeOptionMedi);
-        click(SelectTheTypeOptionMedi);
-
-        click(DropDownSeverityAllergy);
-        waitElements(SelectTheSeverityOption2);
-        click(SelectTheSeverityOption2);
-        pause(500);
-
-
-        click(DropDownReaction);
-        waitElements(SelectReactionOption2);
-        pause(500);
-        click(SelectReactionOption2);
-
-        pause(500);
-
-        write(TextAreaObservations, observation);
-        driver.switchTo().parentFrame();
-
-
-        driver.switchTo().frame("frmContenido");
-        click(CancelButtonAllergy);
-        driver.switchTo().parentFrame();
-    }
-
-    public void editTheAllergySuccessfully(String observation) throws InterruptedException{
-
-        driver.switchTo().frame("frmContenido");
-
-        click(buttonEditAllergy);
-        pause(500);
-
-        waitElements(titlePageAllergiesAdded);
-        titlePageAllergiesAdded.isDisplayed();
-
-
-        click(DropDownAllergy);
-        waitElements(SelectAllergyOption2);
-        click(SelectAllergyOption2);
-
-
-
-        click(DropDownTypeAllergy);
-        pause(500);
-        waitElements(SelectTheTypeOptionMedi);
-        click(SelectTheTypeOptionMedi);
-
-        click(DropDownSeverityAllergy);
-        waitElements(SelectTheSeverityOption2);
-        click(SelectTheSeverityOption2);
-        pause(500);
-
-
-        click(DropDownReaction);
-        waitElements(SelectReactionOption2);
-        pause(500);
-        click(SelectReactionOption2);
-
-        pause(500);
-
-        write(TextAreaObservations, observation);
-        driver.switchTo().parentFrame();
-
-
-        driver.switchTo().frame("frmContenido");
-        click(SaveButtonAllergy);
-        driver.switchTo().parentFrame();
-    }
 
     public void cancelingCheckNoKnownAllergies() throws InterruptedException{
 
@@ -507,11 +322,10 @@ public class AllergiesModulePage extends BasePage<AllergiesModulePage>{
     }
 
     public void checkedSuccessfulNoKnownAllergies() throws InterruptedException{
-
-        driver.switchTo().frame("frmContenido");
-        pause(500);
-        click(buttonYesNoKnownAllergies);
-        driver.switchTo().parentFrame();
+        withinAllergiesFrame(() -> {
+            pause(500);
+            click(buttonYesNoKnownAllergies);
+        });
         pause(400);
         waitElements(messageConfirmKnownAllergies);
         messageConfirmKnownAllergies.isDisplayed();
@@ -520,12 +334,11 @@ public class AllergiesModulePage extends BasePage<AllergiesModulePage>{
     }
 
     public void verifiedSuccessfullyNoKnownAllergies() throws InterruptedException{
-
-        driver.switchTo().frame("frmContenido");
-        pause(500);
-        waitElements(messageConfirmPatientHasNoKnownAllergies);
-        isDisplayed(messageConfirmPatientHasNoKnownAllergies);
-        driver.switchTo().parentFrame();
+        withinAllergiesFrame(() -> {
+            pause(500);
+            waitElements(messageConfirmPatientHasNoKnownAllergies);
+            isDisplayed(messageConfirmPatientHasNoKnownAllergies);
+        });
     }
     public void uncheckedNoKnownAllergies() throws InterruptedException{
         driver.switchTo().frame("frmContenido");
@@ -545,6 +358,57 @@ public class AllergiesModulePage extends BasePage<AllergiesModulePage>{
 
 
 
+    }
+
+    private void withinAllergiesFrame(FrameAction action) throws InterruptedException {
+        driver.switchTo().defaultContent();
+        driver.switchTo().frame("frmContenido");
+        try {
+            action.run();
+        } finally {
+            driver.switchTo().defaultContent();
+        }
+    }
+
+    private WebElement findDropdownByLabel(String label) {
+        String xpath = "//label[normalize-space(.)='" + label + "']/ancestor::div[contains(@class,'row') or contains(@class,'col-md')][1]" +
+                "//span[contains(@class,'k-picker') or contains(@class,'k-dropdownlist') or contains(@class,'k-combobox')][1]";
+        return driver.findElement(By.xpath(xpath));
+    }
+
+    private WebElement findAllergyDropdown() {
+        return driver.findElement(By.xpath("//label[normalize-space(.)='Allergy']/ancestor::div[contains(@class,'row') or contains(@class,'col-md')][1]//selector-alergias//*[contains(@class,'k-dropdownlist')][1]"));
+    }
+
+    private void writeObservation(String observation) throws InterruptedException {
+        WebElement editorFrame = driver.findElement(By.cssSelector("iframe.k-content"));
+        driver.switchTo().frame(editorFrame);
+        write(TextAreaObservations, observation);
+        driver.switchTo().parentFrame();
+    }
+
+    private void setIdentificationDate(String date) {
+        WebElement input = driver.findElement(By.xpath(
+                "//label[normalize-space(.)='Identification date']/ancestor::div[contains(@class,'form-group')][1]" +
+                        "//input[@data-role='datepicker' and not(@type='hidden')]"));
+        click(input);
+        input.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+        input.sendKeys(Keys.DELETE);
+        input.sendKeys(date);
+        input.sendKeys(Keys.TAB);
+    }
+
+    private void clickActiveState(String state) {
+        String normalizedState = state == null ? "" : state.trim();
+        WebElement button = driver.findElement(By.xpath(
+                "//label[normalize-space(.)='Active']/ancestor::div[contains(@class,'form-group')][1]" +
+                        "//label[contains(@class,'btn-switch')][normalize-space(.)='" + normalizedState + "']"));
+        click(button);
+    }
+
+    @FunctionalInterface
+    private interface FrameAction {
+        void run() throws InterruptedException;
     }
 
 }

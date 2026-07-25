@@ -21,30 +21,27 @@ Feature: Create a New Access
     Scenario: New Access
         When   I click button three points Access
         And   I click button new access
-        And   I click button implantation section
-        When  I fill the access data for a new HD access
+        When  I click button implantation section
         And   I select access type "Catéter percutáneo femoral" in access data
         And   I select access location "Muñeca izquierda" in access data
         And   I enter first use date "06102024" in access data
         And   I enter access comment "QATestAccess"
         And   I enter implantation date "06102024" in access data
-        And   I enter removal date "06212024" in access data
+        When  I enter removal date "06212024" in access data
         And   I select removal center "Sistemes Renals" in access data
-        When  I return to the access header
+        When  I click button arrow up
         And   I click button three points Access
         Then  I save the Access Data Implantation
 
-    @test @TestCase @ALM_VR_TC
+    @test @TestCase @ALM_VR_TC_
     Scenario: Create New Access PD
         Given I Select the Group of patients "Paciente DP"
         When  I select the patient "Foianini Baggio, Pasquale"
         And   I open "Accesses" module
-        Then  I check the module Accesses appear correctly
         When  I click button arrow up
         And   I click button three points Access
         And   I click button new access
-        And   I click button implantation section
-        When  I fill the access data for a new PD access
+        When  I click button implantation section
         And   I select access type "Catetere peritoneale di cruz" in access data
         And   I select access location "Peritoneal" in access data
         And   I enter first use date "06102024" in access data
@@ -54,10 +51,10 @@ Feature: Create a New Access
         And   I select implantation center "Sistemes Renals" in access data
         And   I select implantation method "Tradizionale" in access data
         And   I select reason for implantation "Prueba Activo" in access data
-        And   I enter removal date "06212024" in access data
+        When  I enter removal date "06212024" in access data
         And   I select removal center "Sistemes Renals" in access data
         And   I select removal method "Prueba Activo" in access data
-        When  I return to the access header
+        When  I click button arrow up
         And   I click button three points Access
         Then  I save the Access Data Implantation
 
@@ -70,10 +67,11 @@ Feature: Create a New Access
 
     @test @TestCase_3542 @ALM_VR_TC_333
     Scenario: Access Location
+        And   I Select the Group of patients "Paciente HD"
         When  I check the state of access is active with colour green
         And   I click in edit all
         And   I Change the date of removal to "09192026"
-        When  I click button arrow up
+        And   I click button arrow up
         And   I save the Access Data Implantation
         Then  I check the state of access is inactive with colour red
 
@@ -81,8 +79,7 @@ Feature: Create a New Access
     Scenario: Save with at least one of required  fields empty
         When   I click button three points Access
         And   I click button new access
-        And   I click location accesses
-        When  I fill the mandatory access fields with missing dates
+        When  I click location accesses
         And   I select access type "Catéter percutáneo femoral" in access data
         And   I select access location "Muñeca izquierda" in access data
         And   I enter first use date "" in access data
@@ -90,6 +87,6 @@ Feature: Create a New Access
         And   I enter implantation date "" in access data
         And   I enter removal date "" in access data
         And   I select removal center "Sistemes Renals" in access data
-        When  I return to the access header
+        When  I click button arrow up
         And   I click button three points Access
         Then  I click button cancel

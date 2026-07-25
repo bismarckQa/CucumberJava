@@ -5,7 +5,7 @@
 #version
 @2024R1a
 #Module
-@PDAccess
+@HDAccess
 
 Feature: Edit a follow-up of PD access
 
@@ -13,7 +13,6 @@ Feature: Edit a follow-up of PD access
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
     And   I login successful
-    And   I Select the Group of patients "Paciente DP"
     When  I select the patient "Foianini Baggio, Pasquale"
     And   I open Accesses module
     Then  I check the module Accesses appear correctly

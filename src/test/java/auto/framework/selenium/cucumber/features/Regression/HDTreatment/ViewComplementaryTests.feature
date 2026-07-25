@@ -13,7 +13,6 @@ Feature: View Complementary Test
     And   I open Accesses module
     And   I click location accesses
     And   I add all data correctly for add the Access Data with the access type "Catéter percutáneo femoral" and comment "QATestAccess"
-    And   I click button arrow up
     And   I Add New Additional Test
     When  I save the Access Data Implantation
     And   The See Further Test showed
@@ -72,4 +71,5 @@ Feature: View Complementary Test
     And   I accept delete access and accept information window
     And   I open Complementary tests module
     Then  I delete All Complementary test created
+
 

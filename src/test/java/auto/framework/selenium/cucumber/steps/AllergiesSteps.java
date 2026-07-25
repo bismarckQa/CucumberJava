@@ -17,7 +17,7 @@ public class AllergiesSteps {
 
 
     @When("I check the module Allergies appear correctly")
-    public void iCheckTheModuleAllergiesAppearCorrectly() {
+    public void iCheckTheModuleAllergiesAppearCorrectly()throws InterruptedException {
         AllergiesModulePage.isDisplayedTheTittle();
 
     }
@@ -31,6 +31,41 @@ public class AllergiesSteps {
     @And("I fill in the new allergy data {string}")
     public void iFillTheNewAllergyData(String observation) throws InterruptedException {
         AllergiesModulePage.enterAllergyData(observation);
+    }
+
+    @And("I select allergy type {string} in allergy form")
+    public void iSelectAllergyTypeInAllergyForm(String type) throws InterruptedException {
+        AllergiesModulePage.selectAllergyType(type);
+    }
+
+    @And("I select allergy {string} in allergy form")
+    public void iSelectAllergyInAllergyForm(String allergy) throws InterruptedException {
+        AllergiesModulePage.selectAllergyName(allergy);
+    }
+
+    @And("I select severity {string} in allergy form")
+    public void iSelectSeverityInAllergyForm(String severity) throws InterruptedException {
+        AllergiesModulePage.selectAllergySeverity(severity);
+    }
+
+    @And("I select reaction {string} in allergy form")
+    public void iSelectReactionInAllergyForm(String reaction) throws InterruptedException {
+        AllergiesModulePage.selectAllergyReaction(reaction);
+    }
+
+    @And("I enter identification date {string} in allergy form")
+    public void iEnterIdentificationDateInAllergyForm(String date) throws InterruptedException {
+        AllergiesModulePage.enterAllergyIdentificationDate(date);
+    }
+
+    @And("I select active state {string} in allergy form")
+    public void iSelectActiveStateInAllergyForm(String state) throws InterruptedException {
+        AllergiesModulePage.selectAllergyActiveState(state);
+    }
+
+    @And("I enter observations {string} in allergy form")
+    public void iEnterObservationsInAllergyForm(String observation) throws InterruptedException {
+        AllergiesModulePage.enterAllergyObservations(observation);
     }
 
     @Then("I cancel the creation of a new allergy")
@@ -49,43 +84,39 @@ public class AllergiesSteps {
         AllergiesModulePage.checkNewAllergyCreated();
     }
 
-    @And("I canceling deleted allergy")
-    public void icancelingDeletedAllergy() throws InterruptedException {
-        AllergiesModulePage.cancelRemoveAllergy();
-    }
-
     @And("I delete the allergy created")
     public void iDeleteTheAllergyCreated() throws InterruptedException {
         AllergiesModulePage.deleteAllergy();
     }
 
-    @And("I fill in the new allergy data with empty required field {string}")
-    public void iFillTheNewAllergyDataWithEmptyRequiredFiel(String observation) throws InterruptedException {
-        AllergiesModulePage.enterAllergyDataFieldsEmpty(observation);
+    @When("I click delete allergy button")
+    public void iClickDeleteAllergyButton() throws InterruptedException {
+        AllergiesModulePage.clickDeleteAllergyButton();
     }
 
-    @And("I fill in the new allergy data with active field {string}")
-    public void iFillTheNewAllergyDataWithActiveField(String observation) throws InterruptedException {
-        AllergiesModulePage.enterAllergyDataActiveYes(observation);
+    @Then("I confirm delete allergy modal")
+    public void iConfirmDeleteAllergyModal() throws InterruptedException {
+        AllergiesModulePage.confirmDeleteAllergyModal();
     }
 
-    @And("I verify filter allergy is active")
-    public void iVerifyFilterAllergyIsActive() throws InterruptedException {
-        AllergiesModulePage.verifyFilterActiveAllergy();
+    @Then("I cancel delete allergy modal")
+    public void iCancelDeleteAllergyModal() throws InterruptedException {
+        AllergiesModulePage.cancelDeleteAllergyModal();
     }
 
-    @And("I try edit allergy with blank required fields")
-    public void itryEditAllergyWithBlankRequiredFields() throws InterruptedException{
-        AllergiesModulePage.tryEditAllergyWithBlankRequiredFields();
+    @When("I click edit allergy button")
+    public void iClickEditAllergyButton() throws InterruptedException{
+        AllergiesModulePage.clickEditAllergyButton();
     }
 
-    @And("I try edit allergy but I cancel it {string}")
-    public void iTryEditAllergyButICancelIt(String observation)throws InterruptedException{
-        AllergiesModulePage.tryEditAllergyButICancelIt(observation);
+    @Then("I cancel allergy edition")
+    public void iCancelAllergyEdition() throws InterruptedException{
+        AllergiesModulePage.cancelAllergyEdition();
     }
-    @And("I edited the allergy successfully with the new data {string}")
-    public void iEditTheAllergySuccessfully(String observation)throws InterruptedException{
-        AllergiesModulePage.editTheAllergySuccessfully(observation);
+
+    @Then("I save allergy edition")
+    public void iSaveAllergyEdition() throws InterruptedException{
+        AllergiesModulePage.saveAllergyEdition();
     }
 
     @And("I canceling check no known allergies")
@@ -108,11 +139,6 @@ public class AllergiesSteps {
     public void iUncheckedNoKnownAllergies() throws InterruptedException{
         AllergiesModulePage.uncheckedNoKnownAllergies();
     }
-
-
-
-
-
 
 
 }

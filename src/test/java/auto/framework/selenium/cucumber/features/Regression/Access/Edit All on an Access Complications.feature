@@ -5,12 +5,12 @@
 #version
 @2024R1a
 #Module
-@PDAccess
+@HDAccess
 
 Feature: Edit All on an Access Complications
 
 Background:
-    Given I open the Baxter website
+ Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
     And   I login successful
     Given I Select the Group of patients "Paciente DP"

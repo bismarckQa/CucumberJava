@@ -9,22 +9,26 @@
 
 Feature: Delete Culture
 
-  Background:
+  @test @TestCase_3790 @ALM_VR_TC_31
+  Scenario: Delete a Swab
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
     And   I login successful
     When  I select the patient "Ape1_1838 Ape2_1838, Nom_1838 - 1838"
     And   I open Accesses module
     And   I click button implantation section
-
-  @test @TestCase_3790 @ALM_VR_TC_31
-  Scenario: Delete a Swab
     Then  I click button three points swab
     And   I click button "Delete"
     Then   I select option action in modal "Yes"
 
   @test @TestCase_3944 @ALM_VR_TC_362
   Scenario: Cancel Deletion
+    Given I open the Baxter website
+    And   I try to login with "login_baxter" credentials
+    And   I login successful
+    When  I select the patient "Ape1_1838 Ape2_1838, Nom_1838 - 1838"
+    And   I open Accesses module
+    And   I click button implantation section
     Then  I click button three points swab
     And   I click button "Delete"
     Then   I select option action in modal "No"

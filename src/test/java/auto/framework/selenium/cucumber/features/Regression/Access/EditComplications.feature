@@ -9,13 +9,15 @@
 
 Feature: Edit complications
 
-  Background:
+Background:
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
     And   I login successful
+    And   I Select the Group of patients "Paciente DP"
     When  I select the patient "Ape1_1838 Ape2_1838, Nom_1838 - 1838"
     And   I open Accesses module
     When  I select the Complications in main menu
+
 
   @test @TestCase_3626 @ALM_VR_TC_43
   Scenario: Edit  Modify complications
@@ -46,7 +48,7 @@ Feature: Edit complications
     And   I insert data into resolution date "11/24/2025"
     And   I click button arrow up
     And   I click button three points complications
-    Then  I click button cancel
+    Then   I click button cancel
 
   @test @TestCase_4098 @ALM_VR_TC_400
   Scenario: Save with the Identification date out of range

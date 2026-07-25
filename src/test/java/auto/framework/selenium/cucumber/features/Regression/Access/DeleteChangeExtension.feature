@@ -5,7 +5,7 @@
 #version
 @2024R1a
 #Module
-@PDAccess
+@HDAccess
 
 Feature: Delete a change of extension
 
@@ -14,7 +14,7 @@ Feature: Delete a change of extension
     And   I try to login with "login_baxter" credentials
     And   I login successful
     And   I Select the Group of patients "Paciente DP"
-    When  I select the patient "Foianini Baggio, Pasquale"
+    When  I select the patient "Ape1_1838 Ape2_1838, Nom_1838 - 1838"
     And   I open Accesses module
     Then  I check the module Accesses appear correctly
 

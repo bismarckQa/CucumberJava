@@ -9,7 +9,6 @@ Feature: View + Add HD Prescription
     And   I open Accesses module
     And   I click location accesses
     When  I create a new jugular catheter type access: Access Type "Catéter percutáneo yugular", Location "Muñeca izquierda", Comment "QA test"
-    And   I click button arrow up
     Then  I save the Access Data Implantation
 
   @test @regression
