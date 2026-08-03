@@ -9,14 +9,17 @@
 
 Feature: Add Vaccines
 
-  @test @TestCase_3630
-  Scenario: Successful added Vaccine
-    Given I open the Baxter website
+Background:
+ Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
     And   I login successful
     When  I select the patient "Foianini, Pasquale - 00250"
     And   I open Physical Assessment module
     When  I check the module Physical Assessment appear correctly
+   
+
+  @test @TestCase_3630 @ALM_VR_TC_138
+  Scenario: Successful added Vaccine
     And   I click in vaccines area
     And   I click button three points vaccines
     Then  I click button option "New"
@@ -25,14 +28,8 @@ Feature: Add Vaccines
     And   I click button three points vaccines
     Then  I click button option "Save"
 
-  @test @TestCase_3632
+  @test @TestCase_3632 @ALM_VR_TC_646
   Scenario: Cancelling an added Vaccine
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    When  I select the patient "Foianini, Pasquale - 00250"
-    And   I open Physical Assessment module
-    When  I check the module Physical Assessment appear correctly
     And   I click in vaccines area
     And   I click button three points vaccines
     Then  I click button option "New"
@@ -41,14 +38,8 @@ Feature: Add Vaccines
     And   I click button three points vaccines
     Then  I click button option "Cancel"
 
-  @test @TestCase_3634
+  @test @TestCase_3634 @ALM_VR_TC_647
   Scenario: Add new Vaccine with empty required fields
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    When  I select the patient "Foianini, Pasquale - 00250"
-    And   I open Physical Assessment module
-    When  I check the module Physical Assessment appear correctly
     And   I click in vaccines area
     And   I click button three points vaccines
     Then  I click button option "New"
@@ -56,14 +47,8 @@ Feature: Add Vaccines
     And   I click button three points vaccines
     Then  I click button option "Cancel"
 
-  @test @TestCase_10685
+  @test @TestCase_1068 @ALM_VR_TC_648
   Scenario: Add dose
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    When  I select the patient "Foianini, Pasquale - 00250"
-    And   I open Physical Assessment module
-    When  I check the module Physical Assessment appear correctly
     And   I click in vaccines area
     And   I click button three points dose
     When  I click button option "Add dose"
@@ -71,14 +56,8 @@ Feature: Add Vaccines
     And   I click button three points dose
     Then  I click button option "Save"
 
-  @test @TestCase_10686
+  @test @TestCase_1068 @ALM_VR_TC_649
   Scenario: Cancelling an added dose
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    When  I select the patient "Foianini, Pasquale - 00250"
-    And   I open Physical Assessment module
-    When  I check the module Physical Assessment appear correctly
     And   I click in vaccines area
     And   I click button three points dose
     When  I click button option "Add dose"

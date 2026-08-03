@@ -8,7 +8,7 @@
 @Demographics
 Feature: Finalize Staff Member Assignment
 
-  @test @regression @test_Case_2998
+  @test @test_Case_2998 @ALM_VR_TC_481
   Scenario: Successful finalized staff member assignment
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

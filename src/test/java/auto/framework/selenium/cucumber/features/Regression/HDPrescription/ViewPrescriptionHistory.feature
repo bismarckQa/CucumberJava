@@ -1,7 +1,18 @@
+#enviroment
+@Environment_dev
+#app_name
+@versia_renal
+#version
+@3.2
+#Module
+@HD_Prescription
+
+
+
 Feature:View prescription history
 
-  @test @regression
-  Scenario: View Prescription history
+  @test @Test_case_4630 @ALM_VR_TC_109
+  Scenario: View history
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
     And   I login successful

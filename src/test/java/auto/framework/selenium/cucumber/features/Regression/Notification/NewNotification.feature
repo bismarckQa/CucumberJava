@@ -8,12 +8,15 @@
 @Notification
 Feature: New Notification
 
-  @test @regression @TestCase_17369
-  Scenario: Create new notification with empty required fields
+Background:
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
     And   I login successful
     When  I click notification bell
+
+
+  @test @TestCase_17369 @ALM_VR_TC_259
+  Scenario: Create new notification with empty required fields
     And   I click go to notification center in notification bell panel
     And   I click the three points menu in notification form
     When  I click "NEW" option in notification form menu
@@ -21,12 +24,8 @@ Feature: New Notification
     And   I click the three points menu in notification form
     Then  I click "CANCEL" option in notification form menu
 
-  @test @regression @TestCase_17370
+  @test @TestCase_17370 @ALM_VR_TC_260
   Scenario: Cancel create new notification
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    When  I click notification bell
     And   I click go to notification center in notification bell panel
     And   I click the three points menu in notification form
     When  I click "NEW" option in notification form menu
@@ -37,12 +36,8 @@ Feature: New Notification
     Then  I click "CANCEL" option in notification form menu
     And   I verify the notification list is displayed
 
-  @test @regression @TestCase_17375
+  @test @TestCase_17375 @ALM_VR_TC_261
   Scenario: Create new notification successfully
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    When  I click notification bell
     And   I click go to notification center in notification bell panel
     And   I click the three points menu in notification form
     When  I click "NEW" option in notification form menu
@@ -55,12 +50,8 @@ Feature: New Notification
     Then  I verify the notification "QA notification automation 17375" was created
 
 
-  @test @regression @TestCase_17380
+  @test @TestCase_17380 @ALM_VR_TC_264
   Scenario: Create a new notification with a selected section
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    When  I click notification bell
     And   I click go to notification center in notification bell panel
     And   I click the three points menu in notification form
     When  I click "NEW" option in notification form menu

@@ -1,6 +1,15 @@
-Feature: Modify Parameter adjustments
+#enviroment
+@Environment_dev
+#app_name
+@versia_renal
+#version
+@3.2
+#Module
+@PD_Prescription
 
-  @test
+Feature: Modify Parameter adjustments
+  
+  @test @Test_Case_4887 @ALM_VR_TC_683
   Scenario:  Modify parameter Adjustments
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

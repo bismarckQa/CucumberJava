@@ -8,14 +8,17 @@
 @HDTherapy
 
 Feature: Add Concentrate
-  @test @TestCase_2693
-  Scenario: full Data
-    Given I open the Baxter website
+
+Background: 
+ Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
     And   I login successful
     And   I open options of user
     Then  I enter into user configuration options
     And   I successfully opened the HD Therapy module
+
+  @test @TestCase_2693 @ALM_VR_TC_89
+  Scenario: full Data
     And   I click button concentrates section
     When  I click button three points concentrates
     And   I click button new add concentrates
@@ -37,28 +40,16 @@ Feature: Add Concentrate
     And   I click button save new concentrate
     Then  I click button arrow up
 
-  @test @TestCase_2694
+  @test @TestCase_2694 @ALM_VR_TC_498
   Scenario: Empty Data
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    And   I open options of user
-    Then  I enter into user configuration options
-    And   I successfully opened the HD Therapy module
     And   I click button concentrates section
     When  I click button three points concentrates
     And   I click button new add concentrates
     When  I click button three points concentrates
     Then  I click button cancel add new concentrate
 
-  @test @TestCase_2695
+  @test @TestCase_2695 @ALM_VR_TC_499
   Scenario: Name and Type Only
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    And   I open options of user
-    Then  I enter into user configuration options
-    And   I successfully opened the HD Therapy module
     And   I click button concentrates section
     When  I click button three points concentrates
     And   I click button new add concentrates
@@ -69,14 +60,8 @@ Feature: Add Concentrate
     Then  I click button arrow up
     Then  I looking for the concentrate with the name: "Test_case_2"
 
-  @test @TestCase_2696
+  @test @TestCase_2696 @ALM_VR_TC_500
   Scenario: Inactive concentrate
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    And   I open options of user
-    Then  I enter into user configuration options
-    And   I successfully opened the HD Therapy module
     And   I click button concentrates section
     When  I click button three points concentrates
     And   I click button new add concentrates
@@ -89,14 +74,8 @@ Feature: Add Concentrate
     And   I click the checkbox to show all inactive concentrates
     Then  I looking for the concentrate with the name: "Test_case_inactive"
 
-  @test @TestCase_2697
+  @test @TestCase_2697 @ALM_VR_TC_501
   Scenario: Name only
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    And   I open options of user
-    Then  I enter into user configuration options
-    And   I successfully opened the HD Therapy module
     And   I click button concentrates section
     When  I click button three points concentrates
     And   I click button new add concentrates

@@ -8,14 +8,18 @@
 @HDTherapy
 
 Feature: Modify Concentrate
-  @test @TestCase_2698
-  Scenario: full Data
-    Given I open the Baxter website
+
+
+Background:
+ Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
     And   I login successful
     And   I open options of user
     Then  I enter into user configuration options
     And   I successfully opened the HD Therapy module
+
+  @test @TestCase_2698 @ALM_VR_TC_101
+  Scenario: full Data
     And   I click button concentrates section
     And   I looking for the concentrate with the name: "Test case 1"
     When  I click button three points concentrates
@@ -38,14 +42,8 @@ Feature: Modify Concentrate
     Then  I click button arrow up
     And   I looking for the concentrate with the name: "Test case 1 Modified"
 
-  @test @TestCase_2699
+  @test @TestCase_2699 @ALM_VR_TC_520
   Scenario: No Name
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    And   I open options of user
-    Then  I enter into user configuration options
-    And   I successfully opened the HD Therapy module
     And   I click button concentrates section
     And   I looking for the concentrate with the name: "Test case 1 Modified"
     When  I click button three points concentrates
@@ -56,14 +54,8 @@ Feature: Modify Concentrate
     Then  I click button arrow up
     And   I looking for the concentrate with the name: "Test case 1 Modified"
 
-  @test @TestCase_2700
+  @test @TestCase_2700 @ALM_VR_TC_521
   Scenario: No Type
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    And   I open options of user
-    Then  I enter into user configuration options
-    And   I successfully opened the HD Therapy module
     And   I click button concentrates section
     And   I looking for the concentrate with the name: "Test case 1 Modified"
     When  I click button three points concentrates
@@ -75,14 +67,8 @@ Feature: Modify Concentrate
     Then  I click button arrow up
     And   I looking for the concentrate with the name: "Test case 1 Modified"
 
-  @test @TestCase_2701
+  @test @TestCase_2701 @ALM_VR_TC_522
   Scenario: Set concentrate to inactive
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    And   I open options of user
-    Then  I enter into user configuration options
-    And   I successfully opened the HD Therapy module
     And   I click button concentrates section
     And   I looking for the concentrate with the name: "Test case 1 Modified"
     When  I click button three points concentrates
@@ -94,14 +80,8 @@ Feature: Modify Concentrate
     And   I click the checkbox to show all inactive concentrates
     And   I looking for the concentrate with the name: "Test case 1 Modified"
 
-  @test @TestCase_2702
+  @test @TestCase_2702 @ALM_VR_TC_523
   Scenario: Set inactive concentrate to active
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    And   I open options of user
-    Then  I enter into user configuration options
-    And   I successfully opened the HD Therapy module
     And   I click button concentrates section
     And   I click the checkbox to show all inactive concentrates
     And   I looking for the concentrate with the name: "Test case 1 Modified"

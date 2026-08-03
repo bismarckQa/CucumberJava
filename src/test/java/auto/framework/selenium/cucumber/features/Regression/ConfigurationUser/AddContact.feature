@@ -6,17 +6,20 @@
 @3.2
 #Module
 @ConfigurationUser
+
 Feature: Add Contact
 
-  @test @regression @TestCase_2390
-  Scenario: Cancelling an added contact
-    Given I open the Baxter website
+Background: 
+Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
     And   I login successful
     And   I open options of user
     Then  I enter into Configuration User module
     And   I open Users module in configuration user
     And   I verify that Users module opened correctly
+    
+  @test @TestCase_2390 @ALM_VR_TC_231
+  Scenario: Cancelling an added contact
     When  I click button arrow up
     And   I select the user "QA Automation, Test" in users module
     Then  I verify that Contacts section is displayed
@@ -25,15 +28,8 @@ Feature: Add Contact
     And   I enter the value in contacts row "qa.contact@test.com"
     Then  I cancel the contacts row
 
-  @test @regression @TestCase_2391
+  @test @TestCase_2391 @ALM_VR_TC_232
   Scenario: Add contact
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    And   I open options of user
-    Then  I enter into Configuration User module
-    And   I open Users module in configuration user
-    And   I verify that Users module opened correctly
     When  I click button arrow up
     And   I select the user "QA Automation, Test" in users module
     Then  I verify that Contacts section is displayed
@@ -43,15 +39,8 @@ Feature: Add Contact
     Then  I save the contacts row
     And   I verify the action was performed successfully
 
-  @test @regression @TestCase_2394
+  @test @TestCase_2394 @ALM_VR_TC_233
   Scenario: Empty required fields
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    And   I open options of user
-    Then  I enter into Configuration User module
-    And   I open Users module in configuration user
-    And   I verify that Users module opened correctly
     When  I click button arrow up
     And   I select the user "QA Automation, Test" in users module
     Then  I verify that Contacts section is displayed

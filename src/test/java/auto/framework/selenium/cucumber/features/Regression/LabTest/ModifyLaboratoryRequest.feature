@@ -7,14 +7,18 @@
 #Module
 @LabTest
 Feature: Modify laboratory request
-  @test @test_Case_3765
-  Scenario: Successful edited laboratory request
-    Given I open the Baxter website
+
+Background:
+  Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
     And   I login successful
     When  I select the patient "Foianini, Pasquale - 00250"
     And   I open Lab Tests module
     And   I check the module Lab Tests appear correctly
+
+
+  @test @test_Case_3765 @ALM_VR_TC_131
+  Scenario: Successful edited laboratory request
     When  I click button laboratory request section
     And   I click button edit laboratory request
     And   I insert data into input extraction date in edit laboratory request "3/4/2026 12:00 AM"
@@ -22,14 +26,8 @@ Feature: Modify laboratory request
     Then  I click button save edit laboratory request
     And   I click button arrow up
 
-  @test @test_Case_3766
+  @test @test_Case_3766 @ALM_VR_TC_583
   Scenario: Cancelling edited laboratory request
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    When  I select the patient "Foianini, Pasquale - 00250"
-    And   I open Lab Tests module
-    And   I check the module Lab Tests appear correctly
     When  I click button laboratory request section
     And   I click button edit laboratory request
     And   I insert data into input extraction date in edit laboratory request "3/4/2026 12:00 AM"

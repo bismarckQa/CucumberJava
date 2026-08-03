@@ -8,28 +8,24 @@
 @Demographics
 Feature: Create New Patient
 
-  @test @test_Case_2960
-  Scenario: New patient. No data required (Not Applicable)
-    Given I open the Baxter website
+Background:
+Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
     And   I login successful
     When  I open options of user
     And   I enter into user configuration options
     And   I verify the New patient x_title is visible with scroll
     When  I click the three points menu of New patient
+
+
+  @test @test_Case_2960 @ALM_VR_TC_473
+  Scenario: New patient. No data required (Not Applicable)
     And   I click "New" option in the three points menu of New patient
     And   I click the three points menu of New patient
     Then  I click "Cancel" option in the three points menu of New patient
 
-  @test @regression @test_Case_2961
+  @test  @test_Case_2961 @ALM_VR_TC_474
   Scenario: New patient. All data required (Not Applicable)
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    When  I open options of user
-    And   I enter into user configuration options
-    Then  I verify the New patient x_title is visible with scroll
-    And   I click the three points menu of New patient
     And   I click "New" option in the three points menu of New patient
     And   I enter the name "1 Tets "
     And   I enter the last name "Patient"

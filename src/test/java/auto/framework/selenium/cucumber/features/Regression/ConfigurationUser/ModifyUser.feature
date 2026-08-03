@@ -8,8 +8,7 @@
 @ConfigurationUser
 Feature: Modify User
 
-  @test @regression @TestCase_2372
-  Scenario: All data correct
+Background:
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
     And   I login successful
@@ -17,6 +16,11 @@ Feature: Modify User
     Then  I enter into Configuration User module
     And   I open Users module in configuration user
     And   I verify that Users module opened correctly
+
+
+
+  @test @TestCase_2372 @ALM_VR_TC_218
+  Scenario: All data correct
     When  I click button arrow up
     And   I select the user "QA , Test" in users module
     And   I click the three points menu in users module
@@ -29,15 +33,8 @@ Feature: Modify User
     When  I click "Save" option in users module menu
     And   I verify the action was performed successfully
 
-  @test @regression @TestCase_2373
+  @test @TestCase_2373 @ALM_VR_TC_219
   Scenario: No data required
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    And   I open options of user
-    Then  I enter into Configuration User module
-    And   I open Users module in configuration user
-    And   I verify that Users module opened correctly
     When  I click button arrow up
     And   I select the user "QA Automation, Test" in users module
     And   I click the three points menu in users module
@@ -51,15 +48,8 @@ Feature: Modify User
     And   I click the three points menu in users module
     Then  I click "Cancel" option in users module menu
 
-  @test @regression @TestCase_2374
+  @test @TestCase_2374 @ALM_VR_TC_220
   Scenario: Password must coincide
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    And   I open options of user
-    Then  I enter into Configuration User module
-    And   I open Users module in configuration user
-    And   I verify that Users module opened correctly
     When  I click button arrow up
     And   I select the user "QA Automation, Test" in users module
     And   I click the three points menu in users module
@@ -74,15 +64,8 @@ Feature: Modify User
     And   I click the three points menu in users module
     Then  I click "Cancel" option in users module menu
 
-  @test @regression @TestCase_11207
+  @test @TestCase_11207 @ALM_VR_TC_221
   Scenario: The password must meet the requirements
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    And   I open options of user
-    Then  I enter into Configuration User module
-    And   I open Users module in configuration user
-    And   I verify that Users module opened correctly
     When  I click button arrow up
     And   I select the user "QA Automation, Test" in users module
     And   I click the three points menu in users module
@@ -94,15 +77,8 @@ Feature: Modify User
     When  I click "Save" option in users module menu
     And   I verify the action was performed successfully
 
-  @test @regression @TestCase_11208
+  @test @TestCase_11208 @ALM_VR_TC_222
   Scenario: The password does not meet the requirements
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    And   I open options of user
-    Then  I enter into Configuration User module
-    And   I open Users module in configuration user
-    And   I verify that Users module opened correctly
     When  I click button arrow up
     And   I select the user "QA , Test" in users module
     And   I click the three points menu in users module

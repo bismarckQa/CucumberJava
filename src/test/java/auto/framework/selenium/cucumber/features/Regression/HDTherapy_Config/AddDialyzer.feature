@@ -8,14 +8,17 @@
 @HDTherapy
 
 Feature: Add Dialyzer
-  @test @TestCase_2678
-  Scenario: Full Data
-    Given I open the Baxter website
+
+Background: 
+ Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
     And   I login successful
     And   I open options of user
     Then  I enter into user configuration options
     And   I successfully opened the HD Therapy module
+    
+  @test @TestCase_2678 @ALM_VR_TC_90    
+  Scenario: Full Data
     And   I click button dialyzer section
     And   I click button three points dialyzer
     When  I click button New dialyzer
@@ -31,34 +34,16 @@ Feature: Add Dialyzer
     And   I click button save new dialyzer
     And   I click button arrow up
 
-  @test @TestCase_2679
+  @test @TestCase_2679 @ALM_VR_TC_502
   Scenario: Empty field
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    When  I select the patient "Ape1_1838 Ape2_1838, Nom_1838 - 1838"
-    And   I click button Ok in modal error
-    And   I open options of user
-    Then  I enter into user configuration options
-    And   I click button Ok in modal error
-    And   I successfully opened the HD Therapy module
     And   I click button dialyzer section
     And   I click button three points dialyzer
     When  I click button New dialyzer
     And   I click button three points dialyzer
     Then  I click button cancel add new dialyzer
 
-  @test @TestCase_2680
+  @test @TestCase_2680 @ALM_VR_TC_503
   Scenario: Only Model Value
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    When  I select the patient "Ape1_1838 Ape2_1838, Nom_1838 - 1838"
-    And   I click button Ok in modal error
-    And   I open options of user
-    Then  I enter into user configuration options
-    And   I click button Ok in modal error
-    And   I successfully opened the HD Therapy module
     And   I click button dialyzer section
     And   I click button three points dialyzer
     When  I click button New dialyzer
@@ -66,17 +51,8 @@ Feature: Add Dialyzer
     And   I click button three points dialyzer
     Then  I click button cancel add new dialyzer
 
-  @test @TestCase_2681
+  @test @TestCase_2681 @ALM_VR_TC_504
   Scenario: Model and Manufacturer
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    When  I select the patient "Ape1_1838 Ape2_1838, Nom_1838 - 1838"
-    And   I click button Ok in modal error
-    And   I open options of user
-    Then  I enter into user configuration options
-    And   I click button Ok in modal error
-    And   I successfully opened the HD Therapy module
     And   I click button dialyzer section
     And   I click button three points dialyzer
     When  I click button New dialyzer
@@ -86,14 +62,8 @@ Feature: Add Dialyzer
     And   I click button save new dialyzer
 
 
-  @test @TestCase_2682
+  @test @TestCase_2682 @ALM_VR_TC_505
   Scenario: Add Inactive Dialyzer
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    And   I open options of user
-    Then  I enter into user configuration options
-    And   I successfully opened the HD Therapy module
     And   I click button dialyzer section
     And   I click button three points dialyzer
     When  I click button New dialyzer

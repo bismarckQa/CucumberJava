@@ -8,7 +8,7 @@
 @Demographics
 Feature: View Patient Data
 
-  @test @regression
+  @test @test_Case_4561 @ALM_VR_TC_88
   Scenario: View demographic data screen
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

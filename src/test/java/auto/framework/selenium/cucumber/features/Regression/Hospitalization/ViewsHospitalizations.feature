@@ -1,5 +1,17 @@
+#enviroment
+@Environment_Dev
+#app_namme
+@Versia_Renal
+#version
+@2024R1a
+#Module
+@Hospitalization
+
+
+
 Feature: Views Hospitalizations
-  @test
+   
+  @test @Test_case_3689 @ALM_VR_TC_615
   Scenario: Enter in Hospitalization window
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

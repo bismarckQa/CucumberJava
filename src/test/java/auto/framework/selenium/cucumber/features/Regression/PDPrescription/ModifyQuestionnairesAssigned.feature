@@ -1,5 +1,14 @@
+#enviroment
+@Environment_dev
+#app_name
+@versia_renal
+#version
+@3.2
+#Module
+@PD_Prescription
+
 Feature: Modify questionnaires assigned
-  @test
+  @test @Test_Case_4729 @ALM_VR_TC_684
   Scenario:  Edit and Modify questionnaires assigned
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

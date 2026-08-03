@@ -8,14 +8,17 @@
 @Demographics
 Feature: Assign Main Center
 
-  @test @regression @test_Case_2963
-  Scenario: Cancelling an assigned centre
-    Given I open the Baxter website
+Background:
+  Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
     And   I login successful
     When  I select the patient "Foianini, Pasquale - 00250"
     And   I click on the selected patient
     And   I verify that the demographic module opened correctly
+
+
+  @test @test_Case_2963 @ALM_VR_TC_73
+  Scenario: Cancelling an assigned centre
     When  I click the New button at position 2
     And   I select a centre in the new row
     And   I enter the start date of the centre row "03/01/2026"
@@ -23,14 +26,8 @@ Feature: Assign Main Center
     And   I click button arrow up
 
 
-  @test @regression @test_Case_2964
+  @test @test_Case_2964 @ALM_VR_TC_470
   Scenario:  Successful assigned centre
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    When  I select the patient "Foianini, Pasquale - 00250"
-    And   I click on the selected patient
-    And   I verify that the demographic module opened correctly
     When  I click the New button at position 2
     And   I select a centre in the new row
     And   I enter the start date of the centre row "02/01/2026"
@@ -38,14 +35,8 @@ Feature: Assign Main Center
     And   I assign an associated staff member to the new selected center
     And   I click button "OK"
 
-  @test @regression @test_Case_4562
+  @test @test_Case_4562 @ALM_VR_TC_471
   Scenario: Assign a centre with empty required fields
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    When  I select the patient "Foianini, Pasquale - 00250"
-    And   I click on the selected patient
-    And   I verify that the demographic module opened correctly
     When  I click the New button at position 2
     And   I enter the start date of the centre row ""
     Then  I save the centre row

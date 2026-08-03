@@ -6,56 +6,40 @@
 @3.2
 #Module
 @Demographics
-Feature: Modify Contact Addresses
+Feature: Modify Address
 
-  @test @regression @test_Case_3005
-  Scenario: Editing a contact address with empty fields
+Background:
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
     And   I login successful
     When  I select the patient "Foianini, Pasquale - 00250"
     And   I click on the selected patient
     And   I verify that the demographic module opened correctly
+
+  @test @test_Case_3005 @ALM_VR_TC_82
+  Scenario: Editing a contact address with empty fields
     When  I click button edit contact address
     And   I enter the address in the contact address row ""
     Then  I save the contact address row
     And   I cancel the contact address row
     And   I verify the action was performed successfully
 
-  @test @regression @test_Case_3006
+  @test @test_Case_3006 @ALM_VR_TC_484
   Scenario: Cancelling an edited contact address
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    When  I select the patient "Foianini, Pasquale - 00250"
-    And   I click on the selected patient
-    And   I verify that the demographic module opened correctly
     When  I click button edit contact address
     And   I enter the address in the contact address row "Calle Modificada 456"
     Then  I cancel the contact address row
 
-  @test @regression @test_Case_3007
+  @test @test_Case_3007 @ALM_VR_TC_485
   Scenario: Editing a contact address with wrong dates
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    When  I select the patient "Foianini, Pasquale - 00250"
-    And   I click on the selected patient
-    And   I verify that the demographic module opened correctly
     When  I click button edit contact address
     And   I enter the end date of the contact address row "01/01/2020"
     Then  I save the contact address row
     And   I click button OK modal error
     And   I cancel the contact address row
 
-  @test @regression @test_Case_3008
+  @test @test_Case_3008 @ALM_VR_TC_486
   Scenario: Successful edited contact address
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    When  I select the patient "Foianini, Pasquale - 00250"
-    And   I click on the selected patient
-    And   I verify that the demographic module opened correctly
     When  I click button edit contact address
     And   I enter the address in the contact address row "Calle Modificada 456"
     And   I enter the start date of the contact address row "05/01/2026"

@@ -1,8 +1,11 @@
-#project name
-@VersiaRenal
+#enviroment
+@Environment_Dev
+#app_namme
+@Versia_Renal
+#version
+@2024R1a
 #Module
-@HDTreatment
-
+@HD_Treatment
 Feature: Ability to View Lab Results for medication administration
 
 

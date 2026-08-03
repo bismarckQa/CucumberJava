@@ -8,8 +8,7 @@
 @ConfigurationUser
 Feature: Modify Additional Identification
 
-  @test @regression @TestCase_2407
-  Scenario: Edit an add identification
+Background:
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
     And   I login successful
@@ -17,6 +16,11 @@ Feature: Modify Additional Identification
     Then  I enter into Configuration User module
     And   I open Users module in configuration user
     And   I verify that Users module opened correctly
+
+
+
+  @test @TestCase_2407 @ALM_VR_TC_242
+  Scenario: Edit an add identification
     When  I click button arrow up
     And   I select the user "QA Automation, Test" in users module
     Then  I verify that Additional identifications section is displayed
@@ -27,15 +31,8 @@ Feature: Modify Additional Identification
     Then  I save the additional identifications row
     And   I verify the action was performed successfully
 
-  @test @regression @TestCase_2410
+  @test @TestCase_2410 @ALM_VR_TC_243
   Scenario: Cancelling an edited add identification
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    And   I open options of user
-    Then  I enter into Configuration User module
-    And   I open Users module in configuration user
-    And   I verify that Users module opened correctly
     When  I click button arrow up
     And   I select the user "QA Automation, Test" in users module
     Then  I verify that Additional identifications section is displayed
@@ -45,15 +42,8 @@ Feature: Modify Additional Identification
     And   I enter the observations in additional identifications row "Qa test"
     Then  I cancel the additional identifications row
 
-  @test @regression @TestCase_2411
+  @test @TestCase_2411 @ALM_VR_TC_244
   Scenario: Empty required fields
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    And   I open options of user
-    Then  I enter into Configuration User module
-    And   I open Users module in configuration user
-    And   I verify that Users module opened correctly
     When  I click button arrow up
     And   I select the user "QA Automation, Test" in users module
     Then  I verify that Additional identifications section is displayed

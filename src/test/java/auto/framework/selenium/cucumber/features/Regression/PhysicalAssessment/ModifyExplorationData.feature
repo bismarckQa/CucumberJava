@@ -9,14 +9,17 @@
 
 Feature: Modify Exploration Data
 
-  @test @TestCase_3648
-  Scenario: Successful edit Physical assessment
-    Given I open the Baxter website
+Background:
+Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
     And   I login successful
     When  I select the patient "Foianini, Pasquale - 00250"
     And   I open Physical Assessment module
     When  I check the module Physical Assessment appear correctly
+    
+
+  @test @TestCase_3648 @ALM_VR_TC_143
+  Scenario: Successful edit Physical assessment
     And   I click in Physical assessment area
     And   I click button three points Physical Assessment
     And   I click button option "Edit"
@@ -24,15 +27,8 @@ Feature: Modify Exploration Data
     And   I click button three points Physical Assessment
     Then  I click button save
 
-  @test @TestCase_3649
+  @test @TestCase_3649 @ALM_VR_TC_658
   Scenario: Cancelling an edited Physical assessment
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    When  I select the patient "Foianini, Pasquale - 00250"
-    And   I open Physical Assessment module
-    When  I check the module Physical Assessment appear correctly
-    And   I click in Physical assessment area
     And   I click button three points Physical Assessment
     And   I click button option "Edit"
     When  I See Indicator section all available
@@ -40,14 +36,8 @@ Feature: Modify Exploration Data
     And   I click button three points Physical Assessment
     Then  I click button cancel
 
-  @test @TestCase_7274
+  @test @TestCase_7274 @ALM_VR_TC_659
   Scenario: Cancelling edit indicator
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    When  I select the patient "Foianini, Pasquale - 00250"
-    And   I open Physical Assessment module
-    When  I check the module Physical Assessment appear correctly
     And   I click in Physical assessment area
     And   I click button three points Physical Assessment
     And   I click button option "Edit"
@@ -56,14 +46,8 @@ Feature: Modify Exploration Data
     Then  I click button cancel indicators
     And   I click button arrow up
 
-  @test @TestCase_7273
+  @test @TestCase_7273 @ALM_VR_TC_660
   Scenario: Successful edit indicator
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    When  I select the patient "Foianini, Pasquale - 00250"
-    And   I open Physical Assessment module
-    When  I check the module Physical Assessment appear correctly
     And   I click in Physical assessment area
     And   I click button three points Physical Assessment
     And   I click button option "Edit"

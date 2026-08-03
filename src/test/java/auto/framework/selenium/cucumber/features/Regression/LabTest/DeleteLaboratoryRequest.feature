@@ -8,24 +8,22 @@
 @LabTest
 Feature: Delete laboratory request
 
-  @test @test_Case_3758
-  Scenario: Successful deleted laboratory request
+Background:
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
     And   I login successful
     When  I select the patient "Foianini, Pasquale - 00250"
     And   I open Lab Tests module
+
+
+  @test @test_Case_3758 @ALM_VR_TC_127
+  Scenario: Successful deleted laboratory request
     And   I check the module Lab Tests appear correctly
     When  I click button laboratory request section
     And   I click button delete laboratory request and accept it
 
-  @test @test_Case_3759
+  @test @test_Case_3759 @ALM_VR_TC_575
   Scenario: Cancelling deleted laboratory request
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    When  I select the patient "Foianini, Pasquale - 00250"
-    And   I open Lab Tests module
     And   I check the module Lab Tests appear correctly
     When  I click button laboratory request section
     And   I click button delete laboratory request and cancel it

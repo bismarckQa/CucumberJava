@@ -8,7 +8,7 @@
 @HDTherapy
 
 Feature: Add type of anticoagulant
-  @test @TestCase_4745
+  @test @TestCase_4745 @ALM_VR_TC_94
   Scenario: Successful added anticoagulant
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

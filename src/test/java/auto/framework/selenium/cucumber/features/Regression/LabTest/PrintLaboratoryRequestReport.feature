@@ -7,7 +7,7 @@
 #Module
 @LabTest
 Feature: Print laboratory request report
-  @test @test_Case_3758
+  @test @test_Case_3758 @ALM_VR_TC_585
   Scenario: Cancelling laboratory request print
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

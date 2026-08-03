@@ -8,14 +8,18 @@
 @HDTherapy
 
 Feature: Modify Needles
-  @test @TestCase_2710
-  Scenario: Empty Data
+
+Background:
+
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
     And   I login successful
     And   I open options of user
     Then  I enter into user configuration options
     And   I successfully opened the HD Therapy module
+
+  @test @TestCase_2710 @ALM_VR_TC_103
+  Scenario: Empty Data
     And   I click button needles section
     And   I looking for the needles with the name: "Test_1"
     When  I click button three points needles
@@ -26,14 +30,8 @@ Feature: Modify Needles
     And   I click button cancel add new needles
     Then  I click button arrow up
 
-  @test @TestCase_2711
+  @test @TestCase_2711 @ALM_VR_TC_99
   Scenario: No Caliber
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    And   I open options of user
-    Then  I enter into user configuration options
-    And   I successfully opened the HD Therapy module
     And   I click button needles section
     And   I looking for the needles with the name: "Test_1"
     When  I click button three points needles
@@ -44,14 +42,8 @@ Feature: Modify Needles
     And   I click button cancel add new needles
     Then  I click button arrow up
 
-  @test @TestCase_2712
+  @test @TestCase_2712 @ALM_VR_TC_531
   Scenario: Full Data
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    And   I open options of user
-    Then  I enter into user configuration options
-    And   I successfully opened the HD Therapy module
     And   I click button needles section
     And   I looking for the needles with the name: "Test_1"
     When  I click button three points needles
@@ -63,14 +55,8 @@ Feature: Modify Needles
     Then  I click button arrow up
     And   I looking for the needles with the name: "Test_Modified"
 
-  @test @TestCase_2714
+  @test @TestCase_2714 @ALM_VR_TC_532
   Scenario: Set as inactive to active
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    And   I open options of user
-    Then  I enter into user configuration options
-    And   I successfully opened the HD Therapy module
     And   I click button needles section
     Then  I click the checkbox to show all inactive needles
     And   I looking for the needles with the name: "Test_inactive"

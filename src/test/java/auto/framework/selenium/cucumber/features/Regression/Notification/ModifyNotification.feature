@@ -8,12 +8,16 @@
 @Notification
 Feature: Modify Notification
 
-  @test @regression @TestCase_17377
-  Scenario: Cancel modify end date
+Background:
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
     And   I login successful
     When  I click notification bell
+
+
+
+  @test @TestCase_17377 @ALM_VR_TC_262
+  Scenario: Cancel modify end date
     And   I click go to notification center in notification bell panel
     And   I click patient filter in notification center
     And   I click show all notifications
@@ -22,12 +26,8 @@ Feature: Modify Notification
     Then  I cancel the notification edit row
     And   I verify the notification list is displayed
 
-  @test @regression @TestCase_17378
+  @test @TestCase_17378 @ALM_VR_TC_263
   Scenario: Modify notification with wrong date
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    When  I click notification bell
     And   I click go to notification center in notification bell panel
     And   I click patient filter in notification center
     And   I click show all notifications
@@ -37,12 +37,8 @@ Feature: Modify Notification
     And   I click button OK modal error
     Then  I cancel the notification edit row
 
-  @test @regression @TestCase_17379
+  @test @TestCase_17379 @ALM_VR_TC_641
   Scenario: Modify notification successfully
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    When  I click notification bell
     And   I click go to notification center in notification bell panel
     And   I click patient filter in notification center
     And   I click show all notifications

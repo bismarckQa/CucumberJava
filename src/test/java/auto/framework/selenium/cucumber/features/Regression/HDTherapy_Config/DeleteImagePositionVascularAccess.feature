@@ -8,25 +8,24 @@
 @HDTherapy
 
 Feature: Delete Image Position Vascular Access
-  @test @TestCase_4741
-  Scenario: Cancelling deleted Image Position Vascular Access
+
+Background:
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
     And   I login successful
     And   I open options of user
     Then  I enter into user configuration options
     And   I successfully opened the HD Therapy module
+
+
+  @test @TestCase_4741 @ALM_VR_TC_98
+  Scenario: Cancelling deleted Image Position Vascular Access
     And   I looking for the position lateralities with the name: "Muñeca derecha"
     And   I click button delete Laterality
     When  I click button Cancel Confirmation delete Laterality
 
-  @test @TestCase_4740
+  @test @TestCase_4740 @ALM_VR_TC_
   Scenario: Successful deleted Image Position Vascular Access
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    And   I open options of user
-    Then  I enter into user configuration options
     And   I successfully opened the HD Therapy module
     And   I looking for the position lateralities with the name: "Muñeca derecha"
     And   I click button delete Laterality

@@ -8,14 +8,17 @@
 @HDTherapy
 
 Feature: Add needles
-  @test @TestCase_2705
-  Scenario: Empty fields
-    Given I open the Baxter website
+
+Background:
+   Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
     And   I login successful
     And   I open options of user
     Then  I enter into user configuration options
     And   I successfully opened the HD Therapy module
+
+  @test @TestCase_2705 @ALM_VR_TC_93
+  Scenario: Empty fields
     And   I click button needles section
     When  I click button three points needles
     And   I click button new add needles
@@ -23,14 +26,8 @@ Feature: Add needles
     And   I click button cancel add new needles
     Then  I click button arrow up
 
-  @test @TestCase_2706
+  @test @TestCase_2706 @ALM_VR_TC_509
   Scenario: No name
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    And   I open options of user
-    Then  I enter into user configuration options
-    And   I successfully opened the HD Therapy module
     And   I click button needles section
     When  I click button three points needles
     And   I click button new add needles
@@ -40,14 +37,8 @@ Feature: Add needles
     And   I click button cancel add new needles
     Then  I click button arrow up
 
-  @test @TestCase_2707
+  @test @TestCase_2707 @ALM_VR_TC_510
   Scenario: No Caliber
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    And   I open options of user
-    Then  I enter into user configuration options
-    And   I successfully opened the HD Therapy module
     And   I click button needles section
     When  I click button three points needles
     And   I click button new add needles
@@ -57,14 +48,8 @@ Feature: Add needles
     And   I click button cancel add new needles
     Then  I click button arrow up
 
-  @test @TestCase_2708
+  @test @TestCase_2708 @ALM_VR_TC_511
   Scenario: Full Data
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    And   I open options of user
-    Then  I enter into user configuration options
-    And   I successfully opened the HD Therapy module
     And   I click button needles section
     When  I click button three points needles
     And   I click button new add needles
@@ -75,14 +60,8 @@ Feature: Add needles
     Then  I click button arrow up
     And   I looking for the needles with the name: "Test_1"
 
-  @test @TestCase_2709
+  @test @TestCase_2709 @ALM_VR_TC_512
   Scenario: Inactive needle
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    And   I open options of user
-    Then  I enter into user configuration options
-    And   I successfully opened the HD Therapy module
     And   I click button needles section
     When  I click button three points needles
     And   I click button new add needles

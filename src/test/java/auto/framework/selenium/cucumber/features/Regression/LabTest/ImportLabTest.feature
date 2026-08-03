@@ -7,14 +7,17 @@
 #Module
 @LabTest
 Feature: Import lab tests
-  @test @test_Case_3582
-  Scenario: Successful import lab tests
+
+Background:
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
     And   I login successful
     When  I select the patient "Foianini, Pasquale - 00250"
     And   I open Lab Tests module
     And   I check the module Lab Tests appear correctly
+
+  @test @test_Case_3582 @ALM_VR_TC_580
+  Scenario: Successful import lab tests
     When  I click button lab test section
     And   I click button three points lab test section
     When  I click button "Import" option
@@ -24,14 +27,8 @@ Feature: Import lab tests
     Then  I click button "Import results" option
     And   I click button arrow up
 
-  @test @test_Case_3600
+  @test @test_Case_3600 @ALM_VR_TC_581
   Scenario: Cancelling an import lab tests
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    When  I select the patient "Foianini, Pasquale - 00250"
-    And   I open Lab Tests module
-    And   I check the module Lab Tests appear correctly
     When  I click button lab test section
     And   I click button three points lab test section
     Then  I click button "Import" option
@@ -41,14 +38,8 @@ Feature: Import lab tests
     And   I click button close modal import laboratory results
     And   I click button arrow up
 
-  @test @test_Case_3585
+  @test @test_Case_3585 @ALM_VR_TC_582
   Scenario: Show none results to import
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    When  I select the patient "Foianini, Pasquale - 00250"
-    And   I open Lab Tests module
-    And   I check the module Lab Tests appear correctly
     When  I click button lab test section
     And   I click button three points lab test section
     When  I click button "Import" option

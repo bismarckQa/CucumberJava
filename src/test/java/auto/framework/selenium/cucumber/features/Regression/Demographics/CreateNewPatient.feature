@@ -8,13 +8,15 @@
 @Demographics
 Feature: Create New Patient
 
-  @test @regression @test_Case_3613
-  Scenario: Create new patient without required fields - validation prevents saving
-    Given I open the Baxter website
+Background:
+   Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
     And   I login successful
     When  I open options of user
     And   I enter into user configuration options
+
+  @test @test_Case_3613 @ALM_VR_TC_74
+  Scenario: Create new patient without required fields - validation prevents saving
     Then  I verify the New patient x_title is visible with scroll
     And   I click the three points menu of New patient
     And   I click "New" option in the three points menu of New patient
@@ -23,13 +25,8 @@ Feature: Create New Patient
     And   I click the three points menu of New patient
     And   I click "Cancel" option in the three points menu of New patient
 
-  @test @regression @test_Case_3612
+  @test @test_Case_3612 @ALM_VR_TC_472
   Scenario: Create new patient with all required fields successfully
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    When  I open options of user
-    And   I enter into user configuration options
     Then  I verify the New patient x_title is visible with scroll
     And   I click the three points menu of New patient
     And   I click "New" option in the three points menu of New patient

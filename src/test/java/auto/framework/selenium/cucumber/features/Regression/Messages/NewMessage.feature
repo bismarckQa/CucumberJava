@@ -8,7 +8,7 @@
 @Messages
 Feature: New Message
 
-  @test @regression @TestCase_17388
+  @test @TestCase_17388 @ALM_VR_TC_267
   Scenario: New message successfully sent
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

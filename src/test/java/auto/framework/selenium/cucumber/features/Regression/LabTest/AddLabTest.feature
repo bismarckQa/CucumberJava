@@ -6,16 +6,19 @@
 @3.2
 #Module
 @LabTest
-Feature: Add lab tests
+Feature: Add lab tests (Lab tests tab)
 
-  @test @test_Case_3565
-  Scenario:  Successful add laboratory result
-    Given I open the Baxter website
+Background:
+ Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
     And   I login successful
     When  I select the patient "Foianini, Pasquale - 00250"
     And   I open Lab Tests module
     And   I check the module Lab Tests appear correctly
+
+
+  @test @test_Case_3565 @ALM_VR_TC_126
+  Scenario:  Successful add laboratory result
     And   I click button lab test section
     When  I click button three points lab test section
     And   I click button "NEW" option
@@ -27,14 +30,8 @@ Feature: Add lab tests
     And   I select option action in modal "Yes"
     And   I click button arrow up
 
-  @test @test_Case_3569
+  @test @test_Case_3569 @ALM_VR_TC_571
   Scenario:  Cancelling added laboratory result
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    When  I select the patient "Foianini, Pasquale - 00250"
-    And   I open Lab Tests module
-    And   I check the module Lab Tests appear correctly
     And   I click button lab test section
     When  I click button three points lab test section
     And   I click button "NEW" option
@@ -47,14 +44,8 @@ Feature: Add lab tests
     Then  I click button "Cancel" option
     And   I click button arrow up
 
-  @test @test_Case_3570
+  @test @test_Case_3570 @ALM_VR_TC_572
   Scenario:  Add laboratory result with empty required fields
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    When  I select the patient "Foianini, Pasquale - 00250"
-    And   I open Lab Tests module
-    And   I check the module Lab Tests appear correctly
     And   I click button lab test section
     When  I click button three points lab test section
     And   I click button "NEW" option
@@ -65,14 +56,9 @@ Feature: Add lab tests
     Then  I click button "Cancel" option
     And   I click button arrow up
 
-  @test @test_Case_3572
+  @test @test_Case_3572 @ALM_VR_TC_573
   Scenario:  Remove added laboratory result
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    When  I select the patient "Foianini, Pasquale - 00250"
-    And   I open Lab Tests module
-    And   I check the module Lab Tests appear correctly
+   
     And   I click button lab test section
     When  I click button three points lab test section
     And   I click button "NEW" option
@@ -84,14 +70,8 @@ Feature: Add lab tests
     Then  I click button "Cancel" option
     And   I click button arrow up
 
-  @test @test_Case_3578
+  @test @test_Case_3578 @ALM_VR_TC_574
   Scenario:  Add profiles of new result
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    When  I select the patient "Foianini, Pasquale - 00250"
-    And   I open Lab Tests module
-    And   I check the module Lab Tests appear correctly
     And   I click button lab test section
     When  I click button three points lab test section
     And   I click button "NEW" option

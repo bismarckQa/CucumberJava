@@ -7,14 +7,18 @@
 #Module
 @LabTest
 Feature: Filters options
-  @test @test_Case_3658
-  Scenario: Filter options view
+
+Background:
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
     And   I login successful
     When  I select the patient "Foianini, Pasquale - 00250"
     And   I open Lab Tests module
     And   I check the module Lab Tests appear correctly
+
+
+  @test @test_Case_3658 @ALM_VR_TC_578
+  Scenario: Filter options view
     When  I click button lab test section
     And   I click in drop down profiles analytics
     When  I click button "Discard all" option
@@ -24,15 +28,9 @@ Feature: Filters options
     And   I insert data into input end date analytics "02/26/2026"
     When  I click button "Select" option
 
-  @test @test_Case_3675
+  @test @test_Case_3675 @ALM_VR_TC_579
   Scenario: Show none lab tests results
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    When  I select the patient "Foianini, Pasquale - 00250"
-    And   I open Lab Tests module
-    And   I check the module Lab Tests appear correctly
-    When  I click button lab test section
+   When  I click button lab test section
     And   I click in drop down profiles analytics
     When  I click button "Discard all" option
     When  I click button "Select all" option

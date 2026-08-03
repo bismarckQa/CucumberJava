@@ -8,15 +8,18 @@
 @ConfigurationUser
 Feature: Assign Center
 
-  @test @regression @TestCase_2384
-  Scenario: New center
-    Given I open the Baxter website
+Background:
+
+Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
     And   I login successful
     And   I open options of user
     Then  I enter into Configuration User module
     And   I open Users module in configuration user
     And   I verify that Users module opened correctly
+    
+  @test @TestCase_2384 @ALM_VR_TC_223
+  Scenario: New center
     When  I click button arrow up
     And   I select the user "QA Automation, Test" in users module
     Then  I verify that Center assignment section is displayed
@@ -26,15 +29,8 @@ Feature: Assign Center
     Then  I save the center assignment row
     And   I verify the action was performed successfully
 
-  @test @regression @TestCase_2378
+  @test @TestCase_2378 @ALM_VR_TC_224
   Scenario: Cancelling a new center
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    And   I open options of user
-    Then  I enter into Configuration User module
-    And   I open Users module in configuration user
-    And   I verify that Users module opened correctly
     When  I click button arrow up
     And   I select the user "QA Automation, Test" in users module
     Then  I verify that Center assignment section is displayed
@@ -43,15 +39,8 @@ Feature: Assign Center
     And   I enter the start date in center assignment row "05/05/2026"
     Then  I cancel the center assignment row
 
-  @test @regression @TestCase_2379
+  @test @TestCase_2379 @ALM_VR_TC_225
   Scenario: Wrong date
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    And   I open options of user
-    Then  I enter into Configuration User module
-    And   I open Users module in configuration user
-    And   I verify that Users module opened correctly
     When  I click button arrow up
     And   I select the user "QA Automation, Test" in users module
     Then  I verify that Center assignment section is displayed

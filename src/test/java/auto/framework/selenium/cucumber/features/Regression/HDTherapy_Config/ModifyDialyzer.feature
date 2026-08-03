@@ -7,14 +7,20 @@
 #Module
 @HDTherapy
 Feature: Modify Dialyzer
-  @test @TestCase_2683
+ 
+ Background:
+    Given I open the Baxter website
+    And   I try to login with "login_baxter" credentials
+    And   I login successful
+    When  I select the patient "Ape1_1838 Ape2_1838, Nom_1838 - 1838"
+    And   I click button Ok in modal error
+    And   I open options of user
+    Then  I enter into user configuration options
+    And   I click button Ok in modal error
+    And   I successfully opened the HD Therapy module
+ 
+  @test @TestCase_2683 @ALM_VR_TC_102
   Scenario: Empty Model Field
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    And   I open options of user
-    Then  I enter into user configuration options
-    And   I successfully opened the HD Therapy module
     And   I click button dialyzer section
     When  I looking for the model to edit with the name: "Test_full_data"
     And   I click button three points dialyzer
@@ -23,17 +29,8 @@ Feature: Modify Dialyzer
     And   I click button three points dialyzer
     Then  I click button cancel add new dialyzer
 
-  @test @TestCase_2684
+  @test @TestCase_2684 @ALM_VR_TC_524
   Scenario: Empty Manufacturer field
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    When  I select the patient "Ape1_1838 Ape2_1838, Nom_1838 - 1838"
-    And   I click button Ok in modal error
-    And   I open options of user
-    Then  I enter into user configuration options
-    And   I click button Ok in modal error
-    And   I successfully opened the HD Therapy module
     And   I click button dialyzer section
     When  I looking for the model to edit with the name: "Test_full_data"
     And   I click button three points dialyzer
@@ -42,17 +39,8 @@ Feature: Modify Dialyzer
     And   I click button three points dialyzer
     Then  I click button cancel add new dialyzer
 
-  @test @TestCase_2685
+  @test @TestCase_2685 @ALM_VR_TC_525
   Scenario: Empty Model and Manufacturer Fields
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    When  I select the patient "Ape1_1838 Ape2_1838, Nom_1838 - 1838"
-    And   I click button Ok in modal error
-    And   I open options of user
-    Then  I enter into user configuration options
-    And   I click button Ok in modal error
-    And   I successfully opened the HD Therapy module
     And   I click button dialyzer section
     When  I looking for the model to edit with the name: "Test_full_data"
     And   I click button three points dialyzer
@@ -62,14 +50,8 @@ Feature: Modify Dialyzer
     And   I click button three points dialyzer
     Then  I click button cancel add new dialyzer
 
-  @test @TestCase_2686
+  @test @TestCase_2686 @ALM_VR_TC_526
   Scenario: All required data
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    And   I open options of user
-    Then  I enter into user configuration options
-    And   I successfully opened the HD Therapy module
     And   I click button dialyzer section
     When  I looking for the model to edit with the name: "Test_full_data"
     And   I click button three points dialyzer
@@ -79,14 +61,8 @@ Feature: Modify Dialyzer
     And   I click button save new dialyzer
     And   I click button arrow up
 
-  @test @TestCase_2687
+  @test @TestCase_2687 @ALM_VR_TC_527
   Scenario: Set dialyzer as inactive
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    And   I open options of user
-    Then  I enter into user configuration options
-    And   I successfully opened the HD Therapy module
     And   I click button dialyzer section
     When  I looking for the model to edit with the name: "Test_dialyzer_modified"
     And   I click button three points dialyzer
@@ -99,15 +75,8 @@ Feature: Modify Dialyzer
     And   I looking for the model to edit with the name: "Test_dialyzer_modified"
 
 
-  @test @TestCase_2688
+  @test @TestCase_2688 @ALM_VR_TC_528
   Scenario: Set dialyzer as active
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    When  I select the patient "Ape1_1838 Ape2_1838, Nom_1838 - 1838"
-    And   I open options of user
-    Then  I enter into user configuration options
-    And   I successfully opened the HD Therapy module
     And   I click button dialyzer section
     Then  I click the checkbox to show all inactive dialyzers
     When  I looking for the model to edit with the name: "Test_Complet_data"

@@ -6,15 +6,19 @@
 @3.2
 #Module
 @LabTest
-Feature: Add laboratory request
-  @test @test_Case_3744
-  Scenario: Add laboratory request with empty required fields
-    Given I open the Baxter website
+Feature: Add laboratory request (Laboratory request tab)
+
+
+Background:
+Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
     And   I login successful
     When  I select the patient "Foianini, Pasquale - 00250"
     And   I open Lab Tests module
     And   I check the module Lab Tests appear correctly
+    
+  @test @test_Case_3744 @ALM_VR_TC_125
+  Scenario: Add laboratory request with empty required fields
     When  I click button laboratory request section
     And   I click button three points laboratory request section
     When  I click button "NEW" option in Laboratory request
@@ -22,14 +26,8 @@ Feature: Add laboratory request
     And   I click button "Save" option in iframe laboratory request
     And   I click button "Cancel" option in iframe laboratory request
 
-  @test @test_Case_3749
+  @test @test_Case_3749 @ALM_VR_TC_569
   Scenario: Successful add laboratory request
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    When  I select the patient "Foianini, Pasquale - 00250"
-    And   I open Lab Tests module
-    And   I check the module Lab Tests appear correctly
     When  I click button laboratory request section
     And   I click button three points laboratory request section
     When  I click button "NEW" option in Laboratory request
@@ -39,14 +37,8 @@ Feature: Add laboratory request
     Then  I click button arrow up
 
 
-  @test @test_Case_3750
+  @test @test_Case_3750 @ALM_VR_TC_570
   Scenario: Cancelling added laboratory request
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    When  I select the patient "Foianini, Pasquale - 00250"
-    And   I open Lab Tests module
-    And   I check the module Lab Tests appear correctly
     When  I click button laboratory request section
     And   I click button three points laboratory request section
     When  I click button "NEW" option in Laboratory request

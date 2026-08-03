@@ -8,15 +8,17 @@
 @HDAccess
 
 Feature: Add Exploration Data
-
-  @test @TestCase_3561
-  Scenario: Successful added Physical Assessment
-    Given I open the Baxter website
+Background:
+Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
     And   I login successful
     When  I select the patient "Foianini, Pasquale - 00250"
     And   I open Physical Assessment module
     When  I check the module Physical Assessment appear correctly
+    
+
+  @test @TestCase_3561 @ALM_VR_TC_137
+  Scenario: Successful added Physical Assessment
     And   I click in Physical assessment area
     And   I click button three points Physical Assessment
     And   I click button option "New"
@@ -24,14 +26,8 @@ Feature: Add Exploration Data
     And   I click button three points Physical Assessment
     And   I click button option "Save"
 
-  @test @TestCase_3583
+  @test @TestCase_3583 @ALM_VR_TC_644
   Scenario: Cancelling an added Physical Assessment
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    When  I select the patient "Foianini, Pasquale - 00250"
-    And   I open Physical Assessment module
-    When  I check the module Physical Assessment appear correctly
     And   I click in Physical assessment area
     And   I click button three points Physical Assessment
     And   I click button option "New"
@@ -39,14 +35,8 @@ Feature: Add Exploration Data
     And   I click button three points Physical Assessment
     And   I click button option "Cancel"
 
-  @test @TestCase_3584
+  @test @TestCase_3584 @ALM_VR_TC_645
   Scenario: Add new Physical Assessment with empty required fields
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    When  I select the patient "Foianini, Pasquale - 00250"
-    And   I open Physical Assessment module
-    When  I check the module Physical Assessment appear correctly
     And   I click in Physical assessment area
     And   I click button three points Physical Assessment
     And   I click button option "New"

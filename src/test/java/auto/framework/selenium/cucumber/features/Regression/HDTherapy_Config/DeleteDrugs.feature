@@ -9,14 +9,16 @@
 
 Feature: Delete Drugs
 
-  @test @TestCase_17214
-  Scenario: Delete the drug in use
+Background:
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
     And   I login successful
     And   I open options of user
     Then  I enter into user configuration options
     And   I successfully opened the HD Therapy module
+
+  @test @TestCase_17214  @ALM_VR_TC_97
+  Scenario: Delete the drug in use
     When  I click button drugs section
     And   I looking for the new drug created with the name: "Test_Modified"
     And   I click button delete drug type selected
@@ -25,14 +27,8 @@ Feature: Delete Drugs
     And   I click button arrow up
     And   I click button OK  modal error
 
-  @test @TestCase_17216
+  @test @TestCase_17216 @ALM_VR_TC_517
   Scenario: Delete Successful
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    And   I open options of user
-    Then  I enter into user configuration options
-    And   I successfully opened the HD Therapy module
     When  I click button drugs section
     And   I looking for the new drug created with the name: "Heparina 2"
     And   I click button delete drug type selected

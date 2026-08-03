@@ -8,7 +8,7 @@
 @LabTest
 Feature: View Laboratory Request
 
-@test @test_Case_3780
+@test @test_Case_3780 @ALM_VR_TC_133
 Scenario: Enter in laboratory request window
 Given I open the Baxter website
 And   I try to login with "login_baxter" credentials

@@ -7,7 +7,7 @@
 #Module
 @LabTest
 Feature: View details lab tests
-  @test @test_Case_3613
+  @test @test_Case_3613 @ALM_VR_TC_132
   Scenario: Enter in laboratory results detail window
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

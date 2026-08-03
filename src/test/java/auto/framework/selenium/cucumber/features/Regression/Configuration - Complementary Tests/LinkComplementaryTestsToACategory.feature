@@ -1,5 +1,14 @@
+#enviroment
+@Environment_Dev
+#app_namme
+@Versia_Renal
+#version
+@2024R1a
+#Module
+@Configuration_Complementary_Tests
+
 Feature: Link Complementary Tests to a category
-  @test
+  @test @TestCase_4069 @ALM_VR_TC_56
   Scenario:  Add test to category
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
@@ -9,7 +18,7 @@ Feature: Link Complementary Tests to a category
     And   I verify that the user configuration opened correctly
     Then  I drag and drop any test from the left grid to the right
 
-  @test
+  @test @TestCase_4072 @ALM_VR_TC_446
   Scenario:  Remove test from category
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

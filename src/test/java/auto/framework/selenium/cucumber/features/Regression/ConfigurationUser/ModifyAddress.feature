@@ -8,8 +8,7 @@
 @ConfigurationUser
 Feature: Modify Address
 
-  @test @regression @TestCase_2455
-  Scenario: Empty required fields
+Background:
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
     And   I login successful
@@ -17,6 +16,9 @@ Feature: Modify Address
     Then  I enter into Configuration User module
     And   I open Users module in configuration user
     And   I verify that Users module opened correctly
+    
+  @test @TestCase_2455 @ALM_VR_TC_250
+  Scenario: Empty required fields
     When  I click button arrow up
     And   I select the user "QA Automation, Test" in users module
     Then  I verify that Addresses section is displayed
@@ -26,15 +28,8 @@ Feature: Modify Address
     Then  I save the addresses row
     And   I cancel the addresses row
 
-  @test @regression @TestCase_2456
+  @test @TestCase_2456 @ALM_VR_TC_251
   Scenario: Cancelling an edited address
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    And   I open options of user
-    Then  I enter into Configuration User module
-    And   I open Users module in configuration user
-    And   I verify that Users module opened correctly
     When  I click button arrow up
     And   I select the user "QA Automation, Test" in users module
     Then  I verify that Addresses section is displayed
@@ -48,15 +43,8 @@ Feature: Modify Address
     And   I enter the other field in addresses row "Edit cancel test"
     Then  I cancel the addresses row
 
-  @test @regression @TestCase_2457
+  @test @TestCase_2457 @ALM_VR_TC_252
   Scenario: Successful edit address
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    And   I open options of user
-    Then  I enter into Configuration User module
-    And   I open Users module in configuration user
-    And   I verify that Users module opened correctly
     When  I click button arrow up
     And   I select the user "QA Automation, Test" in users module
     Then  I verify that Addresses section is displayed

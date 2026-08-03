@@ -9,42 +9,32 @@
 
 Feature: Delete Exploration Data
 
-  @test @TestCase_7270
-  Scenario: Successful delete indicator
-    Given I open the Baxter website
+Background:
+Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
     And   I login successful
     When  I select the patient "Foianini, Pasquale - 00250"
     And   I open Physical Assessment module
     When  I check the module Physical Assessment appear correctly
+    
+  @test @TestCase_7270 @ALM_VR_TC_140
+  Scenario: Successful delete indicator
     And   I click in Physical assessment area
     When  I See Indicator section all available
     And   I click button delete indicators
     And   I click button "Yes" in action modal
     Then  I click button OK modal error
 
-  @test @TestCase_7271
+  @test @TestCase_7271 @ALM_VR_TC_651
   Scenario: Cancelling delete indicator
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    When  I select the patient "Foianini, Pasquale - 00250"
-    And   I open Physical Assessment module
-    When  I check the module Physical Assessment appear correctly
     And   I click in Physical assessment area
     When  I See Indicator section all available
     And   I click button delete indicators
     And   I click button "No" in action modal
     Then  I click button arrow up
 
-  @test @TestCase_3635
+  @test @TestCase_3635 @ALM_VR_TC_652
   Scenario: Successful delete Physical assessment
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    When  I select the patient "Foianini, Pasquale - 00250"
-    And   I open Physical Assessment module
-    When  I check the module Physical Assessment appear correctly
     And   I click in Physical assessment area
     And   I click button three points Physical Assessment
     And   I click button option "Delete"
@@ -52,14 +42,8 @@ Feature: Delete Exploration Data
 
 
 
-  @test @TestCase_3636
+  @test @TestCase_3636 @ALM_VR_TC_653
   Scenario: Cancelling a deleted Physical Assessment
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    When  I select the patient "Foianini, Pasquale - 00250"
-    And   I open Physical Assessment module
-    When  I check the module Physical Assessment appear correctly
     And   I click in Physical assessment area
     And   I click button three points Physical Assessment
     And   I click button option "Delete"

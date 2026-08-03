@@ -1,5 +1,15 @@
+#enviroment
+@Environment_Dev
+#app_namme
+@Versia_Renal
+#version
+@2024R1a
+#Module
+@Clinical_Encounter
+
 Feature: Filter Options
-  @test
+
+  @test @Test_case_3387 @ALM_VR_TC_671
   Scenario: Selection with filters
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials

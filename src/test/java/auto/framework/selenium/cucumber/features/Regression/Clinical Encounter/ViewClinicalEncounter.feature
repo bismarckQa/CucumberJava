@@ -1,5 +1,16 @@
-Feature: Clinical Encounter Reviews
-  @test
+#enviroment
+@Environment_Dev
+#app_namme
+@Versia_Renal
+#version
+@2024R1a
+#Module
+@Clinical_Encounter
+
+
+Feature:  View clinical encounter 
+
+  @test @Test_case_3378 @ALM_VR_TC_675
   Scenario: Enter in clinical encounter window
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
