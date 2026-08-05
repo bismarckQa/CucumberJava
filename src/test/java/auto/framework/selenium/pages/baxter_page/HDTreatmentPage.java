@@ -9,6 +9,13 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 @LazyComponent
 public class HDTreatmentPage extends BasePage<HDTreatmentPage> {
+    private static final By CENTER_DROPDOWN_IN_LOCATION = By.xpath("//h2[normalize-space(.)='Location']/ancestor::div[contains(@class,'x_panel')][1]//label[normalize-space(.)='Center']/following-sibling::span[contains(@class,'k-dropdownlist')][1]");
+    private static final By ROOM_DROPDOWN_IN_LOCATION = By.xpath("//h2[normalize-space(.)='Location']/ancestor::div[contains(@class,'x_panel')][1]//label[normalize-space(.)='Room']/following-sibling::span[contains(@class,'k-dropdownlist')][1]");
+    private static final By SHIFT_DROPDOWN_IN_LOCATION = By.xpath("//h2[normalize-space(.)='Location']/ancestor::div[contains(@class,'x_panel')][1]//label[normalize-space(.)='Shift']/following-sibling::span[contains(@class,'k-dropdownlist')][1]");
+    private static final By LOCATION_DROPDOWN_IN_LOCATION = By.xpath("//h2[normalize-space(.)='Location']/ancestor::div[contains(@class,'x_panel')][1]//label[normalize-space(.)='Location']/following-sibling::span[contains(@class,'k-dropdownlist')][1]");
+    private static final By MONITOR_DROPDOWN_IN_LOCATION = By.xpath("//h2[normalize-space(.)='Location']/ancestor::div[contains(@class,'x_panel')][1]//label[normalize-space(.)='Monitors']/following-sibling::span[contains(@class,'k-combobox')][1]");
+    private static final By MONITOR_DROPDOWN_BUTTON_IN_LOCATION = By.xpath("//h2[normalize-space(.)='Location']/ancestor::div[contains(@class,'x_panel')][1]//label[normalize-space(.)='Monitors']/following-sibling::span[contains(@class,'k-combobox')][1]//button[contains(@class,'k-input-button')][1]");
+
     @FindBy(how = How.XPATH, using = "//h2[contains(text(),'HD Treatment')]")
     private WebElement titleHDTreatment;
     @FindBy(how = How.XPATH, using = "(//i[@class='icon-three-points'])[1]")
@@ -406,10 +413,6 @@ public class HDTreatmentPage extends BasePage<HDTreatmentPage> {
     }
 
 
-
-
-
-
     public void writeDBP (String data) throws InterruptedException{
         driver.switchTo().parentFrame();
         driver.switchTo().frame("frmContenido");
@@ -445,6 +448,86 @@ public class HDTreatmentPage extends BasePage<HDTreatmentPage> {
         driver.switchTo().parentFrame();
     }
 
+    public void selectCenterInLocation(String center) throws InterruptedException {
+        selectLocationDropdownOption(CENTER_DROPDOWN_IN_LOCATION, center);
+    }
+
+    public void selectRoomInLocation(String room) throws InterruptedException {
+        selectLocationDropdownOption(ROOM_DROPDOWN_IN_LOCATION, room);
+    }
+
+    public void selectShiftInLocation(String shift) throws InterruptedException {
+        selectLocationDropdownOption(SHIFT_DROPDOWN_IN_LOCATION, shift);
+    }
+
+    public void selectLocationInLocation(String location) throws InterruptedException {
+        selectLocationDropdownOption(LOCATION_DROPDOWN_IN_LOCATION, location);
+    }
+
+    public void selectMonitorInLocation(String monitor) throws InterruptedException {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+
+        WebElement dropdown = waitElements(MONITOR_DROPDOWN_IN_LOCATION).get(0);
+        scrollToElementMove(dropdown);
+        javascriptExecutor.executeScript("arguments[0].click();", dropdown);
+        pause(300);
+        click(MONITOR_DROPDOWN_BUTTON_IN_LOCATION);
+        pause(800);
+
+        String optionLiteral = hdTreatmentXpathLiteral(monitor.trim());
+        By exactOption = By.xpath("//div[contains(@class,'k-animation-container') and not(contains(@style,'display: none'))]//*[self::li or @role='option'][normalize-space(.)=" + optionLiteral + "]");
+        By containsOption = By.xpath("//div[contains(@class,'k-animation-container') and not(contains(@style,'display: none'))]//*[self::li or @role='option'][contains(normalize-space(.)," + optionLiteral + ")]");
+
+        try {
+            click(exactOption);
+        } catch (Exception ex) {
+            click(containsOption);
+        }
+        pause(700);
+        driver.switchTo().parentFrame();
+    }
+
+    private void selectLocationDropdownOption(By dropdownBy, String optionText) throws InterruptedException {
+        String optionLiteral = hdTreatmentXpathLiteral(optionText.trim());
+        By exactOption = By.xpath("//div[contains(@class,'k-animation-container') and not(contains(@style,'display: none'))]//*[self::li or @role='option'][normalize-space(.)=" + optionLiteral + "]");
+        By containsOption = By.xpath("//div[contains(@class,'k-animation-container') and not(contains(@style,'display: none'))]//*[self::li or @role='option'][contains(normalize-space(.)," + optionLiteral + ")]");
+
+        StaleElementReferenceException staleFailure = null;
+        for (int attempt = 0; attempt < 3; attempt++) {
+            driver.switchTo().parentFrame();
+            driver.switchTo().frame("frmContenido");
+            try {
+                WebElement dropdown = waitElements(dropdownBy).get(0);
+                scrollToElementMove(dropdown);
+                click(dropdownBy);
+                pause(500);
+                try {
+                    click(exactOption);
+                } catch (Exception ex) {
+                    click(containsOption);
+                }
+                pause(500);
+                driver.switchTo().parentFrame();
+                return;
+            } catch (StaleElementReferenceException stale) {
+                staleFailure = stale;
+                driver.switchTo().parentFrame();
+                pause(300);
+            }
+        }
+        throw staleFailure == null
+                ? new StaleElementReferenceException("Unable to select location option: " + optionText)
+                : staleFailure;
+    }
+
+    private String hdTreatmentXpathLiteral(String s) {
+        if (s.contains("'")) {
+            return "\"" + s + "\"";
+        }
+        return "'" + s + "'";
+    }
+
     public void isDisplayedPreparationTab() {
         driver.switchTo().parentFrame();
         driver.switchTo().frame("frmContenido");
@@ -471,6 +554,27 @@ public class HDTreatmentPage extends BasePage<HDTreatmentPage> {
         driver.switchTo().parentFrame();
         driver.switchTo().frame("frmContenido");
         click(sessionTabButton);
+        driver.switchTo().parentFrame();
+    }
+
+    public void clickPreparationTabButton() {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        click(preparationTabButton);
+        driver.switchTo().parentFrame();
+    }
+
+    public void clickDrugsOtherTabButton() {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        click(drugsOtherTabButton);
+        driver.switchTo().parentFrame();
+    }
+
+    public void clickFinalSignatureTabButton() {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        click(buttonFinalSignature);
         driver.switchTo().parentFrame();
     }
     public void clickCheckBoxPatientStatus(){

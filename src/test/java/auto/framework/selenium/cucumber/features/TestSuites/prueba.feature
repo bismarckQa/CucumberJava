@@ -5,35 +5,28 @@
 #version
 @2024R1a
 #Module
-@HDAccess
+@HDTreatment
 
-Feature: Add Signs or Symptoms to complication
+Feature: Add New HD Treatment
 
   Background:
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
-    And   I login successful
-    When  I select the patient "Foianini Baggio, Pasquale"
-   And   I open "Accesses" module
-    Then  I check the module Accesses appear correctly
+    Then  I login successful
 
-@test @TestCase @ALM_VR_TC
-    Scenario: Create New Access PD
-        And   I click button three points Access
-        And   I click button new access
-        When  I click button implantation section
-        And   I select access type "Catetere peritoneale di cruz" in access data
-        And   I select access location "Peritoneal" in access data
-        And   I enter first use date "06102024" in access data
-        And   I enter access comment "QATestPDAccess"
-        And   I enter implantation date "06102024" in access data
-        And   I set omentectomy to yes in access data
-        And   I select implantation center "Sistemes Renals" in access data
-        And   I select implantation method "Tradizionale" in access data
-        And   I select reason for implantation "Prueba Activo" in access data
-        When  I enter removal date "06212024" in access data
-        And   I select removal center "Sistemes Renals" in access data
-        And   I select removal method "Prueba Activo" in access data
-        When  I click button arrow up
-        And   I click button three points Access
-        Then  I save the Access Data Implantation
+  @test @TestCase_3220 @ALM_VR_TC
+  Scenario: New treatment with active HD prescription
+    When  I select the patient "BisRic 1, ELVIRA"
+    And   I open HD Treatment module
+    #And   I click button three points HD Treatment
+    #And   I click button "New treatment" in HD Treatment
+    Then  I verify HD Treatment form is displayed
+    And   I open "Preparation" section in HD Treatment
+    When  I select center "Centro 1" in HD Treatment location
+    And   I select room "Test" in HD Treatment location
+    And   I select shift "Tardes" in HD Treatment location
+    And   I select location "Test1" in HD Treatment location
+    And   I select monitor "AK98" in HD Treatment location
+    And   I open "Session" section in HD Treatment
+    And   I open "Admin. drugs/other" section in HD Treatment
+    Then  I open "Final signature" section in HD Treatment

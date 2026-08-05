@@ -1,47 +1,40 @@
-Feature: Add New HDTreatment
+#enviroment
+@Environment_Dev
+#app_namme
+@Versia_Renal
+#version
+@2024R1a
+#Module
+@HDTreatment
+Feature: Add New HD Treatment
 
-
-  @test
-  Scenario: New Treatment without active HD Prescription
+  Background:
     Given I open the Baxter website
     And   I try to login with "login_baxter" credentials
-    And   I login successful
-    When  I select the patient "Ape1_1838 Ape2_1838, Nom_1838 - 1838"
+    Then  I login successful
+
+  @test @TestCase_3219 @ALM_VR_TC
+  Scenario: New treatment without active HD prescription
+    When  I select the patient "Ape1_1839 Ape2_1839, Nom_1839"
     And   I open HD Treatment module
-    And   I open three buttons menu and add new HD Treatment
-    Then  I Check Alert window and close it
+    And   I click button three points HD Treatment
+    And   I click button "New treatment" in HD Treatment
+    Then  I verify alert window is displayed in HD Treatment
+    And   I click button OK in HD Treatment alert
 
-  @test
-  Scenario: Add New HD Prescription
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    When  I select the patient "Ape1_1838 Ape2_1838, Nom_1838 - 1838"
-    And   I open HD Prescription module
-    Then  I create a new simple prescription
-
-  @test
-  Scenario: New Treatment with active HD Treatment
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    When  I select the patient "Ape1_1838 Ape2_1838, Nom_1838 - 1838"
+  @test @TestCase_3220 @ALM_VR_TC
+  Scenario: New treatment with active HD prescription
+    When  I select the patient "BisRic 1, ELVIRA"
     And   I open HD Treatment module
-    And   I open three buttons menu and add new HD Treatment
-    Then  I Check Preparation and Admin drug other Tabs
-
-  @test
-  Scenario: In HD Treatment - Treatment History, the value for "Convection Volume" must be the last observation value
-    Given I open the Baxter website
-    And   I try to login with "login_baxter" credentials
-    And   I login successful
-    When  I select the patient "Ape1_1838 Ape2_1838, Nom_1838 - 1838"
-    And   I open HD Treatment module
-    And   I open Session tab
-    When  I add new observation
-    And   I save the new observation
-    Then  I open treatment history and check data
-
-
-
-
+    And   I click button three points HD Treatment
+    And   I click button "New treatment" in HD Treatment
+    Then  I verify HD Treatment form is displayed
+    When  I select center "Centro 1" in HD Treatment location
+    And   I select room "Test" in HD Treatment location
+    And   I select shift "Test" in HD Treatment location
+    And   I select location "Test1" in HD Treatment location
+    And   I select monitor "AK98" in HD Treatment location
+    And   I open "Preparation" section in HD Treatment
+    And   I open "Session" section in HD Treatment
+    And   I open "Admin. drugs/other" section in HD Treatment
+    Then  I open "Final signature" section in HD Treatment
