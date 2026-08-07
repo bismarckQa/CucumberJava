@@ -41,6 +41,22 @@ public class HDTreatmentPage extends BasePage<HDTreatmentPage> {
     private WebElement acidBath1DropdownInFluids;
     @FindBy(how = How.XPATH, using = "//*[@id='liquidosId']//label[normalize-space(.)='Acid bath 2']/ancestor::div[contains(@class,'form-group')][1]//span[contains(@class,'k-dropdownlist')][1]")
     private WebElement acidBath2DropdownInFluids;
+    @FindBy(how = How.XPATH, using = "//h5[normalize-space(.)='Other consumables']/following::button[@translate-once='Modal_Button_Añadir' or normalize-space(.)='Add'][1]")
+    private WebElement addOtherConsumablesButton;
+    @FindBy(how = How.XPATH, using = "//div[contains(@class,'modal-content')]//input[@ng-model='tratManager.tratamientoActual.otrosFungiblesTtoHd[indexOtrosFungiblesPopUp].tipoFungibleId']/following-sibling::span[contains(@class,'k-dropdownlist')][1]")
+    private WebElement otherConsumablesNameDropdown;
+    @FindBy(how = How.XPATH, using = "//div[contains(@class,'modal-content')]//input[@ng-model='tratManager.tratamientoActual.otrosFungiblesTtoHd[indexOtrosFungiblesPopUp].lote']")
+    private WebElement otherConsumablesLotNumberInput;
+    @FindBy(how = How.XPATH, using = "//div[contains(@class,'modal-content')]//input[@ng-model='tratManager.tratamientoActual.otrosFungiblesTtoHd[indexOtrosFungiblesPopUp].fechaCaducidad']")
+    private WebElement otherConsumablesExpiryDateInput;
+    @FindBy(how = How.XPATH, using = "//div[contains(@class,'modal-content')]//button[@translate-once='GestorContraseña_Label_Guardar' or normalize-space(.)='Save']")
+    private WebElement otherConsumablesSaveButton;
+    @FindBy(how = How.XPATH, using = "//div[contains(@class,'modal-content')]//button[@translate-once='DeleteConfirm_Label_Cancelar' or normalize-space(.)='Cancel']")
+    private WebElement otherConsumablesCancelButton;
+    @FindBy(how = How.XPATH, using = "//div[contains(@class,'modal-content')]//h4[@class='modal-title']//span[normalize-space(.)='NEW' or normalize-space(.)='Edit']")
+    private WebElement otherConsumablesModalTitle;
+    @FindBy(how = How.XPATH, using = "//div[contains(@class,'modal-content')]//label[normalize-space(.)='Name']")
+    private WebElement otherConsumablesNameLabel;
     @FindBy(how = How.XPATH, using = "//*[@id='modalValueChanged']//textarea")
     private WebElement valueChangedReasonTextarea;
     @FindBy(how = How.XPATH, using = "//*[@id='modalValueChanged']//button[@translate-once='Modal_Button_Cancelar' or normalize-space(.)='Cancel']")
@@ -526,6 +542,64 @@ public class HDTreatmentPage extends BasePage<HDTreatmentPage> {
         driver.switchTo().frame("frmContenido");
         scrollToElementMove(acidBath2DropdownInFluids);
         selectKendoDropdownOption(acidBath2DropdownInFluids, acidBath);
+        driver.switchTo().parentFrame();
+    }
+
+    public void clickAddOtherConsumables() throws InterruptedException {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(addOtherConsumablesButton);
+        click(addOtherConsumablesButton);
+        pause(300);
+        driver.switchTo().parentFrame();
+    }
+
+    public void verifyOtherConsumablesModalIsDisplayed() {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        isDisplayed(otherConsumablesModalTitle);
+        isDisplayed(otherConsumablesNameLabel);
+        driver.switchTo().parentFrame();
+    }
+
+    public void selectOtherConsumablesName(String name) throws InterruptedException {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        selectKendoDropdownOption(otherConsumablesNameDropdown, name);
+        driver.switchTo().parentFrame();
+    }
+
+    public void enterOtherConsumablesLotNumber(String lotNumber) throws InterruptedException {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        click(otherConsumablesLotNumberInput);
+        otherConsumablesLotNumberInput.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+        otherConsumablesLotNumberInput.sendKeys(Keys.DELETE);
+        write(otherConsumablesLotNumberInput, lotNumber);
+        driver.switchTo().parentFrame();
+    }
+
+    public void enterOtherConsumablesExpiryDate(String expiryDate) throws InterruptedException {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        click(otherConsumablesExpiryDateInput);
+        otherConsumablesExpiryDateInput.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+        otherConsumablesExpiryDateInput.sendKeys(Keys.DELETE);
+        write(otherConsumablesExpiryDateInput, expiryDate);
+        driver.switchTo().parentFrame();
+    }
+
+    public void clickOtherConsumablesModalButton(String button) throws InterruptedException {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        if ("Save".equalsIgnoreCase(button)) {
+            click(otherConsumablesSaveButton);
+        } else if ("Cancel".equalsIgnoreCase(button)) {
+            click(otherConsumablesCancelButton);
+        } else {
+            throw new IllegalArgumentException("Unsupported Other consumables modal button: " + button);
+        }
+        pause(300);
         driver.switchTo().parentFrame();
     }
 

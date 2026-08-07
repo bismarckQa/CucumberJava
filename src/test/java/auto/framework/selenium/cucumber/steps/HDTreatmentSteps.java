@@ -96,6 +96,36 @@ public class HDTreatmentSteps {
         hdTreatmentPage.selectAcidBath2InFluids(acidBath);
     }
 
+    @And("I click add other consumables in HD Treatment")
+    public void iClickAddOtherConsumablesInHDTreatment() throws InterruptedException {
+        hdTreatmentPage.clickAddOtherConsumables();
+    }
+
+    @Then("I verify other consumables modal is displayed in HD Treatment")
+    public void iVerifyOtherConsumablesModalIsDisplayedInHDTreatment() {
+        hdTreatmentPage.verifyOtherConsumablesModalIsDisplayed();
+    }
+
+    @And("I select other consumables name {string} in HD Treatment")
+    public void iSelectOtherConsumablesNameInHDTreatment(String name) throws InterruptedException {
+        hdTreatmentPage.selectOtherConsumablesName(name);
+    }
+
+    @And("I enter other consumables lot number {string} in HD Treatment")
+    public void iEnterOtherConsumablesLotNumberInHDTreatment(String lotNumber) throws InterruptedException {
+        hdTreatmentPage.enterOtherConsumablesLotNumber(lotNumber);
+    }
+
+    @And("I enter other consumables expiry date {string} in HD Treatment")
+    public void iEnterOtherConsumablesExpiryDateInHDTreatment(String expiryDate) throws InterruptedException {
+        hdTreatmentPage.enterOtherConsumablesExpiryDate(expiryDate);
+    }
+
+    @And("I click button {string} in other consumables modal in HD Treatment")
+    public void iClickButtonInOtherConsumablesModalInHDTreatment(String button) throws InterruptedException {
+        hdTreatmentPage.clickOtherConsumablesModalButton(button);
+    }
+
     @And("I enter notes {string} in HD Treatment final signature")
     public void iEnterNotesInHDTreatmentFinalSignature(String notes) throws InterruptedException {
         hdTreatmentPage.enterNotesInFinalSignature(notes);
