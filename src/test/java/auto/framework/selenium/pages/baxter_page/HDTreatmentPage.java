@@ -9,14 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 @LazyComponent
 public class HDTreatmentPage extends BasePage<HDTreatmentPage> {
-    private static final By CENTER_DROPDOWN_IN_LOCATION = By.xpath("//h2[normalize-space(.)='Location']/ancestor::div[contains(@class,'x_panel')][1]//label[normalize-space(.)='Center']/following-sibling::span[contains(@class,'k-dropdownlist')][1]");
-    private static final By ROOM_DROPDOWN_IN_LOCATION = By.xpath("//h2[normalize-space(.)='Location']/ancestor::div[contains(@class,'x_panel')][1]//label[normalize-space(.)='Room']/following-sibling::span[contains(@class,'k-dropdownlist')][1]");
-    private static final By SHIFT_DROPDOWN_IN_LOCATION = By.xpath("//h2[normalize-space(.)='Location']/ancestor::div[contains(@class,'x_panel')][1]//label[normalize-space(.)='Shift']/following-sibling::span[contains(@class,'k-dropdownlist')][1]");
-    private static final By LOCATION_DROPDOWN_IN_LOCATION = By.xpath("//h2[normalize-space(.)='Location']/ancestor::div[contains(@class,'x_panel')][1]//label[normalize-space(.)='Location']/following-sibling::span[contains(@class,'k-dropdownlist')][1]");
-    private static final By MONITOR_DROPDOWN_IN_LOCATION = By.xpath("//h2[normalize-space(.)='Location']/ancestor::div[contains(@class,'x_panel')][1]//label[normalize-space(.)='Monitors']/following-sibling::span[contains(@class,'k-combobox')][1]");
-    private static final By MONITOR_DROPDOWN_BUTTON_IN_LOCATION = By.xpath("//h2[normalize-space(.)='Location']/ancestor::div[contains(@class,'x_panel')][1]//label[normalize-space(.)='Monitors']/following-sibling::span[contains(@class,'k-combobox')][1]//button[contains(@class,'k-input-button')][1]");
-
-    @FindBy(how = How.XPATH, using = "//h2[contains(text(),'HD Treatment')]")
+    @FindBy(how = How.XPATH, using = "//a[@translate-once='TratamientoHD_boton_historial' or normalize-space(.)='Treatment history']")
     private WebElement titleHDTreatment;
     @FindBy(how = How.XPATH, using = "(//i[@class='icon-three-points'])[1]")
     private WebElement threeDotsMenu;
@@ -28,6 +21,32 @@ public class HDTreatmentPage extends BasePage<HDTreatmentPage> {
     private WebElement drugsOtherTabButton;
     @FindBy(how = How.XPATH, using = "//a[contains(text(),'Session')]")
     private WebElement sessionTabButton;
+    @FindBy(how = How.XPATH, using = "//h2[normalize-space(.)='Location']/ancestor::div[contains(@class,'x_panel')][1]//label[normalize-space(.)='Center']/following-sibling::span[contains(@class,'k-dropdownlist')][1]")
+    private WebElement centerDropdownInLocation;
+    @FindBy(how = How.XPATH, using = "//h2[normalize-space(.)='Location']/ancestor::div[contains(@class,'x_panel')][1]//label[normalize-space(.)='Room']/following-sibling::span[contains(@class,'k-dropdownlist')][1]")
+    private WebElement roomDropdownInLocation;
+    @FindBy(how = How.XPATH, using = "//h2[normalize-space(.)='Location']/ancestor::div[contains(@class,'x_panel')][1]//label[normalize-space(.)='Shift']/following-sibling::span[contains(@class,'k-dropdownlist')][1]")
+    private WebElement shiftDropdownInLocation;
+    @FindBy(how = How.XPATH, using = "//h2[normalize-space(.)='Location']/ancestor::div[contains(@class,'x_panel')][1]//label[normalize-space(.)='Location']/following-sibling::span[contains(@class,'k-dropdownlist')][1]")
+    private WebElement locationDropdownInLocation;
+    @FindBy(how = How.XPATH, using = "//h2[normalize-space(.)='Location']/ancestor::div[contains(@class,'x_panel')][1]//label[normalize-space(.)='Monitors']/following-sibling::span[contains(@class,'k-combobox')][1]")
+    private WebElement monitorDropdownInLocation;
+    @FindBy(how = How.XPATH, using = "//*[@id='datosAccesoId']//label[normalize-space(.)='Arterial needle size' or normalize-space(.)='Single-puncture needle']/following::span[contains(@class,'k-dropdownlist')][1]")
+    private WebElement arterialNeedleDropdownInAccessData;
+    @FindBy(how = How.XPATH, using = "//*[@id='datosAccesoId']//label[normalize-space(.)='Venous needle size']/following::span[contains(@class,'k-dropdownlist')][1]")
+    private WebElement venousNeedleDropdownInAccessData;
+    @FindBy(how = How.XPATH, using = "//*[@id='datosAccesoId']//label[normalize-space(.)='Access']/following::span[contains(@class,'k-dropdownlist')][1]")
+    private WebElement accessDropdownInAccessData;
+    @FindBy(how = How.XPATH, using = "//*[@id='liquidosId']//label[normalize-space(.)='Acid bath 1']/ancestor::div[contains(@class,'form-group')][1]//span[contains(@class,'k-dropdownlist')][1]")
+    private WebElement acidBath1DropdownInFluids;
+    @FindBy(how = How.XPATH, using = "//*[@id='liquidosId']//label[normalize-space(.)='Acid bath 2']/ancestor::div[contains(@class,'form-group')][1]//span[contains(@class,'k-dropdownlist')][1]")
+    private WebElement acidBath2DropdownInFluids;
+    @FindBy(how = How.XPATH, using = "//*[@id='modalValueChanged']//textarea")
+    private WebElement valueChangedReasonTextarea;
+    @FindBy(how = How.XPATH, using = "//*[@id='modalValueChanged']//button[@translate-once='Modal_Button_Cancelar' or normalize-space(.)='Cancel']")
+    private WebElement valueChangedCancelButton;
+    @FindBy(how = How.XPATH, using = "//*[@id='modalValueChanged']//button[@translate-once='Modal_Button_OK' or normalize-space(.)='OK']")
+    private WebElement valueChangedOkButton;
     @FindBy(how = How.XPATH, using = "//*[@id=\"estadoPaciente\"]")
     private WebElement checkboxPatientStatus;
     @FindBy(how = How.XPATH, using = "//div[@class='modal-dialog ']//div[@class='modal-content']")
@@ -38,7 +57,7 @@ public class HDTreatmentPage extends BasePage<HDTreatmentPage> {
     private WebElement newObservationButton;
     @FindBy(how = How.XPATH, using = "//*[@id=\"locked_datacell_0_0\"]/button[1]")
     private WebElement saveObservation;
-    @FindBy(how = How.XPATH, using = "(//span[@translate-once='TratamientoHD_boton_historial'])[1]")
+    @FindBy(how = How.XPATH, using = "//*[@id='historicoTrat']/preceding::div[contains(@class,'historico-presc')][1]//a[@translate-once='TratamientoHD_boton_historial' or normalize-space(.)='Treatment history'][1]")
     private WebElement treatmentHistoryButton;
     @FindBy(how = How.XPATH, using = "(//a[normalize-space()='Top'])[1]")
     private WebElement upPageArrow;
@@ -154,26 +173,6 @@ public class HDTreatmentPage extends BasePage<HDTreatmentPage> {
     private WebElement buttonDropDownHdMachine;
     @FindBy(how = How.XPATH, using = "//li[contains(.,'Ak98 (1)')]")
     private WebElement optionHdMachineAk98;
-
-    @FindBy(how = How.XPATH, using = "(//span[contains(@role,'button')])[6]")
-    private WebElement buttonDropDownArterialNeedle;
-    @FindBy(how = How.XPATH, using = "(//li[@tabindex='-1'][contains(.,'Ag 4')])[1]")
-    private WebElement optionArterialNeedle;
-    @FindBy(how = How.XPATH, using = "(//textarea[contains(@required,'required')])[1]")
-    private WebElement textAreaReasonArterialNeedle;
-    @FindBy(how = How.XPATH, using = "/html/body/div[1]/div/div/modal-value-changed/div/div[3]/button[2]")
-    private WebElement buttonOKTextAreaReasonArterialNeedle;
-
-
-    @FindBy(how = How.XPATH, using = "(//span[contains(@role,'button')])[7]")
-    private WebElement buttonDropDownVenousNeedle;
-    @FindBy(how = How.XPATH, using = "(//li[@tabindex='-1'][contains(.,'Ag 4')])[2]")
-    private WebElement optionVenousNeedle;
-    @FindBy(how = How.XPATH, using = "(//textarea[contains(@required,'required')])[1]")
-    private WebElement textAreaVenousNeedle;
-    @FindBy(how = How.XPATH, using = "/html/body/div[1]/div/div/modal-value-changed/div/div[3]/button[2]")
-    private WebElement buttonOkTextAreaVenousNeedle;
-
 
     @FindBy(how = How.XPATH, using = "(//span[contains(@type,'button')])[12]")
     private WebElement buttonDropDownDesinfectedBy;
@@ -449,83 +448,102 @@ public class HDTreatmentPage extends BasePage<HDTreatmentPage> {
     }
 
     public void selectCenterInLocation(String center) throws InterruptedException {
-        selectLocationDropdownOption(CENTER_DROPDOWN_IN_LOCATION, center);
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        selectKendoDropdownOption(centerDropdownInLocation, center);
+        driver.switchTo().parentFrame();
     }
 
     public void selectRoomInLocation(String room) throws InterruptedException {
-        selectLocationDropdownOption(ROOM_DROPDOWN_IN_LOCATION, room);
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        selectKendoDropdownOption(roomDropdownInLocation, room);
+        driver.switchTo().parentFrame();
     }
 
     public void selectShiftInLocation(String shift) throws InterruptedException {
-        selectLocationDropdownOption(SHIFT_DROPDOWN_IN_LOCATION, shift);
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        selectKendoDropdownOption(shiftDropdownInLocation, shift);
+        driver.switchTo().parentFrame();
     }
 
     public void selectLocationInLocation(String location) throws InterruptedException {
-        selectLocationDropdownOption(LOCATION_DROPDOWN_IN_LOCATION, location);
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        selectKendoDropdownOption(locationDropdownInLocation, location);
+        driver.switchTo().parentFrame();
     }
 
     public void selectMonitorInLocation(String monitor) throws InterruptedException {
         driver.switchTo().parentFrame();
         driver.switchTo().frame("frmContenido");
-
-        WebElement dropdown = waitElements(MONITOR_DROPDOWN_IN_LOCATION).get(0);
-        scrollToElementMove(dropdown);
-        javascriptExecutor.executeScript("arguments[0].click();", dropdown);
-        pause(300);
-        click(MONITOR_DROPDOWN_BUTTON_IN_LOCATION);
-        pause(800);
-
-        String optionLiteral = hdTreatmentXpathLiteral(monitor.trim());
-        By exactOption = By.xpath("//div[contains(@class,'k-animation-container') and not(contains(@style,'display: none'))]//*[self::li or @role='option'][normalize-space(.)=" + optionLiteral + "]");
-        By containsOption = By.xpath("//div[contains(@class,'k-animation-container') and not(contains(@style,'display: none'))]//*[self::li or @role='option'][contains(normalize-space(.)," + optionLiteral + ")]");
-
-        try {
-            click(exactOption);
-        } catch (Exception ex) {
-            click(containsOption);
-        }
-        pause(700);
+        selectKendoDropdownOption(monitorDropdownInLocation, monitor);
         driver.switchTo().parentFrame();
     }
 
-    private void selectLocationDropdownOption(By dropdownBy, String optionText) throws InterruptedException {
-        String optionLiteral = hdTreatmentXpathLiteral(optionText.trim());
-        By exactOption = By.xpath("//div[contains(@class,'k-animation-container') and not(contains(@style,'display: none'))]//*[self::li or @role='option'][normalize-space(.)=" + optionLiteral + "]");
-        By containsOption = By.xpath("//div[contains(@class,'k-animation-container') and not(contains(@style,'display: none'))]//*[self::li or @role='option'][contains(normalize-space(.)," + optionLiteral + ")]");
 
-        StaleElementReferenceException staleFailure = null;
-        for (int attempt = 0; attempt < 3; attempt++) {
-            driver.switchTo().parentFrame();
-            driver.switchTo().frame("frmContenido");
-            try {
-                WebElement dropdown = waitElements(dropdownBy).get(0);
-                scrollToElementMove(dropdown);
-                click(dropdownBy);
-                pause(500);
-                try {
-                    click(exactOption);
-                } catch (Exception ex) {
-                    click(containsOption);
-                }
-                pause(500);
-                driver.switchTo().parentFrame();
-                return;
-            } catch (StaleElementReferenceException stale) {
-                staleFailure = stale;
-                driver.switchTo().parentFrame();
-                pause(300);
-            }
-        }
-        throw staleFailure == null
-                ? new StaleElementReferenceException("Unable to select location option: " + optionText)
-                : staleFailure;
+    public void selectArterialNeedleSizeInAccessData(String needleSize) throws InterruptedException {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        selectKendoDropdownOption(arterialNeedleDropdownInAccessData, needleSize);
+        driver.switchTo().parentFrame();
     }
 
-    private String hdTreatmentXpathLiteral(String s) {
-        if (s.contains("'")) {
-            return "\"" + s + "\"";
+    public void selectVenousNeedleSizeInAccessData(String needleSize) throws InterruptedException {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        selectKendoDropdownOption(venousNeedleDropdownInAccessData, needleSize);
+        driver.switchTo().parentFrame();
+    }
+
+    public void selectFirstAccessInAccessData() throws InterruptedException {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(accessDropdownInAccessData);
+        click(accessDropdownInAccessData);
+        pause(500);
+        WebElement firstOption = waitElements(By.xpath("(//div[contains(@class,'k-animation-container') and not(contains(@style,'display: none'))]//*[self::li or @role='option'][normalize-space(.) != ''])[1]")).get(0);
+        click(firstOption);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void selectAcidBath1InFluids(String acidBath) throws InterruptedException {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(acidBath1DropdownInFluids);
+        selectKendoDropdownOption(acidBath1DropdownInFluids, acidBath);
+        driver.switchTo().parentFrame();
+    }
+
+    public void selectAcidBath2InFluids(String acidBath) throws InterruptedException {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(acidBath2DropdownInFluids);
+        selectKendoDropdownOption(acidBath2DropdownInFluids, acidBath);
+        driver.switchTo().parentFrame();
+    }
+
+    public void fillValueChangedReasonAndChooseButton(String reason, String button) throws InterruptedException {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        if (reason != null && !reason.isBlank()) {
+            click(valueChangedReasonTextarea);
+            valueChangedReasonTextarea.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+            valueChangedReasonTextarea.sendKeys(Keys.DELETE);
+            write(valueChangedReasonTextarea, reason.trim());
+            pause(300);
         }
-        return "'" + s + "'";
+        if ("OK".equalsIgnoreCase(button)) {
+            click(valueChangedOkButton);
+        } else if ("Cancel".equalsIgnoreCase(button)) {
+            click(valueChangedCancelButton);
+        } else {
+            throw new IllegalArgumentException("Unsupported value changed modal button: " + button);
+        }
+        pause(500);
+        driver.switchTo().parentFrame();
     }
 
     public void isDisplayedPreparationTab() {
@@ -627,371 +645,25 @@ public class HDTreatmentPage extends BasePage<HDTreatmentPage> {
         isDisplayed(patientStatusUnverifiedText);
         driver.switchTo().parentFrame();
     }
-    public void clickTreatmentHistoryButton() throws InterruptedException {
-        click(upPageArrow);
+    public void clickTreatmentHistoryBreadcrumb() throws InterruptedException {
         driver.switchTo().parentFrame();
         driver.switchTo().frame("frmContenido");
+        isDisplayed(titleHDTreatment);
         click(treatmentHistoryButton);
-        driver.switchTo().parentFrame();
-    }
-    public void createASimpleNewTreatmentIfItDoesNotExist()throws InterruptedException{
-            driver.switchTo().frame("frmContenido");
-            pause(3000);
-            boolean flag = false;
-            try {
-                waitElements(titleHDTreatment);
-                flag = titleHDTreatment.isDisplayed();
-
-            }catch (TimeoutException e){
-                flag = false;
-
-            }
-
-            if (flag){
-                pause(300);
-                buttonThreePointsHdTreatment.click();
-                pause(200);
-                click(buttonNewHdTreatment);
-                pause(200);
-                click(buttonPreparationArea);
-            }else {
-                pause(200);
-                buttonPreparationArea.click();
-            }
-
-            driver.switchTo().parentFrame();
-    }
-    public void makeTheFinalSignatureWithTheNephrologistField()throws InterruptedException{
-
-        driver.switchTo().frame("frmContenido");
-        waitElements(buttonFinalSignature);
-        click(buttonFinalSignature);
-        pause(1000);
-
-        click(checkBoxFinalized);
-        pause(200);
-
-        driver.switchTo().parentFrame();
-
-        buttonOkWarning.isDisplayed();
-        click(buttonOkWarning);
-        pause(1000);
-
-    }
-    public void adaptTheConfigurationToTheRequiredFieldsToCompleteTheTreatment()throws InterruptedException{
-        pause(300);
-        waitElements(buttonDropDownProfile);
-        click(buttonDropDownProfile);
-        pause(200);
-        optionConfigurationMenu.click();
-        driver.switchTo().frame("frmContenido");
-        pause(5000);
-        waitElements(optionFormSideBar);
-        optionFormSideBar.isDisplayed();
-        optionFormSideBar.click();
-        driver.switchTo().frame("iframeV2");
-        pause(200);
-        click(dropDownHDOption);
-        pause(200);
-        optionHDTreatment.isDisplayed();
-        click(optionHDTreatment);
-        pause(1200);
-        waitElements(buttonEditDesinfectedBy);
-        buttonEditDesinfectedBy.isDisplayed();
-        buttonEditDesinfectedBy.click();
-        if (checkBoxRequiredDesinfectedBy.isSelected()){
-            pause(200);
-            buttonSaveDesinfectedBy.isDisplayed();
-            buttonSaveDesinfectedBy.click();
-        }else{
-            checkBoxRequiredDesinfectedBy.click();
-            pause(400);
-            buttonSaveDesinfectedBy.click();
-        }
-
-        pause(200);
-        buttonEditSignedNephologist.isDisplayed();
-        buttonEditSignedNephologist.click();
-        if (checkBoxSignedNephologist.isSelected()){
-            pause(200);
-            buttonSaveSignedNephologist.isDisplayed();
-            buttonSaveSignedNephologist.click();
-        }else {
-            checkBoxSignedNephologist.click();
-            pause(300);
-            buttonSaveSignedNephologist.click();
-        }
-
-        pause(200);
-        buttonEditNotes.isDisplayed();
-        click(buttonEditNotes);
-        if (checkBoxNotes.isSelected()){
-            buttonSaveNotes.isDisplayed();
-            buttonSaveNotes.click();
-        }else{
-            checkBoxNotes.click();
-            pause(200);
-            buttonSaveNotes.click();
-        }
-        pause(200);
-        buttonEditMonitor.isDisplayed();
-        click(buttonEditMonitor);
-        if (checkBoxMonitor.isSelected()){
-            buttonSaveMonitor.isDisplayed();
-            buttonSaveMonitor.click();
-        }else{
-            checkBoxMonitor.click();
-            pause(200);
-            buttonSaveMonitor.click();
-        }
-
-        pause(200);
-        buttonEditLocation.isDisplayed();
-        click(buttonEditLocation);
-        if (checkBoxLocation.isSelected()){
-            buttonSaveLocation.isDisplayed();
-            buttonSaveLocation.click();
-        }else{
-            checkBoxLocation.click();
-            pause(200);
-            buttonSaveLocation.click();
-        }
-
-        pause(200);
-        buttonEditRoom.isDisplayed();
-        click(buttonEditRoom);
-        if (checkBoxRoom.isSelected()){
-            buttonSaveRoom.isDisplayed();
-            buttonSaveRoom.click();
-        }else{
-            checkBoxRoom.click();
-            pause(200);
-            buttonSaveRoom.click();
-        }
-
-        driver.switchTo().parentFrame();
-        driver.switchTo().parentFrame();
-        pause(300);
-        upPageArrow.click();
-        pause(5000);
-
-    }
-
-    public void tryingToFinishTheTreatmentButIMustCompleteTheRequiredFields() throws InterruptedException{
-        driver.switchTo().frame("frmContenido");
-        waitElements(buttonFinalSignature);
-        click(buttonFinalSignature);
-        pause(300);
-        click(checkBoxFinalized);
-        pause(200);
-
-
-        driver.switchTo().parentFrame();
-
-        buttonOkWarning.isDisplayed();
-        click(buttonOkWarning);
-        pause(1000);
-    }
-
-    public void finishFinalSignatureTheSystemMustAllowUsingReadOnlyMode()throws InterruptedException{
-        driver.switchTo().frame("frmContenido");
-        waitElements(buttonDropDownPod);
-        click(buttonDropDownPod);
-        pause(200);
-        optionRoomAPod.click();
-        pause(200);
-        click(buttonDropDownShift);
-        pause(300);
-        optionShiftMorning.click();
-        click(buttonDropDownStation);
-        pause(300);
-        optionStation2.isDisplayed();
-        optionStation2.click();
-        buttonDropDownHdMachine.click();
-        pause(300);
-        optionHdMachineAk98.isDisplayed();
-        optionHdMachineAk98.click();
-
-        pause(200);
-        moveScrollToElement(titleTraceability);
-
-        pause(200);
-        waitElements(buttonDropDownDesinfectedBy);
-        pause(200);
-        click(buttonDropDownDesinfectedBy);
-        pause(200);
-        optionDesinfectedBy.isDisplayed();
-        optionDesinfectedBy.click();
-
-        driver.switchTo().parentFrame();
-        pause(300);
-        click(upPageArrow);
-        pause(1000);
-
-        driver.switchTo().frame("frmContenido");
-        waitElements(buttonFinalSignature);
-        click(buttonFinalSignature);
-        pause(300);
-        dropDownSignedNephrologist.isDisplayed();
-        click(dropDownSignedNephrologist);
-        pause(200);
-        optionSignedNephrologist.click();
-        click(textAreaNotes);
-        String note = "test Qa";
-        write(textAreaNotes,note);
-        pause(200);
-        checkBoxFinalized.click();
-
-        buttonThreePointsFinalSignature.click();
-        pause(200);
-        saveFinalSignature.click();
-        pause(300);
-
-
-        driver.switchTo().parentFrame();
-    }
-    public void makeChangesToTheFieldsDefinedInTheTreatmentPrescription() throws InterruptedException{
-        driver.switchTo().frame("frmContenido");
-        waitElements(buttonDropDownPod);
-        click(buttonDropDownPod);
-        pause(200);
-        optionRoomAPod.click();
-        pause(200);
-        click(buttonDropDownShift);
-        pause(300);
-        optionShiftMorning.click();
-        click(buttonDropDownStation);
-        pause(300);
-        optionStation2.isDisplayed();
-        optionStation2.click();
-        buttonDropDownHdMachine.click();
-        pause(300);
-        optionHdMachineAk98.isDisplayed();
-        optionHdMachineAk98.click();
-
-        buttonDropDownArterialNeedle.click();
-        pause(200);
-        optionArterialNeedle.isDisplayed();
-        optionArterialNeedle.click();
-        String reason = "Test qa";
-        pause(200);
-        waitElements(textAreaReasonArterialNeedle);
-        textAreaReasonArterialNeedle.click();
-        write(textAreaReasonArterialNeedle, reason);
-        pause(200);
-        buttonOKTextAreaReasonArterialNeedle.click();
-
-        pause(300);
-        buttonDropDownVenousNeedle.click();
-        pause(200);
-        optionVenousNeedle.isDisplayed();
-        optionVenousNeedle.click();
-        pause(200);
-        waitElements(textAreaVenousNeedle);
-        textAreaVenousNeedle.click();
-        write(textAreaVenousNeedle,reason);
-        pause(200);
-        buttonOkTextAreaVenousNeedle.click();
-
-        pause(300);
-        moveScrollToElement(titleTraceability);
-
-        pause(200);
-        waitElements(buttonDropDownDesinfectedBy);
-        pause(200);
-        click(buttonDropDownDesinfectedBy);
-        pause(200);
-        optionDesinfectedBy.isDisplayed();
-        optionDesinfectedBy.click();
-
-        driver.switchTo().parentFrame();
-        pause(300);
-        click(upPageArrow);
-        pause(1000);
-
-        driver.switchTo().frame("frmContenido");
-        waitElements(buttonFinalSignature);
-        click(buttonFinalSignature);
-        pause(300);
-        dropDownSignedNephrologist.isDisplayed();
-        click(dropDownSignedNephrologist);
-        pause(200);
-        optionSignedNephrologist.click();
-        click(textAreaNotes);
-        String note = "test Qa";
-        write(textAreaNotes,note);
-        pause(200);
-        checkBoxFinalized.click();
-
-        buttonThreePointsFinalSignature.click();
-        pause(200);
-        saveFinalSignature.click();
-        pause(300);
-        if(textAreaNotes.getAttribute("value").isEmpty()){
-            System.out.println("The changes were executed successfully");
-        }else {
-            System.out.println("The changes were not executed correctly");
-        }
-        pause(4000);
-
-
+        pause(500);
         driver.switchTo().parentFrame();
     }
 
-    public void closeTheTreatmentWithTheNephrologistSignatureFieldNotRequired()throws InterruptedException{
-        driver.switchTo().frame("frmContenido");
-        waitElements(buttonDropDownPod);
-        click(buttonDropDownPod);
-        pause(200);
-        optionRoomAPod.click();
-        pause(200);
-        click(buttonDropDownShift);
-        pause(300);
-        optionShiftMorning.click();
-        click(buttonDropDownStation);
-        pause(300);
-        optionStation2.isDisplayed();
-        optionStation2.click();
-        buttonDropDownHdMachine.click();
-        pause(300);
-        optionHdMachineAk98.isDisplayed();
-        optionHdMachineAk98.click();
 
-        pause(200);
-        moveScrollToElement(titleTraceability);
-
-        pause(200);
-        waitElements(buttonDropDownDesinfectedBy);
-        pause(200);
-        click(buttonDropDownDesinfectedBy);
-        pause(200);
-        optionDesinfectedBy.isDisplayed();
-        optionDesinfectedBy.click();
-
+    public void clickTreatmentHistoryDate(String date) throws InterruptedException {
         driver.switchTo().parentFrame();
-        pause(300);
-        click(upPageArrow);
-        pause(1000);
-
         driver.switchTo().frame("frmContenido");
-        waitElements(buttonFinalSignature);
-        click(buttonFinalSignature);
-        pause(300);
-
-        click(textAreaNotes);
-        String note = "test Qa";
-        write(textAreaNotes,note);
-        pause(200);
-        checkBoxFinalized.click();
-
-        buttonThreePointsFinalSignature.click();
-        pause(200);
-        saveFinalSignature.click();
-        pause(300);
-
-
+        WebElement treatmentHistoryDate = driver.findElement(By.xpath("//*[@id='historicoTrat']//a[normalize-space(.)='" + date.trim() + "']"));
+        click(treatmentHistoryDate);
+        pause(500);
         driver.switchTo().parentFrame();
     }
+
 
     public void checkIfTheSignedByFieldInTheAdditionalSignaturesSectionIsCompleteIfTheUserIsANurse()throws InterruptedException{
 

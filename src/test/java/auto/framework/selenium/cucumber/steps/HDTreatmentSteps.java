@@ -70,6 +70,37 @@ public class HDTreatmentSteps {
         hdTreatmentPage.selectMonitorInLocation(monitor);
     }
 
+
+    @And("I select arterial needle size {string} in HD Treatment access data")
+    public void iSelectArterialNeedleSizeInHDTreatmentAccessData(String needleSize) throws InterruptedException {
+        hdTreatmentPage.selectArterialNeedleSizeInAccessData(needleSize);
+    }
+
+    @And("I select venous needle size {string} in HD Treatment access data")
+    public void iSelectVenousNeedleSizeInHDTreatmentAccessData(String needleSize) throws InterruptedException {
+        hdTreatmentPage.selectVenousNeedleSizeInAccessData(needleSize);
+    }
+
+    @And("I select the first access in HD Treatment access data")
+    public void iSelectTheFirstAccessInHDTreatmentAccessData() throws InterruptedException {
+        hdTreatmentPage.selectFirstAccessInAccessData();
+    }
+
+    @And("I select acid bath 1 {string} in HD Treatment fluids")
+    public void iSelectAcidBath1InHDTreatmentFluids(String acidBath) throws InterruptedException {
+        hdTreatmentPage.selectAcidBath1InFluids(acidBath);
+    }
+
+    @And("I select acid bath 2 {string} in HD Treatment fluids")
+    public void iSelectAcidBath2InHDTreatmentFluids(String acidBath) throws InterruptedException {
+        hdTreatmentPage.selectAcidBath2InFluids(acidBath);
+    }
+
+    @And("I fill reason for value changed modal {string} and click {string} in HD Treatment")
+    public void iFillReasonForValueChangedModalAndClickInHDTreatment(String reason, String button) throws InterruptedException {
+        hdTreatmentPage.fillValueChangedReasonAndChooseButton(reason, button);
+    }
+
     @And("I open {string} section in HD Treatment")
     public void iOpenSectionInHDTreatment(String section) {
         if ("Preparation".equalsIgnoreCase(section)) {
@@ -106,10 +137,15 @@ public class HDTreatmentSteps {
         hdTreatmentPage.clickSaveNewObservation();
     }
 
-    @Then("I open treatment history and check data")
-    public void iOpenTreatmentHistoryAndCheckData() throws InterruptedException {
-        hdTreatmentPage.clickThreeDotsMenu();
-        hdTreatmentPage.clickTreatmentHistoryButton();
+    @And("I click Treatment history in HD Treatment")
+    public void iClickTreatmentHistoryInHDTreatment() throws InterruptedException {
+        hdTreatmentPage.clickTreatmentHistoryBreadcrumb();
+    }
+
+
+    @And("I select treatment history date {string} in HD Treatment")
+    public void iSelectTreatmentHistoryDateInHDTreatment(String date) throws InterruptedException {
+        hdTreatmentPage.clickTreatmentHistoryDate(date);
     }
 
     @Then("I click remove the last registry of new observations")
