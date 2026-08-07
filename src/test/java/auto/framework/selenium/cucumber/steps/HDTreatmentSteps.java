@@ -96,6 +96,21 @@ public class HDTreatmentSteps {
         hdTreatmentPage.selectAcidBath2InFluids(acidBath);
     }
 
+    @And("I enter notes {string} in HD Treatment final signature")
+    public void iEnterNotesInHDTreatmentFinalSignature(String notes) throws InterruptedException {
+        hdTreatmentPage.enterNotesInFinalSignature(notes);
+    }
+
+    @And("I set finalized checkbox to {string} in HD Treatment final signature")
+    public void iSetFinalizedCheckboxToInHDTreatmentFinalSignature(String state) throws InterruptedException {
+        hdTreatmentPage.setFinalizedCheckboxState(state);
+    }
+
+    @Then("I verify finalized checkbox is {string} in HD Treatment final signature")
+    public void iVerifyFinalizedCheckboxIsInHDTreatmentFinalSignature(String state)throws InterruptedException {
+        hdTreatmentPage.verifyFinalizedCheckboxState(state);
+    }
+
     @And("I fill reason for value changed modal {string} and click {string} in HD Treatment")
     public void iFillReasonForValueChangedModalAndClickInHDTreatment(String reason, String button) throws InterruptedException {
         hdTreatmentPage.fillValueChangedReasonAndChooseButton(reason, button);

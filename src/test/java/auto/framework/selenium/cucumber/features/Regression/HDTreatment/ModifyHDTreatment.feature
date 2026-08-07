@@ -32,3 +32,6 @@ Feature: Modify HD Treatment
     And   I fill reason for value changed modal "test acid 1" and click "OK" in HD Treatment
     When  I select acid bath 2 "Ca=2,25" in HD Treatment fluids
     And   I fill reason for value changed modal "test acid 2" and click "OK" in HD Treatment
+    When  I open "Session" section in HD Treatment
+    And   I open "Admin. drugs/other" section in HD Treatment
+    Then  I open "Final signature" section in HD Treatment

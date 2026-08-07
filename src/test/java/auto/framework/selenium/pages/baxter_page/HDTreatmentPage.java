@@ -69,7 +69,11 @@ public class HDTreatmentPage extends BasePage<HDTreatmentPage> {
     private WebElement dropDownSignedNephrologist;
     @FindBy(how = How.XPATH, using = "(//li[contains(@tabindex,'-1')])[1]")
     private WebElement optionSignedNephrologist;
-    @FindBy(how = How.XPATH, using = "(//label[contains(@class,'check-box')])[5]")
+    @FindBy(how = How.XPATH, using = "//h2[normalize-space(.)='Final signature']/ancestor::div[contains(@class,'x_panel')][1]//textarea[@name='notas']")
+    private WebElement finalSignatureNotesTextarea;
+    @FindBy(how = How.XPATH, using = "//h2[normalize-space(.)='Final signature']/ancestor::div[contains(@class,'x_panel')][1]//input[@ng-model='tratManager.tratamientoActual.tratamientoFinalizado']")
+    private WebElement finalizedCheckboxInput;
+    @FindBy(how = How.XPATH, using = "//h2[normalize-space(.)='Final signature']/ancestor::div[contains(@class,'x_panel')][1]//input[@ng-model='tratManager.tratamientoActual.tratamientoFinalizado']/following-sibling::label[contains(@class,'check-box')][1]")
     private WebElement checkBoxFinalized;
 
     @FindBy(how = How.XPATH, using = "//i[contains(@class,'icon-three-points')]")
@@ -595,6 +599,56 @@ public class HDTreatmentPage extends BasePage<HDTreatmentPage> {
         click(buttonFinalSignature);
         driver.switchTo().parentFrame();
     }
+
+    public void enterNotesInFinalSignature(String notes) throws InterruptedException {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(finalSignatureNotesTextarea);
+        click(finalSignatureNotesTextarea);
+        finalSignatureNotesTextarea.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+        finalSignatureNotesTextarea.sendKeys(Keys.DELETE);
+        write(finalSignatureNotesTextarea, notes);
+        pause(300);
+        driver.switchTo().parentFrame();
+    }
+
+    public void setFinalizedCheckboxState(String state) throws InterruptedException {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(finalizedCheckboxInput);
+        boolean shouldBeChecked;
+        if ("checked".equalsIgnoreCase(state)) {
+            shouldBeChecked = true;
+        } else if ("unchecked".equalsIgnoreCase(state)) {
+            shouldBeChecked = false;
+        } else {
+            throw new IllegalArgumentException("Unsupported finalized checkbox state: " + state);
+        }
+        if (finalizedCheckboxInput.isSelected() != shouldBeChecked) {
+            click(checkBoxFinalized);
+            pause(300);
+        }
+        driver.switchTo().parentFrame();
+    }
+
+    public void verifyFinalizedCheckboxState(String state)throws InterruptedException {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(checkBoxFinalized);
+        pause(800);
+        boolean isChecked = finalizedCheckboxInput.isSelected();
+        driver.switchTo().parentFrame();
+        if ("checked".equalsIgnoreCase(state) && !isChecked) {
+            throw new AssertionError("Expected Finalized checkbox to be checked");
+        }
+        if ("unchecked".equalsIgnoreCase(state) && isChecked) {
+            throw new AssertionError("Expected Finalized checkbox to be unchecked");
+        }
+        if (!"checked".equalsIgnoreCase(state) && !"unchecked".equalsIgnoreCase(state)) {
+            throw new IllegalArgumentException("Unsupported finalized checkbox state: " + state);
+        }
+    }
+
     public void clickCheckBoxPatientStatus(){
         driver.switchTo().parentFrame();
         driver.switchTo().frame("frmContenido");
@@ -650,7 +704,7 @@ public class HDTreatmentPage extends BasePage<HDTreatmentPage> {
         driver.switchTo().frame("frmContenido");
         isDisplayed(titleHDTreatment);
         click(treatmentHistoryButton);
-        pause(500);
+        pause(700);
         driver.switchTo().parentFrame();
     }
 
@@ -664,233 +718,6 @@ public class HDTreatmentPage extends BasePage<HDTreatmentPage> {
         driver.switchTo().parentFrame();
     }
 
-
-    public void checkIfTheSignedByFieldInTheAdditionalSignaturesSectionIsCompleteIfTheUserIsANurse()throws InterruptedException{
-
-        driver.switchTo().frame("frmContenido");
-        waitElements(buttonDropDownPod);
-        click(buttonDropDownPod);
-        pause(200);
-        optionRoomAPod.click();
-        pause(200);
-        click(buttonDropDownShift);
-        pause(300);
-        optionShiftMorning.click();
-        click(buttonDropDownStation);
-        pause(300);
-        optionStation2.isDisplayed();
-        optionStation2.click();
-        buttonDropDownHdMachine.click();
-        pause(300);
-        optionHdMachineAk98.isDisplayed();
-        optionHdMachineAk98.click();
-
-        pause(200);
-        moveScrollToElement(titleTraceability);
-
-        pause(200);
-        waitElements(buttonDropDownDesinfectedBy);
-        pause(200);
-        click(buttonDropDownDesinfectedBy);
-        pause(200);
-        optionDesinfectedBy.isDisplayed();
-        optionDesinfectedBy.click();
-
-        driver.switchTo().parentFrame();
-        pause(300);
-        click(upPageArrow);
-        pause(1000);
-
-        driver.switchTo().frame("frmContenido");
-        waitElements(buttonFinalSignature);
-        click(buttonFinalSignature);
-        pause(300);
-
-        click(textAreaNotes);
-        String note = "test Qa";
-        write(textAreaNotes,note);
-        pause(200);
-
-        if (inputSignedBy.isDisplayed()) {
-            System.out.println("The inputSignedBy field is visible.");
-
-            if (!inputSignedBy.isEnabled()) {
-                System.out.println("The inputSignedBy field is disabled.");
-
-                String actualValue = inputSignedBy.getAttribute("value");
-                String expectedValue = "Robles Martín, Miguel";
-
-                if (actualValue.equals(expectedValue)) {
-                    System.out.println("The inputSignedBy field has the expected value: " + expectedValue);
-                } else {
-                    System.out.println("The value of the inputSignedBy field is not as expected. Actual: " + actualValue);
-                }
-
-            } else {
-                System.out.println("The inputSignedBy field is enabled, but it should be disabled.");
-            }
-
-        } else {
-            System.out.println("The inputSignedBy field is not visible.");
-        }
-
-        inputSignedBy.isDisplayed();
-        checkBoxFinalized.click();
-
-        driver.switchTo().parentFrame();
-    }
-
-public void checkFinalSignatureAndAdditionalSignaturesTheSystemShouldAllowUsingReadOnlyMode() throws InterruptedException{
-    driver.switchTo().frame("frmContenido");
-    waitElements(buttonDropDownPod);
-    click(buttonDropDownPod);
-    pause(200);
-    optionRoomAPod.click();
-    pause(200);
-    click(buttonDropDownShift);
-    pause(300);
-    optionShiftMorning.click();
-    click(buttonDropDownStation);
-    pause(300);
-    optionStation2.isDisplayed();
-    optionStation2.click();
-    buttonDropDownHdMachine.click();
-    pause(300);
-    optionHdMachineAk98.isDisplayed();
-    optionHdMachineAk98.click();
-
-    pause(200);
-    moveScrollToElement(titleTraceability);
-
-    pause(200);
-    waitElements(buttonDropDownDesinfectedBy);
-    pause(200);
-    click(buttonDropDownDesinfectedBy);
-    pause(200);
-    optionDesinfectedBy.isDisplayed();
-    optionDesinfectedBy.click();
-
-    driver.switchTo().parentFrame();
-    pause(300);
-    click(upPageArrow);
-    pause(1000);
-
-    driver.switchTo().frame("frmContenido");
-    waitElements(buttonFinalSignature);
-    click(buttonFinalSignature);
-    pause(300);
-
-    click(textAreaNotes);
-    String note = "test Qa";
-    write(textAreaNotes,note);
-    pause(200);
-
-    if (inputSignedBy.isDisplayed()) {
-        System.out.println("The inputSignedBy field is visible.");
-
-        if (!inputSignedBy.isEnabled()) {
-            System.out.println("The inputSignedBy field is disabled.");
-
-            String actualValue = inputSignedBy.getAttribute("value");
-            String expectedValue = "Robles Martín, Miguel";
-
-            if (actualValue.equals(expectedValue)) {
-                System.out.println("The inputSignedBy field has the expected value: " + expectedValue);
-            } else {
-                System.out.println("The value of the inputSignedBy field is not as expected. Actual: " + actualValue);
-            }
-
-        } else {
-            System.out.println("The inputSignedBy field is enabled, but it should be disabled.");
-        }
-
-    } else {
-        System.out.println("The inputSignedBy field is not visible.");
-    }
-
-    inputSignedBy.isDisplayed();
-    checkBoxFinalized.click();
-
-    buttonThreePointsFinalSignature.click();
-    pause(300);
-    saveFinalSignature.click();
-    pause(300);
-
-    driver.switchTo().parentFrame();
-}
-public void tryToCloseTheTreatmentWithoutTheNephrologistSSignatureAndItShowsMeAnAlert()throws InterruptedException{
-    driver.switchTo().frame("frmContenido");
-    waitElements(buttonDropDownPod);
-    click(buttonDropDownPod);
-    pause(200);
-    optionRoomAPod.click();
-    pause(200);
-    click(buttonDropDownShift);
-    pause(300);
-    optionShiftMorning.click();
-    click(buttonDropDownStation);
-    pause(300);
-    optionStation2.isDisplayed();
-    optionStation2.click();
-    buttonDropDownHdMachine.click();
-    pause(300);
-    optionHdMachineAk98.isDisplayed();
-    optionHdMachineAk98.click();
-
-    pause(200);
-    moveScrollToElement(titleTraceability);
-
-    pause(200);
-    waitElements(buttonDropDownDesinfectedBy);
-    pause(200);
-    click(buttonDropDownDesinfectedBy);
-    pause(200);
-    optionDesinfectedBy.isDisplayed();
-    optionDesinfectedBy.click();
-
-    driver.switchTo().parentFrame();
-    pause(300);
-    click(upPageArrow);
-    pause(1000);
-
-    driver.switchTo().frame("frmContenido");
-    waitElements(buttonFinalSignature);
-    click(buttonFinalSignature);
-    pause(300);
-
-    click(textAreaNotes);
-    String note = "test Qa";
-    write(textAreaNotes,note);
-    pause(200);
-
-    if (inputSignedBy.isDisplayed()) {
-        System.out.println("The inputSignedBy field is visible.");
-
-        if (!inputSignedBy.isEnabled()) {
-            System.out.println("The inputSignedBy field is disabled.");
-
-            String actualValue = inputSignedBy.getAttribute("value");
-            String expectedValue = "PruebaAA Ape Supp, Personal450nefro";
-
-            if (actualValue.equals(expectedValue)) {
-                System.out.println("The inputSignedBy field has the expected value: " + expectedValue);
-            } else {
-                System.out.println("The value of the inputSignedBy field is not as expected. Actual: " + actualValue);
-            }
-
-        } else {
-            System.out.println("The inputSignedBy field is enabled, but it should be disabled.");
-        }
-
-    } else {
-        System.out.println("The inputSignedBy field is not visible.");
-    }
-
-    click(buttonShift);
-    pause(3000);
-    driver.switchTo().parentFrame();
-
-}
 public void configureTheLatestLabResultsByTimeInterval()throws InterruptedException{
     driver.switchTo().frame("frmContenido");
     pause(5000);
