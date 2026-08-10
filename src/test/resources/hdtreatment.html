@@ -1,0 +1,32 @@
+<div class="col-md-6 col-sm-6 col-xs-12">
+    <div static-include="" template-path="App/Terapia HD/TratamientoHD/Views/Preparacion/OtrosFungibles.html"><h5 class="green" translate-once="ControlPrescripcionHD_Label_Otros_Fungibles">Other consumables</h5>
+        <table class="table table-striped responsive-utilities jambo_table">
+
+            <thead>
+            <tr class="headings">
+                <td translate-once="ControlPrescripcionHD_Grid_Label_Columna_Nombre">Name</td>
+                <td translate-once="ControlPrescripcionHD_Grid_Label_Columna_Lote">Batch</td>
+                <td translate-once="ControlPrescripcionHD_Grid_Label_Columna_Fecha_Caducidad">Expiry date</td>
+                <td>&nbsp;</td>
+            </tr>
+            </thead>
+
+            <tbody><!-- ngRepeat: fung in tratManager.tratamientoActual.otrosFungiblesTtoHd track by $index --><tr ng-repeat="fung in tratManager.tratamientoActual.otrosFungiblesTtoHd track by $index" class="ng-scope">
+                <td>
+                    <span ng-bind="fung.sTipoFungible" class="ng-binding">Jeringa 3</span>
+                </td>
+                <td>
+                    <span ng-bind="fung.lote" class="ng-binding">DIAL-LOTE-2608</span>
+                </td>
+                <td>
+                    <span ng-bind="fung.fechaCaducidad" class="ng-binding">12/31/2026</span>
+                </td>
+                <td>
+                    <a ng-show="HDVar.edicion" data-translate="" translate-attr-title="Title_Eliminar" ng-click="eliminarOtrosFungibles($index)" class="ng-scope" title="Delete"><i class="fa fa-trash"></i></a>&nbsp;
+                    <a ng-show="HDVar.edicion" data-translate="" translate-attr-title="Title_Editar" href="" data-toggle="modal" data-target=".modal-nuevo-fungible" ng-click="mostrarOtrosFungiblesPopUp($index)" class="ng-scope" title="Edit"><i class="fa fa-pencil"></i></a>
+                </td>
+            </tr><!-- end ngRepeat: fung in tratManager.tratamientoActual.otrosFungiblesTtoHd track by $index -->
+
+            </tbody></table>
+        <button type="button" ng-show="HDVar.edicion" class="btn btn-primary btn-xs" ng-click="mostrarOtrosFungiblesPopUp(-1)" data-toggle="modal" data-target=".modal-nuevo-fungible" translate-once="Modal_Button_Añadir">Add</button></div>
+</div>
