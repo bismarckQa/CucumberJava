@@ -126,6 +126,26 @@ public class HDTreatmentSteps {
         hdTreatmentPage.clickOtherConsumablesModalButton(button);
     }
 
+    @When("I click edit other consumables {string} in HD Treatment")
+    public void iClickEditOtherConsumablesInHDTreatment(String name) throws InterruptedException {
+        hdTreatmentPage.clickEditOtherConsumablesByName(name);
+    }
+
+    @When("I click delete other consumables {string} in HD Treatment")
+    public void iClickDeleteOtherConsumablesInHDTreatment(String name) throws InterruptedException {
+        hdTreatmentPage.clickDeleteOtherConsumablesByName(name);
+    }
+
+    @Then("I verify other consumables row {string} is displayed in HD Treatment")
+    public void iVerifyOtherConsumablesRowIsDisplayedInHDTreatment(String name) {
+        hdTreatmentPage.verifyOtherConsumablesRowIsDisplayed(name);
+    }
+
+    @Then("I verify other consumables row {string} is not displayed in HD Treatment")
+    public void iVerifyOtherConsumablesRowIsNotDisplayedInHDTreatment(String name) {
+        hdTreatmentPage.verifyOtherConsumablesRowIsNotDisplayed(name);
+    }
+
     @And("I enter notes {string} in HD Treatment final signature")
     public void iEnterNotesInHDTreatmentFinalSignature(String notes) throws InterruptedException {
         hdTreatmentPage.enterNotesInFinalSignature(notes);

@@ -603,6 +603,44 @@ public class HDTreatmentPage extends BasePage<HDTreatmentPage> {
         driver.switchTo().parentFrame();
     }
 
+    public void clickEditOtherConsumablesByName(String name) throws InterruptedException {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        WebElement editButton = driver.findElement(By.xpath("//h5[normalize-space(.)='Other consumables']/following::tbody[1]//tr[td//span[normalize-space(.)='" + name.trim() + "']]//a[@title='Edit' or .//i[contains(@class,'fa-pencil')]][1]"));
+        scrollToElementMove(editButton);
+        click(editButton);
+        pause(300);
+        driver.switchTo().parentFrame();
+    }
+
+    public void clickDeleteOtherConsumablesByName(String name) throws InterruptedException {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        WebElement deleteButton = driver.findElement(By.xpath("//h5[normalize-space(.)='Other consumables']/following::tbody[1]//tr[td//span[normalize-space(.)='" + name.trim() + "']]//a[@title='Delete' or .//i[contains(@class,'fa-trash')]][1]"));
+        scrollToElementMove(deleteButton);
+        click(deleteButton);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void verifyOtherConsumablesRowIsDisplayed(String name) {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        WebElement rowName = driver.findElement(By.xpath("//h5[normalize-space(.)='Other consumables']/following::tbody[1]//tr//td//span[normalize-space(.)='" + name.trim() + "'][1]"));
+        isDisplayed(rowName);
+        driver.switchTo().parentFrame();
+    }
+
+    public void verifyOtherConsumablesRowIsNotDisplayed(String name) {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        boolean exists = !driver.findElements(By.xpath("//h5[normalize-space(.)='Other consumables']/following::tbody[1]//tr//td//span[normalize-space(.)='" + name.trim() + "'][1]")).isEmpty();
+        driver.switchTo().parentFrame();
+        if (exists) {
+            throw new AssertionError("Expected Other consumables row to be absent: " + name);
+        }
+    }
+
     public void fillValueChangedReasonAndChooseButton(String reason, String button) throws InterruptedException {
         driver.switchTo().parentFrame();
         driver.switchTo().frame("frmContenido");
