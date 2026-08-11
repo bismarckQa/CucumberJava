@@ -137,12 +137,12 @@ public class HDTreatmentSteps {
     }
 
     @Then("I verify other consumables row {string} is displayed in HD Treatment")
-    public void iVerifyOtherConsumablesRowIsDisplayedInHDTreatment(String name) {
+    public void iVerifyOtherConsumablesRowIsDisplayedInHDTreatment(String name) throws InterruptedException {
         hdTreatmentPage.verifyOtherConsumablesRowIsDisplayed(name);
     }
 
     @Then("I verify other consumables row {string} is not displayed in HD Treatment")
-    public void iVerifyOtherConsumablesRowIsNotDisplayedInHDTreatment(String name) {
+    public void iVerifyOtherConsumablesRowIsNotDisplayedInHDTreatment(String name) throws InterruptedException {
         hdTreatmentPage.verifyOtherConsumablesRowIsNotDisplayed(name);
     }
 

@@ -41,6 +41,8 @@ public class HDTreatmentPage extends BasePage<HDTreatmentPage> {
     private WebElement acidBath1DropdownInFluids;
     @FindBy(how = How.XPATH, using = "//*[@id='liquidosId']//label[normalize-space(.)='Acid bath 2']/ancestor::div[contains(@class,'form-group')][1]//span[contains(@class,'k-dropdownlist')][1]")
     private WebElement acidBath2DropdownInFluids;
+    @FindBy(how = How.XPATH, using = "//h5[normalize-space(.)='Other consumables']")
+    private WebElement otherConsumablesSectionTitle;
     @FindBy(how = How.XPATH, using = "//h5[normalize-space(.)='Other consumables']/following::button[@translate-once='Modal_Button_Añadir' or normalize-space(.)='Add'][1]")
     private WebElement addOtherConsumablesButton;
     @FindBy(how = How.XPATH, using = "//div[contains(@class,'modal-content')]//input[@ng-model='tratManager.tratamientoActual.otrosFungiblesTtoHd[indexOtrosFungiblesPopUp].tipoFungibleId']/following-sibling::span[contains(@class,'k-dropdownlist')][1]")
@@ -606,8 +608,10 @@ public class HDTreatmentPage extends BasePage<HDTreatmentPage> {
     public void clickEditOtherConsumablesByName(String name) throws InterruptedException {
         driver.switchTo().parentFrame();
         driver.switchTo().frame("frmContenido");
-        WebElement editButton = driver.findElement(By.xpath("//h5[normalize-space(.)='Other consumables']/following::tbody[1]//tr[td//span[normalize-space(.)='" + name.trim() + "']]//a[@title='Edit' or .//i[contains(@class,'fa-pencil')]][1]"));
-        scrollToElementMove(editButton);
+        scrollToElementMove(otherConsumablesSectionTitle);
+        pause(500);
+        WebElement row = findOtherConsumablesRow(name);
+        WebElement editButton = row.findElement(By.xpath(".//a[@title='Edit' or .//i[contains(@class,'fa-pencil')]][1]"));
         click(editButton);
         pause(300);
         driver.switchTo().parentFrame();
@@ -616,29 +620,43 @@ public class HDTreatmentPage extends BasePage<HDTreatmentPage> {
     public void clickDeleteOtherConsumablesByName(String name) throws InterruptedException {
         driver.switchTo().parentFrame();
         driver.switchTo().frame("frmContenido");
-        WebElement deleteButton = driver.findElement(By.xpath("//h5[normalize-space(.)='Other consumables']/following::tbody[1]//tr[td//span[normalize-space(.)='" + name.trim() + "']]//a[@title='Delete' or .//i[contains(@class,'fa-trash')]][1]"));
-        scrollToElementMove(deleteButton);
+        scrollToElementMove(otherConsumablesSectionTitle);
+        pause(500);
+        WebElement row = findOtherConsumablesRow(name);
+        WebElement deleteButton = row.findElement(By.xpath(".//a[@title='Delete' or .//i[contains(@class,'fa-trash')]][1]"));
         click(deleteButton);
         pause(500);
         driver.switchTo().parentFrame();
     }
 
-    public void verifyOtherConsumablesRowIsDisplayed(String name) {
+    public void verifyOtherConsumablesRowIsDisplayed(String name) throws InterruptedException {
         driver.switchTo().parentFrame();
         driver.switchTo().frame("frmContenido");
-        WebElement rowName = driver.findElement(By.xpath("//h5[normalize-space(.)='Other consumables']/following::tbody[1]//tr//td//span[normalize-space(.)='" + name.trim() + "'][1]"));
-        isDisplayed(rowName);
+        scrollToElementMove(otherConsumablesSectionTitle);
+        pause(500);
+        WebElement row = findOtherConsumablesRow(name);
+        WebElement rowName = row.findElement(By.xpath(".//td//span[normalize-space(.)='" + name.trim() + "'][1]"));
+        if (!rowName.isDisplayed()) {
+            driver.switchTo().parentFrame();
+            throw new AssertionError("Expected Other consumables row to be visible: " + name);
+        }
         driver.switchTo().parentFrame();
     }
 
-    public void verifyOtherConsumablesRowIsNotDisplayed(String name) {
+    public void verifyOtherConsumablesRowIsNotDisplayed(String name) throws InterruptedException {
         driver.switchTo().parentFrame();
         driver.switchTo().frame("frmContenido");
-        boolean exists = !driver.findElements(By.xpath("//h5[normalize-space(.)='Other consumables']/following::tbody[1]//tr//td//span[normalize-space(.)='" + name.trim() + "'][1]")).isEmpty();
+        scrollToElementMove(otherConsumablesSectionTitle);
+        pause(500);
+        boolean exists = !driver.findElements(By.xpath("//h5[normalize-space(.)='Other consumables']/following::tbody[1]//tr[td//span[normalize-space(.)='" + name.trim() + "']]")).isEmpty();
         driver.switchTo().parentFrame();
         if (exists) {
             throw new AssertionError("Expected Other consumables row to be absent: " + name);
         }
+    }
+
+    private WebElement findOtherConsumablesRow(String name) {
+        return driver.findElement(By.xpath("//h5[normalize-space(.)='Other consumables']/following::tbody[1]//tr[td//span[normalize-space(.)='" + name.trim() + "']][1]"));
     }
 
     public void fillValueChangedReasonAndChooseButton(String reason, String button) throws InterruptedException {
