@@ -47,6 +47,9 @@ public class HDTreatmentPage extends BasePage<HDTreatmentPage> {
     private WebElement traceabilityConsumablesSectionTitle;
     @FindBy(how = How.XPATH, using = "//menu-individual[contains(@class,'menuIndAbsolute')]//i[contains(@class,'icon-three-points')][1]")
     private WebElement hdTreatmentTopActionsButton;
+    @FindBy(how = How.XPATH, using = "//div[contains(@class,'k-window') and .//*[@id='genericModalWin']]//span[normalize-space(.)='Action']")
+    private WebElement actionModalTitle;
+    private final By actionModalContainerBy = By.xpath("//div[contains(@class,'k-window') and .//*[@id='genericModalWin']]");
     @FindBy(how = How.XPATH, using = "//h5[normalize-space(.)='Other consumables']/following::button[@translate-once='Modal_Button_Añadir' or normalize-space(.)='Add'][1]")
     private WebElement addOtherConsumablesButton;
     @FindBy(how = How.XPATH, using = "//div[contains(@class,'modal-content')]//input[@ng-model='tratManager.tratamientoActual.otrosFungiblesTtoHd[indexOtrosFungiblesPopUp].tipoFungibleId']/following-sibling::span[contains(@class,'k-dropdownlist')][1]")
@@ -704,6 +707,21 @@ public class HDTreatmentPage extends BasePage<HDTreatmentPage> {
         pause(300);
         WebElement actionButton = driver.findElement(By.xpath("//menu-individual[contains(@class,'menuIndAbsolute')]//span[normalize-space(.)='" + action.trim() + "']/ancestor::a[1]"));
         click(actionButton);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void verifyActionModalIsDisplayedInHDTreatment() {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        isDisplayed(actionModalTitle);
+        driver.switchTo().parentFrame();
+    }
+
+    public void clickButtonInActionModalInHDTreatment(String button) throws InterruptedException {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        clickOptionInContainer(actionModalContainerBy, button);
         pause(500);
         driver.switchTo().parentFrame();
     }

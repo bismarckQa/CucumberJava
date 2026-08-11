@@ -217,6 +217,16 @@ public class HDTreatmentSteps {
         hdTreatmentPage.clickTopActionInHDTreatment(action);
     }
 
+    @Then("I verify Action modal is displayed in HD Treatment")
+    public void iVerifyActionModalIsDisplayedInHDTreatment() {
+        hdTreatmentPage.verifyActionModalIsDisplayedInHDTreatment();
+    }
+
+    @And("I click button {string} in Action modal in HD Treatment")
+    public void iClickButtonInActionModalInHDTreatment(String button) throws InterruptedException {
+        hdTreatmentPage.clickButtonInActionModalInHDTreatment(button);
+    }
+
     @And("I click Treatment history in HD Treatment")
     public void iClickTreatmentHistoryInHDTreatment() throws InterruptedException {
         hdTreatmentPage.clickTreatmentHistoryBreadcrumb();
