@@ -43,6 +43,10 @@ public class HDTreatmentPage extends BasePage<HDTreatmentPage> {
     private WebElement acidBath2DropdownInFluids;
     @FindBy(how = How.XPATH, using = "//h5[normalize-space(.)='Other consumables']")
     private WebElement otherConsumablesSectionTitle;
+    @FindBy(how = How.XPATH, using = "//h5[normalize-space(.)='Consumables']")
+    private WebElement traceabilityConsumablesSectionTitle;
+    @FindBy(how = How.XPATH, using = "//menu-individual[contains(@class,'menuIndAbsolute')]//i[contains(@class,'icon-three-points')][1]")
+    private WebElement hdTreatmentTopActionsButton;
     @FindBy(how = How.XPATH, using = "//h5[normalize-space(.)='Other consumables']/following::button[@translate-once='Modal_Button_Añadir' or normalize-space(.)='Add'][1]")
     private WebElement addOtherConsumablesButton;
     @FindBy(how = How.XPATH, using = "//div[contains(@class,'modal-content')]//input[@ng-model='tratManager.tratamientoActual.otrosFungiblesTtoHd[indexOtrosFungiblesPopUp].tipoFungibleId']/following-sibling::span[contains(@class,'k-dropdownlist')][1]")
@@ -657,6 +661,73 @@ public class HDTreatmentPage extends BasePage<HDTreatmentPage> {
 
     private WebElement findOtherConsumablesRow(String name) {
         return driver.findElement(By.xpath("//h5[normalize-space(.)='Other consumables']/following::tbody[1]//tr[td//span[normalize-space(.)='" + name.trim() + "']][1]"));
+    }
+
+    public void fillTraceabilityConsumableRow(String rowName, String lotNumber, String expiryDate) throws InterruptedException {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(traceabilityConsumablesSectionTitle);
+        pause(300);
+
+        By lotInput = getTraceabilityLotInput(rowName);
+        WebElement lotElement = driver.findElement(lotInput);
+        scrollToElementMove(lotElement);
+        click(lotElement);
+        lotElement.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+        lotElement.sendKeys(Keys.DELETE);
+        write(lotElement, lotNumber);
+
+        By expiryInput = getTraceabilityExpiryInput(rowName);
+        WebElement expiryElement = driver.findElement(expiryInput);
+        click(expiryElement);
+        expiryElement.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+        expiryElement.sendKeys(Keys.DELETE);
+        write(expiryElement, expiryDate);
+        pause(300);
+        driver.switchTo().parentFrame();
+    }
+
+    public void clickTopArrowInHDTreatment() throws InterruptedException {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(traceabilityConsumablesSectionTitle);
+        pause(300);
+        click(upPageArrow);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void clickTopActionInHDTreatment(String action) throws InterruptedException {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        click(hdTreatmentTopActionsButton);
+        pause(300);
+        WebElement actionButton = driver.findElement(By.xpath("//menu-individual[contains(@class,'menuIndAbsolute')]//span[normalize-space(.)='" + action.trim() + "']/ancestor::a[1]"));
+        click(actionButton);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    private By getTraceabilityLotInput(String rowName) {
+        return switch (rowName.trim()) {
+            case "Arterial needle size", "Single-puncture needle" -> By.name("loteAgujaArterial");
+            case "Venous needle", "Venous needle size" -> By.name("loteAgujaVenosa");
+            case "Dialyzer" -> By.name("loteDializador");
+            case "Acid bath 1" -> By.name("loteConcentrado1");
+            case "Acid bath 2" -> By.name("loteConcentrado2");
+            default -> throw new IllegalArgumentException("Unsupported traceability consumable row: " + rowName);
+        };
+    }
+
+    private By getTraceabilityExpiryInput(String rowName) {
+        return switch (rowName.trim()) {
+            case "Arterial needle size", "Single-puncture needle" -> By.xpath("//input[@name='fechaCadAgujaArterial']/following-sibling::span//input[contains(@class,'k-input-inner')][1]");
+            case "Venous needle", "Venous needle size" -> By.xpath("//input[@name='fechaCadAgujaVenosa']/following-sibling::span//input[contains(@class,'k-input-inner')][1]");
+            case "Dialyzer" -> By.xpath("//input[@name='fechaCadDializador']/following-sibling::span//input[contains(@class,'k-input-inner')][1]");
+            case "Acid bath 1" -> By.xpath("//input[@name='fechaCadConcentrado1']/following-sibling::span//input[contains(@class,'k-input-inner')][1]");
+            case "Acid bath 2" -> By.xpath("//input[@name='fechaCadConcentrado2']/following-sibling::span//input[contains(@class,'k-input-inner')][1]");
+            default -> throw new IllegalArgumentException("Unsupported traceability consumable row: " + rowName);
+        };
     }
 
     public void fillValueChangedReasonAndChooseButton(String reason, String button) throws InterruptedException {

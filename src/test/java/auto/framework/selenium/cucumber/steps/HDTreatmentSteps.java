@@ -202,6 +202,21 @@ public class HDTreatmentSteps {
         hdTreatmentPage.clickSaveNewObservation();
     }
 
+    @And("I fill traceability consumable row {string} with lot number {string} and expiry date {string} in HD Treatment")
+    public void iFillTraceabilityConsumableRowWithLotNumberAndExpiryDateInHDTreatment(String rowName, String lotNumber, String expiryDate) throws InterruptedException {
+        hdTreatmentPage.fillTraceabilityConsumableRow(rowName, lotNumber, expiryDate);
+    }
+
+    @And("I click button arrow up in HD Treatment")
+    public void iClickButtonArrowUpInHDTreatment() throws InterruptedException {
+        hdTreatmentPage.clickTopArrowInHDTreatment();
+    }
+
+    @And("I click top action button {string} in HD Treatment")
+    public void iClickTopActionButtonInHDTreatment(String action) throws InterruptedException {
+        hdTreatmentPage.clickTopActionInHDTreatment(action);
+    }
+
     @And("I click Treatment history in HD Treatment")
     public void iClickTreatmentHistoryInHDTreatment() throws InterruptedException {
         hdTreatmentPage.clickTreatmentHistoryBreadcrumb();
