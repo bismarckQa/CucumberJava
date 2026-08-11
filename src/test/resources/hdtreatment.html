@@ -30,3 +30,125 @@
             </tbody></table>
         <button type="button" ng-show="HDVar.edicion" class="btn btn-primary btn-xs" ng-click="mostrarOtrosFungiblesPopUp(-1)" data-toggle="modal" data-target=".modal-nuevo-fungible" translate-once="Modal_Button_Añadir">Add</button></div>
 </div>
+
+
+<!--Modal Action update prescription-->
+<div class="k-widget k-window k-display-inline-flex" tabindex="0" data-role="draggable" role="dialog" aria-labelledby="genericModalWin_wnd_title" style="min-width: 50px; min-height: 50px; display: none; top: 70.5px; left: 752.5px; max-width: 400px; z-index: 10003;"><div class="k-window-titlebar k-hstack"><span class="k-window-title" id="genericModalWin_wnd_title">Action</span><div class="k-window-actions k-hstack"><a role="button" href="#" class="k-button k-button-md k-rounded-md k-button-flat k-button-flat-base k-icon-button k-window-action" aria-label="Close"><span class="k-button-icon k-icon k-i-close"></span></a></div></div><div id="genericModalWin" kendo-window="modal.$controles.modalWindow" k-visible="false" class="ng-scope k-window-content" data-role="window" tabindex="0" style="">
+    <div class="modal-body" ng-class="::modal.configuration.messages.extra.bodyClass">
+        <!-- ngIf: modal.configuration.modalType !== null --><div ng-if="modal.configuration.modalType !== null" style="overflow: hidden;" class="ng-scope">
+        <!-- Messages -->
+        <!-- ngIf: modal.configuration.messages.msg --><p ng-if="modal.configuration.messages.msg" data-translate="TratamientoHD_Aviso_Actualizar_Prescripcion" class="ng-scope">The patient’s last active prescription will be updated and the traceability data will be retrieved therefrom. Do you wish to continue?</p><!-- end ngIf: modal.configuration.messages.msg -->
+        <!-- ngIf: modal.configuration.messages.extra.htmlMsg -->
+        <!-- SubViews -->
+        <!-- ngIf: modal.configuration.modalType === modal.types.confirmPass || modal.configuration.modalType === modal.types.deleteItem -->
+        <!-- ngIf: modal.configuration.modalType === modal.types.addOption -->
+        <!-- ngIf: modal.configuration.modalType === modal.types.showChart -->
+        <!-- ngIf: modal.configuration.modalType === modal.types.file -->
+        <!-- ngIf: modal.configuration.modalType === modal.types.importData -->
+        <!-- ngIf: modal.configuration.modalType === modal.types.dateInterval -->
+        <!-- Error Message -->
+        <p class="errorMessage ng-scope" data-translate=""></p>
+    </div><!-- end ngIf: modal.configuration.modalType !== null -->
+    </div>
+    <div class="modal-footer">
+        <div static-include="" template-path="App/Core/Views/Modal/ButtonsView.html"><!-- Ok -->
+            <!-- ngIf: modal.configuration.showOK -->
+            <!-- Sí -->
+            <!-- ngIf: modal.configuration.showYes --><button class="btn btn-primary ng-scope" ng-if="modal.configuration.showYes" ng-click="modal.ok()" translate-once="Modal_Button_Sí">Yes</button><!-- end ngIf: modal.configuration.showYes -->
+            <!-- Añadir -->
+            <!-- ngIf: modal.configuration.showAdd -->
+            <!-- No -->
+            <!-- ngIf: modal.configuration.showNo --><button class="btn btn-default ng-scope" ng-if="modal.configuration.showNo" ng-click="modal.cancel()" translate-once="Modal_Button_No">No</button><!-- end ngIf: modal.configuration.showNo -->
+            <!-- Cancelar -->
+            <!-- ngIf: modal.configuration.showCancel --></div>
+    </div>
+</div></div>
+
+<!---Menu 3 points-->
+<ul class="dropdown-menu three-points animated fadeIn" role="menu">
+    <!-- ngIf: $ctrl.shown --><li class="menu-parent ng-scope" ng-if="$ctrl.shown" ng-transclude="">
+    <li static-include="" template-path="App/Terapia HD/TratamientoHD/Views/MenuTratHD.html" class="ng-scope"><ul class="menu-parent" ng-init="form.isValid = form.validate(stepCircle.mainForm)">
+        <li ng-show="!HDVar.edicion &amp;&amp; !HDVar.tratamientoAbierto" role-permission="" section-write="Registro de Tratamiento" class="ng-isolate-scope ng-hide">
+            <a href="javascript:void(0);" ng-click="boton.nuevo();">
+                <i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;<span style="text-transform:uppercase" translate-once="TratamientoHD_Label_Nuevo_Tratamiento">New treatment</span>
+            </a>
+        </li>
+        <li ng-show="!HDVar.edicion &amp;&amp; !HDVar.tratamientoAbierto &amp;&amp; HDVar.puedeReabrir" role-permission="" section-write="Registro de Tratamiento" class="ng-isolate-scope ng-hide">
+            <a href="javascript:void(0);" ng-click="boton.reabrir();">
+                <i class="fa fa-recycle"></i>&nbsp;&nbsp;&nbsp;<span style="text-transform:uppercase" translate-once="TratamientoHD_Label_Reabrir_Tratamiento">Reopen Treatment</span>
+            </a>
+        </li>
+        <li ng-show="tratManager.historicoTrat.length &gt; 0">
+            <a href="javascript:void(0);" ng-click="boton.historial2 = true" data-toggle="modal" data-target=".modal-histTratHD">
+                <i class="fa fa-history"></i>&nbsp;&nbsp;&nbsp;<span style="text-transform:uppercase" translate-once="TratamientoHD_boton_historial">Treatment history</span>
+            </a>
+        </li>
+        <li ng-show="tratManager.tratamientoActual.tratamientoDiaDeHoy" role-permission="" section-read="SeguimientoSesionHD" class="ng-isolate-scope ng-hide">
+            <a href="#/renal/seguimientoSesionHD/?tratamientoId=7477" ng-click="checkEdicion($event);" ui-sref="versia.renal.seguimientoSesionHD({ tratamientoId: tratManager.tratamientoActual.tratamientoHDId })">
+                <i class="fa fa-desktop"></i>&nbsp;&nbsp;&nbsp;<span class="text-uppercase" translate-once="VerCalendarioHD_Label_Menu_Monitores">HD Machines</span>
+            </a>
+        </li>
+        <li ng-show="stepCircle.steps.preparation.selected &amp;&amp; tratManager.tratamientoActual.tratamientoEditable === true" role-permission="" section-write="Registro de Tratamiento" class="ng-isolate-scope">
+            <a href="javascript:void(0);" ng-click="boton.actualizarPrescripcion();">
+                <i class="fa fa-pencil"></i>&nbsp;&nbsp;&nbsp;<span style="text-transform:uppercase" translate-once="TratamientoHD_boton_ActualizarPrescripcion">Update prescription</span>
+            </a>
+        </li>
+        <li ng-show="HDVar.edicion &amp;&amp; form.isValid &amp;&amp; stepCircle.mainForm.$dirty &amp;&amp; HDVar.errorLoadUbicacion === false" role-permission="" section-write="Registro de Tratamiento" class="ng-isolate-scope">
+            <a href="javascript:void(0);" ng-click="boton.guardar();">
+                <i class="fa fa-floppy-o"></i>&nbsp;&nbsp;&nbsp;<span style="text-transform:uppercase" translate-once="Demograficos_Label_Guardar">Save</span>
+            </a>
+        </li>
+        <li ng-show="HDVar.edicion &amp;&amp; stepCircle.mainForm.$dirty">
+            <a href="javascript:void(0);" ng-click="boton.cancelar();">
+                <i class="fa fa-times"></i>&nbsp;&nbsp;&nbsp;<span style="text-transform:uppercase" translate-once="Demograficos_Label_Cancelar">Cancel</span>
+            </a>
+        </li>
+        <li ng-show="tratManager.historicoTrat.length &gt; 0" role-permission="" section-write="Registro de Tratamiento" class="ng-isolate-scope">
+            <a href="javascript:void(0);" ng-click="boton.eliminar();">
+                <i class="fa fa-trash"></i>&nbsp;&nbsp;&nbsp;<span style="text-transform:uppercase" translate-once="Title_Eliminar">Delete</span>
+            </a>
+        </li>
+        <li ng-show="stepCircle.steps.drugs.selected &amp;&amp; tratManager.tratamientoActual.tratamientoEditable === true" role-permission="" section-write="Registro de Tratamiento" class="ng-isolate-scope ng-hide">
+            <ul class="menu-parent">
+                <li>
+                    <a href="javascript:void(0);" ng-click="boton.seleccionMedicacionMultiple();" ng-show="HDVar.sistemaExternoMedicacion === false">
+                        <i class="fa fa-close" ng-class="adminDrugs.multipleSelection ? 'fa-check' : 'fa-close'"></i>&nbsp;&nbsp;&nbsp;
+                        <span translate-once="TratamientoHD_Label_Seleccion_Multiple">Multiple selection</span>
+                    </a>
+                </li>
+                <li ng-show="adminDrugs.multipleSelection &amp;&amp; adminDrugs.hasMedicationsSelected" class="ng-hide">
+                    <a href="javascript:void(0);" ng-click="boton.administrarMedicacionMultiple();">
+                        <i class="fa fa-caret-square-o-right"></i>&nbsp;&nbsp;&nbsp;
+                        <span style="text-transform:uppercase" translate-once="AdministrarMedicacion_Label_Administrar">Administer</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li ng-show="HDVar.tratamientoAbierto &amp;&amp; HDVar.codigosEstadoMonitor.length &gt; 0" role-permission="" section-write="Registro de Tratamiento" class="ng-isolate-scope">
+            <a href="javascript:void(0);" ng-click="$event.stopPropagation(); HDVar.mostrarCambioEstado = !HDVar.mostrarCambioEstado">
+                <i class="fa fa-chevron-down" ng-class="{'fa-chevron-down': !HDVar.mostrarCambioEstado, 'fa-chevron-up': HDVar.mostrarCambioEstado}"></i>&nbsp;&nbsp;&nbsp;
+                <span style="text-transform: uppercase" translate-once="Tratamiento_Label_Cambiar_Estado_A">Change treatment status:</span>
+            </a>
+        </li>
+        <!-- ngRepeat: estado in HDVar.codigosEstadoMonitor | orderBy:'id' track by estado.id --><li ng-repeat="estado in HDVar.codigosEstadoMonitor | orderBy:'id' track by estado.id" ng-show="HDVar.mostrarCambioEstado &amp;&amp; estado.activo" ng-click="boton.cambiarEstado(estado.id);" class="ng-scope ng-hide">
+        <a href="javascript:void(0);">
+            &nbsp;&nbsp;
+            &nbsp;&nbsp;
+            <span style="text-transform: uppercase" class="ng-binding">pre-treatment</span>
+        </a>
+    </li><!-- end ngRepeat: estado in HDVar.codigosEstadoMonitor | orderBy:'id' track by estado.id --><li ng-repeat="estado in HDVar.codigosEstadoMonitor | orderBy:'id' track by estado.id" ng-show="HDVar.mostrarCambioEstado &amp;&amp; estado.activo" ng-click="boton.cambiarEstado(estado.id);" class="ng-scope ng-hide">
+        <a href="javascript:void(0);">
+            &nbsp;&nbsp;
+            &nbsp;&nbsp;
+            <span style="text-transform: uppercase" class="ng-binding">In treatment</span>
+        </a>
+    </li><!-- end ngRepeat: estado in HDVar.codigosEstadoMonitor | orderBy:'id' track by estado.id --><li ng-repeat="estado in HDVar.codigosEstadoMonitor | orderBy:'id' track by estado.id" ng-show="HDVar.mostrarCambioEstado &amp;&amp; estado.activo" ng-click="boton.cambiarEstado(estado.id);" class="ng-scope ng-hide">
+        <a href="javascript:void(0);">
+            &nbsp;&nbsp;
+            &nbsp;&nbsp;
+            <span style="text-transform: uppercase" class="ng-binding">post-treatment</span>
+        </a>
+    </li><!-- end ngRepeat: estado in HDVar.codigosEstadoMonitor | orderBy:'id' track by estado.id -->
+    </ul></li>
+    </li><!-- end ngIf: $ctrl.shown -->
+</ul>
