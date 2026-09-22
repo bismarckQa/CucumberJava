@@ -29,6 +29,12 @@ Feature:Attach a new photo/image to an access
 
   @test @TestCase_3929 @ALM_VR_TC_330
   Scenario: Save Add with no photo selected
+    Given I open the Baxter website
+    And   I try to login with "login_baxter" credentials
+    And   I login successful
+    And   I Select the Group of patients "Paciente DP"
+    When  I select the patient "Ape1_1838 Ape2_1838, Nom_1838 - 1838"
+    And   I open Accesses module
     When  I select the Evaluation in main menu
     And   I verify Historic Photographs of Accesses
     And   I click button image photo
@@ -38,6 +44,12 @@ Feature:Attach a new photo/image to an access
 
   @test @TestCase_3930 @ALM_VR_TC_331
   Scenario: Save Add with of required  field (date) empty
+    Given I open the Baxter website
+    And   I try to login with "login_baxter" credentials
+    And   I login successful
+    And   I Select the Group of patients "Paciente DP"
+    When  I select the patient "Ape1_1838 Ape2_1838, Nom_1838 - 1838"
+    And   I open Accesses module
     When  I select the Evaluation in main menu
     And   I verify Historic Photographs of Accesses
     And   I click button image photo

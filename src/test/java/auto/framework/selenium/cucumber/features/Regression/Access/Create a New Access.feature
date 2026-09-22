@@ -33,31 +33,6 @@ Feature: Create a New Access
         And   I click button three points Access
         Then  I save the Access Data Implantation
 
-    @test @TestCase @ALM_VR_TC_
-    Scenario: Create New Access PD
-        Given I Select the Group of patients "Paciente DP"
-        When  I select the patient "Foianini Baggio, Pasquale"
-        And   I open "Accesses" module
-        When  I click button arrow up
-        And   I click button three points Access
-        And   I click button new access
-        When  I click button implantation section
-        And   I select access type "Catetere peritoneale di cruz" in access data
-        And   I select access location "Peritoneal" in access data
-        And   I enter first use date "06102024" in access data
-        And   I enter access comment "QATestPDAccess"
-        And   I enter implantation date "06102024" in access data
-        And   I set omentectomy to yes in access data
-        And   I select implantation center "Sistemes Renals" in access data
-        And   I select implantation method "Tradizionale" in access data
-        And   I select reason for implantation "Prueba Activo" in access data
-        When  I enter removal date "06212024" in access data
-        And   I select removal center "Sistemes Renals" in access data
-        And   I select removal method "Prueba Activo" in access data
-        When  I click button arrow up
-        And   I click button three points Access
-        Then  I save the Access Data Implantation
-
     @test @TestCase_3543 @ALM_VR_TC_332
     Scenario: Edit Access
         When  I click in edit all

@@ -1,0 +1,13 @@
+﻿ID,Work Item Type,Title,Test Step,Step Action,Step Expected,Area Path,Assigned To,State
+"4630","Test Case","View history",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","At the top in the “-Select a patient-“ listbox, select ""Paciente136""","
+",,,
+,,,"3","On the main menu select “HD Prescription”","
+",,,
+,,,"4","On the top right corner click on “Prescription History”","
+",,,
+,,,"5","The system shall allow the user to consult the actual prescription (in green) and the closed ones (in blue) by selecting past date
+","
+",,,

@@ -1,0 +1,12 @@
+﻿ID,Work Item Type,Title,Test Step,Step Action,Step Expected,Area Path,Assigned To,State
+"3301","Test Case","View Modality screen",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log into the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Click on “Accept” button","
+",,,
+,,,"3","At the top in the “-Select a patient-“ listbox, select patient 1050","
+",,,
+,,,"4","On the main menu select “Modality”","
+",,,
+,,,"5","The system shall show all the data of patient modality in read-only mode. A grid will let you select any of existent modalities","
+",,,

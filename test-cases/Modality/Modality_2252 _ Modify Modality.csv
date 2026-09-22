@@ -1,0 +1,210 @@
+﻿ID,Work Item Type,Title,Test Step,Step Action,Step Expected,Area Path,Assigned To,State
+"4346","Test Case","Successful edited Modality",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Select patient 1039 with the patients searching option","
+",,,
+,,,"3","Click on ""Modality"" button in the main menu","
+",,,
+,,,"4","Select an existing Modality and click on ""Edit"" button
+","
+",,,
+,,,"5","Modify the necessary data:
+- RST start date
+- Sub-modality
+- Attendance type
+- System
+- Start date
+- Referred by
+- Reason for start
+- End date
+- Reason for end
+","
+",,,
+,,,"6","Click on ""Save"" button","
+",,,
+,,,"7","The system shall save the edited Modality","
+",,,
+"4347","Test Case","Cancelling an edited Modality",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Select patient 1039 with the patients searching option","
+",,,
+,,,"3","Click on ""Modality"" button in the main menu ","
+",,,
+,,,"4","Select an existing Modality and click on ""Edit"" button
+","
+",,,
+,,,"5","Modify the necessary data:
+- RST start date
+- Sub-modality
+- Attendance type
+- System
+- Start date
+- Referred by
+- Reason for start
+- End date
+- Reason for end
+","
+",,,
+,,,"6","Click on ""Cancel"" button","
+",,,
+,,,"7","The system shall not save the edited Modality","
+",,,
+"4354","Test Case","Edit Modality with empty required fields",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Select patient 1050 with the patients searching option","
+",,,
+,,,"3","Click on ""Modality"" button in the main menu","
+",,,
+,,,"4","Select an existing Modality and click on ""Edit"" button
+","
+",,,
+,,,"5","Leave the required fields empty:","
+",,,
+,,,"6","- RST start date
+- Sub-modality
+- Attendance type
+- System
+- Start date
+- Referred by
+- Reason for start
+- End date
+- Reason for end
+- Detail
+","
+",,,
+,,,"7","Click on ""Save"" button","
+",,,
+,,,"8","Warning: these fields are required","
+",,,
+,,,"9","Click on ""OK"" pop-up button","
+",,,
+,,,"10","The system shall not allow to save the edited Modality","
+",,,
+"4361","Test Case","Closed Modality: Edit with an earlier start date",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Select patient 1039 with the patients searching option","
+",,,
+,,,"3","Click on ""Modality"" button in the main menu","
+",,,
+,,,"4","Select an existing Modality and click on ""Edit"" button","
+",,,
+,,,"5","Modify ""Start date"" with an earlier date
+","
+",,,
+,,,"6","Click on ""Save"" button","
+",,,
+,,,"7","Warning: The modality cannot be saved, because it would overlap with another modality of the patient
+","
+",,,
+,,,"8","Click on ""OK"" button on pop-up","
+",,,
+,,,"9","The system shall not save the edited Modality","
+",,,
+"4369","Test Case","Closed Modality: Edit with a later start date",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Select patient 1039 with the patients searching option","
+",,,
+,,,"3","Click on ""Modality"" button in the main menu","
+",,,
+,,,"4","Select an existing Modality and click on ""Edit"" button","
+",,,
+,,,"5","Modify ""Start date"" with an later date
+","
+",,,
+,,,"6","Warning:
+- The end date must be later than the start date
+- The start date cannot be later than the current date
+","
+",,,
+,,,"7","Click on ""OK"" button on pop-up","
+",,,
+,,,"8","The system shall not save the edited Modality","
+",,,
+"4545","Test Case","Closed Modality: Edit with an earlier end date",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Select patient 1039 with the patients searching option","
+",,,
+,,,"3","Click on ""Modality"" button in the main menu","
+",,,
+,,,"4","Select an existing Modality and click on ""Edit"" button","
+",,,
+,,,"5","Modify ""End date"" with an earlier date
+","
+",,,
+,,,"6","Click on ""Save"" button","
+",,,
+,,,"7","Warning: The end date must be later than the start date
+","
+",,,
+,,,"8","Click on ""OK"" button on pop-up","
+",,,
+,,,"9","The system shall not save the edited Modality","
+",,,
+"4546","Test Case","Open Modality: Edit with an earlier start date",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Select patient 1050 with the patients searching option","
+",,,
+,,,"3","Click on ""Modality"" button in the main menu","
+",,,
+,,,"4","Select an existing Modality and click on ""Edit"" button","
+",,,
+,,,"5","Modify ""Start date"" with an earlier date
+","
+",,,
+,,,"6","Click on ""Save"" button","
+",,,
+,,,"7","Warning: The modality cannot be saved, because it would overlap with another modality of the patient
+","
+",,,
+,,,"8","Click on ""OK"" button on pop-up","
+",,,
+,,,"9","The system shall not save the edited Modality","
+",,,
+"4547","Test Case","Open Modality: Edit with a later start date",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Select patient 1050 with the patients searching option","
+",,,
+,,,"3","Click on ""Modality"" button in the main menu","
+",,,
+,,,"4","Select an existing Modality and click on ""Edit"" button","
+",,,
+,,,"5","Modify ""Start date"" with an later date
+","
+",,,
+,,,"6","Warning:
+- The start date cannot be later than the current date
+","
+",,,
+,,,"7","Click on ""OK"" button on pop-up","
+",,,
+,,,"8","The system shall not save the edited Modality","
+",,,
+"4548","Test Case","Open Modality: Edit with an earlier end date",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Select patient 1050 with the patients searching option","
+",,,
+,,,"3","Click on ""Modality"" button in the main menu","
+",,,
+,,,"4","Select an existing Modality and click on ""Edit"" button","
+",,,
+,,,"5","Modify ""End date"" with an earlier date
+","
+",,,
+,,,"6","Click on ""Save"" button","
+",,,
+,,,"7","Warning: The end date must be later than the start date
+","
+",,,
+,,,"8","Click on ""OK"" button on pop-up","
+",,,
+,,,"9","The system shall not save the edited Modality","
+",,,

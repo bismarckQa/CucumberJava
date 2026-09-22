@@ -1,0 +1,99 @@
+﻿ID,Work Item Type,Title,Test Step,Step Action,Step Expected,Area Path,Assigned To,State
+"3481","Test Case","Cancelling an edited Planning Care",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Select patient with name ""Paciente136"" with the patients searching option","
+",,,
+,,,"3","Click on ""Planning Care"" button in the main menu","
+",,,
+,,,"4","Select the period type to which the care plan to be changed belongs: Multi, Continuous, Short-term and Long-term","
+",,,
+,,,"5","Click on ""Edit"" button in the section
+","
+",,,
+,,,"6","Modify the necessary data:","
+",,,
+,,,"7","- Entered by: drop-down list, default with current user and required","
+",,,
+,,,"8","- Position: drop-down list","
+",,,
+,,,"9","- Subject: drop-down list, required","
+",,,
+,,,"10","- Date: default to current date, required","
+",,,
+,,,"11","- Alerts: free textbox","
+",,,
+,,,"12","- Vascular Access: free textbox","
+",,,
+,,,"13","- Cures and Revisions: free textbox","
+",,,
+,,,"14","- Analytics and tests: free textbox","
+",,,
+,,,"15","- Other activities: free textbox","
+",,,
+,,,"16","Click on ""Cancel"" button","
+",,,
+,,,"17","The system shall not save the edited Planning Care","
+",,,
+"3482","Test Case","Successful edited Planning Care",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Select patient with name ""Paciente136"" with the patients searching option","
+",,,
+,,,"3","Click on ""Planning Care"" button in the main menu","
+",,,
+,,,"4","Select the period type to which the care plan to be changed belongs: Multi, Continuous, Short-term and Long-term","
+",,,
+,,,"5","Click on ""Edit"" button in the section","
+",,,
+,,,"6","Modify the necessary data:","
+",,,
+,,,"7","- Entered by: drop-down list, default with current user and required","
+",,,
+,,,"8","- Position: drop-down list","
+",,,
+,,,"9","- Subject: drop-down list, required","
+",,,
+,,,"10","- Date: default to current date, required","
+",,,
+,,,"11","- Alerts: free textbox","
+",,,
+,,,"12","- Vascular Access: free textbox","
+",,,
+,,,"13","- Cures and Revisions: free textbox","
+",,,
+,,,"14","- Analytics and tests: free textbox","
+",,,
+,,,"15","- Other activities: free textbox","
+",,,
+,,,"16","Click on ""Save"" button","
+",,,
+,,,"17","The system shall save the edited Planning Care","
+",,,
+"3483","Test Case","Edit Planning Care with empty required fields",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Select patient with name ""Paciente136"" with the patients searching option","
+",,,
+,,,"3","Click on ""Planning Care"" button in the main menu","
+",,,
+,,,"4","Select the period type to which the care plan to be changed belongs: Multi, Continuous, Short-term and Long-term","
+",,,
+,,,"5","Click on ""Edit"" button in the section","
+",,,
+,,,"6","Leave the required fields empty:","
+",,,
+,,,"7","- Entered by: drop-down list, default with current user and required","
+",,,
+,,,"8","- Subject: drop-down list, required","
+",,,
+,,,"9","- Date: default to current date, required","
+",,,
+,,,"10","Click on ""Save"" button","
+",,,
+,,,"11","Warning: Entered by, Subject and Date are required fields","
+",,,
+,,,"12","Click on ""OK"" button on pop-up","
+",,,
+,,,"13","The system shall not allow to save the edited Planning Care","
+",,,

@@ -1,0 +1,26 @@
+﻿ID,Work Item Type,Title,Test Step,Step Action,Step Expected,Area Path,Assigned To,State
+"17432","Test Case","View extraction in active treatment",,,,"Versia Renal - Comercial","Colombo, Bismarck <bismarck.colombo@vantive.com>","Design"
+,,,"1"," Log in with user ""support"" and password ""renal""","
+",,,
+,,,"2","Select patient ""BisRic 1, ELVIRA""","
+",,,
+,,,"3","On the main menu select ""HD Treatment""","
+",,,
+,,,"4","Select an active HD Treatment","
+",,,
+,,,"5","Scroll to ""Extractions"" section","
+",,,
+,,,"6"," The system shall display the extraction with: Request ID, Extraction date, Request date, Sample Code, Signed checkbox,       │
+  │      │                                                 │ Profiles and Observations fields","
+",,,
+,,,"7","Verify Edit button (pencil icon) is available","
+",,,
+"17434","Test Case","View extraction in finalized treatment",,,,"Versia Renal - Comercial","Colombo, Bismarck <bismarck.colombo@vantive.com>","Design"
+,,,"1","Log in with user ""support"" and password ""renal""","
+",,,
+,,,"2","Select patient ""BisRic 1, ELVIRA""","
+",,,
+,,,"3"," On the main menu select ""HD Treatment""","
+",,,
+,,,"4","Select a finalized HD Treatment","
+",,,

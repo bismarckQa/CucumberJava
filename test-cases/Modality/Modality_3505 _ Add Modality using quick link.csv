@@ -1,0 +1,29 @@
+﻿ID,Work Item Type,Title,Test Step,Step Action,Step Expected,Area Path,Assigned To,State
+"7751","Test Case","Successful modality change",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Select patient 1018 with the patients searching option","
+",,,
+,,,"3","Click on ""Modality"" button in the main menu","
+",,,
+,,,"4","Click on ""Submethod"" button in the modality selected","
+",,,
+,,,"5","Click on modality item: ""Change to HD Center""
+","
+",,,
+,,,"6","The added Modality is displayed in read only with date today as start date","
+",,,
+"7752","Test Case","Cancel modality change",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Select patient 1006 with the patients searching option","
+",,,
+,,,"3","Click on ""Modality"" button in the main menu","
+",,,
+,,,"4","Click on ""Submethod"" button in the modality selected","
+",,,
+,,,"5","Click on close in the pop up
+","
+",,,
+,,,"6","The change is not done.","
+",,,

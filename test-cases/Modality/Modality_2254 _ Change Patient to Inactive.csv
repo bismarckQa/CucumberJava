@@ -1,0 +1,56 @@
+﻿ID,Work Item Type,Title,Test Step,Step Action,Step Expected,Area Path,Assigned To,State
+"4382","Test Case","Cancelling patient changed as inactive",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Select patient 1003 with the patients searching option","
+",,,
+,,,"3","Click on ""Modality"" button in the main menu","
+",,,
+,,,"4","Click on 'inactive patient' check box","
+",,,
+,,,"5","Warning: Are you sure you want to inactivate the patient?
+","
+",,,
+,,,"6","Click on ""Cancel"" button on pop-up","
+",,,
+,,,"7","The check box will be empty and patient stays active","
+",,,
+"4383","Test Case","Successful patient changed to inactive",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Select patient 1003 with the patients searching option","
+",,,
+,,,"3","Click on ""Modality"" button in the main menu","
+",,,
+,,,"4","Click on 'inactive patient' check box","
+",,,
+,,,"5","Warning: Are you sure you want to inactivate the patient?
+","
+",,,
+,,,"6","Click on ""OK"" button on pop-up","
+",,,
+,,,"7","The check box will be checked and patient is now inactive","
+",,,
+,,,"8","(If we check ""show inactive patients"" on in the patients searching option, we will find patient 1003)","
+",,,
+"4384","Test Case","Not possible if modality is open",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Select patient 1018 with the patients searching option","
+",,,
+,,,"3","Click on ""Modality"" button in the main menu","
+",,,
+,,,"4","Click on 'inactive patient' check box with an open patient Modality","
+",,,
+,,,"5","Warning: Are you sure you want to inactivate the patient?
+","
+",,,
+,,,"6","Click on ""OK"" button on pop-up","
+",,,
+,,,"7","Warning: You must end the active modality before you can deactivate the patient
+","
+",,,
+,,,"8","Click on ""OK"" button on pop-up","
+",,,
+,,,"9","The check box will be empty and patient stays active","
+",,,

@@ -1,0 +1,31 @@
+﻿ID,Work Item Type,Title,Test Step,Step Action,Step Expected,Area Path,Assigned To,State
+"3767","Test Case","Cancelling a deleted Infection",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Select patient 1018 with the patients searching option","
+",,,
+,,,"3","Click on ""Hospitalization"" button in the main menu","
+",,,
+,,,"4","Select a “Date of admission” and click on ""Delete"" button","
+",,,
+,,,"5","Pop-up Warning: Are you sure you want to delete this hospitalization? ","
+",,,
+,,,"6","Click on ""Cancel"" button on pop-up","
+",,,
+,,,"7","The system shall not delete any record","
+",,,
+"3768","Test Case","Successful deleted Infection",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Select patient 1018 with the patients searching option","
+",,,
+,,,"3","Click on ""Hospitalization"" button in the main menu","
+",,,
+,,,"4","Select a “Date of admission” and click on ""Delete"" button","
+",,,
+,,,"5","Pop-up Warning: Are you sure you want to delete this hospitalization? ","
+",,,
+,,,"6","Click on ""OK"" button on pop-up","
+",,,
+,,,"7","The system shall delete the selected hospitalization","
+",,,

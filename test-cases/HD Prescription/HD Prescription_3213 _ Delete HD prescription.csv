@@ -1,0 +1,100 @@
+﻿ID,Work Item Type,Title,Test Step,Step Action,Step Expected,Area Path,Assigned To,State
+"3214","Test Case","Cancelling a deleted active HD Prescription",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user “support” and password “renal”","
+",,,
+,,,"2","Click on “Accept” button","
+",,,
+,,,"3","At the top in the “-Select a patient-“ listbox, select ""Paciente136""","
+",,,
+,,,"4","On the main menu select “HD Prescription”","
+",,,
+,,,"5","In the prescription dates list in “Prescription History”, the last active one is pre-selected","
+",,,
+,,,"6","Click on “Delete” option","
+",,,
+,,,"7","Click on “Cancel” popup button","
+",,,
+,,,"8","The system shall not delete HD Prescription","
+",,,
+"3215","Test Case","Cancelling a deleted inactive HD Prescription",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user “support” and password “renal”","
+",,,
+,,,"2","Click on “Accept” button","
+",,,
+,,,"3","At the top in the “-Select a patient-“ listbox, select ""Paciente136""","
+",,,
+,,,"4","On the main menu select “HD Prescription”","
+",,,
+,,,"5","In the prescription dates list in “Prescription History”, the last active one is pre-selected","
+",,,
+,,,"6","Select any inactive prescription in the history list","
+",,,
+,,,"7","Click on “Delete” option","
+",,,
+,,,"8","Click on “Cancel” popup button","
+",,,
+,,,"9","The system shall not delete inactive HD Prescription","
+",,,
+"3216","Test Case","Delete Active HD Prescription (empty reason or wrong password)",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user “support” and password “renal”","
+",,,
+,,,"2","Click on “Accept” button","
+",,,
+,,,"3","At the top in the “-Select a patient-“ listbox, select ""Paciente136""","
+",,,
+,,,"4","On the main menu select “HD Prescription”","
+",,,
+,,,"5","In the prescription dates list in “Prescription History”, the last active one is pre-selected","
+",,,
+,,,"6","Click on “Delete” option","
+",,,
+,,,"7","Click on “OK” popup button","
+",,,
+,,,"8","Warning: Password and Reason are required","
+",,,
+,,,"9","Type any text on “Reason” and “Password” text boxes","
+",,,
+,,,"10","Click on “OK” popup button","
+",,,
+,,,"11","Warning: Password entered is incorrect","
+",,,
+,,,"12","The system shall not delete the HD Prescription","
+",,,
+"3217","Test Case","Delete Active HD Prescription (prescription used in a treatment)",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user “support” and password “renal”","
+",,,
+,,,"2","Click on “Accept” button","
+",,,
+,,,"3","At the top in the “-Select a patient-“ listbox, select ""Paciente136""","
+",,,
+,,,"4","On the main menu select “HD Prescription”","
+",,,
+,,,"5","In the prescription dates list in “Prescription History”, the last active one is pre-selected","
+",,,
+,,,"6","Click on “Delete” option","
+",,,
+,,,"7","Warning: You cannot delete the prescription because it already has associated treatment records","
+",,,
+,,,"8","Click on “OK” popup button","
+",,,
+,,,"9","The system shall not delete the HD Prescription","
+",,,
+"3218","Test Case","Successful delete active HD Prescription",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user “support” and password “renal”","
+",,,
+,,,"2","Click on “Accept” button","
+",,,
+,,,"3","At the top in the “-Select a patient-“ listbox, select patient 1018","
+",,,
+,,,"4","On the main menu select “HD Prescription”","
+",,,
+,,,"5","In the prescription dates list in “Prescription History”, the last active one is pre-selected","
+",,,
+,,,"6","Click on “Delete” option","
+",,,
+,,,"7","Type “Renal” for password and any text for “Reason” text boxes","
+",,,
+,,,"8","Click on “OK” popup button","
+",,,
+,,,"9","The system shall delete the active HD Prescription","
+",,,

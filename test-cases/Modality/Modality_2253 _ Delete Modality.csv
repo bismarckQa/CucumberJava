@@ -1,0 +1,63 @@
+﻿ID,Work Item Type,Title,Test Step,Step Action,Step Expected,Area Path,Assigned To,State
+"4376","Test Case","Cancelling a deleted Modality",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Select patient 1018 with the patients searching option","
+",,,
+,,,"3","Click on ""Modality"" button in the main menu","
+",,,
+,,,"4","Select an existing Modality and click on ""Delete"" button","
+",,,
+,,,"5","In the pop-up window, set “Password” and Reason”","
+",,,
+,,,"6","Click on ""Cancel"" button on pop-up","
+",,,
+,,,"7","The system shall not delete any record","
+",,,
+"4377","Test Case","Successful deleted Modality",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Select patient 1039 with the patients searching option","
+",,,
+,,,"3","Click on ""Modality"" button in the main menu","
+",,,
+,,,"4","Select an existing Modality and click on ""Delete"" button","
+",,,
+,,,"5","In the pop-up window, set “Password” and Reason”","
+",,,
+,,,"6","Click on ""OK"" button on pop-up","
+",,,
+,,,"7","The system shall delete the selected Modality","
+",,,
+"4378","Test Case","Can’t delete Modality without correct password (empty reason or wrong password)",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Select patient 1039 with the patients searching option","
+",,,
+,,,"3","Click on ""Modality"" button in the main menu","
+",,,
+,,,"4","Select an existing Modality and click on ""Delete"" button","
+",,,
+,,,"5","In the pop-up window, set wrong “Password” and/or empty ""Reason” ","
+",,,
+,,,"6","Warning: The password entered is incorrect and/or the reason is a required field","
+",,,
+,,,"7","Click on ""Cancel"" button on pop-up","
+",,,
+,,,"8","The system shall not delete any record","
+",,,
+"4379","Test Case","Can't delete the only Modality",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Select patient 1039 with the patients searching option","
+",,,
+,,,"3","Click on ""Modality"" button in the main menu","
+",,,
+,,,"4","Select the only existing Modality and click on ""Delete"" button","
+",,,
+,,,"5","Warning: you can not delete the only modality of the patient","
+",,,
+,,,"6","Click on ""OK"" button on pop-up","
+",,,
+,,,"7","The system shall not delete the selected Modality","
+",,,

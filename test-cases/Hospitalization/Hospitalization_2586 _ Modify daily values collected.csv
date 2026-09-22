@@ -1,0 +1,62 @@
+﻿ID,Work Item Type,Title,Test Step,Step Action,Step Expected,Area Path,Assigned To,State
+"3857","Test Case","Cancelling an edited daily values collected",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Select patient 1018 with the patients searching option","
+",,,
+,,,"3","Click on ""Hospitalization"" button in the main menu","
+",,,
+,,,"4","Select the hospitalization to be modified and enter the daily values collected section","
+",,,
+,,,"5","Click on ""Edit"" button on a existing daily values collected","
+",,,
+,,,"6","Modify the necessary data:","
+",,,
+,,,"7","Date  (today's date is suggested by the system). Required fieldSyst. BPDiast. PBPulseTemperatureWeightDiuresisO2Sat.Drain 1Drain 2NGT","
+",,,
+,,,"8","Click on ""Cancel"" button","
+",,,
+,,,"9","The system shall not save the edited register","
+",,,
+"3858","Test Case","Successful edited daily values collected",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Select patient 1018 with the patients searching option","
+",,,
+,,,"3","Click on ""Hospitalization"" button in the main menu","
+",,,
+,,,"4","Select the hospitalization to be modified and enter the daily values collected section","
+",,,
+,,,"5","Click on ""Edit"" button on a existing daily values collected","
+",,,
+,,,"6","Modify the necessary data:","
+",,,
+,,,"7","Date  (today's date is suggested by the system). Required fieldSyst. BPDiast. PBPulseTemperatureWeightDiuresisO2Sat.Drain 1Drain 2NGT","
+",,,
+,,,"8","Click on ""Save"" button","
+",,,
+,,,"9","The system shall save the edited register","
+",,,
+"3860","Test Case","Edit daily values collected with empty required fields",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Select patient 1018 with the patients searching option","
+",,,
+,,,"3","Click on ""Hospitalization"" button in the main menu","
+",,,
+,,,"4","Select the hospitalization to be modified and enter the daily values collected section","
+",,,
+,,,"5","Click on ""Edit"" button on a existing daily values collected","
+",,,
+,,,"6","Leave the required fields empty:","
+",,,
+,,,"7","- Date","
+",,,
+,,,"8","Click on ""Save"" button","
+",,,
+,,,"9","Warning: the date is required","
+",,,
+,,,"10","Click on ""OK"" pop-up button","
+",,,
+,,,"11","The system shall not save the edited register","
+",,,

@@ -501,6 +501,16 @@ public class HospitalizationPage extends BasePage<HospitalizationPage>{
         pause(500);
         driver.switchTo().parentFrame();
     }
+    public void clearTextAreaCommentsProgressData() throws InterruptedException {
+
+        driver.switchTo().frame("frmContenido");
+        pause(200);
+        textAreaCommentsProgressDataSection.click();
+        textAreaCommentsProgressDataSection.sendKeys(Keys.CONTROL + "a");
+        textAreaCommentsProgressDataSection.sendKeys(Keys.DELETE);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
     public void modifyInputWeightDailyValues() throws InterruptedException {
 
         driver.switchTo().frame("frmContenido");

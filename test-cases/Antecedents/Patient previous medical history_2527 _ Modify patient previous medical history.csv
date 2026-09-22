@@ -1,0 +1,31 @@
+﻿ID,Work Item Type,Title,Test Step,Step Action,Step Expected,Area Path,Assigned To,State
+"3411","Test Case","Cancelling an edited History textbox",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Select patient 1018 with the patients searching option","
+",,,
+,,,"3","Click on ""Antecedents"" button in the main menu","
+",,,
+,,,"4","Click on ""Edit"" button in the main menu","
+",,,
+,,,"5","Modify information in the “History” textbox","
+",,,
+,,,"6","Click on ""Cancel"" button in the main menu","
+",,,
+,,,"7","The system shall not allow the user to modify History textbox","
+",,,
+"3412","Test Case","Successful edited Personal History textbox",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Select patient 1018 with the patients searching option","
+",,,
+,,,"3","Click on ""Antecedents"" button in the main menu","
+",,,
+,,,"4","Click on ""Edit"" button in the main menu","
+",,,
+,,,"5","Modify information in the “History” textbox","
+",,,
+,,,"6","Click on ""Save"" button in the main menu","
+",,,
+,,,"7","The system shall allow the user to modify History textbox","
+",,,

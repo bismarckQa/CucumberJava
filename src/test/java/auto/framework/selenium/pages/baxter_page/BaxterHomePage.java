@@ -271,7 +271,9 @@ public class BaxterHomePage extends BasePage<BaxterHomePage> {
         clickModuleByName("HD Water Quality");
     }
     public void clickMedicalHistory() throws InterruptedException {
-        clickModuleByName("Medical History", "Antécédents");
+        WebElement medicalHistoryCore = driver.findElement(By.xpath("//a[@data-page='/VersiaCore/:patientId/medicalHistories/']"));
+        click(medicalHistoryCore);
+        pause(3000);
     }
 
     public void clickSupplementaryTests() throws InterruptedException {
@@ -355,7 +357,7 @@ public class BaxterHomePage extends BasePage<BaxterHomePage> {
     }
 
     public void clickPlanningCare() throws InterruptedException {
-        clickModuleByName("Planning Care");
+        clickModuleByName("Plan de Cuidados (Core)");
     }
 
 

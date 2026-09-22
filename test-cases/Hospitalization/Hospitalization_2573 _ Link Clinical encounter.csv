@@ -1,0 +1,45 @@
+﻿ID,Work Item Type,Title,Test Step,Step Action,Step Expected,Area Path,Assigned To,State
+"3774","Test Case","Successful associated review",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Select patient 1000 with the patients searching option","
+",,,
+,,,"3","Click on ""Hospitalization"" button in the main menu","
+",,,
+,,,"4","Select a “Date of admission” in the drop-down list","
+",,,
+,,,"5","Select ""Associate Review"" option
+","
+",,,
+,,,"6"," Filter the reviews associated with the hospitalization and then check one or more available
+","
+",,,
+,,,"7","Click on ""Save"" button on pop-up","
+",,,
+,,,"8","The ""Reviews"" field below in the main interface is updated
+","
+",,,
+,,,"9","We can also see the detail (Date and Consultation)
+The date serves as a link to the Patient Review section
+","
+",,,
+,,,"10","
+","
+",,,
+"3775","Test Case","Cancelling an associated review",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Select patient 1000 with the patients searching option","
+",,,
+,,,"3","Click on ""Hospitalization"" button in the main menu","
+",,,
+,,,"4","Select a “Date of admission” in the drop-down list","
+",,,
+,,,"5","Select ""Associate Review"" option
+","
+",,,
+,,,"6","On the pop-up uncheck the selected reviews and save again
+","
+",,,
+,,,"7","The system shall delete the selected reviews","
+",,,

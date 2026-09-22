@@ -1,0 +1,35 @@
+﻿ID,Work Item Type,Title,Test Step,Step Action,Step Expected,Area Path,Assigned To,State
+"3882","Test Case","Import hospitalizations (Not Applicable)",,,,"Versia Renal - Comercial",,"Ready"
+,,,"1","Log in to the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Select patient 1018 with the patients searching option","
+",,,
+,,,"3","Click on ""Hospitalization"" button in the main menu","
+",,,
+,,,"4","Select ""Retrieve admissions"" option","
+",,,
+,,,"5","On the pop-up window, complete ""Episode No"" and ""Episode type"" and click search
+","
+",,,
+,,,"6","The system shall allow to see hospitalization with Date of admission, Discharge date, Primary diagnosis, Admitted by and Discharged by fields","
+",,,
+"3883","Test Case","Cancelling imported hospitalizations (Not Applicable)",,,,"Versia Renal - Comercial",,"Ready"
+,,,"1","Log in to the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Select patient 1018 with the patients searching option","
+",,,
+,,,"3","Click on ""Hospitalization"" button in the main menu","
+",,,
+,,,"4","Select ""Retrieve admissions"" option","
+",,,
+,,,"5","On the pop-up window, complete ""Episode No"" and ""Episode type"" and click search
+","
+",,,
+,,,"6","The system shall allow to see hospitalization with Date of admission, Discharge date, Primary diagnosis, Admitted by and Discharged by fields","
+",,,
+,,,"7","Click on ""Cancel"" button
+","
+",,,
+,,,"8","The system shall close the pop-up window and cancel imported hospitalizations
+","
+",,,

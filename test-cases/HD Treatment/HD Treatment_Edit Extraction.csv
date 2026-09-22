@@ -1,0 +1,46 @@
+﻿ID,Work Item Type,Title,Test Step,Step Action,Step Expected,Area Path,Assigned To,State
+"17436","Test Case","Edit extraction successful",,,,"Versia Renal - Comercial","Colombo, Bismarck <bismarck.colombo@vantive.com>","Design"
+,,,"1","Log in with user ""support"" and password ""renal""","
+",,,
+,,,"2","Select patient ""BisRic 1, ELVIRA""","
+",,,
+,,,"3","On the main menu select ""HD Treatment""","
+",,,
+,,,"4","Select an active HD Treatment","
+",,,
+,,,"5","Scroll to ""Extractions"" section","
+",,,
+,,,"6","Click on Edit (pencil) button of extraction","
+",,,
+,,,"7","Modify Extraction date, Sample Code and Observations","
+",,,
+,,,"8"," Click on Save (floppy) button","
+",,,
+"17437","Test Case","Cancel edit extraction",,,,"Versia Renal - Comercial","Colombo, Bismarck <bismarck.colombo@vantive.com>","Design"
+,,,"1","Log in with user ""support"" and password ""renal""","
+",,,
+,,,"2","Select patient ""BisRic 1, ELVIRA""","
+",,,
+,,,"3","On the main menu select ""HD Treatment""","
+",,,
+,,,"4","Select an active HD Treatment","
+",,,
+,,,"5","Scroll to ""Extractions"" section","
+",,,
+,,,"6","Click on Edit (pencil) button of extraction","
+",,,
+,,,"7","Modify Extraction date, Sample Code and Observations","
+",,,
+,,,"8","Click on Cancel (undo) button","
+",,,
+"17438","Test Case","Edit extraction in finalized treatment",,,,"Versia Renal - Comercial","Colombo, Bismarck <bismarck.colombo@vantive.com>","Design"
+,,,"1","Log in with user ""support"" and password ""renal""","
+",,,
+,,,"2","Select patient ""BisRic 1, ELVIRA""","
+",,,
+,,,"3"," On the main menu select ""HD Treatment""","
+",,,
+,,,"4","Select a finalized HD Treatment","
+",,,
+,,,"5","Scroll to ""Extractions"" section","
+",,,

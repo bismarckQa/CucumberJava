@@ -1,0 +1,349 @@
+﻿ID,Work Item Type,Title,Test Step,Step Action,Step Expected,Area Path,Assigned To,State
+"3195","Test Case","View+Add (Standard therapy)",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Click on “Accept” button","
+",,,
+,,,"3","At the top in the “-Select a patient-“ listbox, select ""Paciente136""","
+",,,
+,,,"4","On the main menu select “HD Prescription”","
+",,,
+,,,"5","On the top right corner click on “New Prescription”","
+",,,
+,,,"6","In “Treatment” block, select “Standard” in “Type of treatment” list box","
+",,,
+,,,"7","Check “Hemocontrol” off","
+",,,
+,,,"8","Type any required values for the HD Prescription","
+",,,
+,,,"9","Click on “Save” option","
+",,,
+,,,"10","The system shall save the added HD Prescription","
+",,,
+"3196","Test Case","Add+View (Standard therapy: hemocontrol fields)",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user “support” and password “renal”","
+",,,
+,,,"2","Click on “Accept” button","
+",,,
+,,,"3","At the top in the “-Select a patient-“ listbox, select "" HD Paciente""","
+",,,
+,,,"4","On the main menu select “HD Prescription”","
+",,,
+,,,"5","On the top right corner click on “New Prescription”","
+",,,
+,,,"6","In “treatment details” block, select “standard” in “Type of treatment” list box","
+",,,
+,,,"7","Check “Hemocontrol” on (yes)","
+",,,
+,,,"8","Enter Ratio and Height required values","
+",,,
+,,,"9","Type any values for the HD Prescription (Distribution vol., Max initial UF, Na limits)","
+",,,
+,,,"10","Click on “Save” option","
+",,,
+,,,"11","The system shall save the added HD Prescription","
+",,,
+"3199","Test Case","Add+View (AFBK constant K therapy)",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user “support” and password “renal”","
+",,,
+,,,"2","Click on “Accept” button","
+",,,
+,,,"3","At the top in the “-Select a patient-“ listbox, select ""Paciente136""","
+",,,
+,,,"4","On the main menu select “HD Prescription”","
+",,,
+,,,"5","On the top right corner click on “New Prescription”","
+",,,
+,,,"6","In “treatment details” block, select “AFBK constant K” in “Type of treatment” list box","
+",,,
+,,,"7","Enter Perfusion vol. and Constant K values","
+",,,
+,,,"8","Type any values for the HD Prescription","
+",,,
+,,,"9","Click on “Save”option","
+",,,
+,,,"10","The system shall save the added HD Prescription","
+",,,
+"3200","Test Case","Add+View (AFBK K profile therapy)",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user “support” and password “renal”","
+",,,
+,,,"2","Click on “Accept” button","
+",,,
+,,,"3","At the top in the “-Select a patient-“ listbox, select ""Paciente136""","
+",,,
+,,,"4","On the main menu select “HD Prescription”","
+",,,
+,,,"5","On the top right corner click on “New Prescription”","
+",,,
+,,,"6","In “treatment details” block, select “AFBK K profile” in “Type of treatment” list box","
+",,,
+,,,"7","Enter Perfusion vol., Initial K, End K, Equivalent K values","
+",,,
+,,,"8","Type any values for the HD Prescription","
+",,,
+,,,"9","Click on “Save” option","
+",,,
+,,,"10","The system shall save the added HD Prescription","
+",,,
+"3201","Test Case","Add+View (HDF therapy)",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user “support” and password “renal”","
+",,,
+,,,"2","Click on “Accept” button","
+",,,
+,,,"3","At the top in the “-Select a patient-“ listbox, select patient 1018","
+",,,
+,,,"4","On the main menu select “HD Prescription”","
+",,,
+,,,"5","On the top right corner click on “New Prescription”","
+",,,
+,,,"6","In “treatment details” block, select “HDF” in “Type of treatment” list box","
+",,,
+,,,"7","Enter Infusion vol., Dilution (Pre, Post, Mixed, Mid) values","
+",,,
+,,,"8","Type any values for the HD Prescription","
+",,,
+,,,"9","Click on “Save” option","
+",,,
+,,,"10","The system shall save the added HD Prescription","
+",,,
+"3202","Test Case","Add+View (HDFOL therapy)",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user “support” and password “renal”","
+",,,
+,,,"2","Click on “Accept” button","
+",,,
+,,,"3","At the top in the “-Select a patient-“ listbox, select patient 1018","
+",,,
+,,,"4","On the main menu select “HD Prescription”","
+",,,
+,,,"5","On the top right corner click on “New Prescription”","
+",,,
+,,,"6","In “treatment details” block, select “HDFOL” in “Type of treatment” list box","
+",,,
+,,,"7","Enter Infusion vol., Dilution (Pre, Post, Mixed, Mid), TMP, Ultracontrol (No/Yes) values","
+",,,
+,,,"8","Type any values for the HD Prescription","
+",,,
+,,,"9","Click on “Save” option","
+",,,
+,,,"10","The system shall save the added HD Prescription","
+",,,
+"3203","Test Case","Add+View (Dry UF therapy)",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user “support” and password “renal”","
+",,,
+,,,"2","Click on “Accept” button","
+",,,
+,,,"3","At the top in the “-Select a patient-“ listbox, select ""Paciente136""","
+",,,
+,,,"4","On the main menu select “HD Prescription”","
+",,,
+,,,"5","On the top right corner click on “New Prescription”","
+",,,
+,,,"6","In “treatment details” block, select “Dry UF” in “Type of treatment” list box","
+",,,
+,,,"7","Type any values for the HD Prescription","
+",,,
+,,,"8","Click on “Save” option","
+",,,
+,,,"9","The system shall save the added HD Prescription","
+",,,
+"3204","Test Case","Add+View (Unip1B therapy)",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user “support” and password “renal”","
+",,,
+,,,"2","Click on “Accept” button","
+",,,
+,,,"3","At the top in the “-Select a patient-“ listbox, select patient 1018","
+",,,
+,,,"4","On the main menu select “HD Prescription”","
+",,,
+,,,"5","On the top right corner click on “New Prescription”","
+",,,
+,,,"6","In “treatment details” block, select “Unip1B” in “Type of treatment” list box","
+",,,
+,,,"7","Enter Needle vol. required value","
+",,,
+,,,"8","Type any values for the HD Prescription","
+",,,
+,,,"9","Click on “Save” option","
+",,,
+,,,"10","The system shall save the added HD Prescription","
+",,,
+"3205","Test Case","Add+View (Unip2B therapy)",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user “support” and password “renal”","
+",,,
+,,,"2","Click on “Accept” button","
+",,,
+,,,"3","At the top in the “-Select a patient-“ listbox, select patient 1018","
+",,,
+,,,"4","On the main menu select “HD Prescription”","
+",,,
+,,,"5","On the top right corner click on “New Prescription”","
+",,,
+,,,"6","In “treatment details” block, select “Unip2B” in “Type of treatment” list box","
+",,,
+,,,"7","Enter Needle vol., A-V pump ratio, Tidal required values","
+",,,
+,,,"8","Type any values for the HD Prescription","
+",,,
+,,,"9","Click on “Save” option","
+",,,
+,,,"10","The system shall save the added HD Prescription","
+",,,
+"3206","Test Case","Add+View (Anticoagulation Epoprostenol)",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user “support” and password “renal”","
+",,,
+,,,"2","Click on “Accept” button","
+",,,
+,,,"3","At the top in the “-Select a patient-“ listbox, select ""Paciente136""","
+",,,
+,,,"4","On the main menu select “HD Prescription”","
+",,,
+,,,"5","On the top right corner click on “New Prescription”","
+",,,
+,,,"6","In “Anticoagulation” block, select “Epoprostenol” in the list box","
+",,,
+,,,"7","Enter Medications, Initial bolus, Continuous infusion, disconnection time values","
+",,,
+,,,"8","Type any values for the HD Prescription","
+",,,
+,,,"9","Click on “Save” option","
+",,,
+,,,"10","The system shall save the added HD Prescription","
+",,,
+"3207","Test Case","Add+View (Anticoagulation Low molecular weight heparin)",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Click on “Accept” button","
+",,,
+,,,"3","At the top in the “-Select a patient-“ listbox, select ""Paciente136""","
+",,,
+,,,"4","On the main menu select “HD Prescription”","
+",,,
+,,,"5","On the top right corner click on “New Prescription”","
+",,,
+,,,"6","In “Anticoagulation” block, select “Low molecular weight heparin” in the list box","
+",,,
+,,,"7","Enter Medications, Dosage values","
+",,,
+,,,"8","Type any values for the HD Prescription","
+",,,
+,,,"9","Click on “Save” option","
+",,,
+,,,"10","The system shall save the added HD Prescription","
+",,,
+"3208","Test Case","Add+View (Anticoagulation Sodium heparin)",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user “support” and password “renal”","
+",,,
+,,,"2","Click on “Accept” button","
+",,,
+,,,"3","At the top in the “-Select a patient-“ listbox, select ""Paciente136""","
+",,,
+,,,"4","On the main menu select “HD Prescription”","
+",,,
+,,,"5","On the top right corner click on “New Prescription”","
+",,,
+,,,"6","In “Anticoagulation” block, select “Sodium heparin” in the list box","
+",,,
+,,,"7","Enter Medications, Initial bolus, Continuous infusion, disconnection time values","
+",,,
+,,,"8","Type any values for the HD Prescription","
+",,,
+,,,"9","Click on “Save” option","
+",,,
+,,,"10","The system shall save the added HD Prescription","
+",,,
+"3209","Test Case","Add+View (Anticoagulation Serum wash)",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user “support” and password “renal”","
+",,,
+,,,"2","Click on “Accept” button","
+",,,
+,,,"3","At the top in the “-Select a patient-“ listbox, select ""Paciente136""","
+",,,
+,,,"4","On the main menu select “HD Prescription”","
+",,,
+,,,"5","On the top right corner click on “New Prescription”","
+",,,
+,,,"6","In “Anticoagulation” block, select “Serum wash” in the list box","
+",,,
+,,,"7","Enter Serum vol., Dry UF type values","
+",,,
+,,,"8","Type any values for the HD Prescription","
+",,,
+,,,"9","Click on “Save” option","
+",,,
+,,,"10","The system shall save the added HD Prescription","
+",,,
+"3210","Test Case","Add+View (Without anticoagulation)",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user “support” and password “renal”","
+",,,
+,,,"2","Click on “Accept” button","
+",,,
+,,,"3","At the top in the “-Select a patient-“ listbox, select patient 1018","
+",,,
+,,,"4","On the main menu select “HD Prescription”","
+",,,
+,,,"5","On the top right corner click on “New Prescription”","
+",,,
+,,,"6","In “Anticoagulation” block, select “Without anticoagulation” in the list box","
+",,,
+,,,"7","Type any values for the HD Prescription","
+",,,
+,,,"8","Click on “Save” option","
+",,,
+,,,"9","The system shall save the added HD Prescription","
+",,,
+"3211","Test Case","Add+View (Accesses: Complications)",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user “support” and password “renal”","
+",,,
+,,,"2","Click on “Accept” button","
+",,,
+,,,"3","At the top in the “-Select a patient-“ listbox, select patient 1018","
+",,,
+,,,"4","Click “Accesses” on the main menu","
+",,,
+,,,"5","Click on the “Complications” tab","
+",,,
+,,,"6","Click on “New Complication” option","
+",,,
+,,,"7","Enter any “Type of problem” required value and any other value for Complications","
+",,,
+,,,"8","Click on “Save” option on the right of the tab","
+",,,
+,,,"9","Click on “HD Prescription” on the main menu","
+",,,
+,,,"10","Click on “New Prescription” option in the right corner","
+",,,
+"3212","Test Case","Add+View (Infections)",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user “support” and password “renal”","
+",,,
+,,,"2","Click on “Accept” button","
+",,,
+,,,"3","At the top in the “-Select a patient-“ listbox, select ""Paciente136""","
+",,,
+,,,"4","Click “Infections” on the main menu","
+",,,
+,,,"5","Click on “New Infection” option","
+",,,
+,,,"6","Enter the date “02/13/2020”","
+",,,
+,,,"7","Select any “Infection type” and “Treatment location” in the list boxes","
+",,,
+,,,"8","Assign an “Associated Access” on the bottom right of the screen","
+",,,
+,,,"9","Select the “02/13/2020” access in the list box and click “Add” button","
+",,,
+,,,"10","Click on “HD Prescription” on the main menu","
+",,,
+,,,"11","On the top right corner click on “New Prescription”","
+",,,
+,,,"12","Select any values for “Treatment” block","
+",,,
+,,,"13","Select the “02/13/2020” access","
+",,,
+,,,"14","Click on “Save” option","
+",,,
+,,,"15","Verify there are “See complication” and “See infection” links","
+",,,
+,,,"16","Click on the “See complication” and “See infection” links","
+",,,
+,,,"17","The system shall allow the user to check complications and infections screen data","
+",,,

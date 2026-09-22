@@ -87,6 +87,8 @@ Feature: Ability to create pre and post treatment assessment of access
         And   I cancel Post-Assessment
         Then  I check the second Post-Assessment is canceled
 
+
+
     @test @ALM_VR_TC_322
     Scenario: Modify individual post-treatment to the vascular access
         When   I select the Evaluation in main menu

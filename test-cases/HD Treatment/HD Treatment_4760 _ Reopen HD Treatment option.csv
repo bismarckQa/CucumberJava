@@ -1,0 +1,30 @@
+﻿ID,Work Item Type,Title,Test Step,Step Action,Step Expected,Area Path,Assigned To,State
+"4762","Test Case","Reopened treatment with Nurse final signature",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user ""supportE"" and password ""renalE""","
+",,,
+,,,"2","Click on “Accept” button","
+",,,
+,,,"3","Select patient with name ""Paciente136"" with the patients searching option","
+",,,
+,,,"4","On the main menu select “HD Treatment”","
+",,,
+,,,"5","The system shall show the last active HD Treatment","
+",,,
+,,,"6","Click on ""Final signature"" tab","
+",,,
+,,,"7","Check the nurse profile in “Signed by” field on the Final signature block","
+",,,
+,,,"8","Set “Signed Nephrologist” field (not required)","
+",,,
+,,,"9","Check ""Finalized""","
+",,,
+,,,"10","Click on ""Save"" button","
+",,,
+,,,"11","The system shall close the active HD Treatment ","
+",,,
+,,,"12","Select ""Reopen Treatment""
+","
+",,,
+,,,"13","The system shall open again the last finalized HD Treatment
+","
+",,,

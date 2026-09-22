@@ -1,0 +1,71 @@
+﻿ID,Work Item Type,Title,Test Step,Step Action,Step Expected,Area Path,Assigned To,State
+"3783","Test Case","Cancelling an added Progress Data",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Select patient 1018 with the patients searching option","
+",,,
+,,,"3","Click on ""Hospitalization"" button in the main menu","
+",,,
+,,,"4","Select the hospitalization to be modified and enter the Progress Data section
+","
+",,,
+,,,"5","Click on ""New"" button","
+",,,
+,,,"6","Complete the necessary data:","
+",,,
+,,,"7","- Date and time: default to current date and time (required)
+- Performed by: select user
+- Remarks: free textbox
+","
+",,,
+,,,"8","Click on ""Cancel"" button","
+",,,
+,,,"9","The system shall not save the new Progress Data","
+",,,
+"3784","Test Case","Successful added Progress Data",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Select patient 1018 with the patients searching option","
+",,,
+,,,"3","Click on ""Hospitalization"" button in the main menu","
+",,,
+,,,"4","Select the hospitalization to be modified and enter the Progress Data section
+","
+",,,
+,,,"5","Click on ""New"" button","
+",,,
+,,,"6","Complete the necessary data:","
+",,,
+,,,"7","- Date and time: default to current date and time (required)
+- Performed by: select user
+- Remarks: free textbox
+","
+",,,
+,,,"8","Click on ""Save"" button","
+",,,
+,,,"9","The system shall save the new Progress Data","
+",,,
+"3792","Test Case","Add new progress data with empty required fields",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Select patient 1018 with the patients searching option","
+",,,
+,,,"3","Click on ""Hospitalization"" button in the main menu","
+",,,
+,,,"4","Select the hospitalization to be modified and enter the Progress Data section","
+",,,
+,,,"5","Click on ""New"" button","
+",,,
+,,,"6","Leave the required fields empty:","
+",,,
+,,,"7","- Date and time: default to current date and time (required)","
+",,,
+,,,"8","Click on ""Save"" button","
+",,,
+,,,"9","Warning: The date is required
+","
+",,,
+,,,"10","Click on ""OK"" button","
+",,,
+,,,"11","The system shall not allow to save the new Progress Data","
+",,,

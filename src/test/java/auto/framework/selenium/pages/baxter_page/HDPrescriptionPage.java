@@ -1,4 +1,5 @@
 package auto.framework.selenium.pages.baxter_page;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import auto.framework.selenium.annotations.LazyComponent;
 import auto.framework.selenium.pages.BasePage;
@@ -6,104 +7,165 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 
 @LazyComponent
 public class HDPrescriptionPage extends BasePage<HDPrescriptionPage>{
 
-
+    // Title and navigation
     @FindBy(how = How.XPATH, using = "//label[contains(text(),'Prescription')]")
     private WebElement titleHDPrescription;
 
-    @FindBy(how = How.XPATH, using = "//i[contains(@class,'icon-three-points')]")
+    @FindBy(how = How.XPATH, using = "//menu-individual[contains(@class,'menuIndAbsolute')]//i[contains(@class,'icon-three-points')]")
     private WebElement buttonThreePointsPrescription;
 
-    @FindBy(how = How.XPATH, using = "//span[contains(.,'New prescription')]")
+    @FindBy(how = How.XPATH, using = "//span[@translate-once='PrescripcionHD_Label_Nueva_Prescripción']/..")
     private WebElement buttonNewPrescription;
 
-    @FindBy(how = How.XPATH, using = "//label[@translate-once='PrescripcionHD_Label_Prescrito_Por'][contains(.,'Prescribed by')]")
-    private WebElement fieldPrescribedBy;
+    @FindBy(how = How.XPATH, using = "//span[@translate-once='Title_Guardar']/..")
+    private WebElement buttonSavePrescription;
 
-    @FindBy(how = How.XPATH, using = "(//button[contains(@type,'button')])[1]")
-    private WebElement dropDownAccessData;
+    @FindBy(how = How.XPATH, using = "//span[@translate-once='Title_Cancelar']/..")
+    private WebElement buttonCancelPrescription;
 
-    @FindBy(how = How.XPATH, using = "//span[@class='k-list-item-text'][contains(.,'Catéter percutáneo yugular (Muñeca izquierda) - 9/3/2024')]")
-    private WebElement optionOfAccessData;
+    @FindBy(how = How.XPATH, using = "//span[@translate-once='Title_Eliminar']/..")
+    private WebElement buttonDeletePrescription;
 
     @FindBy(how = How.XPATH, using = "//a[contains(.,'Top')]")
     private WebElement buttonArrowUp;
 
-    @FindBy(how = How.XPATH, using = "(//button[contains(@type,'button')])[6]")
-    private WebElement dropDownTypeOfTreatment;
+    @FindBy(how = How.XPATH, using = "//a[normalize-space()='Prescription history']")
+    private WebElement buttonPrescriptionHistory;
 
-    @FindBy(how = How.XPATH, using = "//span[@class='k-list-item-text'][contains(.,'Prueba1')]")
-    private WebElement optionTypeOfTreatmentPrueba1;
+    // Prescribed by
+    @FindBy(how = How.XPATH, using = "//label[@translate-once='PrescripcionHD_Label_Prescrito_Por']")
+    private WebElement fieldPrescribedBy;
 
-    @FindBy(how = How.XPATH, using = "(//span[contains(@role,'button')])[5]")
-    private WebElement dropDownAcidBath1;
+    // Access Data
+    @FindBy(how = How.XPATH, using = "//label[@translate-once='PrescripcionHD_Label_Aguja_arterial']/following-sibling::*[self::span[contains(@class,'k-dropdownlist')] or self::div]//select")
+    private WebElement dropDownArterialNeedle;
 
-    @FindBy(how = How.XPATH, using = "(//li[@tabindex='-1'][contains(.,'Ca=2,25')])[1]")
-    private WebElement optionAcidBath1Ca25;
+    @FindBy(how = How.XPATH, using = "//label[@translate-once='PrescripcionHD_Label_Aguja_venosa']/following-sibling::*[self::span[contains(@class,'k-dropdownlist')] or self::div]//select")
+    private WebElement dropDownVenousNeedle;
 
-    @FindBy(how = How.XPATH, using = "(//span[contains(@role,'button')])[7]")
+    @FindBy(how = How.XPATH, using = "//label[@translate-once='ControlPrescripcionHD_Label_Acceso']/following-sibling::*//select[contains(@k-ng-model,'accesoId')]")
+    private WebElement dropDownAccess;
+
+    @FindBy(how = How.XPATH, using = "//label[@translate-once='PrescripcionHD_Label_Sellado_Cateter']/following-sibling::*//select[contains(@k-ng-model,'selladoCateterId')]")
+    private WebElement dropDownSealedCatheter;
+
+    // Fluids
+    @FindBy(how = How.XPATH, using = "//input[contains(@ng-model,'.conductividad')]")
+    private WebElement inputConductNa;
+
+    @FindBy(how = How.XPATH, using = "//input[contains(@ng-model,'.bicarbonato')]")
+    private WebElement inputConductBicarb;
+
+    @FindBy(how = How.XPATH, using = "//input[contains(@ng-model,'.temperatura')]")
+    private WebElement inputTemperature;
+
+    @FindBy(how = How.XPATH, using = "//input[contains(@ng-model,'.flujoDializado')]")
+    private WebElement inputDialysateFlow;
+
+    // Anticoagulation
+    @FindBy(how = How.XPATH, using = "//select[contains(@k-ng-model,'tipoAnticoagulacionId')]")
     private WebElement dropDownAnticoagulantType;
 
-    @FindBy(how = How.XPATH, using = "//li[contains(.,'Heparina sódica')]")
-    private WebElement optionAnticoagulantType;
+    @FindBy(how = How.XPATH, using = "//select[contains(@k-ng-model,'medicamentoAnticoagulacionId')]")
+    private WebElement dropDownMedication;
 
-    @FindBy(how = How.XPATH, using = "(//span[contains(@role,'button')])[10]")
-    private WebElement dropDownDialyser;
+    @FindBy(how = How.XPATH, using = "//input[contains(@ng-model,'.bolo')]")
+    private WebElement inputBolus;
 
-    @FindBy(how = How.XPATH, using = "//li[@tabindex='-1'][contains(.,'APS 1.5')]")
-    private WebElement optionDialyser;
+    @FindBy(how = How.XPATH, using = "//input[contains(@ng-model,'.velocidad')]")
+    private WebElement inputContinuousInfusion;
 
-    @FindBy(how = How.XPATH, using = "(//input[@type='number'])[13]")
-    private WebElement inputUfGoal;
+    @FindBy(how = How.XPATH, using = "//input[contains(@ng-model,'.tiempoDesconexion')]")
+    private WebElement inputDisconnectionTime;
 
-    @FindBy(how = How.XPATH, using = "(//input[@type='number'])[14]")
-    private WebElement inputUfRatio;
+    @FindBy(how = How.XPATH, using = "//select[contains(@k-ng-model,'tipoSueroId')]")
+    private WebElement dropDownSerumType;
 
-    @FindBy(how = How.XPATH, using = "//a[@href='javascript:void(0);'][contains(.,'Save')]")
-    private WebElement buttonSavePrescription;
+    // Treatment characteristics
+    @FindBy(how = How.XPATH, using = "//select[contains(@k-ng-model,'tipoTerEspId')]")
+    private WebElement dropDownTypeOfTreatment;
 
-    @FindBy(how = How.XPATH, using = "(//button[contains(@type,'button')])[4]")
-    private WebElement buttonAddSpecialOrder;
+    @FindBy(how = How.XPATH, using = "//input[contains(@ng-model,'.ratio')]")
+    private WebElement inputRatio;
 
-    @FindBy(how = How.XPATH, using = "(//label[contains(@for,'58')])[1]")
-    private WebElement checkBoxSpecialOrderShowActive;
+    @FindBy(how = How.XPATH, using = "//input[contains(@ng-model,'.talla')]")
+    private WebElement inputHeight;
 
-    @FindBy(how = How.XPATH, using = "//textarea[contains(@ng-required,'true')]")
-    private WebElement textAreaDescriptionSpecialOrder;
+    @FindBy(how = How.XPATH, using = "//input[contains(@ng-model,'.vHemocontrol')]")
+    private WebElement inputDistributionVol;
 
-    @FindBy(how = How.XPATH, using = "//i[contains(@class,'fa fa-floppy-o')]")
-    private WebElement buttonSaveSpecialOrder;
+    @FindBy(how = How.XPATH, using = "//input[contains(@ng-model,'.coefMaxUF')]")
+    private WebElement inputMaxInitialUF;
 
-    @FindBy(how = How.XPATH, using = "//i[@class='fa fa-times']")
-    private WebElement buttonCancelSpecialOrder;
+    @FindBy(how = How.XPATH, using = "//input[contains(@ng-model,'.volumenPerfusion')]")
+    private WebElement inputPerfusionVol;
 
-    @FindBy(how = How.XPATH, using = "//a[contains(.,'Prescription history')]")
-    private WebElement buttonPrescriptionHistory;
+    @FindBy(how = How.XPATH, using = "//input[contains(@ng-model,'.kConstante')]")
+    private WebElement inputKConstant;
+
+    @FindBy(how = How.XPATH, using = "//input[contains(@ng-model,'.kEntrada')]")
+    private WebElement inputKInput;
+
+    @FindBy(how = How.XPATH, using = "//input[contains(@ng-model,'.kSalida')]")
+    private WebElement inputKOutput;
+
+    @FindBy(how = How.XPATH, using = "//input[contains(@ng-model,'.kEquivalente')]")
+    private WebElement inputKEquivalent;
+
+    @FindBy(how = How.XPATH, using = "//input[contains(@ng-model,'.terEspVolInf')]")
+    private WebElement inputInfusionVol;
+
+    @FindBy(how = How.XPATH, using = "//input[contains(@ng-model,'.ptm')]")
+    private WebElement inputPTM;
+
+    @FindBy(how = How.XPATH, using = "//input[contains(@ng-model,'.terEspVolAguja')]")
+    private WebElement inputNeedleVol;
+
+    @FindBy(how = How.XPATH, using = "//input[contains(@ng-model,'.terEspRelBomb')]")
+    private WebElement inputAVPumpRatio;
+
+    @FindBy(how = How.XPATH, using = "//input[contains(@ng-model,'.terEspTidal')]")
+    private WebElement inputTidal;
+
+    // Adequacy
+    @FindBy(how = How.XPATH, using = "//input[contains(@ng-model,'.flujoSanguineo')]")
+    private WebElement inputBloodFlowRate;
+
+    @FindBy(how = How.XPATH, using = "//input[contains(@ng-model,'.tratamientoSemana')]")
+    private WebElement inputTxPerWeek;
+
+    @FindBy(how = How.XPATH, using = "//input[contains(@ng-model,'.ktv')]")
+    private WebElement inputKtVGoal;
+
+    @FindBy(how = How.XPATH, using = "//input[contains(@ng-model,'.kt')]")
+    private WebElement inputKtTarget;
+
+    @FindBy(how = How.XPATH, using = "//input[contains(@ng-model,'.pesoSeco')]")
+    private WebElement inputDryWeight;
+
+    @FindBy(how = How.XPATH, using = "//input[contains(@ng-model,'.uf')]")
+    private WebElement inputMaximumUF;
+
+    @FindBy(how = How.XPATH, using = "//input[contains(@ng-model,'.ratioUF')]")
+    private WebElement inputMaximumUFRate;
+
+    @FindBy(how = How.XPATH, using = "//input[contains(@ng-model,'.frr')]")
+    private WebElement inputRRF;
+
+    @FindBy(how = How.XPATH, using = "//select[contains(@k-ng-model,'dializadorId')]")
+    private WebElement dropDownDialyzer;
+
+    // Special Orders
 
     @FindBy(how = How.XPATH, using = "(//div[contains(.,'- The prescription cannot be dellted because it already has associated treatment records.')])[5]")
     private WebElement modalWarningPrescription;
 
-    @FindBy(how = How.XPATH, using = "(//button[contains(.,'OK')])[2]")
-    private WebElement buttonOKModalWarningPrescription;
-
-    @FindBy(how = How.XPATH, using = "//span[contains(.,'Delete')]")
-    private WebElement buttonDeletePrescription;
-
-    @FindBy(how = How.XPATH, using = "//input[contains(@type,'password')]")
-    private WebElement inputPasswordDeleteHdPrescription;
-
-    @FindBy(how = How.XPATH, using = "(//input[contains(@type,'text')])[5]")
-    private WebElement inputReasonDeleteHdPrescription;
-
-    @FindBy(how = How.XPATH, using = "//button[contains(.,'Cancel')]")
-    private WebElement buttonCancelModalDeleteHdPrescription;
-
-    @FindBy(how = How.XPATH, using = "(//button[contains(.,'OK')])[2]")
-    private WebElement buttonOKModalDeleteHdPrescription;
 
 
     @FindBy(how = How.XPATH, using = "//i[@class='fa fa-bell']")
@@ -157,13 +219,42 @@ public class HDPrescriptionPage extends BasePage<HDPrescriptionPage>{
     @FindBy(how = How.XPATH, using = "(//a[contains(.,'Go to notification center')])[1]")
     private WebElement optionBellNotificationCenter;
 
-    @FindBy(how = How.XPATH, using = "(//span[contains(@role,'button')])[4]")
-    private WebElement dropDownSealedCatheter ;
-
     @FindBy(how = How.XPATH, using = "(//li[@tabindex='-1'][contains(.,'Heparina')])[3]")
     private WebElement optionHeparinaSealedCatheter ;
 
+    // Legacy WebElements for existing methods
+    @FindBy(how = How.XPATH, using = "(//button[contains(@type,'button')])[1]")
+    private WebElement dropDownAccessData;
 
+    @FindBy(how = How.XPATH, using = "//span[@class='k-list-item-text'][contains(.,'Catéter percutáneo yugular (Muñeca izquierda) - 9/3/2024')]")
+    private WebElement optionOfAccessData;
+
+    @FindBy(how = How.XPATH, using = "//span[@class='k-list-item-text'][contains(.,'Prueba1')]")
+    private WebElement optionTypeOfTreatmentPrueba1;
+
+    @FindBy(how = How.XPATH, using = "(//span[contains(@role,'button')])[5]")
+    private WebElement dropDownAcidBath1;
+
+    @FindBy(how = How.XPATH, using = "(//li[@tabindex='-1'][contains(.,'Ca=2,25')])[1]")
+    private WebElement optionAcidBath1Ca25;
+
+    @FindBy(how = How.XPATH, using = "//li[contains(.,'Heparina sódica')]")
+    private WebElement optionAnticoagulantType;
+
+    @FindBy(how = How.XPATH, using = "(//span[contains(@role,'button')])[10]")
+    private WebElement dropDownDialyser;
+
+    @FindBy(how = How.XPATH, using = "//li[@tabindex='-1'][contains(.,'APS 1.5')]")
+    private WebElement optionDialyser;
+
+    @FindBy(how = How.XPATH, using = "(//input[@type='number'])[13]")
+    private WebElement inputUfGoal;
+
+    @FindBy(how = How.XPATH, using = "(//input[@type='number'])[14]")
+    private WebElement inputUfRatio;
+
+    @FindBy(how = How.XPATH, using = "//button[@translate-once='Prescripcion_Label_Agregar_Orden']")
+    private WebElement buttonAddSpecialOrder;
     public void isDisplayedTheTittle(){
         driver.switchTo().frame("frmContenido");
         waitElements(titleHDPrescription);
@@ -183,130 +274,171 @@ public class HDPrescriptionPage extends BasePage<HDPrescriptionPage>{
 
     }
 
-    public void successfullyCreatedANewSpecialOrder() throws InterruptedException{
-        driver.switchTo().frame("frmContenido");
-        click(buttonThreePointsPrescription);
-        pause(200);
-        buttonNewPrescription.click();
-        pause(200);
-        click(dropDownAccessData);
-        waitElements(optionOfAccessData);
-        click(optionOfAccessData);
-        pause(200);
-        click(dropDownTypeOfTreatment);
-        waitElements(optionTypeOfTreatmentPrueba1);
-        click(optionTypeOfTreatmentPrueba1);
-        pause(200);
-        click(dropDownAcidBath1);
-        waitElements(optionAcidBath1Ca25);
-        click(optionAcidBath1Ca25);
-        pause(200);
-        click(dropDownAnticoagulantType);
-        waitElements(optionAnticoagulantType);
-        click(optionAnticoagulantType);
-        pause(200);
-        dropDownDialyser.click();
-        waitElements(optionDialyser);
-        click(optionDialyser);
-        pause(200);
-        String unidad = "1";
-        click(inputUfGoal);
-        inputUfGoal.sendKeys(Keys.CONTROL + "a");
-        inputUfGoal.sendKeys(Keys.DELETE);
-        write(inputUfGoal, unidad);
-        pause(200);
-        click(inputUfRatio);
-        inputUfRatio.sendKeys(Keys.CONTROL + "a");
-        inputUfRatio.sendKeys(Keys.DELETE);
-        write(inputUfRatio, unidad);
+    // ---- Special Order granular methods ----
 
-
-        driver.switchTo().parentFrame();
-        pause(200);
-        click(buttonArrowUp);
-
-        driver.switchTo().frame("frmContenido");
-        pause(300);
-        waitElements(buttonThreePointsPrescription);
-        click(buttonThreePointsPrescription);
-        pause(200);
-        waitElements(buttonSavePrescription);
-        click(buttonSavePrescription);
-        pause(5000);
-        driver.switchTo().parentFrame();
-
-
-    }
-
-    public void createASpecialOrderByClickingOnTheAddSpecialOrderButton() throws InterruptedException{
+    public void clickAddSpecialOrder() throws InterruptedException {
         driver.switchTo().frame("frmContenido");
         pause(300);
         moveScrollToElement(buttonAddSpecialOrder);
         waitElements(buttonAddSpecialOrder);
         pause(200);
-        buttonAddSpecialOrder.isDisplayed();
         buttonAddSpecialOrder.click();
-        String description = "Qa test";
-        pause(300);
-        textAreaDescriptionSpecialOrder.click();
-        textAreaDescriptionSpecialOrder.sendKeys(Keys.CONTROL + "a");
-        textAreaDescriptionSpecialOrder.sendKeys(Keys.DELETE);
-        write(textAreaDescriptionSpecialOrder, description);
-        pause(300);
-
-        waitElements(buttonSaveSpecialOrder);
-        buttonSaveSpecialOrder.isDisplayed();
-        buttonSaveSpecialOrder.click();
-
+        pause(500);
         driver.switchTo().parentFrame();
-        pause(200);
-        buttonArrowUp.click();
     }
-    public void cancelingToCreateASpecialOrderByClickingOnTheAddSpecialOrderButton() throws InterruptedException{
+
+    public void clickEditSpecialOrder() throws InterruptedException {
         driver.switchTo().frame("frmContenido");
         pause(300);
-        moveScrollToElement(buttonAddSpecialOrder);
-        waitElements(buttonAddSpecialOrder);
-        pause(200);
-        buttonAddSpecialOrder.isDisplayed();
-        buttonAddSpecialOrder.click();
-        String description = "Qa test";
-        pause(300);
-        textAreaDescriptionSpecialOrder.click();
-        textAreaDescriptionSpecialOrder.sendKeys(Keys.CONTROL + "a");
-        textAreaDescriptionSpecialOrder.sendKeys(Keys.DELETE);
-        write(textAreaDescriptionSpecialOrder, description);
-        pause(300);
-
-        waitElements(buttonCancelSpecialOrder);
-        buttonCancelSpecialOrder.isDisplayed();
-        buttonCancelSpecialOrder.click();
-
+        WebElement edit = driver.findElement(By.xpath("(//a[@title='Edit']//i[contains(@class,'fa-pencil')])[1]"));
+        moveScrollToElement(edit);
+        click(edit);
+        pause(500);
         driver.switchTo().parentFrame();
-        pause(200);
-        buttonArrowUp.click();
     }
-    public void verifyThatTheSaveButtonDoesNotAppear() throws InterruptedException{
+
+    public void clickDeleteSpecialOrder() throws InterruptedException {
         driver.switchTo().frame("frmContenido");
         pause(300);
-        moveScrollToElement(buttonAddSpecialOrder);
-        waitElements(buttonAddSpecialOrder);
-        pause(200);
-        buttonAddSpecialOrder.isDisplayed();
-        buttonAddSpecialOrder.click();
+        WebElement delete = driver.findElement(By.xpath("(//a[@title='Delete']//i[contains(@class,'fa-trash')])[1]"));
+        moveScrollToElement(delete);
+        click(delete);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void clickPrescriptionHistory() throws InterruptedException {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        pause(500);
+        waitElements(buttonPrescriptionHistory);
+        pause(500);
+        click(buttonPrescriptionHistory);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void selectPrescriptionHistoryDate(String date) throws InterruptedException {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
         pause(1000);
-        String descriptionRequiredField = textAreaDescriptionSpecialOrder.getAttribute("value");
-        waitElements(textAreaDescriptionSpecialOrder);
-        if (descriptionRequiredField.isEmpty() && !buttonSaveSpecialOrder.isDisplayed() ){
-            buttonCancelSpecialOrder.click();
-        }else {
-            System.out.println("the required field is not empty");
-        }
+        WebElement presc = wait.until(ExpectedConditions.presenceOfElementLocated(
+                By.xpath("(//table[contains(@class,'historico-table')]//a[contains(@ng-bind,'fechaCreacion') and contains(normalize-space(.),'" + date.trim() + "')])[1]")));
+        javascriptExecutor.executeScript("arguments[0].scrollIntoView({block:'center', inline:'center'});", presc);
+        pause(500);
+        clickJS(presc);
+        pause(2000);
         driver.switchTo().parentFrame();
-        pause(200);
-        buttonArrowUp.click();
-
     }
+
+    // ---- Delete HD Prescription modal (generic Modal_Button_OK/Cancelar) ----
+
+    public void enterPasswordInDeletePrescriptionModal(String password) throws InterruptedException {
+        driver.switchTo().parentFrame();
+        WebElement pwd = driver.findElement(By.xpath("//input[@type='password']"));
+        click(pwd);
+        pwd.sendKeys(Keys.CONTROL + "a");
+        pwd.sendKeys(Keys.DELETE);
+        write(pwd, password);
+        pause(300);
+    }
+
+    public void enterReasonInDeletePrescriptionModal(String reason) throws InterruptedException {
+        WebElement reasonInput = driver.findElement(By.xpath("(//input[@ng-model='modal.items.delete.motivo'])[1]"));
+        click(reasonInput);
+        reasonInput.sendKeys(Keys.CONTROL + "a");
+        reasonInput.sendKeys(Keys.DELETE);
+        write(reasonInput, reason);
+        pause(300);
+    }
+
+    public void clickOkInDeletePrescriptionModal() throws InterruptedException {
+        driver.switchTo().parentFrame();
+        WebElement ok = driver.findElement(By.xpath("//button[@translate-once='Modal_Button_OK']"));
+        click(ok);
+        pause(1500);
+    }
+
+    public void clickCancelInDeletePrescriptionModal() throws InterruptedException {
+        driver.switchTo().parentFrame();
+        WebElement cancel = driver.findElement(By.xpath("//button[@translate-once='Modal_Button_Cancelar']"));
+        click(cancel);
+        pause(500);
+    }
+
+    public void verifyDeletePrescriptionErrorIsDisplayed() {
+        try { pause(1500); } catch (InterruptedException ignored) {}
+        boolean present = !driver.findElements(By.xpath("//p[contains(@class,'errorMessage')] | //div[contains(@class,'errorMessage')]")).isEmpty();
+        assert present : "Delete prescription error message should be displayed";
+    }
+
+    public void enterSpecialOrderDescription(String description) throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        WebElement textArea = driver.findElement(By.xpath("//textarea[contains(@ng-model,'descripcionOrden')]"));
+        click(textArea);
+        textArea.sendKeys(Keys.CONTROL + "a");
+        textArea.sendKeys(Keys.DELETE);
+        write(textArea, description);
+        pause(300);
+        driver.switchTo().parentFrame();
+    }
+
+    public void clearSpecialOrderDescription() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        WebElement textArea = driver.findElement(By.xpath("//textarea[contains(@ng-model,'descripcionOrden')]"));
+        click(textArea);
+        textArea.sendKeys(Keys.CONTROL + "a");
+        textArea.sendKeys(Keys.DELETE);
+        pause(300);
+        driver.switchTo().parentFrame();
+    }
+
+    public void enterSpecialOrderStartDate(String date) throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        WebElement startDate = driver.findElement(By.xpath("//input[@k-ng-model='o.fechaInicio' and not(@disabled)]"));
+        click(startDate);
+        startDate.sendKeys(Keys.CONTROL + "a");
+        startDate.sendKeys(Keys.DELETE);
+        write(startDate, date);
+        pause(300);
+        driver.switchTo().parentFrame();
+    }
+
+    public void enterSpecialOrderEndDate(String date) throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        WebElement endDate = driver.findElement(By.xpath("//input[@k-ng-model='o.fechaFin' and not(@disabled)]"));
+        click(endDate);
+        endDate.sendKeys(Keys.CONTROL + "a");
+        endDate.sendKeys(Keys.DELETE);
+        write(endDate, date);
+        pause(300);
+        driver.switchTo().parentFrame();
+    }
+
+    public void clickSaveSpecialOrder() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        WebElement save = driver.findElement(By.xpath("//a[@title='Save']//i[contains(@class,'fa-floppy-o')]"));
+        click(save);
+        pause(1000);
+        driver.switchTo().parentFrame();
+    }
+
+    public void clickCancelSpecialOrder() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        WebElement cancel = driver.findElement(By.xpath("//a[@title='Cancel']//i[contains(@class,'fa-times')]"));
+        click(cancel);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void verifySaveSpecialOrderButtonIsNotDisplayed() throws InterruptedException {
+        driver.switchTo().frame("frmContenido");
+        pause(500);
+        boolean present = !driver.findElements(By.xpath("//a[@title='Save']//i[contains(@class,'fa-floppy-o')]")).isEmpty();
+        assert !present : "Save special order button should NOT be displayed when required fields are empty";
+        driver.switchTo().parentFrame();
+    }
+
     public void checkTheCurrentPrescriptionItIsInGreenAndTheClosedOnesAreInBlue() throws InterruptedException{
         driver.switchTo().frame("frmContenido");
         pause(300);
@@ -319,70 +451,6 @@ public class HDPrescriptionPage extends BasePage<HDPrescriptionPage>{
         driver.switchTo().parentFrame();
     }
 
-    public void tryToDeleteThePrescriptionBecauseItAlreadyHasTreatmentRecordsAssociatedWithIt() throws InterruptedException{
-        driver.switchTo().frame("frmContenido");
-        click(buttonThreePointsPrescription);
-        pause(200);
-        buttonDeletePrescription.click();
-
-        driver.switchTo().parentFrame();
-        pause(500);
-        waitElements(modalWarningPrescription);
-        modalWarningPrescription.isDisplayed();
-        pause(200);
-        click(buttonOKModalWarningPrescription);
-        pause(300);
-    }
-    public void triedToDeleteTheActiveDescriptionButICanceled()throws InterruptedException{
-        driver.switchTo().frame("frmContenido");
-        pause(200);
-        click(buttonThreePointsPrescription);
-        pause(200);
-        waitElements(buttonNewPrescription);
-        buttonNewPrescription.click();
-        pause(200);
-        waitElements(buttonThreePointsPrescription);
-        buttonThreePointsPrescription.click();
-        buttonSavePrescription.click();
-        pause(200);
-        waitElements(buttonThreePointsPrescription);
-        click(buttonThreePointsPrescription);
-        pause(200);
-        buttonDeletePrescription.click();
-
-        driver.switchTo().parentFrame();
-
-        pause(200);
-        waitElements(buttonCancelModalDeleteHdPrescription);
-    }
-    public void successfullyDeleteTheActivePrescription()throws InterruptedException{
-        driver.switchTo().frame("frmContenido");
-        pause(200);
-        click(buttonThreePointsPrescription);
-        pause(200);
-        waitElements(buttonDeletePrescription);
-        buttonDeletePrescription.click();
-
-        driver.switchTo().parentFrame();
-
-        String pswd = "renal2";
-        String razon = "Qa test";
-        waitElements(inputPasswordDeleteHdPrescription);
-        inputPasswordDeleteHdPrescription.click();
-        inputPasswordDeleteHdPrescription.sendKeys(Keys.CONTROL + "a");
-        inputPasswordDeleteHdPrescription.sendKeys(Keys.DELETE);
-        write(inputPasswordDeleteHdPrescription, pswd);
-        pause(200);
-
-        inputReasonDeleteHdPrescription.click();
-        inputReasonDeleteHdPrescription.sendKeys(Keys.CONTROL + "a");
-        inputReasonDeleteHdPrescription.sendKeys(Keys.DELETE);
-        write(inputReasonDeleteHdPrescription, razon);
-        pause(200);
-        click(buttonOKModalWarningPrescription);
-        pause(2000);
-
-    }
     public void createANewSimplePrescription()throws InterruptedException{
         driver.switchTo().frame("frmContenido");
         pause(200);
@@ -540,6 +608,294 @@ public class HDPrescriptionPage extends BasePage<HDPrescriptionPage>{
         driver.switchTo().parentFrame();
     }
 
+
+    // ===================== GRANULAR METHODS =====================
+
+    // Navigation
+    public void clickNewPrescription() throws InterruptedException {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        click(buttonThreePointsPrescription);
+        pause(500);
+        click(buttonNewPrescription);
+        pause(2000);
+        driver.switchTo().parentFrame();
+    }
+
+    public void selectMonitor(String monitor) throws InterruptedException {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        pause(1000);
+        String boxId = "box-ak98";
+        if ("OTROS".equalsIgnoreCase(monitor) || "OTHERS".equalsIgnoreCase(monitor)) {
+            boxId = "box-otras";
+        } else if ("ARTIS".equalsIgnoreCase(monitor)) {
+            boxId = "box-artis";
+        }
+        WebElement monitorBox = driver.findElement(By.xpath("//div[@id='" + boxId + "']"));
+        clickJS(monitorBox);
+        pause(3000);
+        driver.switchTo().parentFrame();
+    }
+
+    public void clickMenuOption(String option) throws InterruptedException {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        WebElement menuOption = driver.findElement(By.xpath("//span[translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')='" + option.toLowerCase() + "']/.."));
+        click(menuOption);
+        pause(3000);
+        driver.switchTo().parentFrame();
+    }
+
+    public void clickThreePoints() throws InterruptedException {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        click(buttonThreePointsPrescription);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void verifySeeComplicationLinkIsDisplayed() {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        try { pause(1000); } catch (InterruptedException ignored) {}
+        boolean present = !driver.findElements(By.xpath("//a[@translate-once='ControlPrescripcionHD_Label_Ver_problema__']")).isEmpty();
+        assert present : "See complication link should be displayed";
+        try { pause(500); } catch (InterruptedException ignored) {}
+        driver.switchTo().parentFrame();
+    }
+
+    public void clickSeeComplicationLink() throws InterruptedException {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        WebElement link = driver.findElement(By.xpath("//a[@translate-once='ControlPrescripcionHD_Label_Ver_problema__']"));
+        clickJS(link);
+        pause(3000);
+        driver.switchTo().parentFrame();
+    }
+
+    public void verifyOtherInfectionsLinkIsDisplayed() {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        try { pause(1000); } catch (InterruptedException ignored) {}
+        boolean present = !driver.findElements(By.xpath("//a[@translate-once='Infeccion_Label_Otras_infecciones']")).isEmpty();
+        assert present : "Other infections link should be displayed";
+        try { pause(500); } catch (InterruptedException ignored) {}
+        driver.switchTo().parentFrame();
+    }
+
+    public void clickOtherInfectionsLink() throws InterruptedException {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        WebElement link = driver.findElement(By.xpath("//a[@translate-once='Infeccion_Label_Otras_infecciones']"));
+        clickJS(link);
+        pause(3000);
+        driver.switchTo().parentFrame();
+    }
+
+    // Treatment characteristics
+    public void selectTypeOfTreatment(String type) throws InterruptedException {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        pause(1000);
+        WebElement comboBtn = driver.findElement(By.xpath("//div[@id='caractTratHD']//span[contains(@class,'k-combobox')]//button[@role='button']"));
+        javascriptExecutor.executeScript("arguments[0].scrollIntoView({block:'center'});", comboBtn);
+        pause(500);
+        javascriptExecutor.executeScript("arguments[0].click();", comboBtn);
+        pause(1000);
+        WebElement option = driver.findElement(By.xpath("//div[contains(@class,'k-animation-container') and not(contains(@style,'display: none'))]//*[self::li or @role='option'][normalize-space(.)='" + type + "']"));
+        javascriptExecutor.executeScript("arguments[0].click();", option);
+        pause(1000);
+        driver.switchTo().parentFrame();
+    }
+
+    public void setHemocontrol(String state) throws InterruptedException {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        WebElement toggle = driver.findElement(By.xpath("//input[@ng-model][contains(@ng-model,'.hemocontrol']"));
+        boolean isOn = toggle.isSelected();
+        if (("Yes".equalsIgnoreCase(state) && !isOn) || ("No".equalsIgnoreCase(state) && isOn)) {
+            WebElement label = driver.findElement(By.xpath("//input[@ng-model][contains(@ng-model,'.hemocontrol']/following-sibling::div"));
+            clickJS(label);
+            pause(500);
+        }
+        driver.switchTo().parentFrame();
+    }
+
+    public void enterRatio(String value) throws InterruptedException {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        writeInputField(inputRatio, value);
+        driver.switchTo().parentFrame();
+    }
+
+    public void enterHeight(String value) throws InterruptedException {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        writeInputField(inputHeight, value);
+        driver.switchTo().parentFrame();
+    }
+
+    public void enterPerfusionVolume(String value) throws InterruptedException {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        writeInputField(inputPerfusionVol, value);
+        driver.switchTo().parentFrame();
+    }
+
+    public void enterKConstant(String value) throws InterruptedException {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        writeInputField(inputKConstant, value);
+        driver.switchTo().parentFrame();
+    }
+
+    public void enterKInput(String value) throws InterruptedException {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        writeInputField(inputKInput, value);
+        driver.switchTo().parentFrame();
+    }
+
+    public void enterKOutput(String value) throws InterruptedException {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        writeInputField(inputKOutput, value);
+        driver.switchTo().parentFrame();
+    }
+
+    public void enterKEquivalent(String value) throws InterruptedException {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        writeInputField(inputKEquivalent, value);
+        driver.switchTo().parentFrame();
+    }
+
+    public void enterInfusionVolume(String value) throws InterruptedException {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        writeInputField(inputInfusionVol, value);
+        driver.switchTo().parentFrame();
+    }
+
+    public void selectDilution(String dilution) throws InterruptedException {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        WebElement radio = driver.findElement(By.xpath("//input[@name='iDilucion']/following-sibling::label[contains(@class,'radio-text') and normalize-space(.)='" + dilution + "']"));
+        clickJS(radio);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void enterPTM(String value) throws InterruptedException {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        writeInputField(inputPTM, value);
+        driver.switchTo().parentFrame();
+    }
+
+    public void enterNeedleVolume(String value) throws InterruptedException {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        writeInputField(inputNeedleVol, value);
+        driver.switchTo().parentFrame();
+    }
+
+    public void enterAVPumpRatio(String value) throws InterruptedException {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        writeInputField(inputAVPumpRatio, value);
+        driver.switchTo().parentFrame();
+    }
+
+    public void enterTidal(String value) throws InterruptedException {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        writeInputField(inputTidal, value);
+        driver.switchTo().parentFrame();
+    }
+
+    // Anticoagulation
+    public void selectAnticoagulantType(String type) throws InterruptedException {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        WebElement ddSpan = driver.findElement(By.xpath("//div[contains(@class,'anticoagulacion-panel')]//span[contains(@class,'k-dropdownlist')][1]"));
+        javascriptExecutor.executeScript("arguments[0].scrollIntoView({block:'center'});", ddSpan);
+        pause(500);
+        click(ddSpan);
+        pause(1000);
+        WebElement option = driver.findElement(By.xpath("//div[contains(@class,'k-animation-container') and not(contains(@style,'display: none'))]//*[self::li or @role='option'][normalize-space(.)='" + type + "']"));
+        javascriptExecutor.executeScript("arguments[0].click();", option);
+        pause(1000);
+        driver.switchTo().parentFrame();
+    }
+
+    public void enterBolus(String value) throws InterruptedException {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        writeInputField(inputBolus, value);
+        driver.switchTo().parentFrame();
+    }
+
+    public void enterContinuousInfusion(String value) throws InterruptedException {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        writeInputField(inputContinuousInfusion, value);
+        driver.switchTo().parentFrame();
+    }
+
+    public void enterDisconnectionTime(String value) throws InterruptedException {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        writeInputField(inputDisconnectionTime, value);
+        driver.switchTo().parentFrame();
+    }
+
+    // Adequacy
+    public void enterBloodFlowRate(String value) throws InterruptedException {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        writeInputField(inputBloodFlowRate, value);
+        driver.switchTo().parentFrame();
+    }
+
+    public void enterMaximumUF(String value) throws InterruptedException {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        writeInputField(inputMaximumUF, value);
+        driver.switchTo().parentFrame();
+    }
+
+    public void enterMaximumUFRate(String value) throws InterruptedException {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        writeInputField(inputMaximumUFRate, value);
+        driver.switchTo().parentFrame();
+    }
+
+    public void selectDialyzer(String dialyzer) throws InterruptedException {
+        driver.switchTo().parentFrame();
+        driver.switchTo().frame("frmContenido");
+        WebElement ddSpan = driver.findElement(By.xpath("//select[contains(@k-ng-model,'dializadorId')]/preceding-sibling::span[contains(@class,'k-dropdownlist')]"));
+        javascriptExecutor.executeScript("arguments[0].scrollIntoView({block:'center'});", ddSpan);
+        pause(500);
+        click(ddSpan);
+        pause(1000);
+        WebElement option = driver.findElement(By.xpath("//div[contains(@class,'k-animation-container') and not(contains(@style,'display: none'))]//*[self::li or @role='option'][normalize-space(.)='" + dialyzer + "']"));
+        javascriptExecutor.executeScript("arguments[0].click();", option);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    // Helper method for writing to input fields
+    private void writeInputField(WebElement input, String value) throws InterruptedException {
+        scrollToElementMove(input);
+        click(input);
+        input.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+        input.sendKeys(Keys.DELETE);
+        write(input, value);
+        pause(300);
+    }
 
     @Override
     public boolean isAt() {

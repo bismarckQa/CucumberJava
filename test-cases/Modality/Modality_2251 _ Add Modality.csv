@@ -1,0 +1,105 @@
+﻿ID,Work Item Type,Title,Test Step,Step Action,Step Expected,Area Path,Assigned To,State
+"3302","Test Case","Patient already has an active modality",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log into the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Click on “Accept” button","
+",,,
+,,,"3","At the top in the “-Select a patient-“ listbox, select patient 1018","
+",,,
+,,,"4","On the main menu select “Modality”","
+",,,
+,,,"5","We see that patient already has an active Modality","
+",,,
+,,,"6","Click on “New” menu option","
+",,,
+,,,"7","Warning: Patient already has an active Modality","
+",,,
+,,,"8","Click on “OK” pop-up button","
+",,,
+,,,"9","The system shall not allow the user to create a new Modality","
+",,,
+"4324","Test Case","Cancelling an added Modality",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Select patient 1050 with the patients searching option","
+",,,
+,,,"3","Click on ""Modality"" button in the main menu","
+",,,
+,,,"4","Click on ""New"" button","
+",,,
+,,,"5","Complete the necessary data:","
+",,,
+,,,"6","- Clinical status
+- Modality
+- Sub-modality
+- Location
+- Attendance type
+- System
+- Start date
+- Referred by
+- Reason for start
+- End date
+- Reason for end
+- Detail
+","
+",,,
+,,,"7","Click on ""Cancel"" button","
+",,,
+,,,"8","The system shall not save the new Modality","
+",,,
+"4325","Test Case","Successful added Modality",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Select patient 1050 with the patients searching option","
+",,,
+,,,"3","Click on ""Modality"" button in the main menu","
+",,,
+,,,"4","Click on ""New"" button","
+",,,
+,,,"5","Complete the necessary data:","
+",,,
+,,,"6","- Clinical status
+- Modality
+- Sub-modality
+- Location
+- Attendance type
+- System
+- Start date
+- Referred by
+- Reason for start
+- End date
+- Reason for end
+- Detail
+","
+",,,
+,,,"7","Click on ""Save"" button","
+",,,
+,,,"8","The system shall save the new Modality and must be listed first depending on the date","
+",,,
+"4327","Test Case","Add Modality with empty required fields",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Select patient 1050 with the patients searching option","
+",,,
+,,,"3","Click on ""Modality"" button in the main menu","
+",,,
+,,,"4","Click on ""New"" button","
+",,,
+,,,"5","Leave the required fields empty:","
+",,,
+,,,"6","- Clinical status
+- Modality
+- Sub-modality
+- Start date
+","
+",,,
+,,,"7","Click on ""Save"" button","
+",,,
+,,,"8","Warning: these fields are required
+","
+",,,
+,,,"9","Click on ""OK"" pop-up button
+","
+",,,
+,,,"10","The system shall not allow to save the new Modality","
+",,,

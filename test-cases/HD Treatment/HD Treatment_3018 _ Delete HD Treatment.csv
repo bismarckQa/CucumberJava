@@ -1,0 +1,144 @@
+﻿ID,Work Item Type,Title,Test Step,Step Action,Step Expected,Area Path,Assigned To,State
+"3224","Test Case","Delete a finalized HD Treatment",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Click on “Accept” button","
+",,,
+,,,"3","At the top in the “-Select a patient-“ listbox, select patient with name ""Paciente136""","
+",,,
+,,,"4","On the main menu select “HD Treatment”","
+",,,
+,,,"5","Select a finalized HD Treatment if the system opens by default an active treatment","
+",,,
+,,,"6","Click on ""Delete"" option","
+",,,
+,,,"7","Insert ""renal"" in ""Password"" field and any value in ""Reason"" field","
+",,,
+,,,"8","Click on ""OK"" popup button","
+",,,
+,,,"9","The system shall delete the inactive HD Treament","
+",,,
+"3225","Test Case","Delete an active HD Treatment",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log into the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Click on “Accept” button","
+",,,
+,,,"3","At the top in the “-Select a patient-“ listbox, select patient with name ""Paciente136""","
+",,,
+,,,"4","On the main menu select “HD Treatment”","
+",,,
+,,,"5","The system shall show the last active HD Treatment without any nurse final signature","
+",,,
+,,,"6","Click on ""Delete"" option","
+",,,
+,,,"7","Insert ""renal"" in ""Password"" field and any value in ""Reason"" field","
+",,,
+,,,"8","Click on ""OK"" popup button","
+",,,
+,,,"9","The system shall delete the active HD Treament","
+",,,
+"3226","Test Case","Delete an active HD Treatment (without password and reason)",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Click on “Accept” button","
+",,,
+,,,"3","At the top in the “-Select a patient-“ listbox, select patient with name ""Paciente136""","
+",,,
+,,,"4","On the main menu select “HD Treatment”","
+",,,
+,,,"5","The system shall show the last active HD Treatment without any nurse final signature","
+",,,
+,,,"6","Click on ""Delete"" option","
+",,,
+,,,"7","Click on “OK” popup button without “Password” and any value in ""Reason”","
+",,,
+,,,"8","Warning: Password and Reason are required","
+",,,
+,,,"9","Click on ""Cancel"" popup button","
+",,,
+,,,"10","The system shall not delete the active HD Treatment","
+",,,
+"3227","Test Case","Delete an active HD Treatment (without password)",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Click on “Accept” button","
+",,,
+,,,"3","At the top in the “-Select a patient-“ listbox, select patient with name ""Paciente136""","
+",,,
+,,,"4","On the main menu select “HD Treatment”","
+",,,
+,,,"5","The system shall show the last active HD Treatment without any nurse final signature","
+",,,
+,,,"6","Click on ""Delete"" option","
+",,,
+,,,"7","Set any value in ""Reason"" field without Password","
+",,,
+,,,"8","Click on ""OK"" popup button","
+",,,
+,,,"9","Warning: the password entered is incorrect","
+",,,
+,,,"10","Click on ""Cancel"" popup button","
+",,,
+,,,"11","The system shall not delete the active HD Treatment","
+",,,
+"4707","Test Case","Cancelling a finalized HD Treatment",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Click on “Accept” button","
+",,,
+,,,"3","At the top in the “-Select a patient-“ listbox, select patient 1018","
+",,,
+,,,"4","On the main menu select “HD Treatment”","
+",,,
+,,,"5","Select a finalized HD Treament if the system opens by default an active treatment","
+",,,
+,,,"6","Click on ""Delete"" option","
+",,,
+,,,"7","Insert ""renal"" in ""Password"" field and any value in ""Reason"" field","
+",,,
+,,,"8","Click on ""Cancel"" popup button","
+",,,
+,,,"9","The system shall not delete the inactive HD Treament","
+",,,
+"4708","Test Case","Cancelling a deleted active HD Treatment",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log into the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Click on “Accept” button","
+",,,
+,,,"3","At the top in the “-Select a patient-“ listbox, select patient with name ""Paciente136""","
+",,,
+,,,"4","On the main menu select “HD Treatment”","
+",,,
+,,,"5","The system shall show the last active HD Treatment without any nurse final signature","
+",,,
+,,,"6","Click on ""Delete"" option","
+",,,
+,,,"7","Insert ""renal"" in ""Password"" field and any value in ""Reason"" field","
+",,,
+,,,"8","Click on ""Cancel"" popup button","
+",,,
+,,,"9","The system shall not delete the active HD Treament","
+",,,
+"4709","Test Case","Delete an active HD Treatment (without reason)",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Click on “Accept” button","
+",,,
+,,,"3","At the top in the “-Select a patient-“ listbox, select patient with name ""Paciente136""","
+",,,
+,,,"4","On the main menu select “HD Treatment”","
+",,,
+,,,"5","The system shall show the last active HD Treatment without any nurse final signature","
+",,,
+,,,"6","Click on ""Delete"" option","
+",,,
+,,,"7","Set ""Password"" field without Reason","
+",,,
+,,,"8","Click on ""OK"" popup button","
+",,,
+,,,"9","Warning: the reason is a required field","
+",,,
+,,,"10","Click on ""Cancel"" popup button","
+",,,
+,,,"11","The system shall not delete the active HD Treatment","
+",,,

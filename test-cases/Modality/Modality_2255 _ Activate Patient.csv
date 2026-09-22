@@ -1,0 +1,43 @@
+﻿ID,Work Item Type,Title,Test Step,Step Action,Step Expected,Area Path,Assigned To,State
+"4385","Test Case","Successful activated patient",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Check ""Show inactive patients"" in the patients searching option
+","
+",,,
+,,,"3","Select patient 1003","
+",,,
+,,,"4","The ""Inactive patient"" check box is checked and patient is inactive","
+",,,
+,,,"5","Click ""Inactive patient"" check box off","
+",,,
+,,,"6","Warning: Are you sure you want to reactivate the patient?
+","
+",,,
+,,,"7","Click on ""OK"" button on pop-up","
+",,,
+,,,"8","The check box gets empty and the patient is now active","
+",,,
+,,,"9","(If we check ""show inactive patients"" off we will find patient 1003)","
+",,,
+"4386","Test Case","Cancelling an activated patient",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Check ""Show inactive patients"" in the patients searching option
+","
+",,,
+,,,"3","Select patient 1003","
+",,,
+,,,"4","The ""Inactive patient"" check box is checked and patient is inactive","
+",,,
+,,,"5","Click ""Inactive patient"" check box off","
+",,,
+,,,"6","Warning: Are you sure you want to reactivate the patient?
+","
+",,,
+,,,"7","Click on ""Cancel"" button on pop-up","
+",,,
+,,,"8","The check box is still checked and patient is still inactive","
+",,,
+,,,"9","(If we check ""show inactive patients"" on in the patients searching option, we will find patient 1003)","
+",,,

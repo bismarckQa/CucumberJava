@@ -1,0 +1,104 @@
+﻿ID,Work Item Type,Title,Test Step,Step Action,Step Expected,Area Path,Assigned To,State
+"4653","Test Case","Cancelling an edited special order",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","At the top in the “-Select a patient-“ listbox, select ""Paciente136""","
+",,,
+,,,"3","On the main menu select “HD Prescription”","
+",,,
+,,,"4","The system open the current HD Prescription","
+",,,
+,,,"5","In Special Order section, Click on “Edit"" button within the order to be modified","
+",,,
+,,,"6","Modify the necessary data:- Description: textbox
+- Start date: current date by default
+- End date","
+",,,
+,,,"7","Click on the ""Cancel"" button","
+",,,
+,,,"8","The system shall not save the edited special order","
+",,,
+"4654","Test Case","Successful edited special order",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","At the top in the “-Select a patient-“ listbox, select patient 1018","
+",,,
+,,,"3","On the main menu select “HD Prescription”","
+",,,
+,,,"4","The system open the current HD Prescription","
+",,,
+,,,"5","In Special Order section, Click on “Edit"" button within the order to be modified","
+",,,
+,,,"6","Modify the necessary data:- Description: textbox
+- Start date: current date by default
+- End date","
+",,,
+,,,"7","Click on the ""Save"" button","
+",,,
+,,,"8","The system shall save the edited special order","
+",,,
+"4655","Test Case","Edit special order with empty required fields",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","At the top in the “-Select a patient-“ listbox, select ""Paciente136""","
+",,,
+,,,"3","On the main menu select “HD Prescription”","
+",,,
+,,,"4","The system open the current HD Prescription","
+",,,
+,,,"5","In Special Order section, Click on “Edit"" button within the order to be modified","
+",,,
+,,,"6","Leave the required fields empty:- Description: textbox
+- Start date: current date by default
+","
+",,,
+,,,"7","These required fields must be in red and “Save” button in the section should not appear","
+",,,
+,,,"8","The system shall not save the edited special order","
+",,,
+"4658","Test Case","Edit special order with an earlier end date than start date",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","At the top in the “-Select a patient-“ listbox, select patient 1018","
+",,,
+,,,"3","On the main menu select “HD Prescription”","
+",,,
+,,,"4","The system open the current HD Prescription","
+",,,
+,,,"5","In Special Order section, Click on “Edit"" button within the order to be modified","
+",,,
+,,,"6","Complete the necessary data:- Description: textbox
+- Start date: current date by default
+- End date: earlier date","
+",,,
+,,,"7","Click on the ""Save"" button","
+",,,
+,,,"8","Warning: The end date cannot be earlier than the start date","
+",,,
+,,,"9","Click on ""OK"" button on pop-up","
+",,,
+,,,"10","The system shall not allow to save the edited order","
+",,,
+"4662","Test Case","Edit special order with an later start date than end date",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","At the top in the “-Select a patient-“ listbox, select patient 1018","
+",,,
+,,,"3","On the main menu select “HD Prescription”","
+",,,
+,,,"4","The system open the current HD Prescription","
+",,,
+,,,"5","In Special Order section, Click on “Edit"" button within the order to be modified","
+",,,
+,,,"6","Complete the necessary data:- Description: textbox
+- Start date: later date than end date
+- End date","
+",,,
+,,,"7","Click on the ""Save"" button","
+",,,
+,,,"8","Warning: The end date cannot be earlier than the start date","
+",,,
+,,,"9","Click on ""OK"" button on pop-up","
+",,,
+,,,"10","The system shall not allow to save the edited order","
+",,,

@@ -1,0 +1,60 @@
+﻿ID,Work Item Type,Title,Test Step,Step Action,Step Expected,Area Path,Assigned To,State
+"3404","Test Case","Successful added Personal History",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Select patient with name ""Paciente136"" with the patients searching option","
+",,,
+,,,"3","Click on ""Antecedents"" button in the main menu","
+",,,
+,,,"4","Click on ""New” button in the family medical history grid","
+",,,
+,,,"5","We select the necessary
+data on the pop-up:- History: drop-down list
+- Father: check
+- Mother: check","
+",,,
+,,,"6","Using the ""Add history"" button the Antecedents are displayed on the open window. You have an option to delete it","
+",,,
+,,,"7","Click on “Save"" button on pop-up","
+",,,
+,,,"8","The system shall allow the user to add the new Personal History in the history grid","
+",,,
+"3405","Test Case","Add new Personal History with empty required fields",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Select patient with name ""Paciente136"" with the patients searching option","
+",,,
+,,,"3","Click on ""Antecedents"" button in the main menu","
+",,,
+,,,"4","Click on ""New” button in the family medical history grid","
+",,,
+,,,"5","On the pop-up, select the “Save"" button","
+",,,
+,,,"6","Warning: No new history has been entered","
+",,,
+,,,"7","Click on “OK"" button","
+",,,
+,,,"8","Then click on “Cancel"" button on pop-up","
+",,,
+,,,"9","The system shall not allow the user to add a new Personal History in the history grid","
+",,,
+"3406","Test Case","Cancelling an added Personal History",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Select patient 1018 with the patients searching option","
+",,,
+,,,"3","Click on ""Antecedents"" button in the main menu","
+",,,
+,,,"4","Click on ""New” button in the family medical history grid","
+",,,
+,,,"5","We select the necessary
+data on the pop-up:- History: drop-down list
+- Father: check
+- Mother: check","
+",,,
+,,,"6","Using the ""Add history"" button the Antecedents are displayed on the open window. You have an option to delete it","
+",,,
+,,,"7","Click on “Cancel"" button on pop-up","
+",,,
+,,,"8","The system shall not allow the user to add a new Personal History in the history grid","
+",,,

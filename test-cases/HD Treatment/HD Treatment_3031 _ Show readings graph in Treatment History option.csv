@@ -1,0 +1,80 @@
+﻿ID,Work Item Type,Title,Test Step,Step Action,Step Expected,Area Path,Assigned To,State
+"3296","Test Case","Check treatment history graph fields",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log into the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Click on “Accept” button","
+",,,
+,,,"3","At the top in the “-Select a patient-“ listbox, select patient with name ""Paciente136""","
+",,,
+,,,"4","On the main menu select “HD Treatment”","
+",,,
+,,,"5","Select ""Treatment history"" menu option","
+",,,
+,,,"6","On the pop-up window, we’ll see:
+- Filters (Between dates  / Last: treatments, days, weeks and months) selected by default       
+- See treatments in columns (in the grid) check selected by default
+- See minimum, maximum, average and median check (for the grid)
+- Treatments grid that depends on the filters
+","
+",,,
+,,,"7","With “Gráfica” button, we can see graphs by choosing several variables or not and the “Group charts” check","
+",,,
+,,,"8","With “Columns” button, we can choose Hidden or Visible columns for the “Gráfica” or “Treatments grid”","
+",,,
+,,,"9","With “Export” button, we can choose to open the treatments grid with XLS","
+",,,
+"3297","Test Case","Show none grouped graph",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log into the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Click on “Accept” button","
+",,,
+,,,"3","At the top in the “-Select a patient-“ listbox, select patient with name ""Paciente136""","
+",,,
+,,,"4","On the main menu select “HD Treatment”","
+",,,
+,,,"5","Select ""Treatment history"" menu option","
+",,,
+,,,"6","On the pop-up window, click on ""Gráfica"" button","
+",,,
+,,,"7","Select several variables","
+",,,
+,,,"8","The system shall show several charts each with a variable","
+",,,
+"3298","Test Case","Show grouped charts",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log into the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Click on “Accept” button","
+",,,
+,,,"3","At the top in the “-Select a patient-“ listbox, select patient with name ""Paciente136""","
+",,,
+,,,"4","On the main menu select “HD Treatment”","
+",,,
+,,,"5","Select ""Treatment history"" menu option","
+",,,
+,,,"6","On the pop-up window, click on ""Gráfica"" button","
+",,,
+,,,"7","Select several variables from combobox list","
+",,,
+,,,"8","Select “Group charts” check","
+",,,
+,,,"9","The system shall show a grouped charts with all the selected variables","
+",,,
+"4764","Test Case","Show Treatment history columns",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log into the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Click on “Accept” button","
+",,,
+,,,"3","At the top in the “-Select a patient-“ listbox, select patient with name ""Paciente136""","
+",,,
+,,,"4","On the main menu select “HD Treatment”","
+",,,
+,,,"5","Select ""Treatment history"" menu option","
+",,,
+,,,"6","On the pop-up window, click on ""Columns"" button","
+",,,
+,,,"7","Select and slide reading fields to Hidden Columns or to Visible Columns for the Treatment history grid","
+",,,
+,,,"8","Click on ""Back"" button","
+",,,
+,,,"9","The system shall show in the grid all the reading fields selected in visible columns","
+",,,

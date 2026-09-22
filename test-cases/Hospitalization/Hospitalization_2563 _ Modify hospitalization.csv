@@ -1,0 +1,138 @@
+﻿ID,Work Item Type,Title,Test Step,Step Action,Step Expected,Area Path,Assigned To,State
+"3705","Test Case","Successful edited Hospitalization",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Select patient 1018 with the patients searching option","
+",,,
+,,,"3","Click on ""Hospitalization"" button in the main menu","
+",,,
+,,,"4","Select a “Date of admission” and click on ""Edit"" button","
+",,,
+,,,"5","Modify the necessary data:","
+",,,
+,,,"6","* Admission Data:","
+",,,
+,,,"7","- Date of admission (today's date is suggested by the system). Required field","
+",,,
+,,,"8","- Type of admission (list)","
+",,,
+,,,"9","- Hospital (list) Required field","
+",,,
+,,,"10","- Physician (list) Required field","
+",,,
+,,,"11","- Days of admission (it will calculate the days of hospitalization based on the start date)","
+",,,
+,,,"12","- Reason for admission (free text field) Required field","
+",,,
+,,,"13","- Clinical judgement (free text field)","
+",,,
+,,,"14","- Current illness (free text field)","
+",,,
+,,,"15","- Current treatment (free text field)","
+",,,
+,,,"16","* Discharge Data:","
+",,,
+,,,"17","- Date of discharge (today's date is suggested by the system). Required field","
+",,,
+,,,"18","- Physician (list). Required field","
+",,,
+,,,"19","- Primary diagnosis (free text field)","
+",,,
+,,,"20","- Secondary diagnoses (free text field)","
+",,,
+,,,"21","- Diagnostic and therapeutic procedures (free text field)","
+",,,
+,,,"22","- Recommendation on discharge (free text field)","
+",,,
+,,,"23","- Reason for discharge (free text field)","
+",,,
+,,,"24","- Progress and discharge comments (free text field)","
+",,,
+,,,"25","Click on ""Save"" button","
+",,,
+,,,"26","The system shall save the edited Hospitalization","
+",,,
+"3706","Test Case","Cancelling an edited Hospitalization",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Select patient 1018 with the patients searching option","
+",,,
+,,,"3","Click on ""Hospitalization"" button in the main menu","
+",,,
+,,,"4","Select a “Date of admission” and click on ""Edit"" button","
+",,,
+,,,"5","Modify the necessary data:","
+",,,
+,,,"6","* Admission Data:","
+",,,
+,,,"7","- Date of admission (today's date is suggested by the system). Required field","
+",,,
+,,,"8","- Type of admission (list)","
+",,,
+,,,"9","- Hospital (list) Required field","
+",,,
+,,,"10","- Physician (list) Required field","
+",,,
+,,,"11","- Days of admission (it will calculate the days of hospitalization based on the start date)","
+",,,
+,,,"12","- Reason for admission (free text field) Required field","
+",,,
+,,,"13","- Clinical judgement (free text field)","
+",,,
+,,,"14","- Current illness (free text field)","
+",,,
+,,,"15","- Current treatment (free text field)","
+",,,
+,,,"16","* Discharge Data:","
+",,,
+,,,"17","- Date of discharge (today's date is suggested by the system). Required field","
+",,,
+,,,"18","- Physician (list). Required field","
+",,,
+,,,"19","- Primary diagnosis (free text field)","
+",,,
+,,,"20","- Secondary diagnoses (free text field)","
+",,,
+,,,"21","- Diagnostic and therapeutic procedures (free text field)","
+",,,
+,,,"22","- Recommendation on discharge (free text field)","
+",,,
+,,,"23","- Reason for discharge (free text field)","
+",,,
+,,,"24","- Progress and discharge comments (free text field)","
+",,,
+,,,"25","Click on ""Cancel"" button","
+",,,
+,,,"26","The system shall not save the edited Hospitalization","
+",,,
+"3711","Test Case","Edit Hospitalization with empty required fields",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Select patient 1018 with the patients searching option","
+",,,
+,,,"3","Click on ""Hospitalization"" button in the main menu","
+",,,
+,,,"4","Select a “Date of admission” and click on ""Edit"" button","
+",,,
+,,,"5","Leave the required fields empty:","
+",,,
+,,,"6","* Admission Data:","
+",,,
+,,,"7","- Date of admission (today's date is suggested by the system). Required field","
+",,,
+,,,"8","- Hospital (list) Required field","
+",,,
+,,,"9","- Physician (list) Required field","
+",,,
+,,,"10","- Reason for admission (free text field) Required field","
+",,,
+,,,"11","* Discharge Data:","
+",,,
+,,,"12","- Date of discharge (today's date is suggested by the system). Required field","
+",,,
+,,,"13","- Physician (list). Required field","
+",,,
+,,,"14","Warning: these fields are required","
+",,,
+,,,"15","The system shall not allow to save the edited Hospitalization","
+",,,

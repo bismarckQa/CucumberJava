@@ -214,6 +214,14 @@ public class HospitalizationSteps {
         HospitalizationPage.clickSaveButtonEditProgressData();
     }
 
+    @And("I try to edit progress data with empty required fields")
+    public void iTryToEditProgressDataWithEmptyRequiredFields()throws InterruptedException {
+        HospitalizationPage.clickButtonProgressDataSection();
+        HospitalizationPage.clickButtonEditProgressData();
+        HospitalizationPage.clearTextAreaCommentsProgressData();
+        HospitalizationPage.clickSaveButtonEditProgressData();
+    }
+
     @And("I try to edit the daily values collected, but it cancels")
     public void iTryToEditTheDailyValuesCollectedButItCancels()throws InterruptedException {
         HospitalizationPage.clickButtonDailyValuesSection();

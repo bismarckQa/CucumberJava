@@ -1,0 +1,37 @@
+﻿ID,Work Item Type,Title,Test Step,Step Action,Step Expected,Area Path,Assigned To,State
+"3299","Test Case","Show Treatment History report (Default values)",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Click on “Accept” button","
+",,,
+,,,"3","At the top in the “-Select a patient-“ listbox, select patient with name ""Paciente136""","
+",,,
+,,,"4","On the main menu select “HD Treatment”","
+",,,
+,,,"5","Select ""Treatment history"" menu option","
+",,,
+,,,"6","On the pop-up window check default values","
+",,,
+,,,"7","Click on ""Export"" button then on “Ok” pop-up button to export to XLS","
+",,,
+,,,"8","The system shall open an XLS window with all default values","
+",,,
+"3300","Test Case","Show Treatment History report (Date filters)",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log into the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Click on “Accept” button","
+",,,
+,,,"3","At the top in the “-Select a patient-“ listbox, select patient with name ""Paciente136""","
+",,,
+,,,"4","On the main menu select “HD Treatment”","
+",,,
+,,,"5","Select ""Treatment history"" menu option","
+",,,
+,,,"6","On the pop-up window check default values","
+",,,
+,,,"7","Select ""Between dates"" in filter options","
+",,,
+,,,"8","Click on ""Export"" button then on “Ok” pop-up button to export to XLS","
+",,,
+,,,"9","The system shall open an XLS window with the new filtered dates","
+",,,

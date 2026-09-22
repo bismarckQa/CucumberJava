@@ -1,0 +1,20 @@
+﻿ID,Work Item Type,Title,Test Step,Step Action,Step Expected,Area Path,Assigned To,State
+"4632","Test Case","View special orders section",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","At the top in the “-Select a patient-“ listbox, select ""Paciente136""","
+",,,
+,,,"3","On the main menu select “HD Prescription”","
+",,,
+,,,"4","The system shall show Special Orders section for each HD Prescription (current one and closed ones)
+","
+",,,
+,,,"5","Check ""See inactive"" to consult inactive special orders
+","
+",,,
+,,,"6","Click on ""See medical record"" to see the history of special orders
+","
+",,,
+,,,"7","The system shall show all special orders for each HD Prescription
+","
+",,,

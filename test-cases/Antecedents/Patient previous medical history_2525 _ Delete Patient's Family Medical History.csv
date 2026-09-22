@@ -1,0 +1,31 @@
+﻿ID,Work Item Type,Title,Test Step,Step Action,Step Expected,Area Path,Assigned To,State
+"3409","Test Case","Cancelling a deleted Personal History",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Select patient with name ""Paciente136"" with the patients searching option","
+",,,
+,,,"3","Click on ""Antecedents"" button in the main menu","
+",,,
+,,,"4","Click on ""Delete"" button on an existing Personal History","
+",,,
+,,,"5","Warning: Are you sure you want to delete this record?","
+",,,
+,,,"6","Click on ""Cancel"" button on pop-up","
+",,,
+,,,"7","The system shall not delete any record","
+",,,
+"3410","Test Case","Successful deleted Personal History",,,,"Versia Renal - Comercial","Yannick Lopin <yannick_lopin@baxter.com>","Ready"
+,,,"1","Log in to the app with user ""support"" and password ""renal""","
+",,,
+,,,"2","Select patient with name ""Paciente136"" with the patients searching option","
+",,,
+,,,"3","Click on ""Antecedents"" button in the main menu","
+",,,
+,,,"4","Click on ""Delete"" button on an existing Personal History","
+",,,
+,,,"5","Warning: Are you sure you want to delete this record?","
+",,,
+,,,"6","Click on ""OK"" button on pop-up","
+",,,
+,,,"7","The system shall delete the selected record","
+",,,

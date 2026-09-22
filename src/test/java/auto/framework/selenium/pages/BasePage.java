@@ -144,20 +144,40 @@ public abstract class BasePage <P>{
         actions.moveToElement(to).release().build().perform();
     }
 
-    public void dragAndDrop2(WebElement from, WebElement to) throws InterruptedException {
-        Actions actions = new Actions(driver);
-
-        waitElement(from);
-        actions.clickAndHold(from).perform();
-        pause(1000);
-
-        // Usar JS para mover al centro del target
-        String script = "var rect = arguments[0].getBoundingClientRect();" +
-                "window.scrollTo(rect.left + rect.width/2, rect.top + rect.height/2);";
-        ((JavascriptExecutor) driver).executeScript(script, to);
-
-        waitElement(to);
-        actions.moveToElement(to).pause(Duration.ofMillis(500)).release().build().perform();
+    /**
+     * Drag and drop using JavaScript mouse events. Works with ng-drag/ng-drop (ngDraggable)
+     * that listen to mousedown/mousemove/mouseup instead of HTML5 drag events.
+     */
+    public void dragAndDropMouseEvents(WebElement from, WebElement to) throws InterruptedException {
+        String jsMouseDrag = """
+            function simulateDrag(source, target) {
+                var sourceRect = source.getBoundingClientRect();
+                var sx = sourceRect.left + sourceRect.width / 2;
+                var sy = sourceRect.top + sourceRect.height / 2;
+                source.dispatchEvent(new MouseEvent('mousedown', {
+                    bubbles: true, cancelable: true, clientX: sx, clientY: sy
+                }));
+                document.dispatchEvent(new MouseEvent('mousemove', {
+                    bubbles: true, cancelable: true, clientX: sx + 5, clientY: sy + 5
+                }));
+                setTimeout(function() {
+                    var targetRect = target.getBoundingClientRect();
+                    var tx = targetRect.left + targetRect.width / 2;
+                    var ty = targetRect.top + targetRect.height / 2;
+                    document.dispatchEvent(new MouseEvent('mousemove', {
+                        bubbles: true, cancelable: true, clientX: tx, clientY: ty
+                    }));
+                    setTimeout(function() {
+                        document.dispatchEvent(new MouseEvent('mouseup', {
+                            bubbles: true, cancelable: true, clientX: tx, clientY: ty
+                        }));
+                    }, 300);
+                }, 500);
+            }
+            simulateDrag(arguments[0], arguments[1]);
+        """;
+        ((JavascriptExecutor) driver).executeScript(jsMouseDrag, from, to);
+        pause(2000);
     }
 
     public void dragAndDropVisible(WebElement from, WebElement to) throws InterruptedException {
